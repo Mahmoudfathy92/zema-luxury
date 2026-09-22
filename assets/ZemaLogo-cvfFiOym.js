@@ -1,0 +1,1 @@
+import{j as s}from"./index-uamL4pK8.js";function m({size:t="md"}){const r=t==="lg"?"text-2xl":t==="sm"?"text-sm":"text-lg";return s.jsx("span",{className:`wordmark ${r} text-foreground`,children:"ZEMA"})}export{m as Z};

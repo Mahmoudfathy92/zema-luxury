@@ -1,0 +1,1 @@
+import{j as e,L as t}from"./index-uamL4pK8.js";const s=()=>e.jsx("div",{className:"min-h-screen flex items-center justify-center bg-background text-foreground",children:e.jsxs("div",{className:"text-center",children:[e.jsx("h1",{className:"text-3xl font-bold mb-3",children:"404"}),e.jsx(t,{to:"/",className:"text-accent",children:"Home"})]})});export{s as notFoundComponent};

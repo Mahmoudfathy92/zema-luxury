@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="image" href="/__l5e/assets-v1/f2909711-2a23-4d0d-9aa1-a574bce16e1f/zema-logo.png"/><link rel="preload" as="image" href="/products/bag-mini-crossbody.jpg" fetchPriority="high"/><link rel="stylesheet" href="/assets/styles-zkCiEIcK.css" data-precedence="default"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" data-precedence="default"/><title>Mini Crossbody — ZEMA</title><meta name="theme-color" content="#faf9f7"/><meta property="og:description" content="زِيما — ساعات فاخرة ونظارات شمسية وحقائب جلدية."/><meta property="og:type" content="website"/><meta name="description" content="حقيبة كروس صغيرة بلون رملي ناعم وخطوط نظيفة، بحزام جلدي قابل للتعديل وتفاصيل ذهبية دقيقة. مثالية للسهرات والمناسبات حين تحتاجين الأساسيات فقط بإطلالة مرتبة."/><meta property="og:title" content="Mini Crossbody"/><meta property="og:image" content="/products/bag-mini-crossbody.jpg"/><link rel="modulepreload" href="/assets/index-uamL4pK8.js"/><link rel="modulepreload" href="/assets/products._id-DWpcj5M3.js"/><link rel="modulepreload" href="/assets/products._id-BYwTH3wc.js"/><link rel="modulepreload" href="/assets/products._id-BNCDVyS-.js"/><link rel="modulepreload" href="/assets/SiteChrome-vAcelVMJ.js"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="icon" type="image/png" href="/favicon.png"/>
+<style>
+	@font-face {
+		font-family: 'CameraPlainVariable';
+		src: url('https://cdn.gpteng.co/mcp-widgets/v1/fonts/CameraPlainVariable.woff2') format('woff2');
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: CameraPlainVariable, "CameraPlainVariable Fallback", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+	}
+
+	#lovable-badge-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--badge-gap);
+		padding: 0 var(--badge-padding);
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
+
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
+
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
+
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
+
+	#lovable-badge-text {
+		line-height: 1;
+	}
+
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
+
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
+
+	#lovable-badge-close:focus {
+		outline: none;
+	}
+
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
+
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
+
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
+
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+</style>
+<script defer src="/~flock.js" data-proxy-url="/~api/analytics"></script><meta name="twitter:title" content="Mini Crossbody"><meta name="twitter:description" content="زِيما — ساعات فاخرة ونظارات شمسية وحقائب جلدية."><meta name="twitter:image" content="/products/bag-mini-crossbody.jpg"></head><body><!--$--><!--$--><div class="min-h-screen bg-background text-foreground" dir="rtl" lang="ar"><div class="bg-foreground text-background text-[11px] md:text-xs" dir="rtl"><div class="mx-auto max-w-7xl px-5 lg:px-12 py-2 flex items-center justify-center text-center"><span class="tracking-wide opacity-90">شحن مجاني للطلبات فوق 2,500 ج.م</span></div></div><header class="border-b hairline sticky top-0 z-40 bg-background/95"><div class="mx-auto max-w-7xl px-5 lg:px-12 h-[68px] md:h-20 grid grid-cols-[1fr_auto_1fr] items-center gap-4"><div class="flex items-center gap-2"><button class="md:hidden -ms-1 p-1 hover:text-accent transition-colors" aria-label="القائمة" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button><div class="hidden md:flex items-center gap-4"><button aria-label="بحث" class="hover:text-accent transition-colors"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button><a aria-label="المفضلة" href="/wishlist" class="hover:text-accent transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart" aria-hidden="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg></a></div></div><a href="/" class="justify-self-center shrink-0"><img src="/__l5e/assets-v1/f2909711-2a23-4d0d-9aa1-a574bce16e1f/zema-logo.png" alt="ZEMA" class="h-auto w-full max-w-[120px] md:max-w-[150px] select-none"/></a><div class="flex items-center justify-end gap-2.5 sm:gap-3"><div class="relative hidden sm:block"><button aria-haspopup="menu" aria-expanded="false" aria-label="Language" class="p-1 hover:text-accent transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></button></div><a aria-label="حسابي" href="/auth" class="hover:text-accent transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a><button aria-label="سلة المشتريات" class="relative hover:text-accent transition-colors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h2l2.4 12.5a2 2 0 002 1.5h7.6a2 2 0 002-1.5L21 7H6"></path><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle></svg></button></div></div><nav class="hidden md:flex items-center justify-center gap-8 lg:gap-10 border-t hairline py-3 text-[12px] font-medium tracking-[0.12em] uppercase" dir="rtl"><a href="/" class="text-foreground/70 hover:text-foreground transition-colors">الرئيسية</a><a href="/shop" class="text-foreground/70 hover:text-foreground transition-colors">المتجر</a><a href="/shop?category=watches" class="text-foreground/70 hover:text-foreground transition-colors">ساعات</a><a href="/shop?category=vision" class="text-foreground/70 hover:text-foreground transition-colors">نظارات شمسية</a><a href="/shop?category=bags" class="text-foreground/70 hover:text-foreground transition-colors">حقائب نسائية</a><a href="/shop?category=wallets" class="text-foreground/70 hover:text-foreground transition-colors">محافظ</a><a href="/shop?offers=1" class="text-foreground/70 hover:text-foreground transition-colors text-accent">العروض</a><a href="/track" class="text-foreground/70 hover:text-foreground transition-colors">تتبع شحنتك</a></nav></header><div class="mx-auto max-w-7xl px-5 lg:px-12 py-6 text-xs text-muted-foreground"><a href="/" class="hover:text-accent">الرئيسية</a><span class="mx-2">/</span><span>حقائب</span><span class="mx-2">/</span><span class="text-foreground">Mini Crossbody</span></div><section class="mx-auto max-w-7xl px-5 lg:px-12 pb-16 grid lg:grid-cols-2 gap-12"><div><button class="block aspect-square w-full overflow-hidden border hairline bg-card cursor-zoom-in relative" aria-label="zoom"><img src="/products/bag-mini-crossbody.jpg" alt="Mini Crossbody" fetchPriority="high" decoding="async" class="w-full h-full object-cover "/></button><div class="grid grid-cols-4 gap-3 mt-3"><button class="aspect-square overflow-hidden border border-accent"><img src="/products/bag-mini-crossbody.jpg" alt="" loading="lazy" class="w-full h-full object-cover"/></button></div></div><div><div class="flex items-center justify-between mb-3"><p class="section-mark text-[10px] text-muted-foreground ltr-num">BG-03</p><span class="text-xs font-bold text-emerald-400">● متوفر</span></div><h1 class="display-serif text-4xl md:text-5xl lg:text-6xl mb-3 leading-[1.05] tracking-tight">Mini Crossbody</h1><p class="text-muted-foreground mb-6 font-light leading-relaxed">كروس صغيرة بلون رملي • تصميم مينيمالست</p><div class="flex items-baseline gap-3 mb-8"><span class="text-3xl md:text-4xl font-semibold text-foreground"><span class="ltr-num">١٬٩٩٩</span> <span class="text-base text-muted-foreground">ج.م</span></span></div><p class="leading-loose text-foreground/90 mb-8">حقيبة كروس صغيرة بلون رملي ناعم وخطوط نظيفة، بحزام جلدي قابل للتعديل وتفاصيل ذهبية دقيقة. مثالية للسهرات والمناسبات حين تحتاجين الأساسيات فقط بإطلالة مرتبة.</p><div class="mb-8"><p class="section-mark text-[10px] text-muted-foreground mb-3">COLOR</p><div class="flex items-center gap-3"><button aria-label="رملي" title="رملي" class="h-8 w-8 rounded-full border-2 transition-all border-accent scale-110" style="background-color:#c9b294"></button><span class="text-sm text-muted-foreground mr-2">رملي</span></div></div><div class="flex gap-3 mb-8"><button class="flex-1 bg-foreground text-background py-4 text-[12px] font-semibold tracking-[0.25em] uppercase hover:bg-foreground/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">إضافة إلى السلة</button><button aria-label="المفضلة" class="border hairline px-5 hover:border-foreground/60 transition-colors"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg></button></div><div class="border hairline bg-card/40 p-6 space-y-3 text-sm text-muted-foreground leading-relaxed"><p>🚚 <!-- -->توصيل سريع خلال<!-- --> <span class="text-foreground font-bold ltr-num">2 - 4</span> <!-- -->أيام عمل لجميع المحافظات.</p><p>💳 <!-- -->الدفع عند الاستلام متاح في جميع المحافظات.</p><p>🛡️ <!-- -->ضمان الاستبدال والاسترجاع خلال<!-- --> <span class="text-foreground font-bold ltr-num">14</span> <!-- -->يوماً.</p></div></div></section><section class="border-t hairline bg-card/30"><div class="mx-auto max-w-7xl px-5 lg:px-12 py-16"><div class="text-center mb-10"><p class="section-mark text-[10px] text-accent mb-3">COMPLETE THE LOOK</p><h2 class="text-2xl md:text-3xl font-bold">أكمل إطلالتك</h2></div><div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto"><a href="/products/zm-01" class="group border hairline bg-background flex items-center gap-4 p-4 hover:border-accent transition-colors"><img src="/products/boss-blue.jpg" alt="Sovereign Blue" loading="lazy" class="w-24 h-24 object-cover border hairline"/><div class="flex-1"><p class="text-xs text-muted-foreground mb-1">ساعات</p><h4 class="font-bold mb-1">Sovereign Blue</h4><p class="text-accent text-sm font-bold"><span class="ltr-num">٣٬٢٩٩</span> <!-- -->ج.م</p></div><span class="text-accent text-xl">→</span></a><a href="/products/zm-02" class="group border hairline bg-background flex items-center gap-4 p-4 hover:border-accent transition-colors"><img src="/products/tommy-black.jpg" alt="Onyx Sport" loading="lazy" class="w-24 h-24 object-cover border hairline"/><div class="flex-1"><p class="text-xs text-muted-foreground mb-1">ساعات</p><h4 class="font-bold mb-1">Onyx Sport</h4><p class="text-accent text-sm font-bold"><span class="ltr-num">٢٬٨٩٩</span> <!-- -->ج.م</p></div><span class="text-accent text-xl">→</span></a></div></div></section><div class="lg:hidden sticky bottom-0 z-30 bg-background/95 backdrop-blur border-t hairline p-3 flex items-center gap-3"><div class="flex-1 min-w-0"><p class="text-[11px] text-muted-foreground truncate">Mini Crossbody</p><p class="text-base font-semibold"><span class="ltr-num">١٬٩٩٩</span> <!-- -->ج.م</p></div><button class="bg-foreground text-background px-6 py-3 text-[11px] font-semibold tracking-[0.2em] uppercase disabled:opacity-40">إضافة إلى السلة</button></div><footer class="border-t hairline bg-sand/40"><div class="mx-auto max-w-7xl px-5 lg:px-12 py-14 grid md:grid-cols-3 gap-10" dir="rtl"><div><a href="/" class="inline-block mb-4"><img src="/__l5e/assets-v1/f2909711-2a23-4d0d-9aa1-a574bce16e1f/zema-logo.png" alt="ZEMA" class="h-auto w-full max-w-[100px] select-none"/></a><p class="text-sm text-muted-foreground leading-relaxed max-w-xs">زِيما — مجموعة مختارة من الساعات الفاخرة والنظارات الشمسية والحقائب الجلدية، صُنعت لمن يدرك تفاصيل الأناقة.</p></div><div><p class="section-mark text-[10px] text-muted-foreground mb-4">روابط</p><ul class="space-y-2 text-sm"><li><a href="/shop" class="hover:text-accent">المتجر</a></li><li><a href="/shop?category=watches" class="hover:text-accent">ساعات</a></li><li><a href="/shop?category=vision" class="hover:text-accent">نظارات شمسية</a></li><li><a href="/shop?category=bags" class="hover:text-accent">حقائب نسائية</a></li><li><a href="/shop?category=wallets" class="hover:text-accent">محافظ</a></li><li><a href="/shop?offers=1" class="hover:text-accent">العروض</a></li><li><a href="/#faq" class="hover:text-accent">الأسئلة الشائعة</a></li><li><a href="/track" class="hover:text-accent">تتبع شحنتك</a></li></ul></div><div><p class="section-mark text-[10px] text-muted-foreground mb-4">تواصل معنا</p><div class="flex items-center gap-3 text-foreground"><a href="https://www.facebook.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-accent transition-colors"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.7v3.1h2.7V22h3.1z"></path></svg></a><a href="https://www.instagram.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-accent transition-colors"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a></div><p class="text-xs text-muted-foreground mt-4">© 2026 ZEMA Maison — أناقة خالدة، فخامة عصرية</p></div></div></footer><a href="https://wa.me/201032117373?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D8%B2%D9%90%D9%8A%D9%85%D8%A7" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="fixed bottom-5 left-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-105 transition-transform"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg></a></div><!--/$--><script>(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||"{}")}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&&Number.isFinite(s)){if(t==="window")scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&&(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&&e.scrollIntoView(t)}return}scrollTo(0,0)})("tsr-scroll-restoration-v1_3");document.currentScript.remove()</script><!--/$--><div class="fixed inset-0 z-[80] bg-black/70 backdrop-blur-sm transition-opacity opacity-0 pointer-events-none"></div><aside dir="rtl" class="fixed top-0 left-0 z-[90] h-full w-full sm:max-w-md bg-background border-l hairline shadow-2xl flex flex-col transition-transform duration-300 -translate-x-full"><header class="flex items-center justify-between p-5 border-b hairline shrink-0"><div><p class="section-mark text-[10px] text-muted-foreground">YOUR CART</p><h2 class="font-bold text-lg mt-1">سلة المشتريات</h2></div><button aria-label="close" class="h-9 w-9 rounded-full hover:bg-card flex items-center justify-center text-xl">×</button></header><div class="flex-1 overflow-y-auto overscroll-contain"><div class="p-10 text-center text-muted-foreground"><p>سلتك فارغة حالياً.</p><button class="mt-5 text-accent font-bold">تصفّح المجموعة</button></div></div></aside><script class="$tsr" id="$tsr-stream-barrier">(self.$R=self.$R||{})["tsr"]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&&this.streamEnded&&(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=>$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=["/assets/index-uamL4pK8.js"],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:"module",async:!0,src:"/assets/index-uamL4pK8.js"}}]},"/products/$id":$R[8]={preloads:$R[9]=["/assets/products._id-DWpcj5M3.js","/assets/products._id-BYwTH3wc.js","/assets/products._id-BNCDVyS-.js","/assets/SiteChrome-vAcelVMJ.js"]}}},matches:$R[10]=[$R[11]={i:"__root__ ",u:1788976913503,s:"success",l:$R[12]=[$R[13]={id:"zm-01",slug:"zm-01",sku:"ZM-01",name:"Sovereign Blue",nameEn:void 0,category:"watches",categoryLabel:"ساعات",categoryLabelEn:void 0,gender:"men",short:"ميناء أزرق ملكي • سوار فولاذي مصقول",shortEn:void 0,description:"ساعة رجالية بميناء أزرق ملكي عميق وإطار فولاذي مصقول بعناية. حضور رسمي هادئ يليق بإطلالات الأعمال والمناسبات الراقية، مع سوار فولاذي متكامل يمنحها ثباتاً وراحة طوال اليوم.",descriptionEn:void 0,price:3299,priceArabic:"٣,٢٩٩",salePrice:void 0,inStock:!0,image:"/products/boss-blue.jpg",gallery:$R[14]=["/products/boss-blue.jpg"],colors:$R[15]=[$R[16]={hex:"#1e3a8a",name:"أزرق ملكي",image:"/products/boss-blue.jpg"}],bestseller:!0},$R[17]={id:"zm-02",slug:"zm-02",sku:"ZM-02",name:"Onyx Sport",nameEn:void 0,category:"watches",categoryLabel:"ساعات",categoryLabelEn:void 0,gender:"men",short:"ميناء أسود مطفي • تفاصيل فضية • سوار فولاذي",shortEn:void 0,description:"ساعة بميناء أسود مطفي وعقارب فضية واضحة، بإطار فولاذي ثقيل يمنحها طابعاً رياضياً راقياً. خيار يومي مثالي لمن يفضّل البساطة الواثقة بلمسة معاصرة.",descriptionEn:void 0,price:2899,priceArabic:"٢,٨٩٩",salePrice:void 0,inStock:!0,image:"/products/tommy-black.jpg",gallery:$R[18]=["/products/tommy-black.jpg"],colors:$R[19]=[$R[20]={hex:"#0a0a0a",name:"أسود ليلي",image:"/products/tommy-black.jpg"}],bestseller:void 0},$R[21]={id:"zm-03",slug:"zm-03",sku:"ZM-03",name:"Emerald Chronomaster",nameEn:void 0,category:"watches",categoryLabel:"ساعات",categoryLabelEn:void 0,gender:"men",short:"ميناء أخضر زمردي • سوار فولاذي متين",shortEn:void 0,description:"ميناء أخضر زمردي مميّز يلتقي بهيكل فولاذي مصقول وسوار متكامل. قطعة جريئة وفاخرة لمن يبحث عن حضور مختلف بعيداً عن الألوان التقليدية.",descriptionEn:void 0,price:4299,priceArabic:"٤,٢٩٩",salePrice:3299,inStock:!0,image:"/products/minifocus-green.jpg",gallery:$R[22]=["/products/minifocus-green.jpg"],colors:$R[23]=[$R[24]={hex:"#065f46",name:"أخضر زمردي",image:"/products/minifocus-green.jpg"}],bestseller:!0},$R[25]={id:"zm-04",slug:"zm-04",sku:"ZM-04",name:"Heritage Silver",nameEn:void 0,category:"watches",categoryLabel:"ساعات",categoryLabelEn:void 0,gender:"women",short:"ميناء فضي ناعم • تصميم كلاسيكي خالد",shortEn:void 0,description:"ساعة نسائية بميناء فضي ناعم وأرقام واضحة، بهيكل أنيق وسوار فولاذي مريح. تصميم كلاسيكي بلمسة عصرية يناسب الإطلالات اليومية والرسمية على حدٍ سواء.",descriptionEn:void 0,price:1899,priceArabic:"١,٨٩٩",salePrice:void 0,inStock:!0,image:"/products/casio-silver.jpg",gallery:$R[26]=["/products/casio-silver.jpg"],colors:$R[27]=[$R[28]={hex:"#e2e8f0",name:"فضي مصقول",image:"/products/casio-silver.jpg"}],bestseller:void 0},$R[29]={id:"zm-05",slug:"zm-05",sku:"ZM-05",name:"Royale Quartz",nameEn:void 0,category:"watches",categoryLabel:"ساعات",categoryLabelEn:void 0,gender:"women",short:"ميناء كحلي • هيكل فضي • تفاصيل مميزة",shortEn:void 0,description:"ميناء أزرق كحلي عميق بهيكل فضي مصقول وسوار رفيع أنيق. ساعة بأنوثة هادئة وحضور راقٍ يكمّل إطلالات السهرة والمناسبات بلمسة من الفخامة الناعمة.",descriptionEn:void 0,price:2599,priceArabic:"٢,٥٩٩",salePrice:void 0,inStock:!0,image:"/products/swadesi-blue.jpg",gallery:$R[30]=["/products/swadesi-blue.jpg"],colors:$R[31]=[$R[32]={hex:"#0a1128",name:"كحلي عميق",image:"/products/swadesi-blue.jpg"}],bestseller:void 0},$R[33]={id:"vw-01",slug:"vw-01",sku:"VW-01",name:"Aviator Ombré",nameEn:void 0,category:"vision",categoryLabel:"نظارات شمسية",categoryLabelEn:void 0,gender:"men",short:"إطار ذهبي معدني • عدسات بنية متدرّجة",shortEn:void 0,description:"نظارة أفياتور رجالية بإطار ذهبي معدني رفيع وعدسات بنية متدرّجة بشكل ناعم. تصميم خالد يمنح الإطلالة طابعاً واثقاً وأنيقاً في كل المواقف.",descriptionEn:void 0,price:2299,priceArabic:"٢,٢٩٩",salePrice:void 0,inStock:!0,image:"/products/prada-gold.webp",gallery:$R[34]=["/products/prada-gold.webp"],colors:$R[35]=[$R[36]={hex:"#b38b3a",name:"ذهبي / بني",image:"/products/prada-gold.webp"}],bestseller:!0},$R[37]={id:"vw-04",slug:"vw-04",sku:"VW-04",name:"Serpenti Gold",nameEn:void 0,category:"vision",categoryLabel:"نظارات شمسية",categoryLabelEn:void 0,gender:"women",short:"إطار ذهبي بتفاصيل دقيقة • عدسات متدرّجة",shortEn:void 0,description:"نظارة نسائية بإطار ذهبي بتفاصيل جانبية دقيقة وعدسات متدرّجة بلون رمادي ناعم. قطعة تجمع بين الأنوثة والجرأة، وتمنح الوجه ملامح راقية ولافتة.",descriptionEn:void 0,price:2799,priceArabic:"٢,٧٩٩",salePrice:2299,inStock:!0,image:"/products/bulgari-front.webp",gallery:$R[38]=["/products/bulgari-front.webp","/products/bulgari-lifestyle.webp"],colors:$R[39]=[$R[40]={hex:"#d4af7a",name:"ذهبي / رمادي",image:"/products/bulgari-front.webp"}],bestseller:!0},$R[41]={id:"bg-01",slug:"bg-01",sku:"BG-01",name:"Quilted Noir",nameEn:void 0,category:"bags",categoryLabel:"حقائب",categoryLabelEn:void 0,gender:"women",short:"حقيبة كتف مبطّنة • جلد أسود • سلسلة فضية",shortEn:void 0,description:"حقيبة كتف بتصميم مبطّن كلاسيكي من الجلد الأسود الناعم، بقفل دوّار فضي وسلسلة معدنية أنيقة. أيقونة فاخرة تكمّل إطلالات النهار والمساء بحضور ثابت لا يتأثر بالموضة.",descriptionEn:void 0,price:3499,priceArabic:"٣,٤٩٩",salePrice:void 0,inStock:!0,image:"/products/bag-quilted-noir.jpg",gallery:$R[42]=["/products/bag-quilted-noir.jpg"],colors:$R[43]=[$R[44]={hex:"#0a0a0a",name:"أسود",image:"/products/bag-quilted-noir.jpg"}],bestseller:!0},$R[45]={id:"bg-02",slug:"bg-02",sku:"BG-02",name:"Camel Tote",nameEn:void 0,category:"bags",categoryLabel:"حقائب",categoryLabelEn:void 0,gender:"women",short:"حقيبة توت واسعة • جلد كاميل دافئ",shortEn:void 0,description:"حقيبة توت من الجلد الناعم بلون الكاميل الدافئ، بهيكل مفتوح وحجم واسع ومقابض مزدوجة مدوّرة بتفاصيل ذهبية. الرفيق المثالي ليومك بين العمل والخروجات بأناقة بلا مجهود.",descriptionEn:void 0,price:2799,priceArabic:"٢,٧٩٩",salePrice:2299,inStock:!0,image:"/products/bag-camel-tote.jpg",gallery:$R[46]=["/products/bag-camel-tote.jpg"],colors:$R[47]=[$R[48]={hex:"#b78b5a",name:"كاميل",image:"/products/bag-camel-tote.jpg"}],bestseller:!0},$R[49]={id:"bg-03",slug:"bg-03",sku:"BG-03",name:"Mini Crossbody",nameEn:void 0,category:"bags",categoryLabel:"حقائب",categoryLabelEn:void 0,gender:"women",short:"كروس صغيرة بلون رملي • تصميم مينيمالست",shortEn:void 0,description:"حقيبة كروس صغيرة بلون رملي ناعم وخطوط نظيفة، بحزام جلدي قابل للتعديل وتفاصيل ذهبية دقيقة. مثالية للسهرات والمناسبات حين تحتاجين الأساسيات فقط بإطلالة مرتبة.",descriptionEn:void 0,price:1999,priceArabic:"١,٩٩٩",salePrice:void 0,inStock:!0,image:"/products/bag-mini-crossbody.jpg",gallery:$R[50]=["/products/bag-mini-crossbody.jpg"],colors:$R[51]=[$R[52]={hex:"#c9b294",name:"رملي",image:"/products/bag-mini-crossbody.jpg"}],bestseller:void 0},$R[53]={id:"bg-04",slug:"bg-04",sku:"BG-04",name:"Structured Burgundy",nameEn:void 0,category:"bags",categoryLabel:"حقائب",categoryLabelEn:void 0,gender:"women",short:"حقيبة يد بهيكل صلب • بورجوندي • قفل ذهبي",shortEn:void 0,description:"حقيبة يد بهيكل صلب وخطوط معمارية واضحة بلون بورجوندي عميق، بقفل ذهبي لافت ومقبض علوي وحزام كتف قابل للفصل. قطعة بحضور رسمي راقٍ تكمّل إطلالات السهرة والمناسبات.",descriptionEn:void 0,price:3199,priceArabic:"٣,١٩٩",salePrice:void 0,inStock:!0,image:"/products/bag-burgundy.jpg",gallery:$R[54]=["/products/bag-burgundy.jpg"],colors:$R[55]=[$R[56]={hex:"#6b1d2c",name:"بورجوندي",image:"/products/bag-burgundy.jpg"}],bestseller:void 0},$R[57]={id:"wl-01",slug:"wl-01",sku:"WL-01",name:"Bifold Classic",nameEn:void 0,category:"wallets",categoryLabel:"محافظ",categoryLabelEn:void 0,gender:"men",short:"محفظة جلد أسود مصقول • مزدوجة الطي",shortEn:void 0,description:"محفظة رجالية كلاسيكية من الجلد الأسود المصقول بخياطة دقيقة على الحواف، بتصميم مزدوج الطي وفتحات منظّمة للبطاقات والأوراق النقدية. أناقة هادئة تدوم طويلاً.",descriptionEn:void 0,price:899,priceArabic:"٨٩٩",salePrice:void 0,inStock:!0,image:"/products/wallet-bifold.jpg",gallery:$R[58]=["/products/wallet-bifold.jpg"],colors:$R[59]=[$R[60]={hex:"#0a0a0a",name:"أسود",image:"/products/wallet-bifold.jpg"}],bestseller:void 0},$R[61]={id:"wl-02",slug:"wl-02",sku:"WL-02",name:"Slim Cardholder",nameEn:void 0,category:"wallets",categoryLabel:"محافظ",categoryLabelEn:void 0,gender:"unisex",short:"حامل بطاقات نحيف • جلد أسود مصقول",shortEn:void 0,description:"حامل بطاقات نحيف من الجلد الأسود المصقول، يتسع لما يصل إلى 6 بطاقات بسهولة. تصميم مينيمالست عملي يناسب جيب البنطلون أو الحقيبة بأناقة بسيطة.",descriptionEn:void 0,price:599,priceArabic:"٥٩٩",salePrice:void 0,inStock:!0,image:"/products/wallet-cardholder.jpg",gallery:$R[62]=["/products/wallet-cardholder.jpg"],colors:$R[63]=[$R[64]={hex:"#0a0a0a",name:"أسود",image:"/products/wallet-cardholder.jpg"}],bestseller:void 0},$R[65]={id:"wl-03",slug:"wl-03",sku:"WL-03",name:"Continental Wallet",nameEn:void 0,category:"wallets",categoryLabel:"محافظ",categoryLabelEn:void 0,gender:"women",short:"محفظة طويلة • جلد وردي ناعم • سحاب ذهبي",shortEn:void 0,description:"محفظة نسائية طويلة من الجلد الناعم بلون وردي هادئ وسحاب ذهبي مصقول، بخطوط نظيفة وفتحات منظّمة للبطاقات والعملات. أنوثة راقية بتنظيم كامل.",descriptionEn:void 0,price:1199,priceArabic:"١,١٩٩",salePrice:void 0,inStock:!0,image:"/products/wallet-continental.jpg",gallery:$R[66]=["/products/wallet-continental.jpg"],colors:$R[67]=[$R[68]={hex:"#d4a5a5",name:"وردي",image:"/products/wallet-continental.jpg"}],bestseller:void 0},$R[69]={id:"wl-04",slug:"wl-04",sku:"WL-04",name:"Zip Around",nameEn:void 0,category:"wallets",categoryLabel:"محافظ",categoryLabelEn:void 0,gender:"unisex",short:"محفظة بسحاب محيط • جلد مدبوغ بني داكن",shortEn:void 0,description:"محفظة بسحاب ذهبي محيط آمن من الجلد المدبوغ الفاخر بلون بني داكن غني، بملمس حبيبي راقٍ. تنظيم داخلي عملي وحماية كاملة لمحتوياتك بلمسة من الفخامة الحرفية.",descriptionEn:void 0,price:999,priceArabic:"٩٩٩",salePrice:void 0,inStock:!0,image:"/products/wallet-zip.jpg",gallery:$R[70]=["/products/wallet-zip.jpg"],colors:$R[71]=[$R[72]={hex:"#3a241a",name:"بني داكن",image:"/products/wallet-zip.jpg"}],bestseller:void 0}],ssr:!0},$R[73]={i:" products $id products bg-03",u:1788976913555,s:"success",l:$R[74]={product:$R[75]={id:"bg-03",slug:"bg-03",sku:"BG-03",name:"Mini Crossbody",nameEn:void 0,category:"bags",categoryLabel:"حقائب",categoryLabelEn:void 0,gender:"women",short:"كروس صغيرة بلون رملي • تصميم مينيمالست",shortEn:void 0,description:"حقيبة كروس صغيرة بلون رملي ناعم وخطوط نظيفة، بحزام جلدي قابل للتعديل وتفاصيل ذهبية دقيقة. مثالية للسهرات والمناسبات حين تحتاجين الأساسيات فقط بإطلالة مرتبة.",descriptionEn:void 0,price:1999,priceArabic:"١,٩٩٩",salePrice:void 0,inStock:!0,image:"/products/bag-mini-crossbody.jpg",gallery:$R[76]=["/products/bag-mini-crossbody.jpg"],colors:$R[77]=[$R[78]={hex:"#c9b294",name:"رملي",image:"/products/bag-mini-crossbody.jpg"}],bestseller:void 0}},ssr:!0}]})($R["tsr"]);$_TSR.e();document.currentScript.remove()</script><script type="module" async="" src="/assets/index-uamL4pK8.js"></script>
+<aside
+	id="lovable-badge"
+	role="complementary"
+	dir="ltr"
+	lang="en"
+	aria-label="Edit with Lovable">
+	<a
+		id="lovable-badge-cta" 
+		target="_blank" 
+		href="https://lovable.dev/projects/lovp_0qr03a81jy9j0r1mesc0hpkch0?utm_source=lovable-badge"
+		rel="noopener nofollow"
+		aria-label="Edit with Lovable">
+		<span id="lovable-badge-text">Edit with</span>
+		<svg xmlns="http://www.w3.org/2000/svg" width="52" height="16" fill="none" viewBox="0 0 52 16">
+  <path fill="#FCFBF8" fill-rule="evenodd" d="M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z" clip-rule="evenodd"/>
+  <path fill="#FCFBF8" d="m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z"/>
+  <path fill="url(#a)" fill-rule="evenodd" d="M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z" clip-rule="evenodd"/>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)" gradientUnits="userSpaceOnUse">
+      <stop offset=".106" stop-color="#FE7B02"/>
+      <stop offset=".394" stop-color="#FE3F21"/>
+      <stop offset=".608" stop-color="#F858BC"/>
+      <stop offset=".929" stop-color="#575ECF"/>
+    </radialGradient>
+  </defs>
+</svg>
+
+
+	</a>
+	
+	<span id="lovable-badge-divider" aria-hidden="true"></span>
+	
+	<button 
+		id="lovable-badge-close"
+		aria-label="Dismiss"
+		title="Dismiss"
+		type="button">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+			<path d="M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z"/>
+		</svg>
+	</button>
+</aside>
+<script>
+	// Don't show the lovable-badge if the page is in an iframe or if it's being rendered by puppeteer (screenshot service)
+	if (window.self !== window.top || navigator.userAgent.includes('puppeteer')) {
+		var badge = document.getElementById('lovable-badge');
+		if (badge) {
+			badge.style.display = 'none';
+		}
+	}
+
+	// Add click event listener to close button with animation
+	var closeButton = document.getElementById('lovable-badge-close');
+	if (closeButton) {
+		closeButton.addEventListener('click', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			var badge = document.getElementById('lovable-badge');
+			if (badge) {
+				badge.classList.add('closing');
+				setTimeout(function() {
+					if (badge) {
+						badge.style.display = 'none';
+					}
+				}, 240);
+			}
+		});
+	}
+</script>
+</body></html>
