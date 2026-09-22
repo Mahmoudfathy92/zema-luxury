@@ -26,6 +26,11 @@ class SPAMiddleware(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        if self.path.startswith('/zema-luxury'):
+            self.path = self.path[len('/zema-luxury'):]
+            if not self.path.startswith('/'):
+                self.path = '/' + self.path
+
         if self.path.startswith('/_serverFn/'):
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')

@@ -122,7 +122,7 @@ function M(){
   const{t:s,lang:l}=i(),isAr=l==="ar";
   return e.jsx("section",{className:"relative w-full overflow-hidden select-none","aria-label":"ZEMA Campaign",children:
     e.jsxs("div",{className:"relative h-[70svh] min-h-[460px] max-h-[660px] md:h-[80svh] md:min-h-[540px] md:max-h-[780px] lg:h-[94svh] lg:min-h-[600px] lg:max-h-[980px] w-full",children:[
-      e.jsx("img",{src:"/hero/zema-hero-wide.jpg",alt:"ZEMA Everyday Elegance Campaign",loading:"eager",fetchPriority:"high",className:"h-full w-full object-cover object-center transform scale-[1.01]"}),
+      e.jsx("img",{src:"/zema-luxury/hero/zema-hero-wide.jpg",alt:"ZEMA Everyday Elegance Campaign",loading:"eager",fetchPriority:"high",className:"h-full w-full object-cover object-center transform scale-[1.01]"}),
       e.jsx("div",{className:"absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/25"}),
       e.jsx("div",{className:"absolute inset-0 flex items-end justify-center pb-12 sm:pb-16 md:pb-24 lg:pb-28 text-center text-white px-5 sm:px-8",children:
         e.jsxs("div",{className:"max-w-3xl space-y-4 md:space-y-6",children:[
@@ -164,7 +164,7 @@ function q(){
   return e.jsx("section",{id:"shop-the-look",className:"border-b hairline bg-[#111111] text-[#eae7e0] select-none",children:
     e.jsxs("div",{className:"mx-auto max-w-7xl px-5 lg:px-12 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center",children:[
       e.jsxs("div",{className:"relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 group shadow-2xl",children:[
-        e.jsx("img",{src:"/hero/zema-editorial.jpg",alt:"Shop The Look Coordination",className:"w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"}),
+        e.jsx("img",{src:"/zema-luxury/hero/zema-editorial.jpg",alt:"Shop The Look Coordination",className:"w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"}),
         e.jsx("div",{className:"absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"}),
         e.jsxs("div",{className:"absolute bottom-6 start-6 end-6 text-white",children:[
           e.jsx("span",{className:"text-[10px] tracking-[0.25em] uppercase text-accent font-bold",children:isAr?"تنسيق الموسم الحصري":"SEASONAL CURATION"}),
@@ -234,10 +234,10 @@ function I(){
 function R(){
   const{lang}=i(),isAr=lang==="ar",
   cats=[
-    {id:"cat-bags",cat:"bags",label:isAr?"حقائب نسائية":"Women Bags",en:"WOMEN BAGS",img:"/hero/cat-bags.jpg"},
-    {id:"cat-wallets",cat:"wallets",label:isAr?"محافظ":"Wallets",en:"WALLETS",img:"/hero/cat-wallets.jpg"},
-    {id:"cat-charms",cat:"charms",label:isAr?"إكسسوارات شنط":"Bag Accessories",en:"BAG ACCESSORIES",img:"/hero/cat-charms.jpg"},
-    {id:"cat-bundles",cat:"bundles",label:isAr?"بوكس زيما":"ZEMA Box",en:"ZEMA BOX",img:"/hero/cat-box.jpg"}
+    {id:"cat-bags",cat:"bags",label:isAr?"حقائب نسائية":"Women Bags",en:"WOMEN BAGS",img:"/zema-luxury/hero/cat-bags.jpg"},
+    {id:"cat-wallets",cat:"wallets",label:isAr?"محافظ":"Wallets",en:"WALLETS",img:"/zema-luxury/hero/cat-wallets.jpg"},
+    {id:"cat-charms",cat:"charms",label:isAr?"إكسسوارات شنط":"Bag Accessories",en:"BAG ACCESSORIES",img:"/zema-luxury/hero/cat-charms.jpg"},
+    {id:"cat-bundles",cat:"bundles",label:isAr?"بوكس زيما":"ZEMA Box",en:"ZEMA BOX",img:"/zema-luxury/hero/cat-box.jpg"}
   ];
   return e.jsx("section",{id:"categories",className:"border-b hairline bg-background select-none",children:
     e.jsxs("div",{className:"mx-auto max-w-7xl px-5 lg:px-12 py-16 lg:py-24",children:[
