@@ -1433,6 +1433,149 @@ template = '''<!DOCTYPE html>
       height: 48px;
     }
   }
+
+  /* ========================================================== */
+  /* 🔍 SEARCH OVERLAY (نمط المشروع القديم مع الرجوع للمتجر) */
+  /* ========================================================== */
+  .zema-search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: rgba(250, 249, 247, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow-y: auto;
+    direction: rtl;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .zema-search-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .zema-search-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 50px 20px 80px 20px;
+  }
+  .zema-search-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 2px solid var(--zema-espresso);
+    padding-bottom: 14px;
+  }
+  .zema-search-icon {
+    color: #787570;
+    flex-shrink: 0;
+  }
+  .zema-search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--zema-espresso);
+    font-family: inherit;
+    outline: none;
+  }
+  .zema-search-input::placeholder {
+    color: #a09c95;
+    font-weight: 500;
+  }
+  .zema-search-close-btn {
+    background: none;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--zema-espresso);
+    padding: 0 6px;
+    transition: transform 0.15s ease, color 0.15s;
+  }
+  .zema-search-close-btn:hover {
+    color: #978269;
+    transform: scale(1.15);
+  }
+  .zema-search-results {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .zema-search-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .zema-search-item:hover {
+    border-color: #978269;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .zema-search-item img {
+    width: 58px;
+    height: 58px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    flex-shrink: 0;
+  }
+  .zema-search-item-info {
+    flex: 1;
+  }
+  .zema-search-item-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--zema-espresso);
+    margin: 0 0 4px 0;
+  }
+  .zema-search-item-cat {
+    font-size: 12px;
+    color: #787570;
+    margin: 0;
+  }
+  .zema-search-item-price {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--zema-espresso);
+    white-space: nowrap;
+  }
+  .zema-search-footer {
+    text-align: center;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .zema-search-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--zema-espresso);
+    border-radius: 30px;
+    padding: 11px 28px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--zema-espresso);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+  .zema-search-back-btn:hover {
+    background: var(--zema-espresso);
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
   </style>
 </head>
 <body>
@@ -1476,11 +1619,11 @@ template = '''<!DOCTYPE html>
         </button>
         <button class="icon-btn" aria-label="Wishlist" onclick="toggleWishlistDrawer(true)" title="المفضلة">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg>
-          <span class="counter" id="wishlistCountBadge">0</span>
+          <span class="counter" id="wishlistCountBadge" style="display:none;">0</span>
         </button>
         <button class="icon-btn" aria-label="Shopping bag" onclick="showCartView()" title="سلة المشتريات">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.5a2 2 0 002 1.5h7.6a2 2 0 002-1.5L21 7H6"></path><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle></svg>
-          <span class="counter" id="cartCountBadge">0</span>
+          <span class="counter" id="cartCountBadge" style="display:none;">0</span>
         </button>
       </div>
     </div>
@@ -2300,28 +2443,45 @@ template = '''<!DOCTYPE html>
   <aside class="drawer-panel" id="wishlistDrawer">
     <div class="drawer-header">
       <h3 id="wishlist-drawer-title">قائمة المفضلة (<span id="wishlistTotalItems">0</span>)</h3>
-      <button class="drawer-close-btn" onclick="toggleWishlistDrawer(false)"><i data-lucide="x"></i></button>
+      <button class="drawer-close-btn" onclick="toggleWishlistDrawer(false)" aria-label="إغلاق">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
     </div>
     <div class="drawer-body" id="wishlistItemsContainer">
       <!-- Rendered dynamically -->
     </div>
-    <div class="drawer-footer">
-      <button class="card-quick-add-btn" onclick="addAllWishlistToCart()">
-        <i data-lucide="shopping-bag"></i> إضافة كل المفضلة إلى السلة
+    <div class="drawer-footer" id="wishlistDrawerFooter">
+      <button class="card-quick-add-btn" id="btnWishlistAddAll" onclick="addAllWishlistToCart()" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.5a2 2 0 002 1.5h7.6a2 2 0 002-1.5L21 7H6"></path><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle></svg>
+        <span>إضافة كل المفضلة إلى السلة</span>
       </button>
     </div>
   </aside>
 
-  <!-- Search Modal -->
-  <div class="modal-overlay" id="searchOverlay" onclick="toggleSearchModal(false)"></div>
-  <div class="checkout-modal" id="searchModal" style="max-width:560px;">
-    <div class="checkout-header">
-      <input type="text" id="liveSearchInput" class="form-control" style="border:none; background:none; font-size:16px; font-weight:700;" placeholder="ابحثي عن حقائب، محافظ، إكسسوارات..." oninput="handleLiveSearch(this.value)" />
-      <button class="drawer-close-btn" onclick="toggleSearchModal(false)"><i data-lucide="x"></i></button>
-    </div>
-    <div style="padding:16px 20px; max-height:360px; overflow-y:auto;" id="searchResultsList">
-      <p style="font-size:12px; color:#888;">الأكثر بحثاً: <span style="cursor:pointer; color:#000; text-decoration:underline;" onclick="searchFor('ميلا')">ميلا</span> · <span style="cursor:pointer; color:#000; text-decoration:underline;" onclick="searchFor('نور')">نور</span> · <span style="cursor:pointer; color:#000; text-decoration:underline;" onclick="searchFor('توت')">توت</span></p>
-      <div id="liveMatchesContainer" style="margin-top:12px;"></div>
+  <!-- ========================================================== -->
+  <!-- 🔍 SEARCH OVERLAY (نمط المشروع القديم مع الرجوع للمتجر) -->
+  <!-- ========================================================== -->
+  <div id="searchModalOverlay" class="zema-search-overlay" dir="rtl">
+    <div class="zema-search-container">
+      <!-- Search Bar Row -->
+      <div class="zema-search-bar-row">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="zema-search-icon"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <input type="text" id="liveSearchInput" class="zema-search-input" placeholder="ابحث عن منتج..." oninput="handleLiveSearch(this.value)" autocomplete="off" />
+        <button class="zema-search-close-btn" onclick="toggleSearchModal(false)" aria-label="إغلاق">×</button>
+      </div>
+
+      <!-- Live Search Results / Suggestions -->
+      <div id="liveSearchResultsContainer" class="zema-search-results">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Footer: الرجوع للمتجر -->
+      <div class="zema-search-footer">
+        <button onclick="toggleSearchModal(false); showHomePage();" class="zema-search-back-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>الرجوع للمتجر</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -2668,7 +2828,10 @@ template = '''<!DOCTYPE html>
       const countBadge = document.getElementById('cartCountBadge');
       const totalItemsSpan = document.getElementById('cartTotalItems');
       const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
-      if (countBadge) countBadge.textContent = totalItems;
+      if (countBadge) {
+        countBadge.textContent = totalItems;
+        countBadge.style.display = totalItems > 0 ? 'inline-block' : 'none';
+      }
       if (totalItemsSpan) totalItemsSpan.textContent = totalItems;
     }
 
@@ -3000,7 +3163,31 @@ template = '''<!DOCTYPE html>
       }
     }
 
+    // ==========================================
+    // ❤️ 5. WISHLIST ENGINE (SANITIZED & SAFE)
+    // ==========================================
+    function sanitizeWishlist() {
+      // Clean out any orphaned or non-existent product IDs from localStorage
+      wishlist = wishlist.filter(id => CATALOG.some(p => p.id === id));
+      localStorage.setItem('zema_wishlist', JSON.stringify(wishlist));
+    }
+
+    function toggleWishlistDrawer(open) {
+      const overlay = document.getElementById('wishlistOverlay');
+      const drawer = document.getElementById('wishlistDrawer');
+      if (open) {
+        sanitizeWishlist();
+        overlay.classList.add('open');
+        drawer.classList.add('open');
+        renderWishlistUI();
+      } else {
+        overlay.classList.remove('open');
+        drawer.classList.remove('open');
+      }
+    }
+
     function toggleWishlistItem(id, btn) {
+      sanitizeWishlist();
       const idx = wishlist.indexOf(id);
       if (idx !== -1) {
         wishlist.splice(idx, 1);
@@ -3014,9 +3201,16 @@ template = '''<!DOCTYPE html>
     }
 
     function updateWishlistBadge() {
+      sanitizeWishlist();
       const count = wishlist.length;
-      document.getElementById('wishlistCountBadge').textContent = count;
-      document.getElementById('wishlistTotalItems').textContent = count;
+      const badge = document.getElementById('wishlistCountBadge');
+      if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'inline-block' : 'none';
+      }
+      const titleCounter = document.getElementById('wishlistTotalItems');
+      if (titleCounter) titleCounter.textContent = count;
+      
       CATALOG.forEach(p => {
         const btn = document.getElementById('fav-btn-' + p.id);
         if (btn) btn.classList.toggle('active', wishlist.includes(p.id));
@@ -3024,35 +3218,44 @@ template = '''<!DOCTYPE html>
     }
 
     function renderWishlistUI() {
+      sanitizeWishlist();
       const container = document.getElementById('wishlistItemsContainer');
+      const footer = document.getElementById('wishlistDrawerFooter');
       const isAr = currentLang === 'ar';
+      
       if (wishlist.length === 0) {
         container.innerHTML = `
-          <div style="text-align:center; padding: 45px 10px; color:#888;">
-            <i data-lucide="heart" style="width:48px;height:48px;margin: 0 auto 12px auto; opacity:0.3;"></i>
-            <p>${isAr ? 'قائمة المفضلة فارغة حالياً' : 'Your wishlist is empty'}</p>
+          <div style="text-align:center; padding: 60px 20px; color:#888;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#b0aba2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 16px auto; display:block;"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg>
+            <p style="font-size:16px; font-weight:800; color:var(--zema-espresso); margin:0 0 8px 0;">${isAr ? 'قائمة المفضلة فارغة' : 'Your wishlist is empty'}</p>
+            <p style="font-size:13px; color:#888; margin:0 auto 24px auto; max-width:240px; line-height:1.6;">${isAr ? 'القطع التي تنال إعجابك، يمكنك حفظها هنا للرجوع إليها.' : 'Save the pieces you love here to return to later.'}</p>
+            <button onclick="toggleWishlistDrawer(false); showHomePage();" class="card-quick-add-btn" style="width:auto; padding:10px 24px; margin:0 auto; font-size:13px;">
+              ${isAr ? 'تصفح المجموعة' : 'Browse Collection'}
+            </button>
           </div>
         `;
+        if (footer) footer.style.display = 'none';
       } else {
+        if (footer) footer.style.display = 'block';
         let html = '';
         wishlist.forEach(id => {
           const item = CATALOG.find(p => p.id === id);
           if (!item) return;
           const title = isAr ? item.nameAr : item.nameEn;
           html += `
-            <div class="cart-item-row">
-              <img src="${item.angles[0]}" class="cart-item-img" alt="${title}" />
+            <div class="cart-item-row" style="padding:14px 0; border-bottom:1px solid #f0ece3;">
+              <img src="${item.angles[0]}" class="cart-item-img" alt="${title}" style="cursor:pointer;" onclick="openPDP('${item.id}'); toggleWishlistDrawer(false);" />
               <div class="cart-item-info">
                 <div>
-                  <h4 class="cart-item-title">${title}</h4>
+                  <h4 class="cart-item-title" style="cursor:pointer;" onclick="openPDP('${item.id}'); toggleWishlistDrawer(false);">${title}</h4>
                   <div class="cart-item-price">${item.price.toLocaleString()} ${isAr ? 'ج.م' : 'EGP'}</div>
                 </div>
-                <div style="display:flex; gap:8px; margin-top:8px;">
-                  <button class="card-quick-add-btn" style="padding:6px 12px; font-size:12px;" onclick="addToCart('${item.id}', 1)">
-                    + ${isAr ? 'أضف للسلة' : 'Add'}
+                <div style="display:flex; align-items:center; gap:10px; margin-top:10px;">
+                  <button class="card-quick-add-btn" style="padding:7px 14px; font-size:12px;" onclick="addToCart('${item.id}', 1)">
+                    + ${isAr ? 'أضف للسلة' : 'Add to cart'}
                   </button>
-                  <button onclick="toggleWishlistItem('${item.id}', null); renderWishlistUI();" style="background:none; border:none; cursor:pointer; color:#dc2626;">
-                    <i data-lucide="trash-2" style="width:16px;height:16px;"></i>
+                  <button onclick="toggleWishlistItem('${item.id}', null); renderWishlistUI();" style="background:none; border:none; cursor:pointer; color:#999; padding:4px;" title="${isAr ? 'إزالة' : 'Remove'}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                   </button>
                 </div>
               </div>
@@ -3061,7 +3264,6 @@ template = '''<!DOCTYPE html>
         });
         container.innerHTML = html;
       }
-      lucide.createIcons();
     }
 
     function addAllWishlistToCart() {
@@ -3070,62 +3272,91 @@ template = '''<!DOCTYPE html>
       showCartView();
     }
 
-    // Search Engine
+    // ==========================================
+    // 🔍 6. SEARCH ENGINE (OLD PROJECT STYLE)
+    // ==========================================
     function toggleSearchModal(open) {
-      const overlay = document.getElementById('searchOverlay');
-      const modal = document.getElementById('searchModal');
+      const overlay = document.getElementById('searchModalOverlay');
+      if (!overlay) return;
       if (open) {
         overlay.classList.add('open');
-        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
         const inp = document.getElementById('liveSearchInput');
-        inp.value = '';
-        inp.focus();
+        if (inp) {
+          inp.value = '';
+          setTimeout(() => inp.focus(), 60);
+        }
         handleLiveSearch('');
       } else {
         overlay.classList.remove('open');
-        modal.classList.remove('open');
+        document.body.style.overflow = '';
       }
     }
 
     function searchFor(term) {
-      document.getElementById('liveSearchInput').value = term;
-      handleLiveSearch(term);
+      const inp = document.getElementById('liveSearchInput');
+      if (inp) {
+        inp.value = term;
+        handleLiveSearch(term);
+      }
     }
 
     function handleLiveSearch(query) {
       const q = query.trim().toLowerCase();
-      const container = document.getElementById('liveMatchesContainer');
+      const container = document.getElementById('liveSearchResultsContainer');
+      if (!container) return;
+      
+      const isAr = currentLang === 'ar';
+      
+      let matches = [];
+      let isInitial = false;
+      
       if (!q) {
-        container.innerHTML = '';
-        return;
+        matches = CATALOG.slice(0, 6);
+        isInitial = true;
+      } else {
+        matches = CATALOG.filter(p => 
+          (p.nameAr && p.nameAr.toLowerCase().includes(q)) || 
+          (p.nameEn && p.nameEn.toLowerCase().includes(q)) ||
+          (p.catAr && p.catAr.toLowerCase().includes(q)) ||
+          (p.descAr && p.descAr.toLowerCase().includes(q))
+        );
       }
-      const matches = CATALOG.filter(p => 
-        p.nameAr.toLowerCase().includes(q) || 
-        p.nameEn.toLowerCase().includes(q) ||
-        p.catAr.toLowerCase().includes(q)
-      );
 
       if (matches.length === 0) {
-        container.innerHTML = `<p style="font-size:13px; color:#888; text-align:center; padding:15px;">لا توجد نتائج مطابقة لـ "${query}"</p>`;
-      } else {
-        let html = '';
-        matches.forEach(item => {
-          const title = currentLang === 'ar' ? item.nameAr : item.nameEn;
-          html += `
-            <div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid #f2efe9; cursor:pointer;" onclick="openPDP('${item.id}'); toggleSearchModal(false);">
-              <img src="${item.angles[0]}" style="width:48px;height:58px;object-fit:cover;border-radius:4px;" />
-              <div style="flex:1;">
-                <strong style="font-size:14px; display:block;">${title}</strong>
-                <span style="font-size:12px; color:#666;">${item.price.toLocaleString()} ${currentLang === 'ar' ? 'ج.م' : 'EGP'}</span>
-              </div>
-              <button class="card-quick-add-btn" style="width:auto; padding:6px 12px; font-size:12px;" onclick="event.stopPropagation(); addToCart('${item.id}', 1); toggleSearchModal(false);">
-                + أضف للسلة
-              </button>
-            </div>
-          `;
-        });
-        container.innerHTML = html;
+        container.innerHTML = `
+          <div style="text-align:center; padding: 50px 10px; color:#787570;">
+            <p style="font-size:15px; margin:0 0 8px 0;">${isAr ? 'لا توجد نتائج لـ "' + query + '"' : 'No results found for "' + query + '"'}</p>
+            <p style="font-size:13px; color:#a09c95;">${isAr ? 'جربي البحث بكلمات أخرى مثل: حقيبة، محفظة، هوبو، توت' : 'Try searching for: bag, wallet, hobo, tote'}</p>
+          </div>
+        `;
+        return;
       }
+
+      let html = '';
+      if (isInitial) {
+        html += `<p style="font-size:11.5px; font-weight:700; letter-spacing:0.14em; color:#8c8880; margin:0 0 14px 0; text-transform:uppercase;">${isAr ? 'القطع المقترحة والأكثر طلباً' : 'SUGGESTED PIECES'}</p>`;
+      } else {
+        html += `<p style="font-size:11.5px; font-weight:700; letter-spacing:0.14em; color:#8c8880; margin:0 0 14px 0; text-transform:uppercase;">${isAr ? 'نتائج البحث (' + matches.length + ')' : 'SEARCH RESULTS (' + matches.length + ')'}</p>`;
+      }
+
+      matches.forEach(item => {
+        const title = isAr ? item.nameAr : item.nameEn;
+        const cat = isAr ? (item.catAr || 'حقائب نسائية فاخرة') : (item.category || 'Luxury Handbags');
+        const img = (item.angles && item.angles[0]) ? item.angles[0] : '';
+        html += `
+          <div class="zema-search-item" onclick="openPDP('${item.id}'); toggleSearchModal(false);">
+            <img src="${img}" alt="${title}" />
+            <div class="zema-search-item-info">
+              <h4 class="zema-search-item-title">${title}</h4>
+              <p class="zema-search-item-cat">${cat}</p>
+            </div>
+            <div class="zema-search-item-price">${item.price.toLocaleString()} ${isAr ? 'ج.م' : 'EGP'}</div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
     }
 
     // Account Modal
@@ -3175,7 +3406,7 @@ template = '''<!DOCTYPE html>
 
       document.querySelectorAll('.btn-text-qa').forEach(el => el.textContent = isAr ? 'إضافة سريعة للسلة' : 'Quick Add');
       
-      updateCartUI();
+      updateCartBadge();
       renderWishlistUI();
       if (document.body.classList.contains('is-pdp')) {
         openPDP(activePdpProduct.id);
@@ -3210,8 +3441,13 @@ template = '''<!DOCTYPE html>
       }
     }
 
+    function updateCartUI() {
+      updateCartBadge();
+    }
+
     // Init
-    updateCartUI();
+    sanitizeWishlist();
+    updateCartBadge();
     updateWishlistBadge();
     try {
       if (window.lucide && typeof lucide.createIcons === 'function') {
