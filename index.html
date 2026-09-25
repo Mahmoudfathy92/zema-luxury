@@ -599,475 +599,500 @@
     }
   }
 
-      /* ========================================================== */
-  /* 🛍️ 3. EXACT PREVIOUS PROJECT CART & CHECKOUT PAGES */
+        /* ========================================================== */
+  /* 🛍️ 3. UNIFIED SLIDE-OVER CART & CHECKOUT DRAWER (PREVIOUS PROJECT) */
   /* ========================================================== */
-  .page-view-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px 80px 20px;
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 99998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .page-header-box {
-    text-align: center;
-    margin-bottom: 32px;
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
   }
-  .page-eyebrow {
-    font-size: 11px;
+
+  .drawer-panel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 520px;
+    background: #ffffff;
+    z-index: 99999;
+    box-shadow: -6px 0 35px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [dir="rtl"] .drawer-panel {
+    left: 0;
+    right: auto;
+    transform: translateX(-100%);
+  }
+  [dir="ltr"] .drawer-panel {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+  }
+  .drawer-panel.open {
+    transform: translateX(0) !important;
+  }
+
+  /* Drawer Header */
+  .drawer-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid #f0eee9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .drawer-eyebrow {
+    font-size: 10px;
     font-weight: 800;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     color: var(--zema-gold);
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
   }
-  .page-main-title {
-    font-size: 32px;
-    font-family: var(--zema-serif);
-    font-weight: 700;
-    color: var(--zema-espresso);
+  .drawer-header h3 {
     margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--zema-espresso);
+  }
+  .drawer-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: #666;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+  .drawer-close-btn:hover {
+    background: #f4f2ee;
+    color: #000;
+  }
+  .drawer-back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  .drawer-back-btn:hover {
+    background: #f4f2ee;
+    color: var(--zema-espresso);
+  }
+
+  /* Drawer Scrollable Body */
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* Reservation Timer Banner (Previous Project) */
+  .drawer-timer-box {
+    background: #fff8eb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   /* Free Shipping Meter (Threshold 2,500 EGP) */
-  .cart-shipping-meter {
-    background: #fbfaf8;
+  .drawer-shipping-meter {
+    background: #faf9f6;
     border: 1px solid #eae6de;
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    text-align: center;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #444;
   }
-  .meter-bar-track {
+  .drawer-meter-track {
     width: 100%;
-    height: 8px;
+    height: 7px;
     background: #e8e4db;
     border-radius: 4px;
-    margin-top: 10px;
+    margin-top: 8px;
     overflow: hidden;
   }
-  .meter-bar-fill {
+  .drawer-meter-fill {
     height: 100%;
     background: var(--zema-green);
     border-radius: 4px;
     transition: width 0.35s ease;
   }
 
-  /* Cart Items Table / List (Exact Previous Project) */
-  .cart-items-table {
-    border-top: 1px solid #eae6de;
-    border-bottom: 1px solid #eae6de;
-    margin-bottom: 24px;
-  }
-  .cart-row {
+  /* Cart Item Rows */
+  .cart-item-row {
     display: flex;
-    gap: 20px;
-    padding: 20px 0;
+    gap: 14px;
+    padding-bottom: 16px;
     border-bottom: 1px solid #f2efe9;
-    align-items: center;
   }
-  .cart-row:last-child {
-    border-bottom: none;
-  }
-  .cart-img-thumb {
-    width: 90px;
-    height: 110px;
+  .cart-item-img {
+    width: 80px;
+    height: 100px;
     object-fit: cover;
     border-radius: 8px;
     background: #f4f2ee;
     border: 1px solid #eae6de;
     flex-shrink: 0;
   }
-  .cart-item-details {
+  .cart-item-info {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  .cart-item-heading {
-    font-size: 16px;
+  .cart-item-title {
+    font-size: 14px;
     font-weight: 700;
-    margin: 0 0 4px 0;
+    margin: 0 0 2px 0;
+    color: var(--zema-espresso);
   }
-  .cart-sku-badge {
-    font-size: 12px;
+  .cart-item-sku {
+    font-size: 11px;
     color: #888;
     font-family: monospace;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
-  .cart-item-price-val {
-    font-size: 15px;
+  .cart-item-price {
+    font-size: 14px;
     font-weight: 800;
     color: var(--zema-espresso);
   }
-  .cart-actions-row {
+  .cart-qty-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 12px;
+    margin-top: 6px;
   }
-  .cart-qty-control {
+  .qty-box {
     display: inline-flex;
     align-items: center;
     border: 1px solid #dcd7ce;
     border-radius: 6px;
     background: #faf9f6;
   }
-  .cart-qty-btn {
+  .qty-btn {
     background: none;
     border: none;
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .cart-qty-btn:hover { background: #eeebe3; }
-  .cart-qty-display {
-    padding: 0 12px;
-    font-size: 14px;
+  .qty-btn:hover { background: #eeebe3; }
+  .qty-num {
+    padding: 0 10px;
+    font-size: 13px;
     font-weight: 700;
   }
-  .cart-remove-link {
+  .cart-delete-btn {
     background: none;
     border: none;
     cursor: pointer;
     color: #dc2626;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
   }
-  .cart-remove-link:hover { text-decoration: underline; }
+  .cart-delete-btn:hover { text-decoration: underline; }
 
-  /* Cart Bottom Summary Bar */
-  .cart-bottom-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 16px 0;
+  /* Drawer Footer */
+  .drawer-footer {
+    padding: 20px 24px;
+    border-top: 1px solid #f0eee9;
+    background: #faf9f6;
   }
-  .cart-subtotal-text {
-    font-size: 16px;
+  .drawer-summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
     color: #555;
   }
-  .cart-subtotal-val {
-    font-size: 20px;
+  .drawer-summary-row.total {
+    font-size: 17px;
     font-weight: 800;
     color: var(--zema-espresso);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #dcd7ce;
   }
-  .btn-proceed-co {
-    padding: 14px 36px;
+
+  .btn-drawer-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 15px;
     background: var(--zema-espresso);
     color: #ffffff;
-    font-weight: 800;
-    font-size: 15px;
     border-radius: 8px;
-    border: none;
+    font-size: 15px;
+    font-weight: 800;
     cursor: pointer;
+    border: none;
     box-shadow: 0 4px 14px rgba(0,0,0,0.15);
     transition: background 0.2s, transform 0.15s;
+    margin-top: 6px;
   }
-  .btn-proceed-co:hover {
+  .btn-drawer-primary:hover {
     background: #3c3937;
     transform: translateY(-1px);
   }
 
-  /* Empty Cart View */
-  .cart-empty-view {
+  /* Empty Cart Inside Drawer */
+  .cart-empty-inner {
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 10px;
+    color: #888;
+  }
+
+  /* ========================================================== */
+  /* 🇪🇬 CHECKOUT STEP (INSIDE DRAWER OR DEDICATED) */
+  /* ========================================================== */
+  .co-summary-box {
     background: #faf9f6;
     border: 1px solid #eae6de;
-    border-radius: 16px;
+    border-radius: 10px;
+    padding: 16px;
   }
-  .btn-start-shopping {
-    display: inline-block;
-    padding: 12px 30px;
-    background: var(--zema-espresso);
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: 800;
-    border-radius: 8px;
-    text-decoration: none;
-    margin-top: 16px;
-    cursor: pointer;
-    border: none;
-  }
-
-  /* ========================================================== */
-  /* 🇪🇬 CHECKOUT PAGE CONTAINER (EXACT PREVIOUS PROJECT) */
-  /* ========================================================== */
-  .co-page-wrapper {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 40px 20px 90px 20px;
-  }
-  .co-card-box {
-    background: #ffffff;
-    border: 1px solid #eae6de;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  }
-
-  /* 1. Ordered Items Summary at Top (Previous Project exact layout) */
   .co-products-summary-list {
     list-style: none;
-    padding: 20px 24px;
-    margin: 0;
-    background: #faf9f6;
+    padding: 0 0 12px 0;
+    margin: 0 0 12px 0;
     border-bottom: 1px solid #eae6de;
   }
   .co-prod-item-line {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
     color: #444;
   }
-  .co-prod-item-line:last-child {
-    margin-bottom: 0;
-  }
-  .co-prod-name-qty {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .co-prod-qty-badge {
-    color: #888;
-    font-size: 13px;
-  }
-  .co-prod-price-badge {
-    font-weight: 700;
-    color: var(--zema-espresso);
-  }
+  .co-prod-item-line:last-child { margin-bottom: 0; }
+  .co-prod-qty-badge { color: #888; font-size: 12px; }
+  .co-prod-price-badge { font-weight: 700; color: var(--zema-espresso); }
 
-  /* 2. Order Totals Block */
-  .co-totals-block {
-    padding: 20px 24px;
-    background: #ffffff;
-    border-bottom: 1px solid #eae6de;
-  }
-  .co-total-row {
+  .co-summary-line {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
   }
-  .co-total-row.discount-active {
+  .co-summary-line.highlight {
     color: #16a34a;
     font-weight: 700;
   }
-  .co-final-total-row {
+  .co-summary-total {
     display: flex;
     justify-content: space-between;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 800;
     color: var(--zema-espresso);
-    padding-top: 12px;
-    margin-top: 12px;
+    padding-top: 10px;
+    margin-top: 10px;
     border-top: 1px dashed #dcd7ce;
   }
 
-  /* 3. Promo Code Form */
-  .co-promo-row {
+  /* Coupon Code */
+  .coupon-row {
     display: flex;
-    gap: 10px;
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid #f0eee9;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eae6de;
   }
-  .co-promo-input {
+  .coupon-input {
     flex: 1;
-    padding: 9px 14px;
+    padding: 9px 12px;
     border: 1px solid #dcd7ce;
     border-radius: 6px;
     font-size: 13px;
-    background: #faf9f6;
+    background: #ffffff;
   }
-  .co-promo-btn {
-    padding: 9px 18px;
+  .coupon-btn {
+    padding: 9px 16px;
     background: #2c2a29;
-    color: #ffffff;
+    color: #fff;
     border: none;
     border-radius: 6px;
     font-size: 12px;
     font-weight: 700;
     cursor: pointer;
   }
-  .co-promo-btn:hover { background: #444; }
-  .co-promo-msg {
+  .coupon-btn:hover { background: #444; }
+  .coupon-feedback {
     font-size: 12px;
     margin-top: 6px;
     text-align: center;
   }
-  .co-promo-msg.ok { color: #16a34a; font-weight: 700; }
-  .co-promo-msg.err { color: #dc2626; }
+  .coupon-feedback.ok { color: #16a34a; font-weight: 700; }
+  .coupon-feedback.err { color: #dc2626; }
 
-  /* 4. Form Fields Area */
-  .co-form-area {
-    padding: 28px 24px;
-    background: #faf9f6;
+  /* Form Elements */
+  .form-group {
+    margin-bottom: 14px;
   }
-  .co-form-group {
-    margin-bottom: 16px;
-  }
-  .co-form-group label {
+  .form-group label {
     display: block;
     font-size: 12px;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     color: var(--zema-espresso);
   }
-  .co-input {
+  .form-control {
     width: 100%;
-    padding: 11px 14px;
+    padding: 10px 13px;
     border: 1px solid #dcd7ce;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 7px;
+    font-size: 13px;
     font-family: inherit;
     background: #ffffff;
   }
-  .co-input:focus {
+  .form-control:focus {
     outline: none;
     border-color: var(--zema-espresso);
-    box-shadow: 0 0 0 2px rgba(44, 42, 41, 0.12);
+    box-shadow: 0 0 0 2px rgba(44, 42, 41, 0.1);
   }
-  .co-input.input-error {
-    border-color: #dc2626;
-  }
-  .co-err-text {
-    font-size: 11px;
-    color: #dc2626;
-    margin-top: 4px;
-  }
+  .form-control.input-error { border-color: #dc2626; }
+  .field-error-msg { color: #dc2626; font-size: 11px; margin-top: 4px; }
 
-  /* Account Toggle Box */
-  .co-account-box {
-    background: #ffffff;
+  /* Payment Methods Fieldset */
+  .payment-methods-fieldset {
     border: 1px solid #eae6de;
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-bottom: 18px;
-  }
-
-  /* Payment Methods Fieldset (Previous Project) */
-  .co-payment-fieldset {
-    border: 1px solid #e2ded5;
     border-radius: 10px;
-    padding: 16px;
+    padding: 14px 16px;
+    margin: 18px 0;
     background: #ffffff;
-    margin-bottom: 20px;
   }
-  .co-payment-legend {
+  .payment-legend {
     font-size: 11px;
     font-weight: 800;
     color: #666;
     text-transform: uppercase;
     padding: 0 6px;
   }
-  .co-pay-option {
+  .payment-option-card {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 14px;
-    border: 1px solid #dcd7ce;
+    padding: 11px 12px;
+    border: 1px solid #e5e0d4;
     border-radius: 8px;
-    margin-top: 10px;
+    margin-top: 8px;
     cursor: pointer;
     transition: all 0.2s;
   }
-  .co-pay-option.active {
+  .payment-option-card.active {
     border: 2px solid #b45309;
     background: #fef3c7;
     box-shadow: 0 2px 8px rgba(180, 83, 9, 0.12);
   }
-  .co-pay-option.disabled {
+  .payment-option-card.disabled {
     opacity: 0.5;
     cursor: not-allowed;
     background: #faf9f6;
   }
-  .co-pay-badge-soon {
+  .payment-badge-soon {
     font-size: 10px;
     background: #eee;
     color: #666;
-    padding: 2px 8px;
+    padding: 2px 7px;
     border-radius: 4px;
     margin-left: auto;
   }
-  [dir="rtl"] .co-pay-badge-soon {
+  [dir="rtl"] .payment-badge-soon {
     margin-left: 0;
     margin-right: auto;
   }
 
-  /* Submit Button & Notes */
-  .btn-submit-order-final {
-    width: 100%;
-    padding: 16px;
-    background: var(--zema-espresso);
-    color: #ffffff;
-    border: 2px solid var(--zema-espresso);
+  .account-toggle-box {
+    background: #faf9f6;
+    border: 1px solid #eae6de;
     border-radius: 8px;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-    transition: background 0.2s, transform 0.15s;
-    margin-bottom: 12px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
   }
-  .btn-submit-order-final:hover {
-    background: #3c3937;
-    transform: translateY(-1px);
-  }
-  .co-guarantee-note {
+
+  .guarantee-note-box {
     font-size: 12px;
     color: #666;
     text-align: center;
-    line-height: 1.6;
-    padding-top: 12px;
-    border-top: 1px solid #eae6de;
-    margin-top: 14px;
+    line-height: 1.5;
+    padding-top: 10px;
+    border-top: 1px solid #f0eee9;
+    margin-top: 12px;
   }
 
-  /* Thank You Page */
-  .ty-page-container {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 60px 20px 90px 20px;
+  /* Thank You State */
+  .order-success-view {
     text-align: center;
+    padding: 30px 10px;
   }
-  .ty-check-circle {
-    width: 72px;
-    height: 72px;
+  .success-check-icon {
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
-    border: 2px solid var(--zema-green);
-    color: var(--zema-green);
+    background: #dcfce7;
+    color: #16a34a;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 16px auto;
   }
-  .ty-order-box {
+  .order-number-badge {
     display: inline-block;
-    border: 1px solid #eae6de;
-    padding: 12px 28px;
-    background: #faf9f6;
-    border-radius: 8px;
-    margin: 20px 0;
-  }
-  .ty-details-card {
-    background: #ffffff;
-    border: 1px solid #eae6de;
-    border-radius: 12px;
-    padding: 22px;
-    text-align: start;
-    line-height: 1.9;
-    font-size: 14px;
-    margin: 24px 0;
+    padding: 8px 20px;
+    background: #f4f2ee;
+    border: 1px dashed #c5a059;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--zema-espresso);
+    margin: 12px 0 16px 0;
   }
 
   /* RTL Specific Adjustments */
@@ -1599,97 +1624,134 @@
   </footer>
 
   <!-- ========================================================== -->
-  <!-- 🛍️ 3. DEDICATED CART VIEW (EXACT PREVIOUS PROJECT) -->
+  <!-- 🛍️ 3. UNIFIED SLIDE-OVER DRAWER (CART -> CHECKOUT -> THANK YOU) -->
   <!-- ========================================================== -->
-  <section id="cartView" style="display:none;" aria-label="Shopping Cart Page">
-    <div class="page-view-container">
-      <div class="page-header-box">
-        <p class="page-eyebrow" id="cart-header-eyebrow">YOUR CART</p>
-        <h1 class="page-main-title" id="cart-header-title">حقيبة التسوق</h1>
+  <div class="modal-overlay" id="unifiedOverlay" onclick="closeUnifiedDrawer()"></div>
+  <aside class="drawer-panel" id="unifiedDrawer" aria-label="Shopping Cart & Checkout">
+
+    <!-- ==================== STEP 1: CART VIEW ==================== -->
+    <div id="drawerStepCart" style="display:flex; flex-direction:column; height:100%;">
+      <div class="drawer-header">
+        <div>
+          <p class="drawer-eyebrow" id="cart-drawer-eyebrow">YOUR CART</p>
+          <h3 id="cart-drawer-title">حقيبة التسوق (<span id="cartTotalItems">0</span>)</h3>
+        </div>
+        <button class="drawer-close-btn" onclick="closeUnifiedDrawer()" aria-label="Close cart"><i data-lucide="x"></i></button>
       </div>
 
-      <!-- Free Shipping Meter (Threshold 2,500 EGP) -->
-      <div class="cart-shipping-meter" id="cartShippingMeter">
-        <div id="cartShippingStatusText">🚚 تبقى لك <strong>2,500 ج.م</strong> للحصول على شحن مجاني!</div>
-        <div class="meter-bar-track">
-          <div class="meter-bar-fill" id="cartMeterBarFill" style="width: 0%;"></div>
+      <div class="drawer-body">
+        <!-- ⏱ Reservation Timer Banner (Previous Project) -->
+        <div class="drawer-timer-box">
+          <i data-lucide="clock" style="width:16px;height:16px;"></i>
+          <span id="cartTimerText">⏱ القطع محجوزة في سلتك لمدة 15:00 دقيقة</span>
+        </div>
+
+        <!-- 🚚 2,500 EGP Free Shipping Progress Bar -->
+        <div class="drawer-shipping-meter" id="drawerShippingMeter">
+          <div id="drawerShippingStatusText">🚚 تبقى لك <strong>2,500 ج.م</strong> للحصول على شحن مجاني!</div>
+          <div class="drawer-meter-track">
+            <div class="drawer-meter-fill" id="drawerMeterFill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Items Container -->
+        <div id="drawerCartItemsList">
+          <!-- Rendered dynamically -->
         </div>
       </div>
 
-      <!-- Cart Content (Filled dynamically) -->
-      <div id="cartContentContainer">
-        <!-- List or Empty State -->
+      <div class="drawer-footer">
+        <div class="drawer-summary-row">
+          <span id="lbl-cart-subtotal">المجموع الفرعي:</span>
+          <span id="drawerCartSubtotal">0.00 ج.م</span>
+        </div>
+        <div class="drawer-summary-row total">
+          <span id="lbl-cart-total">الإجمالي:</span>
+          <span id="drawerCartTotal">0.00 ج.م</span>
+        </div>
+
+        <button class="btn-drawer-primary" id="btnProceedToCheckout" onclick="goToCheckoutStep()">
+          <i data-lucide="check-circle-2"></i>
+          <span id="btn-proceed-co-text">متابعة إتمام الطلب</span>
+        </button>
+
+        <p class="guarantee-note-box" id="cart-guarantee-note">
+          🛡️ الدفع عند الاستلام متاح — حقك في الاستبدال أو الاسترجاع مكفول خلال ١٤ يوماً.
+        </p>
       </div>
     </div>
-  </section>
 
-  <!-- ========================================================== -->
-  <!-- 🇪🇬 4. DEDICATED CHECKOUT VIEW (EXACT PREVIOUS PROJECT) -->
-  <!-- ========================================================== -->
-  <section id="checkoutView" style="display:none;" aria-label="Checkout Page">
-    <div class="co-page-wrapper">
-      <div class="page-header-box">
-        <p class="page-eyebrow" id="co-header-eyebrow">CHECKOUT</p>
-        <h1 class="page-main-title" id="co-header-title">إتمام الطلب</h1>
+    <!-- ==================== STEP 2: CHECKOUT VIEW ==================== -->
+    <div id="drawerStepCheckout" style="display:none; flex-direction:column; height:100%;">
+      <div class="drawer-header">
+        <button class="drawer-back-btn" onclick="goToCartStep()" aria-label="Back to cart">
+          <i data-lucide="arrow-right" id="coBackIcon" style="width:16px;height:16px;"></i>
+          <span id="co-back-text">العودة للسلة</span>
+        </button>
+        <div>
+          <p class="drawer-eyebrow" id="co-header-eyebrow">CHECKOUT</p>
+          <h3 id="co-header-title">إتمام الطلب</h3>
+        </div>
+        <button class="drawer-close-btn" onclick="closeUnifiedDrawer()" aria-label="Close checkout"><i data-lucide="x"></i></button>
       </div>
 
-      <div class="co-card-box">
-        <!-- 1. Ordered Products Summary List at Top -->
-        <ul class="co-products-summary-list" id="coProductsSummaryList">
-          <!-- Dynamically populated: Name × Qty ... Line Price -->
-        </ul>
+      <div class="drawer-body">
+        <!-- Ordered Items Summary at Top -->
+        <div class="co-summary-box">
+          <div style="font-size:12px; font-weight:800; color:#888; text-transform:uppercase; margin-bottom:8px;" id="lbl-co-summary-title">ملخص المنتجات:</div>
+          <ul class="co-products-summary-list" id="coDrawerProductsSummary">
+            <!-- Dynamically populated: Name × Qty ... Line Price -->
+          </ul>
 
-        <!-- 2. Totals Summary Block -->
-        <div class="co-totals-block">
-          <div class="co-total-row">
-            <span id="co-lbl-subtotal">المجموع الفرعي:</span>
-            <span id="coSubtotalVal">0 ج.م</span>
+          <div class="co-summary-line">
+            <span id="co-sum-subtotal-lbl">المجموع الفرعي:</span>
+            <span id="coDrawerSubtotal">0 ج.م</span>
           </div>
-          <div class="co-total-row discount-active" id="coDiscountRow" style="display:none;">
-            <span id="coDiscountLabel">خصم (ZEMA10):</span>
-            <span id="coDiscountVal">-0 ج.م</span>
+          <div class="co-summary-line highlight" id="coDrawerDiscountRow" style="display:none;">
+            <span id="coDrawerDiscountLabel">خصم (ZEMA10):</span>
+            <span id="coDrawerDiscountAmount">-0 ج.م</span>
           </div>
-          <div class="co-total-row">
-            <span id="co-lbl-shipping">الشحن:</span>
-            <span id="coShippingVal">اختر المحافظة لحساب الشحن</span>
+          <div class="co-summary-line">
+            <span id="co-sum-shipping-lbl">الشحن:</span>
+            <span id="coDrawerShipping">اختر المحافظة لحساب الشحن</span>
           </div>
-          <div class="co-final-total-row">
-            <span id="co-lbl-total">الإجمالي:</span>
-            <span id="coFinalTotalVal">0 ج.م</span>
+          <div class="co-summary-total">
+            <span id="co-sum-total-lbl">الإجمالي:</span>
+            <span id="coDrawerTotal">0 ج.م</span>
           </div>
 
           <!-- Promo Code Input -->
-          <div class="co-promo-row">
-            <input type="text" id="coCouponInput" class="co-promo-input" placeholder="كود الخصم (مثال: ZEMA10)" />
-            <button type="button" class="co-promo-btn" onclick="applyCheckoutCoupon()">تطبيق</button>
+          <div class="coupon-row">
+            <input type="text" id="coDrawerCouponInput" class="coupon-input" placeholder="كود الخصم (مثال: ZEMA10)" />
+            <button type="button" class="coupon-btn" onclick="applyDrawerCoupon()">تطبيق</button>
           </div>
-          <div id="coCouponFeedback" class="co-promo-msg" style="display:none;"></div>
+          <div id="coDrawerCouponFeedback" class="coupon-feedback" style="display:none;"></div>
         </div>
 
-        <!-- 3. Customer Form & Payment Methods -->
-        <form id="exactCheckoutForm" onsubmit="handleCheckoutFormSubmit(event)" class="co-form-area">
-          <div style="margin-bottom:20px;">
-            <p class="page-eyebrow" style="margin-bottom:2px;" id="co-form-eyebrow">CHECKOUT</p>
-            <h3 style="font-size:18px; font-weight:800; margin:0;" id="co-form-title">اطلب الآن — الدفع عند الاستلام</h3>
+        <!-- Form Fields -->
+        <form id="drawerCheckoutForm" onsubmit="handleDrawerCheckoutSubmit(event)">
+          <div style="margin-bottom:14px;">
+            <p class="drawer-eyebrow" id="co-fields-eyebrow">بيانات التوصيل</p>
+            <h4 style="font-size:15px; font-weight:800; margin:0;" id="co-fields-title">اطلب الآن — الدفع عند الاستلام</h4>
           </div>
 
-          <!-- Full Name -->
-          <div class="co-form-group">
+          <!-- 1. Full Name -->
+          <div class="form-group">
             <label id="lbl-name">الاسم بالكامل *</label>
-            <input type="text" id="coName" class="co-input" placeholder="مثال: ياسمين أحمد" required minlength="3" maxlength="80" />
+            <input type="text" id="custName" class="form-control" placeholder="مثال: ياسمين أحمد" required minlength="3" maxlength="80" />
           </div>
 
-          <!-- Phone Number with Live Egyptian Regex -->
-          <div class="co-form-group">
+          <!-- 2. Egyptian Phone with Regex -->
+          <div class="form-group">
             <label id="lbl-phone">رقم الهاتف (مثال: 01012345678) *</label>
-            <input type="tel" id="coPhone" class="co-input" placeholder="01012345678" dir="ltr" inputmode="numeric" required oninput="validatePhoneLive()" />
-            <div id="coPhoneErr" class="co-err-text" style="display:none;">رقم غير صحيح. يبدأ بـ 01 و11 رقم.</div>
+            <input type="tel" id="custPhone" class="form-control" placeholder="01012345678" dir="ltr" inputmode="numeric" required oninput="validatePhoneLive()" />
+            <div id="phoneErrorMsg" class="field-error-msg" style="display:none;">رقم غير صحيح. يبدأ بـ 01 و11 رقم.</div>
           </div>
 
-          <!-- Governorate Selection -->
-          <div class="co-form-group">
+          <!-- 3. Governorate -->
+          <div class="form-group">
             <label id="lbl-gov">المحافظة *</label>
-            <select id="coGov" class="co-input" required onchange="onCheckoutGovChange()">
+            <select id="custGov" class="form-control" required onchange="onDrawerGovChange()">
               <option value="">اختر محافظتك</option>
               <option value="القاهرة">القاهرة</option>
               <option value="الجيزة">الجيزة</option>
@@ -1721,72 +1783,72 @@
             </select>
           </div>
 
-          <!-- City / Area (Optional) -->
-          <div class="co-form-group">
+          <!-- 4. City / Area -->
+          <div class="form-group">
             <label id="lbl-city">المدينة / المنطقة (اختياري)</label>
-            <input type="text" id="coCity" class="co-input" placeholder="مثال: مدينة نصر / التجمع / سموحة" maxlength="80" />
+            <input type="text" id="custCity" class="form-control" placeholder="مثال: مدينة نصر / التجمع / سموحة" maxlength="80" />
           </div>
 
-          <!-- Detailed Address -->
-          <div class="co-form-group">
+          <!-- 5. Detailed Address -->
+          <div class="form-group">
             <label id="lbl-address">العنوان بالتفصيل *</label>
-            <textarea id="coAddress" class="co-input" rows="3" placeholder="اسم الشارع، رقم العقار، الشقة أو علامة مميزة" required minlength="8" maxlength="300" style="resize:vertical;"></textarea>
+            <textarea id="custAddress" class="form-control" rows="2" placeholder="المنطقة، الشارع، رقم العقار، الشقة أو علامة مميزة" required minlength="8" maxlength="300"></textarea>
           </div>
 
-          <!-- Email (Optional) -->
-          <div class="co-form-group">
+          <!-- 6. Email -->
+          <div class="form-group">
             <label id="lbl-email">البريد الإلكتروني (اختياري)</label>
-            <input type="email" id="coEmail" class="co-input" placeholder="name@example.com" dir="ltr" />
+            <input type="email" id="custEmail" class="form-control" placeholder="name@example.com" dir="ltr" />
           </div>
 
-          <!-- Account Creation Option -->
-          <div class="co-account-box">
+          <!-- 7. Account Creation Checkbox -->
+          <div class="account-toggle-box">
             <label style="display:flex; align-items:center; gap:8px; font-size:12px; cursor:pointer; font-weight:700;">
-              <input type="checkbox" id="coCreateAccountChk" onchange="toggleCoPasswordInput()" />
+              <input type="checkbox" id="drawerAccountChk" onchange="toggleDrawerPasswordInput()" />
               <span id="lbl-create-acc">أنشئ حساباً لحفظ طلبي (اختياري)</span>
             </label>
-            <div id="coPasswordBox" style="display:none; margin-top:8px;">
-              <input type="password" id="coAccountPassword" class="co-input" placeholder="كلمة المرور (٦ أحرف على الأقل)" minlength="6" />
+            <div id="drawerPasswordContainer" style="display:none; margin-top:8px;">
+              <input type="password" id="drawerPassword" class="form-control" placeholder="كلمة المرور (٦ أحرف على الأقل)" minlength="6" />
             </div>
             <p style="font-size:11px; color:#888; margin:4px 0 0 0;" id="lbl-guest-note">يمكنك إتمام الطلب كضيف بدون تسجيل.</p>
           </div>
 
-          <!-- Payment Methods Fieldset -->
-          <div class="co-payment-fieldset">
-            <div class="co-payment-legend" id="lbl-payment-title">طريقة الدفع</div>
+          <!-- 8. Payment Methods Fieldset -->
+          <div class="payment-methods-fieldset">
+            <div class="payment-legend" id="lbl-pay-title">طريقة الدفع</div>
             
             <!-- COD: Active -->
-            <label class="co-pay-option active">
-              <input type="radio" name="paymentOption" value="cod" checked />
+            <label class="payment-option-card active">
+              <input type="radio" name="payOption" value="cod" checked />
               <i data-lucide="banknote" style="width:20px;height:20px;color:#16a34a;"></i>
               <div>
-                <strong style="display:block; font-size:13px;" id="lbl-pay-cod-title">الدفع عند الاستلام</strong>
+                <strong style="display:block; font-size:13px;" id="lbl-pay-cod">الدفع عند الاستلام</strong>
                 <span style="font-size:11px; color:#666;" id="lbl-pay-cod-desc">ادفع نقداً للمندوب عند وصول طلبك</span>
               </div>
             </label>
 
             <!-- Card: Coming soon -->
-            <div class="co-pay-option disabled">
+            <div class="payment-option-card disabled">
               <input type="radio" disabled />
               <i data-lucide="credit-card" style="width:20px;height:20px;color:#999;"></i>
-              <span style="font-size:13px; color:#666;" id="lbl-pay-card-title">فيزا / ماستركارد</span>
-              <span class="co-pay-badge-soon" id="lbl-soon-1">قريباً</span>
+              <span style="font-size:13px; color:#666;" id="lbl-pay-card">فيزا / ماستركارد</span>
+              <span class="payment-badge-soon" id="lbl-pay-soon-1">قريباً</span>
             </div>
 
             <!-- Apple Pay: Coming soon -->
-            <div class="co-pay-option disabled">
+            <div class="payment-option-card disabled">
               <input type="radio" disabled />
               <i data-lucide="smartphone" style="width:20px;height:20px;color:#999;"></i>
               <span style="font-size:13px; color:#666;">Apple Pay</span>
-              <span class="co-pay-badge-soon" id="lbl-soon-2">قريباً</span>
+              <span class="payment-badge-soon" id="lbl-pay-soon-2">قريباً</span>
             </div>
 
             <!-- InstaPay: Coming soon -->
-            <div class="co-pay-option disabled">
+            <div class="payment-option-card disabled">
               <input type="radio" disabled />
               <i data-lucide="send" style="width:20px;height:20px;color:#999;"></i>
-              <span style="font-size:13px; color:#666;" id="lbl-pay-instapay-title">إنستاباي</span>
-              <span class="co-pay-badge-soon" id="lbl-soon-3">قريباً</span>
+              <span style="font-size:13px; color:#666;" id="lbl-pay-instapay">إنستاباي</span>
+              <span class="payment-badge-soon" id="lbl-pay-soon-3">قريباً</span>
             </div>
 
             <p style="font-size:11px; color:#888; margin-top:8px; line-height:1.4;" id="lbl-pay-note">
@@ -1794,61 +1856,65 @@
             </p>
           </div>
 
-          <!-- Submit Order Button -->
-          <button type="submit" class="btn-submit-order-final" id="btnConfirmOrderFinal">
-            <span id="btnConfirmOrderText">تأكيد الطلب</span>
+          <!-- Submit Order Button (NO WHATSAPP BUTTON!) -->
+          <button type="submit" class="btn-drawer-primary" id="btnSubmitDrawerOrder" style="padding:16px; font-size:16px;">
+            <i data-lucide="check"></i>
+            <span id="btnSubmitDrawerOrderText">تأكيد الطلب</span>
           </button>
 
-          <p style="font-size:11px; color:#777; text-align:center; margin-bottom:12px;" id="lbl-co-delivery-note">
+          <p style="font-size:11px; color:#777; text-align:center; margin:10px 0 6px 0;" id="lbl-delivery-note">
             توصيل سريع خلال ٢ - ٤ أيام عمل لجميع المحافظات
           </p>
 
-          <p class="co-guarantee-note" id="lbl-co-guarantee-note">
+          <p class="guarantee-note-box" id="lbl-co-guarantee">
             🛡️ الدفع عند الاستلام متاح — حقك في الاستبدال أو الاسترجاع مكفول خلال ١٤ يوماً.
           </p>
         </form>
       </div>
     </div>
-  </section>
 
-  <!-- ========================================================== -->
-  <!-- 🌟 5. THANK YOU / ORDER CONFIRMED VIEW -->
-  <!-- ========================================================== -->
-  <section id="thankYouView" style="display:none;" aria-label="Thank You Page">
-    <div class="ty-page-container">
-      <div class="ty-check-circle">
-        <i data-lucide="check" style="width:40px;height:40px;"></i>
-      </div>
-      <p class="page-eyebrow" id="ty-eyebrow">ORDER CONFIRMED</p>
-      <h1 class="page-main-title" style="margin-bottom:12px;" id="ty-main-title">شكراً لثقتك في زِيما</h1>
-      
-      <div class="ty-order-box">
-        <div style="font-size:11px; color:#888; text-transform:uppercase; margin-bottom:2px;" id="ty-order-no-lbl">رقم الطلب</div>
-        <div style="font-size:18px; font-weight:800; color:var(--zema-espresso); font-family:monospace;" id="tyOrderNumberDisplay">#ZM260925-1001</div>
+    <!-- ==================== STEP 3: THANK YOU VIEW ==================== -->
+    <div id="drawerStepThankYou" style="display:none; flex-direction:column; height:100%;">
+      <div class="drawer-header">
+        <div>
+          <p class="drawer-eyebrow" id="ty-drawer-eyebrow">ORDER CONFIRMED</p>
+          <h3 id="ty-drawer-title">تم تأكيد طلبك بنجاح!</h3>
+        </div>
+        <button class="drawer-close-btn" onclick="closeUnifiedDrawer()" aria-label="Close dialog"><i data-lucide="x"></i></button>
       </div>
 
-      <p style="font-size:15px; color:#555; max-width:540px; margin:0 auto 24px auto; line-height:1.8;" id="ty-body-msg">
-        تم تسجيل طلبك بنجاح! سيقوم فريق خدمة العملاء بالتواصل معك عبر الهاتف خلال ٢٤ ساعة لتأكيد تفاصيل الشحن والتسليم.
-      </p>
+      <div class="drawer-body order-success-view">
+        <div class="success-check-icon">
+          <i data-lucide="check" style="width:38px;height:38px;"></i>
+        </div>
+        <h2 style="font-size:22px; font-weight:800; margin:0;" id="ty-main-title">شكراً لثقتك في زِيما</h2>
+        <p style="font-size:13px; color:#666; margin:8px 0 14px 0;" id="ty-body-msg">
+          تم تسجيل طلبك بنجاح! سيقوم فريق خدمة العملاء بالتواصل معك عبر الهاتف خلال ٢٤ ساعة لتأكيد تفاصيل الشحن والتسليم.
+        </p>
 
-      <div class="ty-details-card" id="tyDetailsCard">
-        <div><strong id="ty-card-name">الاسم:</strong> <span id="tyCustomerName">--</span></div>
-        <div><strong id="ty-card-phone">الهاتف:</strong> <span id="tyCustomerPhone">--</span></div>
-        <div><strong id="ty-card-addr">العنوان:</strong> <span id="tyCustomerAddress">--</span></div>
-        <div><strong id="ty-card-total">الإجمالي المطلوب عند الاستلام:</strong> <strong style="color:var(--zema-espresso);" id="tyCustomerTotal">--</strong></div>
-        <div><strong id="ty-card-time">موعد التوصيل المتوقع:</strong> <span style="color:#16a34a; font-weight:700;">خلال 24 - 48 ساعة</span></div>
-      </div>
+        <div class="order-number-badge" id="drawerOrderNumberDisplay">رقم الطلب: #ZM260925-1001</div>
 
-      <div style="display:flex; justify-content:center; gap:12px; margin-top:28px;">
-        <button class="btn-start-shopping" onclick="showHomePage()" style="margin:0; padding:14px 32px;" id="ty-btn-store">
-          العودة للمتجر
-        </button>
-        <button class="btn-start-shopping" onclick="toggleAccountModal(true)" style="margin:0; background:#f4f2ee; color:var(--zema-espresso); border:1px solid #dcd7ce; padding:14px 28px;" id="ty-btn-track">
-          تتبع شحنتك
-        </button>
+        <div style="background:#faf9f6; border:1px solid #eee; border-radius:10px; padding:16px; text-align:start; font-size:13px; line-height:1.8; margin-bottom:18px;">
+          <div><strong id="ty-lbl-name">الاسم:</strong> <span id="tyDrawerName">--</span></div>
+          <div><strong id="ty-lbl-phone">الهاتف:</strong> <span id="tyDrawerPhone">--</span></div>
+          <div><strong id="ty-lbl-addr">العنوان:</strong> <span id="tyDrawerAddress">--</span></div>
+          <div><strong id="ty-lbl-pay">طريقة الدفع:</strong> <span id="tyDrawerPayment">الدفع عند الاستلام</span></div>
+          <div><strong id="ty-lbl-total">الإجمالي المطلوب:</strong> <strong style="color:var(--zema-espresso);" id="tyDrawerTotal">--</strong></div>
+          <div><strong id="ty-lbl-time">موعد التوصيل:</strong> <span style="color:#1b7d3f; font-weight:700;">خلال 24 - 48 ساعة</span></div>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <button class="btn-drawer-primary" style="flex:1; margin-top:0;" onclick="closeUnifiedDrawer(); toggleAccountModal(true);">
+            <i data-lucide="truck" style="width:14px;height:14px;"></i>
+            <span id="ty-btn-track">تتبع شحنتك</span>
+          </button>
+          <button class="btn-drawer-primary" style="flex:1; margin-top:0; background:#f4f2ee; color:var(--zema-espresso); border:1px solid #dcd7ce;" onclick="closeUnifiedDrawer()">
+            <span id="ty-btn-back">متابعة التسوق</span>
+          </button>
+        </div>
       </div>
     </div>
-  </section>
+  </aside>
 
   <!-- Wishlist Drawer -->
   <div class="modal-overlay" id="wishlistOverlay" onclick="toggleWishlistDrawer(false)"></div>
@@ -2087,69 +2153,97 @@
       }
     }
 
-                // ==========================================
-    // 🛍️ 3. EXACT PREVIOUS PROJECT CART & CHECKOUT
+                    // ==========================================
+    // 🛍️ 3. UNIFIED SLIDE-OVER DRAWER (CART -> CHECKOUT -> THANK YOU)
     // ==========================================
     let activePromo = null; // { code: 'ZEMA10', rate: 0.1 }
 
-    function switchView(viewName) {
-      const homeView = document.getElementById('home-view');
-      const pdpView = document.getElementById('pdp-view');
-      const cartView = document.getElementById('cartView');
-      const checkoutView = document.getElementById('checkoutView');
-      const thankYouView = document.getElementById('thankYouView');
-
-      if (homeView) homeView.style.display = (viewName === 'home') ? 'block' : 'none';
-      if (pdpView) pdpView.style.display = (viewName === 'pdp') ? 'block' : 'none';
-      if (cartView) cartView.style.display = (viewName === 'cart') ? 'block' : 'none';
-      if (checkoutView) checkoutView.style.display = (viewName === 'checkout') ? 'block' : 'none';
-      if (thankYouView) thankYouView.style.display = (viewName === 'thank-you') ? 'block' : 'none';
-
-      if (viewName !== 'pdp') {
-        document.body.classList.remove('is-pdp');
+    function openUnifiedDrawer(step = 'cart') {
+      const overlay = document.getElementById('unifiedOverlay');
+      const drawer = document.getElementById('unifiedDrawer');
+      if (overlay && drawer) {
+        overlay.classList.add('open');
+        drawer.classList.add('open');
       }
-      window.scrollTo(0, 0);
+
+      if (step === 'checkout') {
+        goToCheckoutStep();
+      } else if (step === 'thankyou') {
+        goToThankYouStep();
+      } else {
+        goToCartStep();
+      }
     }
 
-    function showHomePage() {
-      switchView('home');
-      window.location.hash = '';
+    function closeUnifiedDrawer() {
+      const overlay = document.getElementById('unifiedOverlay');
+      const drawer = document.getElementById('unifiedDrawer');
+      if (overlay && drawer) {
+        overlay.classList.remove('open');
+        drawer.classList.remove('open');
+      }
+      if (window.location.hash === '#cart' || window.location.hash === '#checkout') {
+        window.location.hash = '';
+      }
     }
 
-    function showCartView() {
-      switchView('cart');
+    function goToCartStep() {
+      const stepCart = document.getElementById('drawerStepCart');
+      const stepCo = document.getElementById('drawerStepCheckout');
+      const stepTy = document.getElementById('drawerStepThankYou');
+      if (stepCart) stepCart.style.display = 'flex';
+      if (stepCo) stepCo.style.display = 'none';
+      if (stepTy) stepTy.style.display = 'none';
       window.location.hash = 'cart';
-      renderCartView();
+      renderDrawerCart();
     }
 
-    function showCheckoutView() {
+    function goToCheckoutStep() {
       if (cart.length === 0) {
-        showCartView();
+        goToCartStep();
         return;
       }
-      switchView('checkout');
+      const stepCart = document.getElementById('drawerStepCart');
+      const stepCo = document.getElementById('drawerStepCheckout');
+      const stepTy = document.getElementById('drawerStepThankYou');
+      if (stepCart) stepCart.style.display = 'none';
+      if (stepCo) stepCo.style.display = 'flex';
+      if (stepTy) stepTy.style.display = 'none';
       window.location.hash = 'checkout';
-      renderCheckoutView();
+      renderDrawerCheckout();
     }
 
-    function showThankYouView(orderData) {
-      switchView('thank-you');
+    function goToThankYouStep(orderData) {
+      const stepCart = document.getElementById('drawerStepCart');
+      const stepCo = document.getElementById('drawerStepCheckout');
+      const stepTy = document.getElementById('drawerStepThankYou');
+      if (stepCart) stepCart.style.display = 'none';
+      if (stepCo) stepCo.style.display = 'none';
+      if (stepTy) stepTy.style.display = 'flex';
       window.location.hash = 'thank-you';
 
       if (orderData) {
         const isAr = currentLang === 'ar';
-        const elNum = document.getElementById('tyOrderNumberDisplay');
-        if (elNum) elNum.textContent = '#' + orderData.order_number;
-        const elName = document.getElementById('tyCustomerName');
-        if (elName) elName.textContent = orderData.customer_name;
-        const elPhone = document.getElementById('tyCustomerPhone');
-        if (elPhone) elPhone.textContent = orderData.customer_phone;
-        const elAddr = document.getElementById('tyCustomerAddress');
-        if (elAddr) elAddr.textContent = orderData.governorate + (orderData.city ? ' - ' + orderData.city : '') + ' - ' + orderData.address;
-        const elTotal = document.getElementById('tyCustomerTotal');
-        if (elTotal) elTotal.textContent = orderData.total.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+        const numEl = document.getElementById('drawerOrderNumberDisplay');
+        if (numEl) numEl.textContent = '#' + orderData.order_number;
+        const nameEl = document.getElementById('tyDrawerName');
+        if (nameEl) nameEl.textContent = orderData.customer_name;
+        const phoneEl = document.getElementById('tyDrawerPhone');
+        if (phoneEl) phoneEl.textContent = orderData.customer_phone;
+        const addrEl = document.getElementById('tyDrawerAddress');
+        if (addrEl) addrEl.textContent = orderData.governorate + (orderData.city ? ' - ' + orderData.city : '') + ' - ' + orderData.address;
+        const totEl = document.getElementById('tyDrawerTotal');
+        if (totEl) totEl.textContent = orderData.total.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
       }
       lucide.createIcons();
+    }
+
+    function showCartView() {
+      openUnifiedDrawer('cart');
+    }
+
+    function showCheckoutView() {
+      openUnifiedDrawer('checkout');
     }
 
     function addToCart(productId, qty = 1) {
@@ -2172,7 +2266,7 @@
       }
       saveCart();
       updateCartBadge();
-      showCartView();
+      openUnifiedDrawer('cart');
     }
 
     function changeCartItemQty(id, delta) {
@@ -2184,7 +2278,7 @@
       }
       saveCart();
       updateCartBadge();
-      renderCartView();
+      renderDrawerCart();
     }
 
     function saveCart() {
@@ -2193,25 +2287,30 @@
 
     function updateCartBadge() {
       const countBadge = document.getElementById('cartCountBadge');
+      const totalItemsSpan = document.getElementById('cartTotalItems');
       const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
       if (countBadge) countBadge.textContent = totalItems;
+      if (totalItemsSpan) totalItemsSpan.textContent = totalItems;
     }
 
-    function renderCartView() {
+    function renderDrawerCart() {
       updateCartBadge();
-      const container = document.getElementById('cartContentContainer');
+      const listContainer = document.getElementById('drawerCartItemsList');
+      const subtotalEl = document.getElementById('drawerCartSubtotal');
+      const totalEl = document.getElementById('drawerCartTotal');
+      const meterFill = document.getElementById('drawerMeterFill');
+      const meterText = document.getElementById('drawerShippingStatusText');
+      const btnCo = document.getElementById('btnProceedToCheckout');
+
       const isAr = currentLang === 'ar';
       const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
       const threshold = 2500;
       const progress = Math.min(100, Math.round((subtotal / threshold) * 100));
 
-      // Shipping Meter Fill
-      const meterFill = document.getElementById('cartMeterBarFill');
-      const meterText = document.getElementById('cartShippingStatusText');
       if (meterFill && meterText) {
         meterFill.style.width = progress + '%';
         if (subtotal >= threshold) {
-          meterText.innerHTML = '🎉 <strong>' + (isAr ? 'مبروك! حصلت على شحن مجاني لكافة المحافظات!' : "Congrats! You've unlocked free shipping!") + '</strong>';
+          meterText.innerHTML = '🎉 <strong>' + (isAr ? 'مبروك! طلبك مؤهل للشحن المجاني لكافة المحافظات!' : "Congrats! You've unlocked FREE shipping nationwide!") + '</strong>';
           meterFill.style.background = '#1b7d3f';
         } else {
           const remaining = threshold - subtotal;
@@ -2220,38 +2319,45 @@
         }
       }
 
-      if (!container) return;
+      if (subtotalEl) subtotalEl.textContent = subtotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+      if (totalEl) totalEl.textContent = subtotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+
+      if (!listContainer) return;
 
       if (cart.length === 0) {
-        container.innerHTML = `
-          <div class="cart-empty-view">
-            <i data-lucide="shopping-bag" style="width:52px;height:52px;margin:0 auto 16px auto; opacity:0.35;"></i>
-            <h3 style="font-size:18px; margin:0 0 8px 0;">${isAr ? 'سلتك فارغة حالياً.' : 'Your cart is empty.'}</h3>
-            <p style="color:#777; font-size:14px; margin:0 0 16px 0;">${isAr ? 'استكشف تشكيلاتنا الفاخرة واختر ما يناسب أناقتك' : 'Explore our luxury collections'}</p>
-            <button class="btn-start-shopping" onclick="showHomePage()">
+        listContainer.innerHTML = `
+          <div class="cart-empty-inner">
+            <i data-lucide="shopping-bag" style="width:48px;height:48px;margin:0 auto 12px auto; opacity:0.35;"></i>
+            <h4 style="font-size:16px; margin:0 0 6px 0;">${isAr ? 'سلتك فارغة حالياً.' : 'Your cart is empty.'}</h4>
+            <p style="color:#777; font-size:13px; margin:0 0 16px 0;">${isAr ? 'استكشف تشكيلاتنا الفاخرة واختر ما يناسب أناقتك' : 'Explore our luxury collections'}</p>
+            <button class="btn-drawer-primary" style="width:auto; padding:10px 24px; margin:0 auto;" onclick="closeUnifiedDrawer()">
               ${isAr ? 'ابدأ التسوق' : 'Start Shopping'}
             </button>
           </div>
         `;
+        if (btnCo) btnCo.disabled = true;
       } else {
-        let html = '<div class="cart-items-table">';
+        if (btnCo) btnCo.disabled = false;
+        let html = '';
         cart.forEach(item => {
           const title = isAr ? item.nameAr : item.nameEn;
           const lineTotal = item.price * item.qty;
           html += `
-            <div class="cart-row">
-              <img src="${item.img}" class="cart-img-thumb" alt="${title}" />
-              <div class="cart-item-details">
-                <h4 class="cart-item-heading">${title}</h4>
-                <div class="cart-sku-badge">${item.sku}</div>
-                <div class="cart-item-price-val">${lineTotal.toLocaleString()} ${isAr ? 'ج.م' : 'EGP'}</div>
-                <div class="cart-actions-row">
-                  <div class="cart-qty-control">
-                    <button class="cart-qty-btn" onclick="changeCartItemQty('${item.id}', -1)" aria-label="-">−</button>
-                    <span class="cart-qty-display">${item.qty}</span>
-                    <button class="cart-qty-btn" onclick="changeCartItemQty('${item.id}', 1)" aria-label="+">+</button>
+            <div class="cart-item-row">
+              <img src="${item.img}" class="cart-item-img" alt="${title}" />
+              <div class="cart-item-info">
+                <div>
+                  <h4 class="cart-item-title">${title}</h4>
+                  <div class="cart-item-sku">${item.sku}</div>
+                  <div class="cart-item-price">${lineTotal.toLocaleString()} ${isAr ? 'ج.م' : 'EGP'}</div>
+                </div>
+                <div class="cart-qty-row">
+                  <div class="qty-box">
+                    <button class="qty-btn" onclick="changeCartItemQty('${item.id}', -1)" aria-label="-">−</button>
+                    <span class="qty-num">${item.qty}</span>
+                    <button class="qty-btn" onclick="changeCartItemQty('${item.id}', 1)" aria-label="+">+</button>
                   </div>
-                  <button class="cart-remove-link" onclick="changeCartItemQty('${item.id}', -999)">
+                  <button class="cart-delete-btn" onclick="changeCartItemQty('${item.id}', -999)">
                     <i data-lucide="trash-2" style="width:14px;height:14px;"></i>
                     <span>${isAr ? 'حذف' : 'Remove'}</span>
                   </button>
@@ -2260,20 +2366,7 @@
             </div>
           `;
         });
-        html += '</div>';
-
-        html += `
-          <div class="cart-bottom-bar">
-            <div class="cart-subtotal-text">
-              <span>${isAr ? 'المجموع الفرعي:' : 'Subtotal:'} </span>
-              <span class="cart-subtotal-val">${subtotal.toLocaleString()} ${isAr ? 'ج.م' : 'EGP'}</span>
-            </div>
-            <button class="btn-proceed-co" onclick="showCheckoutView()">
-              ${isAr ? 'إتمام الطلب' : 'Proceed to checkout'}
-            </button>
-          </div>
-        `;
-        container.innerHTML = html;
+        listContainer.innerHTML = html;
       }
       lucide.createIcons();
     }
@@ -2288,15 +2381,15 @@
       return 65;
     }
 
-    function renderCheckoutView() {
+    function renderDrawerCheckout() {
       const isAr = currentLang === 'ar';
       const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-      const govEl = document.getElementById('coGov');
+      const govEl = document.getElementById('custGov');
       const gov = govEl ? govEl.value : '';
       const shipping = calculateShipping(subtotal, gov);
 
       // 1. Render Ordered Items Summary List
-      const summaryList = document.getElementById('coProductsSummaryList');
+      const summaryList = document.getElementById('coDrawerProductsSummary');
       if (summaryList) {
         let itemsHtml = '';
         cart.forEach(item => {
@@ -2304,9 +2397,9 @@
           const lineTotal = item.price * item.qty;
           itemsHtml += `
             <li class="co-prod-item-line">
-              <div class="co-prod-name-qty">
+              <div>
                 <span>${title}</span>
-                <span class="co-prod-qty-badge">× ${item.qty}</span>
+                <span class="co-prod-qty-badge"> × ${item.qty}</span>
               </div>
               <span class="co-prod-price-badge">${lineTotal.toLocaleString()} ${isAr ? 'ج.م' : 'EGP'}</span>
             </li>
@@ -2321,21 +2414,21 @@
         discountAmount = Math.round(subtotal * activePromo.rate);
       }
 
-      const subtotalEl = document.getElementById('coSubtotalVal');
+      const subtotalEl = document.getElementById('coDrawerSubtotal');
       if (subtotalEl) subtotalEl.textContent = subtotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
 
-      const discRow = document.getElementById('coDiscountRow');
+      const discRow = document.getElementById('coDrawerDiscountRow');
       if (discRow) {
         if (discountAmount > 0) {
           discRow.style.display = 'flex';
-          document.getElementById('coDiscountLabel').textContent = (isAr ? 'خصم ' : 'Discount ') + `(${activePromo.code}):`;
-          document.getElementById('coDiscountVal').textContent = '- ' + discountAmount.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+          document.getElementById('coDrawerDiscountLabel').textContent = (isAr ? 'خصم ' : 'Discount ') + `(${activePromo.code}):`;
+          document.getElementById('coDrawerDiscountAmount').textContent = '- ' + discountAmount.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
         } else {
           discRow.style.display = 'none';
         }
       }
 
-      const shippingEl = document.getElementById('coShippingVal');
+      const shippingEl = document.getElementById('coDrawerShipping');
       if (shippingEl) {
         if (shipping === 0) {
           shippingEl.innerHTML = '<span style="color:#16a34a; font-weight:bold;">' + (isAr ? 'مجاني 🎉' : 'Free 🎉') + '</span>';
@@ -2348,19 +2441,19 @@
 
       const activeShipping = shipping !== null ? shipping : 0;
       const finalTotal = Math.max(0, subtotal - discountAmount + activeShipping);
-      const finalTotalEl = document.getElementById('coFinalTotalVal');
+      const finalTotalEl = document.getElementById('coDrawerTotal');
       if (finalTotalEl) finalTotalEl.textContent = finalTotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
-      const btnText = document.getElementById('btnConfirmOrderText');
+      const btnText = document.getElementById('btnSubmitDrawerOrderText');
       if (btnText) btnText.textContent = (isAr ? 'تأكيد الطلب — ' : 'Confirm Order — ') + finalTotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
     }
 
-    function onCheckoutGovChange() {
-      renderCheckoutView();
+    function onDrawerGovChange() {
+      renderDrawerCheckout();
     }
 
     function validatePhoneLive() {
-      const phoneInput = document.getElementById('coPhone');
-      const errBox = document.getElementById('coPhoneErr');
+      const phoneInput = document.getElementById('custPhone');
+      const errBox = document.getElementById('phoneErrorMsg');
       if (!phoneInput) return true;
       const cleanPhone = phoneInput.value.replace(/\D/g, '');
       phoneInput.value = cleanPhone;
@@ -2377,10 +2470,10 @@
       }
     }
 
-    function applyCheckoutCoupon() {
-      const input = document.getElementById('coCouponInput');
-      const feedback = document.getElementById('coCouponFeedback');
-      const phoneEl = document.getElementById('coPhone');
+    function applyDrawerCoupon() {
+      const input = document.getElementById('coDrawerCouponInput');
+      const feedback = document.getElementById('coDrawerCouponFeedback');
+      const phoneEl = document.getElementById('custPhone');
       const phone = phoneEl ? phoneEl.value.trim() : '';
       const code = input ? input.value.trim().toUpperCase() : '';
       const isAr = currentLang === 'ar';
@@ -2389,7 +2482,7 @@
 
       if (!phone) {
         if (feedback) {
-          feedback.className = 'co-promo-msg err';
+          feedback.className = 'coupon-feedback err';
           feedback.textContent = isAr ? 'أدخل رقم هاتفك أولاً للتحقق من أهلية الخصم' : 'Enter your phone first to verify code eligibility';
           feedback.style.display = 'block';
         }
@@ -2399,37 +2492,37 @@
       if (code === 'ZEMA10') {
         activePromo = { code: 'ZEMA10', rate: 0.1 };
         if (feedback) {
-          feedback.className = 'co-promo-msg ok';
+          feedback.className = 'coupon-feedback ok';
           feedback.textContent = isAr ? '✓ تم تطبيق خصم 10%' : '✓ Applied 10% discount';
           feedback.style.display = 'block';
         }
-        renderCheckoutView();
+        renderDrawerCheckout();
       } else {
         activePromo = null;
         if (feedback) {
-          feedback.className = 'co-promo-msg err';
+          feedback.className = 'coupon-feedback err';
           feedback.textContent = isAr ? 'كود الخصم غير صالح' : 'Invalid discount code';
           feedback.style.display = 'block';
         }
-        renderCheckoutView();
+        renderDrawerCheckout();
       }
     }
 
-    function toggleCoPasswordInput() {
-      const chk = document.getElementById('coCreateAccountChk');
-      const box = document.getElementById('coPasswordBox');
+    function toggleDrawerPasswordInput() {
+      const chk = document.getElementById('drawerAccountChk');
+      const box = document.getElementById('drawerPasswordContainer');
       if (box && chk) box.style.display = chk.checked ? 'block' : 'none';
     }
 
-    function handleCheckoutFormSubmit(e) {
+    function handleDrawerCheckoutSubmit(e) {
       e.preventDefault();
       const isAr = currentLang === 'ar';
-      const name = document.getElementById('coName').value.trim();
-      const phone = document.getElementById('coPhone').value.trim();
-      const gov = document.getElementById('coGov').value;
-      const city = document.getElementById('coCity').value.trim();
-      const address = document.getElementById('coAddress').value.trim();
-      const email = document.getElementById('coEmail').value.trim();
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const gov = document.getElementById('custGov').value;
+      const city = document.getElementById('custCity').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+      const email = document.getElementById('custEmail').value.trim();
 
       if (!validatePhoneLive() && phone.length !== 11) {
         alert(isAr ? 'رقم الهاتف غير صحيح. يجب أن يبدأ بـ 01 ويتكوّن من 11 رقماً.' : 'Invalid phone. Must start with 01 and be 11 digits.');
@@ -2481,22 +2574,22 @@
       saveCart();
       updateCartBadge();
 
-      // Show Thank You Page View
-      showThankYouView(orderData);
+      // Show Thank You Step
+      goToThankYouStep(orderData);
     }
 
     // Hash router handler
     window.addEventListener('hashchange', () => {
       const h = window.location.hash;
       if (h === '#cart') {
-        showCartView();
+        openUnifiedDrawer('cart');
       } else if (h === '#checkout') {
-        showCheckoutView();
+        openUnifiedDrawer('checkout');
       } else if (h === '#thank-you') {
-        showThankYouView();
+        openUnifiedDrawer('thankyou');
       } else if (h.startsWith('#product-')) {
         const id = h.replace('#product-', '');
-        openProduct(id);
+        openPDP(id);
       } else if (!h || h === '#' || h === '#top' || h === '#story' || h === '#contact' || h === '#faq') {
         if (!h || h === '#' || h === '#top') showHomePage();
       }
@@ -2505,10 +2598,10 @@
     // Check initial hash on load
     window.addEventListener('DOMContentLoaded', () => {
       const h = window.location.hash;
-      if (h === '#cart') showCartView();
-      else if (h === '#checkout') showCheckoutView();
-      else if (h === '#thank-you') showThankYouView();
-      else if (h.startsWith('#product-')) openProduct(h.replace('#product-', ''));
+      if (h === '#cart') openUnifiedDrawer('cart');
+      else if (h === '#checkout') openUnifiedDrawer('checkout');
+      else if (h === '#thank-you') openUnifiedDrawer('thankyou');
+      else if (h.startsWith('#product-')) openPDP(h.replace('#product-', ''));
       updateCartBadge();
     });
 
