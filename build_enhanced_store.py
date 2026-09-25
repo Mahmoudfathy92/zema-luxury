@@ -190,16 +190,27 @@ template = '''<!DOCTYPE html>
     border: none;
     color: var(--zema-espresso);
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.15s ease;
+    transition: background-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
+  }
+  .icon-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    fill: none;
+    display: block;
+    pointer-events: none;
+    flex-shrink: 0;
   }
   .icon-btn:hover {
     background: rgba(26, 25, 24, 0.06);
+    color: #978269;
     transform: translateY(-1px);
   }
   .icon-btn .counter {
     position: absolute;
-    top: 3px;
-    right: 3px;
+    top: 2px;
+    right: 2px;
     background: var(--zema-espresso);
     color: #ffffff;
     font-size: 10px;
@@ -210,10 +221,11 @@ template = '''<!DOCTYPE html>
     border-radius: 9px;
     text-align: center;
     padding: 0 4px;
+    pointer-events: none;
   }
   [dir="rtl"] .icon-btn .counter {
     right: auto;
-    left: 3px;
+    left: 2px;
   }
 
   /* ========================================================== */
@@ -1426,52 +1438,11 @@ template = '''<!DOCTYPE html>
 <body>
 
   <!-- ========================================================== -->
-  <!-- ⚡ 1. ANIMATED TICKER (EGP 2,500 THRESHOLD) -->
+  <!-- 🚚 1. TOP ANNOUNCEMENT BAR (EGP 2,500 THRESHOLD) -->
   <!-- ========================================================== -->
-  <div class="ticker-wrap" aria-label="Announcements">
-    <div class="ticker-track">
-      <div class="ticker-item">
-        <i data-lucide="truck"></i>
-        <span id="ticker-msg-1">شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م</span>
-        <span class="ticker-dot"></span>
-      </div>
-      <div class="ticker-item">
-        <i data-lucide="zap"></i>
-        <span id="ticker-msg-2">توصيل سريع لباب بيتك خلال 24 - 48 ساعة</span>
-        <span class="ticker-dot"></span>
-      </div>
-      <div class="ticker-item">
-        <i data-lucide="shield-check"></i>
-        <span id="ticker-msg-3">حق معاينة وفحص الشحنة قبل الاستلام والدفع</span>
-        <span class="ticker-dot"></span>
-      </div>
-      <div class="ticker-item">
-        <i data-lucide="sparkles"></i>
-        <span id="ticker-msg-4">جلد طبيعي فاخر 100% بضمان زيما الرسمي</span>
-        <span class="ticker-dot"></span>
-      </div>
-      <!-- Duplicate set for seamless infinite loop -->
-      <div class="ticker-item">
-        <i data-lucide="truck"></i>
-        <span>شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م</span>
-        <span class="ticker-dot"></span>
-      </div>
-      <div class="ticker-item">
-        <i data-lucide="zap"></i>
-        <span>توصيل سريع لباب بيتك خلال 24 - 48 ساعة</span>
-        <span class="ticker-dot"></span>
-      </div>
-      <div class="ticker-item">
-        <i data-lucide="shield-check"></i>
-        <span>حق معاينة وفحص الشحنة قبل الاستلام والدفع</span>
-        <span class="ticker-dot"></span>
-      </div>
-      <div class="ticker-item">
-        <i data-lucide="sparkles"></i>
-        <span>جلد طبيعي فاخر 100% بضمان زيما الرسمي</span>
-        <span class="ticker-dot"></span>
-      </div>
-    </div>
+  <div class="ticker-wrap" aria-label="Announcements" style="text-align:center; padding:9px 16px; font-size:12px; font-weight:600; letter-spacing:0.04em; background:var(--zema-espresso); color:#FAF9F6; display:flex; align-items:center; justify-content:center; gap:8px;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+    <span id="ticker-msg-1">شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م</span>
   </div>
 
   <!-- Header -->
@@ -1479,10 +1450,10 @@ template = '''<!DOCTYPE html>
     <div class="utility-row">
       <div class="utility-side utility-left">
         <button class="icon-btn mobile-menu-trigger" aria-label="Open menu" onclick="toggleMobileMenu()">
-          <i data-lucide="menu"></i>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
         </button>
-        <button class="icon-btn" aria-label="Search" onclick="toggleSearchModal(true)">
-          <i data-lucide="search"></i>
+        <button class="icon-btn" aria-label="Search" onclick="toggleSearchModal(true)" title="بحث">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
         </button>
         <a class="utility-link hidden sm:inline" href="#story" id="nav-our-story">قصتنا</a>
         
@@ -1500,15 +1471,15 @@ template = '''<!DOCTYPE html>
 
       <!-- Utility Right -->
       <div class="utility-side utility-right">
-        <button class="icon-btn" aria-label="Account" onclick="toggleAccountModal(true)">
-          <i data-lucide="user"></i>
+        <button class="icon-btn" aria-label="Account" onclick="toggleAccountModal(true)" title="تسجيل الدخول / حسابي">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </button>
-        <button class="icon-btn" aria-label="Wishlist" onclick="toggleWishlistDrawer(true)">
-          <i data-lucide="heart"></i>
+        <button class="icon-btn" aria-label="Wishlist" onclick="toggleWishlistDrawer(true)" title="المفضلة">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg>
           <span class="counter" id="wishlistCountBadge">0</span>
         </button>
-        <button class="icon-btn" aria-label="Shopping bag" onclick="showCartView()">
-          <i data-lucide="shopping-bag"></i>
+        <button class="icon-btn" aria-label="Shopping bag" onclick="showCartView()" title="سلة المشتريات">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.5a2 2 0 002 1.5h7.6a2 2 0 002-1.5L21 7H6"></path><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle></svg>
           <span class="counter" id="cartCountBadge">0</span>
         </button>
       </div>
@@ -1796,20 +1767,20 @@ template = '''<!DOCTYPE html>
           <!-- Perks Box -->
           <div class="pdp-perks-box">
             <div class="pdp-perk-item">
-              <i data-lucide="truck"></i>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
               <span>شحن مجاني فوق 2,500 ج.م</span>
             </div>
             <div class="pdp-perk-item">
-              <i data-lucide="shield-check"></i>
-              <span>فحص ومعاينة عند الاستلام</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+              <span>الدفع عند الاستلام متاح</span>
             </div>
             <div class="pdp-perk-item">
-              <i data-lucide="clock"></i>
-              <span>توصيل خلال 24 - 48 ساعة</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>توصيل لكافة محافظات مصر</span>
             </div>
             <div class="pdp-perk-item">
-              <i data-lucide="rotate-ccw"></i>
-              <span>استرجاع واستبدال 14 يوم</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+              <span>استبدال واسترجاع خلال 14 يوماً</span>
             </div>
           </div>
 
@@ -3189,10 +3160,10 @@ template = '''<!DOCTYPE html>
       document.documentElement.setAttribute('lang', currentLang);
 
       document.getElementById('currentLangLabel').textContent = isAr ? 'English' : 'العربية';
-      document.getElementById('ticker-msg-1').textContent = isAr ? 'شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م' : 'FREE SHIPPING OVER EGP 2,500 ACROSS EGYPT';
-      document.getElementById('ticker-msg-2').textContent = isAr ? 'توصيل سريع لباب بيتك خلال 24 - 48 ساعة' : 'FAST EXPRESS DELIVERY TO YOUR DOORSTEP (24-48H)';
-      document.getElementById('ticker-msg-3').textContent = isAr ? 'حق معاينة وفحص الشحنة قبل الاستلام والدفع' : 'INSPECT BEFORE PAYING — 100% PEACE OF MIND';
-      document.getElementById('ticker-msg-4').textContent = isAr ? 'جلد طبيعي فاخر 100% بضمان زيما الرسمي' : '100% GENUINE LUXURY LEATHER GUARANTEE';
+      const tickerMsg = document.getElementById('ticker-msg-1');
+      if (tickerMsg) {
+        tickerMsg.textContent = isAr ? 'شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م' : 'FREE SHIPPING OVER EGP 2,500 ACROSS EGYPT';
+      }
 
       document.getElementById('nav-our-story').textContent = isAr ? 'قصتنا' : 'Our Story';
       document.getElementById('nav-home').textContent = isAr ? 'الرئيسية' : 'Home';
@@ -3242,7 +3213,13 @@ template = '''<!DOCTYPE html>
     // Init
     updateCartUI();
     updateWishlistBadge();
-    lucide.createIcons();
+    try {
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+      }
+    } catch (e) {
+      console.warn('Lucide icon init note:', e);
+    }
   </script>
 </body>
 </html>
