@@ -1570,12 +1570,8 @@
         <button class="icon-btn" aria-label="Search" onclick="toggleSearchModal(true)" title="بحث">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
         </button>
-        <a class="utility-link hidden sm:inline" href="#story" id="nav-our-story">قصتنا</a>
-        
-        <!-- Language Switcher Button -->
-        <button class="lang-switcher-btn" onclick="toggleLanguage()" id="langSwitcherBtn">
-          <span>🌐</span>
-          <span id="currentLangLabel">English</span>
+        <button class="icon-btn" aria-label="Account" onclick="toggleAccountModal(true)" title="تسجيل الدخول / حسابي">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </button>
       </div>
 
@@ -1586,8 +1582,8 @@
 
       <!-- Utility Right -->
       <div class="utility-side utility-right">
-        <button class="icon-btn" aria-label="Account" onclick="toggleAccountModal(true)" title="تسجيل الدخول / حسابي">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <button class="icon-btn" onclick="toggleLanguage()" id="langSwitcherBtn" aria-label="Language" title="Language / تغيير اللغة">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
         </button>
         <button class="icon-btn" aria-label="Wishlist" onclick="toggleWishlistDrawer(true)" title="المفضلة">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg>
@@ -1603,18 +1599,7 @@
     <!-- Navigation Bar -->
     <nav class="desktop-nav" aria-label="Main navigation">
       <a href="#top" id="nav-home" onclick="showHomePage()">الرئيسية</a>
-      <div class="bags-menu">
-        <button class="nav-button" id="nav-bags">
-          حقائب اليد <i data-lucide="chevron-down" style="width:14px;height:14px;"></i>
-        </button>
-        <div class="bags-dropdown">
-          <a href="#bags-section" onclick="showHomePage()">حقائب اليد</a>
-          <a href="#bags-section" onclick="showHomePage()">حقائب كتف</a>
-          <a href="#bags-section" onclick="showHomePage()">حقائب كروس</a>
-          <a href="#bags-section" onclick="showHomePage()">حقائب توت</a>
-          <a href="#bags-section" onclick="showHomePage()">حقائب سهرة</a>
-        </div>
-      </div>
+      <a href="#bags-section" id="nav-bags" onclick="showHomePage()">حقائب</a>
       <a href="#wallets" id="nav-wallets" onclick="showHomePage()">محافظ</a>
       <a href="#belts" id="nav-belts" onclick="showHomePage()">أحزمة</a>
       <a href="#accessories" id="nav-accessories" onclick="showHomePage()">إكسسوارات</a>
@@ -3362,19 +3347,33 @@
       document.documentElement.setAttribute('dir', isAr ? 'rtl' : 'ltr');
       document.documentElement.setAttribute('lang', currentLang);
 
-      document.getElementById('currentLangLabel').textContent = isAr ? 'English' : 'العربية';
+      const langLabel = document.getElementById('currentLangLabel');
+      if (langLabel) langLabel.textContent = isAr ? 'English' : 'العربية';
+
+      const langBtn = document.getElementById('langSwitcherBtn');
+      if (langBtn) langBtn.setAttribute('title', isAr ? 'Switch to English' : 'التحويل للعربية');
+
       const tickerMsg = document.getElementById('ticker-msg-1');
       if (tickerMsg) {
         tickerMsg.textContent = isAr ? 'شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م' : 'FREE SHIPPING OVER EGP 2,500 ACROSS EGYPT';
       }
 
-      document.getElementById('nav-our-story').textContent = isAr ? 'قصتنا' : 'Our Story';
-      document.getElementById('nav-home').textContent = isAr ? 'الرئيسية' : 'Home';
-      document.getElementById('nav-wallets').textContent = isAr ? 'محافظ' : 'Wallets';
-      document.getElementById('nav-belts').textContent = isAr ? 'أحزمة' : 'Belts';
-      document.getElementById('nav-accessories').textContent = isAr ? 'إكسسوارات' : 'Accessories';
-      document.getElementById('nav-bestsellers').textContent = isAr ? 'الأكثر مبيعاً' : 'Best Sellers';
-      document.getElementById('nav-sale').textContent = isAr ? 'تخفيضات' : 'Sale';
+      const navStory = document.getElementById('nav-our-story');
+      if (navStory) navStory.textContent = isAr ? 'قصتنا' : 'Our Story';
+      const navHome = document.getElementById('nav-home');
+      if (navHome) navHome.textContent = isAr ? 'الرئيسية' : 'Home';
+      const navBags = document.getElementById('nav-bags');
+      if (navBags) navBags.textContent = isAr ? 'حقائب' : 'Bags';
+      const navWallets = document.getElementById('nav-wallets');
+      if (navWallets) navWallets.textContent = isAr ? 'محافظ' : 'Wallets';
+      const navBelts = document.getElementById('nav-belts');
+      if (navBelts) navBelts.textContent = isAr ? 'أحزمة' : 'Belts';
+      const navAcc = document.getElementById('nav-accessories');
+      if (navAcc) navAcc.textContent = isAr ? 'إكسسوارات' : 'Accessories';
+      const navBest = document.getElementById('nav-bestsellers');
+      if (navBest) navBest.textContent = isAr ? 'الأكثر مبيعاً' : 'Best Sellers';
+      const navSale = document.getElementById('nav-sale');
+      if (navSale) navSale.textContent = isAr ? 'تخفيضات' : 'Sale';
 
       document.querySelectorAll('.btn-text-qa').forEach(el => el.textContent = isAr ? 'إضافة سريعة للسلة' : 'Quick Add');
       
