@@ -1166,6 +1166,261 @@ template = '''<!DOCTYPE html>
   [dir="rtl"] .brand-link { order: 2; }
   [dir="rtl"] .hero-arrow.left { right: 20px; left: auto; }
   [dir="rtl"] .hero-arrow.right { left: 20px; right: auto; }
+
+  /* ========================================================== */
+  /* 📩 ZEMA LUXURY NEWSLETTER (JOIN OUR CIRCLE) */
+  /* ========================================================== */
+  .zema-newsletter-section {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background: linear-gradient(180deg, rgba(238, 231, 219, 0.25) 0%, #faf9f7 100%);
+    padding: 85px 24px 75px 24px;
+    text-align: center;
+    direction: rtl;
+  }
+  .zema-newsletter-container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .zema-circle-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #978269;
+    margin-bottom: 14px;
+  }
+  .zema-newsletter-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: #1A1918;
+    margin: 0 0 16px 0;
+    line-height: 1.25;
+  }
+  .zema-newsletter-desc {
+    font-size: 15px;
+    color: #67625d;
+    line-height: 1.8;
+    margin: 0 auto 32px auto;
+    max-width: 520px;
+    font-weight: 400;
+  }
+  .zema-newsletter-form {
+    display: flex;
+    gap: 10px;
+    max-width: 440px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+  @media (max-width: 540px) {
+    .zema-newsletter-form {
+      flex-direction: column;
+    }
+  }
+  .zema-newsletter-input {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #dcd7ce;
+    border-radius: 4px;
+    padding: 13px 18px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #1A1918;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .zema-newsletter-input:focus {
+    border-color: #978269;
+  }
+  .zema-newsletter-btn {
+    background: #978269;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 13px 28px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+  .zema-newsletter-btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  /* ========================================================== */
+  /* ❓ FAQ SECTION */
+  /* ========================================================== */
+  .zema-faq-section {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background: #faf9f7;
+    padding: 85px 24px 105px 24px;
+    direction: rtl;
+  }
+  .zema-faq-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .zema-faq-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8c8880;
+    margin-bottom: 12px;
+  }
+  .zema-faq-title {
+    font-family: 'Playfair Display', 'Cairo', serif;
+    font-size: clamp(32px, 4.5vw, 50px);
+    font-weight: 800;
+    color: #1A1918;
+    margin: 0 0 45px 0;
+    text-align: center;
+  }
+  .zema-faq-accordion {
+    border-top: 1px solid rgba(0, 0, 0, 0.09);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  }
+  .zema-faq-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  }
+  .zema-faq-item:last-child {
+    border-bottom: none;
+  }
+  .zema-faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1918;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color 0.2s;
+  }
+  .zema-faq-summary::-webkit-details-marker {
+    display: none;
+  }
+  .zema-faq-summary:hover {
+    color: #978269;
+  }
+  .zema-faq-icon {
+    font-size: 24px;
+    line-height: 1;
+    color: #978269;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    font-weight: 300;
+    margin-inline-start: 12px;
+  }
+  .zema-faq-item[open] .zema-faq-icon {
+    transform: rotate(45deg);
+  }
+  .zema-faq-body {
+    padding: 0 4px 22px 4px;
+    font-size: 14.5px;
+    color: #67625d;
+    line-height: 1.85;
+  }
+
+  /* ========================================================== */
+  /* 🏛️ FOOTER */
+  /* ========================================================== */
+  .zema-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(238, 231, 219, 0.4);
+    padding: 60px 24px 50px 24px;
+    direction: rtl;
+  }
+  .zema-footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 768px) {
+    .zema-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+  .zema-footer-eyebrow {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #67625d;
+    margin: 0 0 16px 0;
+  }
+  .zema-footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .zema-footer-list a {
+    color: #1A1918;
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .zema-footer-list a:hover {
+    color: #978269;
+    transform: translateX(-2px);
+  }
+  .zema-footer-social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #1A1918;
+    transition: color 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .zema-footer-social-icon:hover {
+    color: #978269;
+    transform: translateY(-2px);
+  }
+
+  /* ========================================================== */
+  /* 💬 FLOATING WHATSAPP BUTTON */
+  /* ========================================================== */
+  .zema-floating-wa {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 850;
+    display: flex;
+    width: 54px;
+    height: 54px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #25D366;
+    color: #ffffff;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .zema-floating-wa:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
+  }
+  @media (max-width: 600px) {
+    .zema-floating-wa {
+      bottom: 76px;
+      left: 16px;
+      width: 48px;
+      height: 48px;
+    }
+  }
   </style>
 </head>
 <body>
@@ -1656,37 +1911,125 @@ template = '''<!DOCTYPE html>
     </button>
   </aside>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-brand">
-      <img src="__LOGO_B64__" alt="ZEMA Logo" style="height:58px; width:auto; margin-bottom: 12px;" />
-      <p id="footer-desc">حقائب وإكسسوارات معاصرة وفاخرة صُممت للمرأة العصرية في مصر.</p>
+  <!-- ========================================================== -->
+  <!-- 📩 1. JOIN OUR CIRCLE (NEWSLETTER) -->
+  <!-- ========================================================== -->
+  <section id="newsletter" class="zema-newsletter-section" dir="rtl">
+    <div class="zema-newsletter-container">
+      <p class="zema-circle-eyebrow">JOIN OUR CIRCLE</p>
+      <h2 class="zema-newsletter-title">انضم إلى دائرتنا</h2>
+      <p class="zema-newsletter-desc">كُن أول من يكتشف العينات الجديدة، العروض الحصرية، والمجموعات الخاصة.</p>
+      <form class="zema-newsletter-form" onsubmit="event.preventDefault(); handleNewsletterSubmit(this);">
+        <input type="email" placeholder="بريدك الإلكتروني" aria-label="بريدك الإلكتروني" class="zema-newsletter-input" required />
+        <button type="submit" class="zema-newsletter-btn">اشترك</button>
+      </form>
+      <div id="newsletterSuccess" style="display:none; margin-top:16px; color:#1B7D3F; font-size:14px; font-weight:700;">✓ شكراً لاشتراكك في دائرة زِيما! ستصلك أحدث المجموعات والعروض الحصرية أولاً بأول.</div>
     </div>
-    <div class="footer-column">
-      <h3>تسوقي</h3>
-      <a href="#bags-section" onclick="showHomePage()">الحقائب</a>
-      <a href="#wallets" onclick="showHomePage()">المحافظ</a>
-      <a href="#belts" onclick="showHomePage()">الأحزمة</a>
-      <a href="#accessories" onclick="showHomePage()">الإكسسوارات</a>
-      <a href="#bags-section" onclick="showHomePage()">الأكثر مبيعاً</a>
+  </section>
+
+  <!-- ========================================================== -->
+  <!-- ❓ 2. FAQ (الأسئلة الشائعة) -->
+  <!-- ========================================================== -->
+  <section id="faq" class="zema-faq-section" dir="rtl">
+    <div class="zema-faq-container">
+      <div style="text-align:center; margin-bottom: 40px;">
+        <p class="zema-faq-eyebrow">FAQ</p>
+        <h2 class="zema-faq-title">الأسئلة الشائعة</h2>
+      </div>
+      <div class="zema-faq-accordion">
+        <details class="zema-faq-item">
+          <summary class="zema-faq-summary">
+            <span>هل الدفع عند الاستلام متاح؟</span>
+            <span class="zema-faq-icon">+</span>
+          </summary>
+          <div class="zema-faq-body">
+            نعم، الدفع عند الاستلام متاح لجميع المحافظات داخل مصر.
+          </div>
+        </details>
+        <details class="zema-faq-item">
+          <summary class="zema-faq-summary">
+            <span>كم تستغرق مدة الشحن؟</span>
+            <span class="zema-faq-icon">+</span>
+          </summary>
+          <div class="zema-faq-body">
+            من 2 إلى 5 أيام عمل حسب المحافظة. القاهرة والجيزة عادةً خلال 48 ساعة.
+          </div>
+        </details>
+        <details class="zema-faq-item">
+          <summary class="zema-faq-summary">
+            <span>هل يمكنني فتح الشحنة قبل الدفع؟</span>
+            <span class="zema-faq-icon">+</span>
+          </summary>
+          <div class="zema-faq-body">
+            لحماية المنتجات الفاخرة لا يُسمح بفتح الشحنة قبل الدفع، ولكن لديك حق الاستبدال خلال 14 يوماً.
+          </div>
+        </details>
+        <details class="zema-faq-item">
+          <summary class="zema-faq-summary">
+            <span>هل المنتجات أصلية ومضمونة؟</span>
+            <span class="zema-faq-icon">+</span>
+          </summary>
+          <div class="zema-faq-body">
+            جميع منتجات ZEMA مختارة بعناية ومضمونة الجودة، مع إمكانية الاستبدال أو الاسترجاع.
+          </div>
+        </details>
+      </div>
     </div>
-    <div class="footer-column">
-      <h3>المساعدة</h3>
-      <a href="#contact" onclick="toggleAccountModal(true)">تتبع شحنتك</a>
-      <a href="#contact" onclick="showCartView()">سلة المشتريات</a>
-      <a href="https://wa.me/201032117373" target="_blank">خدمة العملاء</a>
-    </div>
-    <div class="footer-column">
-      <h3>تواصلي معنا</h3>
-      <a href="https://wa.me/201032117373" target="_blank">واتساب: 01032117373</a>
-      <a href="#contact">انستجرام</a>
-      <a href="#contact">فيسبوك</a>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 ZEMA Luxury. All rights reserved.</p>
-      <p>صُممت بكل فخر وشغف في مصر 🇪🇬</p>
+  </section>
+
+  <!-- ========================================================== -->
+  <!-- 🏛️ 3. FOOTER (المشروع القديم مع الأقسام: حقائب، محافظ، أحزمة) -->
+  <!-- ========================================================== -->
+  <footer class="zema-footer" dir="rtl">
+    <div class="zema-footer-grid">
+      <!-- Right Column: Logo & Arabic Bio -->
+      <div class="zema-footer-col">
+        <a href="#top" onclick="showHomePage()" style="display:inline-block; margin-bottom:16px;">
+          <img src="__LOGO_B64__" alt="ZEMA" style="height:auto; width:110px; max-width:110px; display:block;" />
+        </a>
+        <p style="font-size:13.5px; color:#67625d; line-height:1.75; max-width:320px; margin:0;">
+          زِيما — مجموعة مختارة من الحقائب الجلدية الفاخرة والمحافظ والإكسسوارات، صُنعت لمن يدرك تفاصيل الأناقة.
+        </p>
+      </div>
+
+      <!-- Center Column: روابط (Links) with requested categories -->
+      <div class="zema-footer-col">
+        <p class="zema-footer-eyebrow">روابط</p>
+        <ul class="zema-footer-list">
+          <li><a href="#bags-section" onclick="showHomePage()">المتجر</a></li>
+          <li><a href="#bags-section" onclick="showHomePage()">حقائب</a></li>
+          <li><a href="#bags-section" onclick="showHomePage()">محافظ</a></li>
+          <li><a href="#bags-section" onclick="showHomePage()">أحزمة</a></li>
+          <li><a href="#bags-section" onclick="showHomePage()">العروض</a></li>
+          <li><a href="#faq">الأسئلة الشائعة</a></li>
+          <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)">تتبع شحنتك</a></li>
+        </ul>
+      </div>
+
+      <!-- Left Column: تواصل معنا & حقوق النشر -->
+      <div class="zema-footer-col">
+        <p class="zema-footer-eyebrow">تواصل معنا</p>
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px;">
+          <a href="https://www.facebook.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="zema-footer-social-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.7v3.1h2.7V22h3.1z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="zema-footer-social-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+        </div>
+        <p style="font-size:12px; color:#67625d; margin:0; line-height:1.6;">
+          © 2026 ZEMA Maison — أناقة خالدة، فخامة عصرية
+        </p>
+      </div>
     </div>
   </footer>
+
+  <!-- ========================================================== -->
+  <!-- 💬 4. FLOATING WHATSAPP BUTTON (من المشروع القديم) -->
+  <!-- ========================================================== -->
+  <a href="https://wa.me/201032117373?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D8%B2%D9%90%D9%8A%D9%85%D8%A7" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="zema-floating-wa">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
+  </a>
 
   <!-- ========================================================== -->
   <!-- 🛍️ 3. UNIFIED SLIDE-OVER DRAWER (CART -> CHECKOUT -> THANK YOU) -->
@@ -2884,6 +3227,16 @@ template = '''<!DOCTYPE html>
     if (window.location.hash.startsWith('#product-')) {
       const id = window.location.hash.replace('#product-', '');
       openPDP(id);
+    }
+
+    // Newsletter Form Submission Handler
+    function handleNewsletterSubmit(form) {
+      const input = form.querySelector('input[type="email"]');
+      const successBox = document.getElementById('newsletterSuccess');
+      if (input && input.value) {
+        if (successBox) successBox.style.display = 'block';
+        form.style.display = 'none';
+      }
     }
 
     // Init
