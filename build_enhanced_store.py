@@ -2115,20 +2115,37 @@ template = '''<!DOCTYPE html>
       }
     }
 
-            // ==========================================
+                // ==========================================
     // 🛍️ 3. EXACT PREVIOUS PROJECT CART & CHECKOUT
     // ==========================================
     let activePromo = null; // { code: 'ZEMA10', rate: 0.1 }
 
-    function showCartView() {
-      document.getElementById('homeMain').style.display = 'none';
-      document.getElementById('pdpView').style.display = 'none';
-      document.getElementById('checkoutView').style.display = 'none';
-      document.getElementById('thankYouView').style.display = 'none';
-      
+    function switchView(viewName) {
+      const homeView = document.getElementById('home-view');
+      const pdpView = document.getElementById('pdp-view');
       const cartView = document.getElementById('cartView');
-      cartView.style.display = 'block';
+      const checkoutView = document.getElementById('checkoutView');
+      const thankYouView = document.getElementById('thankYouView');
+
+      if (homeView) homeView.style.display = (viewName === 'home') ? 'block' : 'none';
+      if (pdpView) pdpView.style.display = (viewName === 'pdp') ? 'block' : 'none';
+      if (cartView) cartView.style.display = (viewName === 'cart') ? 'block' : 'none';
+      if (checkoutView) checkoutView.style.display = (viewName === 'checkout') ? 'block' : 'none';
+      if (thankYouView) thankYouView.style.display = (viewName === 'thank-you') ? 'block' : 'none';
+
+      if (viewName !== 'pdp') {
+        document.body.classList.remove('is-pdp');
+      }
       window.scrollTo(0, 0);
+    }
+
+    function showHomePage() {
+      switchView('home');
+      window.location.hash = '';
+    }
+
+    function showCartView() {
+      switchView('cart');
       window.location.hash = 'cart';
       renderCartView();
     }
@@ -2138,47 +2155,29 @@ template = '''<!DOCTYPE html>
         showCartView();
         return;
       }
-      document.getElementById('homeMain').style.display = 'none';
-      document.getElementById('pdpView').style.display = 'none';
-      document.getElementById('cartView').style.display = 'none';
-      document.getElementById('thankYouView').style.display = 'none';
-
-      const checkoutView = document.getElementById('checkoutView');
-      checkoutView.style.display = 'block';
-      window.scrollTo(0, 0);
+      switchView('checkout');
       window.location.hash = 'checkout';
       renderCheckoutView();
     }
 
     function showThankYouView(orderData) {
-      document.getElementById('homeMain').style.display = 'none';
-      document.getElementById('pdpView').style.display = 'none';
-      document.getElementById('cartView').style.display = 'none';
-      document.getElementById('checkoutView').style.display = 'none';
-
-      const tyView = document.getElementById('thankYouView');
-      tyView.style.display = 'block';
-      window.scrollTo(0, 0);
+      switchView('thank-you');
       window.location.hash = 'thank-you';
 
       if (orderData) {
-        document.getElementById('tyOrderNumberDisplay').textContent = '#' + orderData.order_number;
-        document.getElementById('tyCustomerName').textContent = orderData.customer_name;
-        document.getElementById('tyCustomerPhone').textContent = orderData.customer_phone;
-        document.getElementById('tyCustomerAddress').textContent = orderData.governorate + (orderData.city ? ' - ' + orderData.city : '') + ' - ' + orderData.address;
-        document.getElementById('tyCustomerTotal').textContent = orderData.total.toLocaleString() + (currentLang === 'ar' ? ' ج.م' : ' EGP');
+        const isAr = currentLang === 'ar';
+        const elNum = document.getElementById('tyOrderNumberDisplay');
+        if (elNum) elNum.textContent = '#' + orderData.order_number;
+        const elName = document.getElementById('tyCustomerName');
+        if (elName) elName.textContent = orderData.customer_name;
+        const elPhone = document.getElementById('tyCustomerPhone');
+        if (elPhone) elPhone.textContent = orderData.customer_phone;
+        const elAddr = document.getElementById('tyCustomerAddress');
+        if (elAddr) elAddr.textContent = orderData.governorate + (orderData.city ? ' - ' + orderData.city : '') + ' - ' + orderData.address;
+        const elTotal = document.getElementById('tyCustomerTotal');
+        if (elTotal) elTotal.textContent = orderData.total.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
       }
       lucide.createIcons();
-    }
-
-    function showHomePage() {
-      document.getElementById('cartView').style.display = 'none';
-      document.getElementById('checkoutView').style.display = 'none';
-      document.getElementById('thankYouView').style.display = 'none';
-      document.getElementById('pdpView').style.display = 'none';
-      document.getElementById('homeMain').style.display = 'block';
-      window.location.hash = '';
-      window.scrollTo(0, 0);
     }
 
     function addToCart(productId, qty = 1) {
@@ -2237,15 +2236,19 @@ template = '''<!DOCTYPE html>
       // Shipping Meter Fill
       const meterFill = document.getElementById('cartMeterBarFill');
       const meterText = document.getElementById('cartShippingStatusText');
-      meterFill.style.width = progress + '%';
-      if (subtotal >= threshold) {
-        meterText.innerHTML = '🎉 <strong>' + (isAr ? 'مبروك! حصلت على شحن مجاني لكافة المحافظات!' : "Congrats! You've unlocked free shipping!") + '</strong>';
-        meterFill.style.background = '#1b7d3f';
-      } else {
-        const remaining = threshold - subtotal;
-        meterText.innerHTML = '🚚 ' + (isAr ? 'أضف منتجات بقيمة <strong>' + remaining.toLocaleString() + ' ج.م</strong> للحصول على شحن مجاني!' : 'Add products worth <strong>' + remaining.toLocaleString() + ' EGP</strong> more for free shipping!');
-        meterFill.style.background = '#C5A059';
+      if (meterFill && meterText) {
+        meterFill.style.width = progress + '%';
+        if (subtotal >= threshold) {
+          meterText.innerHTML = '🎉 <strong>' + (isAr ? 'مبروك! حصلت على شحن مجاني لكافة المحافظات!' : "Congrats! You've unlocked free shipping!") + '</strong>';
+          meterFill.style.background = '#1b7d3f';
+        } else {
+          const remaining = threshold - subtotal;
+          meterText.innerHTML = '🚚 ' + (isAr ? 'أضف منتجات بقيمة <strong>' + remaining.toLocaleString() + ' ج.م</strong> للحصول على شحن مجاني!' : 'Add products worth <strong>' + remaining.toLocaleString() + ' EGP</strong> more for free shipping!');
+          meterFill.style.background = '#C5A059';
+        }
       }
+
+      if (!container) return;
 
       if (cart.length === 0) {
         container.innerHTML = `
@@ -2316,26 +2319,29 @@ template = '''<!DOCTYPE html>
     function renderCheckoutView() {
       const isAr = currentLang === 'ar';
       const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-      const gov = document.getElementById('coGov').value;
+      const govEl = document.getElementById('coGov');
+      const gov = govEl ? govEl.value : '';
       const shipping = calculateShipping(subtotal, gov);
 
       // 1. Render Ordered Items Summary List
       const summaryList = document.getElementById('coProductsSummaryList');
-      let itemsHtml = '';
-      cart.forEach(item => {
-        const title = isAr ? item.nameAr : item.nameEn;
-        const lineTotal = item.price * item.qty;
-        itemsHtml += `
-          <li class="co-prod-item-line">
-            <div class="co-prod-name-qty">
-              <span>${title}</span>
-              <span class="co-prod-qty-badge">× ${item.qty}</span>
-            </div>
-            <span class="co-prod-price-badge">${lineTotal.toLocaleString()} ${isAr ? 'ج.م' : 'EGP'}</span>
-          </li>
-        `;
-      });
-      summaryList.innerHTML = itemsHtml;
+      if (summaryList) {
+        let itemsHtml = '';
+        cart.forEach(item => {
+          const title = isAr ? item.nameAr : item.nameEn;
+          const lineTotal = item.price * item.qty;
+          itemsHtml += `
+            <li class="co-prod-item-line">
+              <div class="co-prod-name-qty">
+                <span>${title}</span>
+                <span class="co-prod-qty-badge">× ${item.qty}</span>
+              </div>
+              <span class="co-prod-price-badge">${lineTotal.toLocaleString()} ${isAr ? 'ج.م' : 'EGP'}</span>
+            </li>
+          `;
+        });
+        summaryList.innerHTML = itemsHtml;
+      }
 
       // 2. Calculations
       let discountAmount = 0;
@@ -2343,30 +2349,37 @@ template = '''<!DOCTYPE html>
         discountAmount = Math.round(subtotal * activePromo.rate);
       }
 
-      document.getElementById('coSubtotalVal').textContent = subtotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+      const subtotalEl = document.getElementById('coSubtotalVal');
+      if (subtotalEl) subtotalEl.textContent = subtotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
 
       const discRow = document.getElementById('coDiscountRow');
-      if (discountAmount > 0) {
-        discRow.style.display = 'flex';
-        document.getElementById('coDiscountLabel').textContent = (isAr ? 'خصم ' : 'Discount ') + `(${activePromo.code}):`;
-        document.getElementById('coDiscountVal').textContent = '- ' + discountAmount.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
-      } else {
-        discRow.style.display = 'none';
+      if (discRow) {
+        if (discountAmount > 0) {
+          discRow.style.display = 'flex';
+          document.getElementById('coDiscountLabel').textContent = (isAr ? 'خصم ' : 'Discount ') + `(${activePromo.code}):`;
+          document.getElementById('coDiscountVal').textContent = '- ' + discountAmount.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+        } else {
+          discRow.style.display = 'none';
+        }
       }
 
       const shippingEl = document.getElementById('coShippingVal');
-      if (shipping === 0) {
-        shippingEl.innerHTML = '<span style="color:#16a34a; font-weight:bold;">' + (isAr ? 'مجاني 🎉' : 'Free 🎉') + '</span>';
-      } else if (shipping !== null) {
-        shippingEl.textContent = shipping + (isAr ? ' ج.م' : ' EGP');
-      } else {
-        shippingEl.textContent = isAr ? 'اختر المحافظة لحساب الشحن' : 'Select governorate to calculate shipping';
+      if (shippingEl) {
+        if (shipping === 0) {
+          shippingEl.innerHTML = '<span style="color:#16a34a; font-weight:bold;">' + (isAr ? 'مجاني 🎉' : 'Free 🎉') + '</span>';
+        } else if (shipping !== null) {
+          shippingEl.textContent = shipping + (isAr ? ' ج.م' : ' EGP');
+        } else {
+          shippingEl.textContent = isAr ? 'اختر المحافظة لحساب الشحن' : 'Select governorate to calculate shipping';
+        }
       }
 
       const activeShipping = shipping !== null ? shipping : 0;
       const finalTotal = Math.max(0, subtotal - discountAmount + activeShipping);
-      document.getElementById('coFinalTotalVal').textContent = finalTotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
-      document.getElementById('btnConfirmOrderText').textContent = (isAr ? 'تأكيد الطلب — ' : 'Confirm Order — ') + finalTotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+      const finalTotalEl = document.getElementById('coFinalTotalVal');
+      if (finalTotalEl) finalTotalEl.textContent = finalTotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+      const btnText = document.getElementById('btnConfirmOrderText');
+      if (btnText) btnText.textContent = (isAr ? 'تأكيد الطلب — ' : 'Confirm Order — ') + finalTotal.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
     }
 
     function onCheckoutGovChange() {
@@ -2376,17 +2389,18 @@ template = '''<!DOCTYPE html>
     function validatePhoneLive() {
       const phoneInput = document.getElementById('coPhone');
       const errBox = document.getElementById('coPhoneErr');
+      if (!phoneInput) return true;
       const cleanPhone = phoneInput.value.replace(/\\D/g, '');
       phoneInput.value = cleanPhone;
 
       const isEgyptian = /^01[0125][0-9]{8}$/.test(cleanPhone);
       if (cleanPhone.length > 0 && !isEgyptian) {
         phoneInput.classList.add('input-error');
-        errBox.style.display = 'block';
+        if (errBox) errBox.style.display = 'block';
         return false;
       } else {
         phoneInput.classList.remove('input-error');
-        errBox.style.display = 'none';
+        if (errBox) errBox.style.display = 'none';
         return isEgyptian;
       }
     }
@@ -2394,30 +2408,37 @@ template = '''<!DOCTYPE html>
     function applyCheckoutCoupon() {
       const input = document.getElementById('coCouponInput');
       const feedback = document.getElementById('coCouponFeedback');
-      const phone = document.getElementById('coPhone').value.trim();
-      const code = input.value.trim().toUpperCase();
+      const phoneEl = document.getElementById('coPhone');
+      const phone = phoneEl ? phoneEl.value.trim() : '';
+      const code = input ? input.value.trim().toUpperCase() : '';
       const isAr = currentLang === 'ar';
 
       if (!code) return;
 
       if (!phone) {
-        feedback.className = 'co-promo-msg err';
-        feedback.textContent = isAr ? 'أدخل رقم هاتفك أولاً للتحقق من أهلية الخصم' : 'Enter your phone first to verify code eligibility';
-        feedback.style.display = 'block';
+        if (feedback) {
+          feedback.className = 'co-promo-msg err';
+          feedback.textContent = isAr ? 'أدخل رقم هاتفك أولاً للتحقق من أهلية الخصم' : 'Enter your phone first to verify code eligibility';
+          feedback.style.display = 'block';
+        }
         return;
       }
 
       if (code === 'ZEMA10') {
         activePromo = { code: 'ZEMA10', rate: 0.1 };
-        feedback.className = 'co-promo-msg ok';
-        feedback.textContent = isAr ? '✓ تم تطبيق خصم 10%' : '✓ Applied 10% discount';
-        feedback.style.display = 'block';
+        if (feedback) {
+          feedback.className = 'co-promo-msg ok';
+          feedback.textContent = isAr ? '✓ تم تطبيق خصم 10%' : '✓ Applied 10% discount';
+          feedback.style.display = 'block';
+        }
         renderCheckoutView();
       } else {
         activePromo = null;
-        feedback.className = 'co-promo-msg err';
-        feedback.textContent = isAr ? 'كود الخصم غير صالح' : 'Invalid discount code';
-        feedback.style.display = 'block';
+        if (feedback) {
+          feedback.className = 'co-promo-msg err';
+          feedback.textContent = isAr ? 'كود الخصم غير صالح' : 'Invalid discount code';
+          feedback.style.display = 'block';
+        }
         renderCheckoutView();
       }
     }
@@ -2425,7 +2446,7 @@ template = '''<!DOCTYPE html>
     function toggleCoPasswordInput() {
       const chk = document.getElementById('coCreateAccountChk');
       const box = document.getElementById('coPasswordBox');
-      box.style.display = chk.checked ? 'block' : 'none';
+      if (box && chk) box.style.display = chk.checked ? 'block' : 'none';
     }
 
     function handleCheckoutFormSubmit(e) {
@@ -2503,9 +2524,9 @@ template = '''<!DOCTYPE html>
         showThankYouView();
       } else if (h.startsWith('#product-')) {
         const id = h.replace('#product-', '');
-        showPDP(id);
-      } else if (!h || h === '#' || h === '#story' || h === '#contact' || h === '#faq') {
-        if (!h || h === '#') showHomePage();
+        openProduct(id);
+      } else if (!h || h === '#' || h === '#top' || h === '#story' || h === '#contact' || h === '#faq') {
+        if (!h || h === '#' || h === '#top') showHomePage();
       }
     });
 
@@ -2515,7 +2536,7 @@ template = '''<!DOCTYPE html>
       if (h === '#cart') showCartView();
       else if (h === '#checkout') showCheckoutView();
       else if (h === '#thank-you') showThankYouView();
-      else if (h.startsWith('#product-')) showPDP(h.replace('#product-', ''));
+      else if (h.startsWith('#product-')) openProduct(h.replace('#product-', ''));
       updateCartBadge();
     });
 
