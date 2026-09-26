@@ -23,6 +23,10 @@ bag_burgundy_b64 = get_b64(os.path.join(products_dir, 'bag-burgundy.jpg'))
 bag_camel_b64 = get_b64(os.path.join(products_dir, 'bag-camel-tote.jpg'))
 bag_crossbody_b64 = get_b64(os.path.join(products_dir, 'bag-mini-crossbody.jpg'))
 bag_quilted_b64 = get_b64(os.path.join(products_dir, 'bag-quilted-noir.jpg'))
+wallet_bifold_b64 = get_b64(os.path.join(products_dir, 'wallet-bifold.jpg'))
+wallet_cardholder_b64 = get_b64(os.path.join(products_dir, 'wallet-cardholder.jpg'))
+wallet_continental_b64 = get_b64(os.path.join(products_dir, 'wallet-continental.jpg'))
+wallet_zip_b64 = get_b64(os.path.join(products_dir, 'wallet-zip.jpg'))
 
 css_file = r'C:\Users\User\.gemini\antigravity\scratch\zema-vibes-hub.css'
 with open(css_file, 'r', encoding='utf-8') as f:
@@ -1766,7 +1770,701 @@ template = '''<!DOCTYPE html>
     color: #ffffff;
     transform: translateY(-1px);
   }
-  </style>
+  
+  /* ========================================================== */
+  /* 👜 DEDICATED CATEGORY / COLLECTION VIEW (MATCHING SCREENSHOT) */
+  /* ========================================================== */
+  #category-view {
+    background: #FAF9F6;
+    min-height: 80vh;
+    padding: 32px 0 80px 0;
+    color: #1A1918;
+  }
+
+  .cat-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .cat-header-banner {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(26, 25, 24, 0.08);
+  }
+
+  .cat-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #76726c;
+    margin-bottom: 12px;
+  }
+
+  .cat-breadcrumbs a {
+    color: #76726c;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .cat-breadcrumbs a:hover {
+    color: #000;
+  }
+
+  .cat-breadcrumbs .breadcrumb-sep {
+    font-size: 11px;
+    opacity: 0.6;
+  }
+
+  .cat-breadcrumbs .active {
+    color: #1A1918;
+    font-weight: 600;
+  }
+
+  .cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #1A1918;
+    letter-spacing: -0.01em;
+  }
+
+  .cat-subtitle {
+    font-size: 14.5px;
+    color: #67625d;
+    margin: 0;
+    max-width: 680px;
+    line-height: 1.6;
+  }
+
+  .cat-main-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  @media (max-width: 1024px) {
+    .cat-main-layout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .cat-sidebar {
+      display: none;
+    }
+    .cat-sidebar.mobile-open {
+      display: block !important;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FAF9F6;
+      z-index: 9999;
+      padding: 24px;
+      overflow-y: auto;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    }
+  }
+
+  .cat-sidebar {
+    background: transparent;
+  }
+
+  .cat-filter-widget {
+    padding-bottom: 22px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid rgba(26, 25, 24, 0.1);
+  }
+
+  .cat-filter-widget:last-of-type {
+    border-bottom: none;
+  }
+
+  .cat-filter-head {
+    margin-bottom: 16px;
+  }
+
+  .cat-filter-head-accordion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-bottom: 14px;
+    text-align: inherit;
+  }
+
+  .cat-filter-title {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1918;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .accordion-toggle-icon {
+    font-size: 18px;
+    font-weight: 400;
+    color: #555;
+    transition: transform 0.2s;
+    user-select: none;
+  }
+
+  .cat-filter-head-accordion.is-collapsed .accordion-toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .cat-filter-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cat-filter-head-accordion.is-collapsed + .cat-filter-body {
+    display: none;
+  }
+
+  .cat-category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cat-category-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .cat-category-link:hover {
+    background: rgba(26, 25, 24, 0.04);
+    color: #000;
+  }
+
+  .cat-category-link.is-active {
+    background: #1A1918;
+    color: #FAF9F6 !important;
+    font-weight: 600;
+  }
+
+  .cat-category-link .cat-count-pill {
+    font-size: 11px;
+    opacity: 0.7;
+  }
+
+  .cat-checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .cat-checkbox-item input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: #1A1918;
+    cursor: pointer;
+  }
+
+  .cat-price-currency-lbl {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+  }
+
+  .cat-price-inputs-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .price-input-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border: 1px solid #D0C9C0;
+    background: #FFF;
+    border-radius: 6px;
+    padding: 6px 10px;
+    gap: 4px;
+  }
+
+  .price-input-box .currency-prefix {
+    font-size: 12px;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .price-input-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1A1918;
+    background: transparent;
+  }
+
+  .price-dash {
+    color: #999;
+    font-weight: 600;
+  }
+
+  .cat-dual-slider-wrap {
+    position: relative;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    margin: 6px 0 12px 0;
+  }
+
+  .slider-track {
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: #E5E0D8;
+    border-radius: 2px;
+    z-index: 1;
+  }
+
+  .slider-track-highlight {
+    position: absolute;
+    height: 4px;
+    background: #1A1918;
+    border-radius: 2px;
+    z-index: 2;
+    left: 0%;
+    width: 100%;
+  }
+
+  .cat-dual-slider-wrap input[type="range"] {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    margin: 0;
+    z-index: 3;
+  }
+
+  .cat-dual-slider-wrap input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #1A1918;
+    border: 3px solid #FAF9F6;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .cat-dual-slider-wrap input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #1A1918;
+    border: 3px solid #FAF9F6;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .cat-price-readout {
+    font-size: 13px;
+    color: #444;
+    font-weight: 600;
+  }
+
+  .cat-clear-filters-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid #1A1918;
+    color: #1A1918;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+
+  .cat-clear-filters-btn:hover {
+    background: #1A1918;
+    color: #FAF9F6;
+  }
+
+  .cat-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(26, 25, 24, 0.08);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .cat-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cat-results-count {
+    font-size: 13.5px;
+    color: #76726c;
+    margin: 0;
+  }
+
+  .cat-results-count .bold-count {
+    font-weight: 700;
+    color: #1A1918;
+  }
+
+  .mobile-filter-open-btn {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #D0C9C0;
+    background: #FFF;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    .mobile-filter-open-btn {
+      display: inline-flex;
+    }
+  }
+
+  .cat-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cat-layout-switchers {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .layout-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .layout-btn:hover {
+    color: #1A1918;
+    background: rgba(26, 25, 24, 0.05);
+  }
+
+  .layout-btn.is-active {
+    color: #1A1918;
+    background: rgba(26, 25, 24, 0.1);
+  }
+
+  .cat-sort-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cat-sort-label {
+    font-size: 13px;
+    color: #76726c;
+  }
+
+  #catSortSelect {
+    background: #FFF;
+    border: 1px solid #D0C9C0;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1A1918;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  #catSortSelect:focus {
+    border-color: #1A1918;
+  }
+
+  .cat-products-grid {
+    display: grid;
+    gap: 24px;
+    transition: all 0.3s;
+  }
+
+  .cat-products-grid.cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cat-products-grid.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cat-products-grid.cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    .cat-products-grid.cols-3,
+    .cat-products-grid.cols-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 540px) {
+    .cat-products-grid.cols-2,
+    .cat-products-grid.cols-3,
+    .cat-products-grid.cols-4 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cat-product-card {
+    position: relative;
+    background: #FFF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cat-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+
+  .cat-card-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.05;
+    background: #F4F1EC;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .cat-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .cat-product-card:hover .cat-card-img-wrap img {
+    transform: scale(1.04);
+  }
+
+  .cat-sale-badge {
+    position: absolute;
+    top: 12px;
+    inset-inline-start: 12px;
+    background: #1A1918;
+    color: #FFF;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    z-index: 4;
+  }
+
+  .cat-quick-actions {
+    position: absolute;
+    top: 12px;
+    inset-inline-end: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 4;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: all 0.25s ease;
+  }
+
+  [dir="rtl"] .cat-quick-actions {
+    transform: translateX(-8px);
+  }
+
+  .cat-product-card:hover .cat-quick-actions {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .cat-action-circle-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #FFF;
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #1A1918;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .cat-action-circle-btn:hover {
+    background: #1A1918;
+    color: #FFF;
+    transform: scale(1.08);
+  }
+
+  .cat-card-bottom-action {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    z-index: 4;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.25s ease;
+  }
+
+  .cat-product-card:hover .cat-card-bottom-action {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cat-select-options-btn {
+    width: 100%;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    color: #1A1918;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .cat-select-options-btn:hover {
+    background: #1A1918;
+    color: #FFF;
+  }
+
+  .cat-card-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .cat-card-category {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #8c8780;
+    margin-bottom: 4px;
+  }
+
+  .cat-card-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #1A1918;
+    margin: 0 0 8px 0;
+    cursor: pointer;
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+
+  .cat-card-title:hover {
+    color: #C5A059;
+  }
+
+  .cat-card-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .cat-card-price-current {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1918;
+  }
+
+  .cat-card-price-old {
+    font-size: 13px;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  .cat-empty-state {
+    text-align: center;
+    padding: 64px 24px;
+    background: #FFF;
+    border-radius: 12px;
+    border: 1px dashed #D0C9C0;
+  }
+
+  .cat-empty-state .empty-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1918;
+    margin-bottom: 8px;
+  }
+
+  .cat-empty-state .empty-subtitle {
+    font-size: 14px;
+    color: #76726c;
+    margin-bottom: 20px;
+  }
+
+</style>
 </head>
 <body>
 
@@ -1832,24 +2530,24 @@ template = '''<!DOCTYPE html>
 
       <!-- Bags Submenu with Dropdown (matching screenshot) -->
       <div class="bags-nav-wrapper is-active" id="bagsNavWrapper">
-        <button class="bags-nav-btn" id="nav-bags-btn" onclick="toggleBagsDropdown(event)" aria-haspopup="true" aria-expanded="false">
+        <button class="bags-nav-btn" id="nav-bags-btn" onclick="openCategoryPage('bags', event)" aria-haspopup="true" aria-expanded="false">
           <span id="nav-bags-label">حقائب</span>
           <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="bags-nav-dropdown" id="bagsNavDropdown">
-          <a href="#bags-section" onclick="filterBags('handbags', event)" class="bags-dropdown-item" id="nav-sub-handbags">حقائب يد</a>
-          <a href="#bags-section" onclick="filterBags('shoulder', event)" class="bags-dropdown-item" id="nav-sub-shoulder">حقائب كتف</a>
-          <a href="#bags-section" onclick="filterBags('crossbody', event)" class="bags-dropdown-item" id="nav-sub-crossbody">حقائب كروس</a>
-          <a href="#bags-section" onclick="filterBags('tote', event)" class="bags-dropdown-item" id="nav-sub-tote">حقائب توت</a>
-          <a href="#bags-section" onclick="filterBags('evening', event)" class="bags-dropdown-item" id="nav-sub-evening">حقائب سهرة</a>
-          <a href="#bags-section" onclick="filterBags('all', event)" class="bags-dropdown-item bags-dropdown-all" id="nav-sub-all">عرض كل الحقائب</a>
+          <a href="javascript:void(0)" onclick="openCategoryPage('handbags', event)" class="bags-dropdown-item" id="nav-sub-handbags">حقائب يد</a>
+          <a href="javascript:void(0)" onclick="openCategoryPage('shoulder', event)" class="bags-dropdown-item" id="nav-sub-shoulder">حقائب كتف</a>
+          <a href="javascript:void(0)" onclick="openCategoryPage('crossbody', event)" class="bags-dropdown-item" id="nav-sub-crossbody">حقائب كروس</a>
+          <a href="javascript:void(0)" onclick="openCategoryPage('tote', event)" class="bags-dropdown-item" id="nav-sub-tote">حقائب توت</a>
+          <a href="javascript:void(0)" onclick="openCategoryPage('evening', event)" class="bags-dropdown-item" id="nav-sub-evening">حقائب سهرة</a>
+          <a href="javascript:void(0)" onclick="openCategoryPage('bags', event)" class="bags-dropdown-item bags-dropdown-all" id="nav-sub-all">عرض كل الحقائب</a>
         </div>
       </div>
 
-      <a href="#wallets" id="nav-wallets" onclick="showHomePage()">محافظ</a>
-      <a href="#belts" id="nav-belts" onclick="showHomePage()">أحزمة</a>
-      <a href="#bags-section" id="nav-bestsellers" onclick="filterBags('all', event)">الأكثر مبيعاً</a>
-      <a href="#bags-section" class="nav-sale" id="nav-sale" onclick="filterBags('all', event)">تخفيضات</a>
+      <a href="javascript:void(0)" id="nav-wallets" onclick="openCategoryPage('wallets', event)">محافظ</a>
+      <a href="javascript:void(0)" id="nav-belts" onclick="openCategoryPage('belts', event)">أحزمة</a>
+      <a href="javascript:void(0)" id="nav-bestsellers" onclick="openCategoryPage('bestsellers', event)">الأكثر مبيعاً</a>
+      <a href="javascript:void(0)" class="nav-sale" id="nav-sale" onclick="openCategoryPage('sales', event)">تخفيضات</a>
     </nav>
   </header>
 
@@ -2070,7 +2768,185 @@ template = '''<!DOCTYPE html>
   </main>
 
   <!-- ========================================================== -->
-  <!-- 📄 2. DEDICATED PRODUCT DETAIL PAGE (PDP VIEW) -->
+  <!-- 👜 2. DEDICATED CATEGORY / COLLECTION PAGE (CATEGORY VIEW) -->
+  <!-- ========================================================== -->
+  <section id="category-view" style="display:none;" class="cat-page-wrapper">
+    <div class="cat-container">
+      
+      <!-- Category Header Banner -->
+      <div class="cat-header-banner">
+        <nav class="cat-breadcrumbs">
+          <a href="#top" onclick="showHomePage()">الرئيسية</a>
+          <span class="breadcrumb-sep">&gt;</span>
+          <span class="active" id="cat-breadcrumb-title">حقائب</span>
+        </nav>
+        <h1 class="cat-title" id="cat-main-title">حقائب فاخرة</h1>
+        <p class="cat-subtitle" id="cat-main-subtitle">استكشفي تشكيلة الحقائب الجلدية الفاخرة المصنوعة يدوياً بأعلى معايير الجودة والذوق الرفيع.</p>
+      </div>
+
+      <!-- Main Layout: Sidebar Filter + Content Grid -->
+      <div class="cat-main-layout">
+        
+        <!-- Left Sidebar Filter (matching screenshot media_1790454194145.png) -->
+        <aside class="cat-sidebar" id="catSidebar">
+          
+          <!-- Products Category Section -->
+          <div class="cat-filter-widget">
+            <div class="cat-filter-head">
+              <h3 class="cat-filter-title" id="filter-cat-heading">أقسام المنتجات</h3>
+            </div>
+            <div class="cat-filter-body">
+              <ul class="cat-category-list" id="catCategoryList">
+                <li><a class="cat-category-link is-active" data-cat="bags" onclick="switchCategoryFromSidebar('bags', event)"><span class="cat-name">حقائب</span> <span class="cat-count-pill" id="cat-count-bags">(8)</span></a></li>
+                <li><a class="cat-category-link" data-cat="shoulder" onclick="switchCategoryFromSidebar('shoulder', event)"><span class="cat-name">حقائب كتف</span> <span class="cat-count-pill" id="cat-count-shoulder">(3)</span></a></li>
+                <li><a class="cat-category-link" data-cat="handbags" onclick="switchCategoryFromSidebar('handbags', event)"><span class="cat-name">حقائب يد</span> <span class="cat-count-pill" id="cat-count-handbags">(2)</span></a></li>
+                <li><a class="cat-category-link" data-cat="crossbody" onclick="switchCategoryFromSidebar('crossbody', event)"><span class="cat-name">حقائب كروس</span> <span class="cat-count-pill" id="cat-count-crossbody">(1)</span></a></li>
+                <li><a class="cat-category-link" data-cat="tote" onclick="switchCategoryFromSidebar('tote', event)"><span class="cat-name">حقائب توت</span> <span class="cat-count-pill" id="cat-count-tote">(3)</span></a></li>
+                <li><a class="cat-category-link" data-cat="wallets" onclick="switchCategoryFromSidebar('wallets', event)"><span class="cat-name">محافظ</span> <span class="cat-count-pill" id="cat-count-wallets">(4)</span></a></li>
+                <li><a class="cat-category-link" data-cat="belts" onclick="switchCategoryFromSidebar('belts', event)"><span class="cat-name">أحزمة</span> <span class="cat-count-pill" id="cat-count-belts">(2)</span></a></li>
+                <li><a class="cat-category-link" data-cat="bestsellers" onclick="switchCategoryFromSidebar('bestsellers', event)"><span class="cat-name">الأكثر مبيعاً</span> <span class="cat-count-pill" id="cat-count-bestsellers">(7)</span></a></li>
+                <li><a class="cat-category-link" data-cat="sales" onclick="switchCategoryFromSidebar('sales', event)"><span class="cat-name">تخفيضات</span> <span class="cat-count-pill" id="cat-count-sales">(6)</span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Availability Section -->
+          <div class="cat-filter-widget">
+            <button class="cat-filter-head-accordion" type="button" onclick="toggleFilterAccordion(this)">
+              <span class="cat-filter-title" id="filter-avail-heading">الحالة</span>
+              <span class="accordion-toggle-icon">−</span>
+            </button>
+            <div class="cat-filter-body">
+              <label class="cat-checkbox-item">
+                <input type="checkbox" id="filterInStock" checked onchange="applyCatFilters()" />
+                <span class="check-label" id="lbl-instock">متوفر بالمخزن (<span id="inStockCount">0</span>)</span>
+              </label>
+              <label class="cat-checkbox-item">
+                <input type="checkbox" id="filterOutOfStock" checked onchange="applyCatFilters()" />
+                <span class="check-label" id="lbl-outofstock">غير متوفر (<span id="outOfStockCount">0</span>)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Price Section -->
+          <div class="cat-filter-widget">
+            <button class="cat-filter-head-accordion" type="button" onclick="toggleFilterAccordion(this)">
+              <span class="cat-filter-title" id="filter-price-heading">السعر</span>
+              <span class="accordion-toggle-icon">−</span>
+            </button>
+            <div class="cat-filter-body">
+              <div class="cat-price-currency-lbl" id="filter-currency-lbl">EGP</div>
+              <div class="cat-price-inputs-row">
+                <div class="price-input-box">
+                  <span class="currency-prefix">LE</span>
+                  <input type="number" id="catPriceMinInput" value="0" min="0" max="4000" step="50" oninput="syncPriceInputsToSlider()" />
+                </div>
+                <span class="price-dash">—</span>
+                <div class="price-input-box">
+                  <span class="currency-prefix">LE</span>
+                  <input type="number" id="catPriceMaxInput" value="4000" min="0" max="4000" step="50" oninput="syncPriceInputsToSlider()" />
+                </div>
+              </div>
+
+              <!-- Dual range slider track -->
+              <div class="cat-dual-slider-wrap">
+                <div class="slider-track"></div>
+                <div class="slider-track-highlight" id="catSliderHighlight"></div>
+                <input type="range" id="catRangeMin" min="0" max="4000" value="0" step="50" oninput="syncSliderToInputs('min')" />
+                <input type="range" id="catRangeMax" min="0" max="4000" value="4000" step="50" oninput="syncSliderToInputs('max')" />
+              </div>
+
+              <div class="cat-price-readout">
+                <span id="price-readout-lbl">السعر:</span> <span id="catPriceReadoutText">LE 0.00 — LE 4,000.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured Product Filter Section -->
+          <div class="cat-filter-widget">
+            <button class="cat-filter-head-accordion" type="button" onclick="toggleFilterAccordion(this)">
+              <span class="cat-filter-title" id="filter-feat-heading">منتجات مميزة</span>
+              <span class="accordion-toggle-icon">−</span>
+            </button>
+            <div class="cat-filter-body">
+              <label class="cat-checkbox-item">
+                <input type="checkbox" id="filterFeaturedOnly" onchange="applyCatFilters()" />
+                <span class="check-label" id="lbl-featured">المميز فقط (<span id="featuredCount">0</span>)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Reset Filters Button -->
+          <button class="cat-clear-filters-btn" id="catClearFiltersBtn" type="button" onclick="resetCatFilters()">إعادة ضبط الفلاتر</button>
+
+        </aside>
+
+        <!-- Right Content Area: Toolbar + Grid -->
+        <div class="cat-content-area">
+          
+          <!-- Top Toolbar -->
+          <div class="cat-toolbar">
+            <div class="cat-toolbar-left">
+              <button class="mobile-filter-open-btn" type="button" onclick="toggleMobileCatFilter()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg>
+                <span id="mobile-filter-btn-text">الفلاتر</span>
+              </button>
+              <p class="cat-results-count" id="catResultsCount">
+                إجمالي <span id="catTotalCountNum" class="bold-count">0</span> منتج متوفر
+              </p>
+            </div>
+
+            <div class="cat-toolbar-right">
+              <!-- Layout Switchers: 2, 3, 4 cols -->
+              <div class="cat-layout-switchers" id="catLayoutSwitchers">
+                <button class="layout-btn" data-cols="2" type="button" onclick="setCatCols(2)" title="2 Columns">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="18" rx="1.5"/><rect x="14" y="3" width="7" height="18" rx="1.5"/></svg>
+                </button>
+                <button class="layout-btn is-active" data-cols="3" type="button" onclick="setCatCols(3)" title="3 Columns">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9.5" y="2" width="5" height="5" rx="1"/><rect x="17" y="2" width="5" height="5" rx="1"/><rect x="2" y="9.5" width="5" height="5" rx="1"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><rect x="17" y="9.5" width="5" height="5" rx="1"/><rect x="2" y="17" width="5" height="5" rx="1"/><rect x="9.5" y="17" width="5" height="5" rx="1"/><rect x="17" y="17" width="5" height="5" rx="1"/></svg>
+                </button>
+                <button class="layout-btn" data-cols="4" type="button" onclick="setCatCols(4)" title="4 Columns">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="1.5" y="3" width="4" height="18" rx="1"/><rect x="7.5" y="3" width="4" height="18" rx="1"/><rect x="13.5" y="3" width="4" height="18" rx="1"/><rect x="19.5" y="3" width="4" height="18" rx="1"/></svg>
+                </button>
+              </div>
+
+              <!-- Sort By Dropdown -->
+              <div class="cat-sort-wrapper">
+                <span class="cat-sort-label" id="cat-sort-label">الترتيب:</span>
+                <select id="catSortSelect" onchange="handleCatSortChange(this.value)">
+                  <option value="featured">المميز</option>
+                  <option value="relevant">الأكثر صلة</option>
+                  <option value="bestselling">الأكثر مبيعاً</option>
+                  <option value="alpha-asc" selected>أبجدياً، أ - ي</option>
+                  <option value="alpha-desc">أبجدياً، ي - أ</option>
+                  <option value="price-asc">السعر: من الأقل للأعلى</option>
+                  <option value="price-desc">السعر: من الأعلى للأقل</option>
+                  <option value="date-asc">التاريخ: من الأقدم للأحدث</option>
+                  <option value="date-desc">التاريخ: من الأحدث للأقدم</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Grid -->
+          <div class="cat-products-grid cols-3" id="catProductsGrid"></div>
+
+          <!-- Empty State -->
+          <div class="cat-empty-state" id="catEmptyState" style="display:none;">
+            <p class="empty-title" id="cat-empty-title">لا توجد منتجات مطابقة لخيارات الفلترة الحالية</p>
+            <p class="empty-subtitle" id="cat-empty-subtitle">يرجى تجربة تعديل نطاق السعر أو إزالة بعض الفلاتر.</p>
+            <button class="card-quick-add-btn" style="width:auto; padding:10px 24px; border-radius:30px; display:inline-flex;" onclick="resetCatFilters()">إعادة ضبط الفلاتر</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================== -->
+  <!-- 📄 3. DEDICATED PRODUCT DETAIL PAGE (PDP VIEW) -->
   <!-- ========================================================== -->
   <section id="pdp-view">
     <div style="max-width: 1240px; margin: 0 auto; padding: 0 16px;">
@@ -2313,10 +3189,10 @@ template = '''<!DOCTYPE html>
         <p class="zema-footer-eyebrow" id="footer-links-title">روابط</p>
         <ul class="zema-footer-list">
           <li><a href="#bags-section" id="f-link-store" onclick="showHomePage()">المتجر</a></li>
-          <li><a href="#bags-section" id="f-link-bags" onclick="showHomePage()">حقائب</a></li>
-          <li><a href="#bags-section" id="f-link-wallets" onclick="showHomePage()">محافظ</a></li>
-          <li><a href="#bags-section" id="f-link-belts" onclick="showHomePage()">أحزمة</a></li>
-          <li><a href="#bags-section" id="f-link-sales" onclick="showHomePage()">العروض</a></li>
+          <li><a href="javascript:void(0)" id="f-link-bags" onclick="openCategoryPage('bags', event)">حقائب</a></li>
+          <li><a href="javascript:void(0)" id="f-link-wallets" onclick="openCategoryPage('wallets', event)">محافظ</a></li>
+          <li><a href="javascript:void(0)" id="f-link-belts" onclick="openCategoryPage('belts', event)">أحزمة</a></li>
+          <li><a href="javascript:void(0)" id="f-link-sales" onclick="openCategoryPage('sales', event)">العروض</a></li>
           <li><a href="#faq" id="f-link-faq">الأسئلة الشائعة</a></li>
           <li><a href="javascript:void(0)" id="f-link-track" onclick="toggleAccountModal(true)">تتبع شحنتك</a></li>
         </ul>
@@ -2719,8 +3595,14 @@ template = '''<!DOCTYPE html>
         nameEn: 'Mila Soft Hobo Bag',
         catAr: 'حقيبة كتف',
         catEn: 'Shoulder Bag',
+        category: 'bags',
+        subcategory: 'shoulder',
         price: 1299,
         originalPrice: 1699,
+        inStock: true,
+        bestseller: true,
+        featured: true,
+        date: '2024-05-10',
         angles: ['__HOBO_B64__', '__BAG_QUILTED_B64__', '__BAG_CROSSBODY_B64__', '__HERO_B64__'],
         descAr: 'حقيبة كتف عصرية بتصميم هوبو انسيابي يفيض بالأنوثة والهدوء. تتسع لأغراضك اليومية بحرية كاملة مع سحاب أمان وحزام كتف مريح.',
         descEn: 'A modern shoulder bag with a fluid hobo silhouette that exudes quiet luxury. Spacious interior with secure zipper and comfortable shoulder strap.',
@@ -2733,10 +3615,16 @@ template = '''<!DOCTYPE html>
         id: 'p2',
         nameAr: 'حقيبة نور كتف منحنية',
         nameEn: 'Noor Curved Shoulder Bag',
-        catAr: 'حقيبة كتف',
-        catEn: 'Shoulder Bag',
+        catAr: 'حقيبة يد',
+        catEn: 'Curved Handbag',
+        category: 'bags',
+        subcategory: 'handbags',
         price: 1150,
         originalPrice: 1450,
+        inStock: true,
+        bestseller: true,
+        featured: true,
+        date: '2024-06-15',
         angles: ['__BURGUNDY_B64__', '__BAG_BURGUNDY_B64__', '__BAG_CROSSBODY_B64__', '__HOBO_B64__'],
         descAr: 'تصميم مقوس مميز باللون البورجوندي الملكي يمنح إطلالتك سحراً لافتاً. مثالية للأمسيات والمناسبات والعمل الراقي.',
         descEn: 'Distinctive curved design in regal burgundy that adds undeniable sophistication to your look. Perfect for evenings and refined workdays.',
@@ -2751,8 +3639,14 @@ template = '''<!DOCTYPE html>
         nameEn: 'Lina Structured Tote Bag',
         catAr: 'حقيبة توت',
         catEn: 'Tote Bag',
+        category: 'bags',
+        subcategory: 'tote',
         price: 1499,
         originalPrice: null,
+        inStock: true,
+        bestseller: false,
+        featured: true,
+        date: '2024-04-20',
         angles: ['__OLIVE_B64__', '__BAG_CAMEL_B64__', '__BAG_QUILTED_B64__', '__HERO_B64__'],
         descAr: 'حقيبة توت رحبة ومنظمة بعناية تتسع للكمبيوتر المحمول والملفات مع جيوب مخصصة للهاتف والمحفظة بلون زيتوني فاخر.',
         descEn: 'A spacious and structured tote that effortlessly accommodates your laptop and essentials with dedicated compartments in a rich olive tone.',
@@ -2767,8 +3661,14 @@ template = '''<!DOCTYPE html>
         nameEn: 'Aya Everyday Tote Bag',
         catAr: 'حقيبة توت',
         catEn: 'Tote Bag',
+        category: 'bags',
+        subcategory: 'tote',
         price: 1399,
         originalPrice: 1799,
+        inStock: true,
+        bestseller: true,
+        featured: false,
+        date: '2024-07-01',
         angles: ['__HERO_B64__', '__BAG_CAMEL_B64__', '__BAG_QUILTED_B64__', '__OLIVE_B64__'],
         descAr: 'رفيقة كل يوم المصممة لتلائم وتيرة حياتك السريعة بأناقة لا تخبو. خفيفة وعملية ومصممة لتحمل الاستخدام اليومي.',
         descEn: 'Your everyday companion crafted to match your dynamic lifestyle with timeless elegance. Lightweight, functional, and durable.',
@@ -2776,6 +3676,226 @@ template = '''<!DOCTYPE html>
         materialsEn: 'Soft full-grain leather treated with protective coating against stains and moisture.',
         dimAr: 'العرض: 36 سم | الارتفاع: 28 سم | العمق: 13 سم',
         dimEn: 'Width: 36 cm | Height: 28 cm | Depth: 13 cm'
+      },
+      {
+        id: 'bg-01',
+        nameAr: 'حقيبة كتف مبطّنة Quilted Noir',
+        nameEn: 'Quilted Noir Shoulder Bag',
+        catAr: 'حقيبة كتف',
+        catEn: 'Shoulder Bag',
+        category: 'bags',
+        subcategory: 'shoulder',
+        price: 3499,
+        originalPrice: null,
+        inStock: true,
+        bestseller: true,
+        featured: true,
+        date: '2024-03-12',
+        angles: ['__BAG_QUILTED_B64__', '__HOBO_B64__', '__HERO_B64__'],
+        descAr: 'حقيبة كتف بتصميم مبطّن أيقوني من الجلد الأسود الفاخر المقاوم للماء والخدش، بقفل دوّار وسلسلة معدنية أنيقة.',
+        descEn: 'Iconic quilted shoulder bag crafted in noir luxury leather with turnlock closure and metallic chain strap.',
+        materialsAr: 'جلد طبيعي أسود فاخر مع بطانة مخملية وإكسسوار فضي مصقول.',
+        materialsEn: 'Premium noir leather with velvet lining and polished silver-tone hardware.',
+        dimAr: 'العرض: 26 سم | الارتفاع: 16 سم | العمق: 8 سم',
+        dimEn: 'Width: 26 cm | Height: 16 cm | Depth: 8 cm'
+      },
+      {
+        id: 'bg-02',
+        nameAr: 'حقيبة توت يومية كلاسيك جملي',
+        nameEn: 'Camel Daily Tote',
+        catAr: 'حقيبة توت',
+        catEn: 'Tote Bag',
+        category: 'bags',
+        subcategory: 'tote',
+        price: 2299,
+        originalPrice: 2799,
+        inStock: true,
+        bestseller: true,
+        featured: true,
+        date: '2024-02-18',
+        angles: ['__BAG_CAMEL_B64__', '__OLIVE_B64__', '__HERO_B64__'],
+        descAr: 'حقيبة توت باللون الجملي الفاخر بتصميم رحب يتسع لجميع الاحتياجات اليومية مع مقبضين متينين.',
+        descEn: 'Warm camel tote bag offering abundant volume for daily essentials, work or travel.',
+        materialsAr: 'جلد طبيعي كامل مع معالجة حماية.',
+        materialsEn: 'Full-grain leather with protective conditioning.',
+        dimAr: 'العرض: 37 سم | الارتفاع: 29 سم | العمق: 14 سم',
+        dimEn: 'Width: 37 cm | Height: 29 cm | Depth: 14 cm'
+      },
+      {
+        id: 'bg-03',
+        nameAr: 'حقيبة كروس ساند ميني',
+        nameEn: 'Sand Mini Crossbody',
+        catAr: 'حقيبة كروس',
+        catEn: 'Crossbody Bag',
+        category: 'bags',
+        subcategory: 'crossbody',
+        price: 1999,
+        originalPrice: null,
+        inStock: true,
+        bestseller: false,
+        featured: true,
+        date: '2024-05-25',
+        angles: ['__BAG_CROSSBODY_B64__', '__HOBO_B64__', '__BURGUNDY_B64__'],
+        descAr: 'حقيبة كروس صغيرة وخفيفة الوزن بلون رملي أنيق تناسب الخروجات السريعة والمناسبات.',
+        descEn: 'Compact and lightweight crossbody in neutral sand finish for swift outings and refined moments.',
+        materialsAr: 'جلد طبيعي حبيبي فاخر وحزام قابل للتعديل.',
+        materialsEn: 'Pebbled natural leather with adjustable strap.',
+        dimAr: 'العرض: 21 سم | الارتفاع: 14 سم | العمق: 6 سم',
+        dimEn: 'Width: 21 cm | Height: 14 cm | Depth: 6 cm'
+      },
+      {
+        id: 'bg-04',
+        nameAr: 'حقيبة يد بورجوندي فاخرة',
+        nameEn: 'Structured Burgundy Handbag',
+        catAr: 'حقيبة يد',
+        catEn: 'Handbag',
+        category: 'bags',
+        subcategory: 'handbags',
+        price: 3199,
+        originalPrice: null,
+        inStock: true,
+        bestseller: false,
+        featured: false,
+        date: '2024-01-30',
+        angles: ['__BAG_BURGUNDY_B64__', '__BURGUNDY_B64__', '__HOBO_B64__'],
+        descAr: 'حقيبة يد مقوسة باللون البورجوندي الداكن مع مقبض علوي وإكسسوار ذهبي فخم.',
+        descEn: 'Sculpted top-handle handbag in deep burgundy with gold-tone hardware.',
+        materialsAr: 'جلد طبيعي مع معالجة مقاومة للخدش.',
+        materialsEn: 'Scratch-resistant fine calfskin.',
+        dimAr: 'العرض: 27 سم | الارتفاع: 20 سم | العمق: 9 سم',
+        dimEn: 'Width: 27 cm | Height: 20 cm | Depth: 9 cm'
+      },
+      {
+        id: 'wl-01',
+        nameAr: 'محفظة كلاسيكية نوار ثنائية الطي',
+        nameEn: 'Classic Noir Bifold Wallet',
+        catAr: 'محفظة',
+        catEn: 'Bifold Wallet',
+        category: 'wallets',
+        subcategory: 'wallets',
+        price: 899,
+        originalPrice: null,
+        inStock: true,
+        bestseller: true,
+        featured: true,
+        date: '2024-03-05',
+        angles: ['__WALLET_BIFOLD_B64__'],
+        descAr: 'محفظة جيب جلدية فاخرة ثنائية الطي تتسع لـ 8 بطاقات مع قسمين للنقود الورقية وجيب مخصص للعملات المعدنية.',
+        descEn: 'Slim bifold luxury wallet crafted in black leather with 8 card slots, dual cash sleeves and coin pocket.',
+        materialsAr: '100% جلد عجل طبيعي مع بطانة حريرية وشعار زيما محفور.',
+        materialsEn: '100% calfskin leather with silk lining and embossed ZEMA monogram.',
+        dimAr: 'العرض: 11 سم | الارتفاع: 9 سم',
+        dimEn: 'Width: 11 cm | Height: 9 cm'
+      },
+      {
+        id: 'wl-02',
+        nameAr: 'محفظة بطاقات نوار مدمجة',
+        nameEn: 'Slim Noir Cardholder',
+        catAr: 'محفظة بطاقات',
+        catEn: 'Cardholder',
+        category: 'wallets',
+        subcategory: 'wallets',
+        price: 599,
+        originalPrice: null,
+        inStock: true,
+        bestseller: false,
+        featured: false,
+        date: '2024-04-12',
+        angles: ['__WALLET_CARDHOLDER_B64__'],
+        descAr: 'محفظة بطاقات مدمجة فائقة النحافة بـ 6 فتحات للبطاقات وجيب مركزي للنقود المطوية.',
+        descEn: 'Ultra-slim minimalist cardholder with 6 card compartments and central cash sleeve.',
+        materialsAr: 'جلد طبيعي ناعم ومقاوم للتمدد.',
+        materialsEn: 'Supple full-grain leather with anti-stretch lining.',
+        dimAr: 'العرض: 10 سم | الارتفاع: 7.5 سم',
+        dimEn: 'Width: 10 cm | Height: 7.5 cm'
+      },
+      {
+        id: 'wl-03',
+        nameAr: 'محفظة كونتيننتال روز راقية',
+        nameEn: 'Continental Rose Wallet',
+        catAr: 'محفظة طويلة',
+        catEn: 'Continental Wallet',
+        category: 'wallets',
+        subcategory: 'wallets',
+        price: 1199,
+        originalPrice: 1499,
+        inStock: true,
+        bestseller: true,
+        featured: true,
+        date: '2024-06-20',
+        angles: ['__WALLET_CONTINENTAL_B64__'],
+        descAr: 'محفظة طويلة أنيقة تناسب الحقائب الكبيرة، بسحاب أمان وتتسع لـ 12 بطاقة والهاتف الذكي.',
+        descEn: 'Refined long zip-around continental wallet fitting 12 cards, receipts and a smartphone.',
+        materialsAr: 'جلد طبيعي وردي هادئ مع سحاب ذهبي انسيابي.',
+        materialsEn: 'Rose-hued genuine leather with smooth gliding gold zipper.',
+        dimAr: 'العرض: 19 سم | الارتفاع: 10 سم | العمق: 2.5 سم',
+        dimEn: 'Width: 19 cm | Height: 10 cm | Depth: 2.5 cm'
+      },
+      {
+        id: 'wl-04',
+        nameAr: 'محفظة سحاب دائرية كونياك',
+        nameEn: 'Cognac Zip-Around Wallet',
+        catAr: 'محفظة سحاب',
+        catEn: 'Zip Wallet',
+        category: 'wallets',
+        subcategory: 'wallets',
+        price: 999,
+        originalPrice: null,
+        inStock: true,
+        bestseller: false,
+        featured: true,
+        date: '2024-02-10',
+        angles: ['__WALLET_ZIP_B64__'],
+        descAr: 'محفظة جلدية باللون الكونياك الدافئ مع سحاب كامل لحماية المقتنيات وتقسيم داخلي مريح.',
+        descEn: 'Warm cognac zip-around wallet offering comprehensive security and refined internal layout.',
+        materialsAr: 'جلد طبيعي مسامي مدبوغ نباتياً.',
+        materialsEn: 'Vegetable-tanned genuine leather with antiqued finish.',
+        dimAr: 'العرض: 12 سم | الارتفاع: 10 سم | العمق: 2 سم',
+        dimEn: 'Width: 12 cm | Height: 10 cm | Depth: 2 cm'
+      },
+      {
+        id: 'bl-01',
+        nameAr: 'حزام جلد طبيعي بوجهين كلاسيكي',
+        nameEn: 'Classic Reversible Leather Belt',
+        catAr: 'حزام جلد',
+        catEn: 'Leather Belt',
+        category: 'belts',
+        subcategory: 'belts',
+        price: 799,
+        originalPrice: 999,
+        inStock: true,
+        bestseller: true,
+        featured: true,
+        date: '2024-01-15',
+        angles: ['__WALLET_BIFOLD_B64__'],
+        descAr: 'حزام جلدي استثنائي بوجهين (أسود وبني) مع إبزيم دوّار مطلي بالبلاتين، يمنحك خيارين في قطعة واحدة.',
+        descEn: 'Reversible full-grain leather belt (black/brown) with swivel platinum buckle for ultimate versatility.',
+        materialsAr: 'جلد بقر طبيعي متين 100% مع إبزيم مقاوم للصدأ.',
+        materialsEn: '100% thick cowhide leather with rust-proof swivel mechanism.',
+        dimAr: 'العرض: 3.5 سم | الطول: 105 - 125 سم',
+        dimEn: 'Width: 3.5 cm | Length: 105 - 125 cm'
+      },
+      {
+        id: 'bl-02',
+        nameAr: 'حزام بإبزيم شعار زيما الذهبي',
+        nameEn: 'Signature Monogram Buckle Belt',
+        catAr: 'حزام جلد',
+        catEn: 'Monogram Belt',
+        category: 'belts',
+        subcategory: 'belts',
+        price: 899,
+        originalPrice: null,
+        inStock: false,
+        bestseller: false,
+        featured: false,
+        date: '2023-11-20',
+        angles: ['__WALLET_CARDHOLDER_B64__'],
+        descAr: 'حزام نسائي ورجالي فاخر بإبزيم ذهبي يحمل حرف Z الأيقوني، يضفي لمسة من الفخامة الهادئة.',
+        descEn: 'Signature luxury belt showcasing our sculpted gold Z emblem for understated distinction.',
+        materialsAr: 'جلد عجل أسود لامع مع إبزيم مطلي بالذهب عيار 24.',
+        materialsEn: 'Polished calfskin with 24k gold-finish emblem buckle.',
+        dimAr: 'العرض: 3.0 سم | الطول: 95 - 115 سم',
+        dimEn: 'Width: 3.0 cm | Length: 95 - 115 cm'
       }
     ];
 
@@ -2812,8 +3932,10 @@ template = '''<!DOCTYPE html>
       window.location.hash = 'product-' + prod.id;
       document.body.classList.add('is-pdp');
 
-      // Hide Home, Show PDP
+      // Hide Home & Category View, Show PDP
       document.getElementById('home-view').style.display = 'none';
+      const catView = document.getElementById('category-view');
+      if (catView) catView.style.display = 'none';
       document.getElementById('pdp-view').style.display = 'block';
 
       // Update Texts
@@ -2867,10 +3989,427 @@ template = '''<!DOCTYPE html>
       lucide.createIcons();
     }
 
+    
+    // =========================================================
+    // 👜 CATEGORY PAGE LOGIC & FILTERING (MATCHING SCREENSHOT)
+    // =========================================================
+    let currentCategoryKey = 'bags';
+    let currentCatCols = 3;
+    let currentSortVal = 'alpha-asc';
+    let activeFilteredProducts = [];
+
+    const CAT_INFO = {
+      'all': {
+        titleAr: 'جميع المنتجات الفاخرة',
+        titleEn: 'All Luxury Creations',
+        subAr: 'تصفحي تشكيلة زيما الكاملة من الحقائب والمحافظ والإكسسوارات الفاخرة.',
+        subEn: 'Browse the complete ZEMA luxury collection of bags, wallets, and fine leather goods.'
+      },
+      'bags': {
+        titleAr: 'حقائب فاخرة',
+        titleEn: 'Luxury Handbags',
+        subAr: 'استكشفي تشكيلة الحقائب الجلدية الفاخرة المصنوعة يدوياً بأعلى معايير الجودة والذوق الرفيع.',
+        subEn: 'Explore our curated collection of handcrafted luxury leather bags.'
+      },
+      'shoulder': {
+        titleAr: 'حقائب كتف',
+        titleEn: 'Shoulder Bags',
+        subAr: 'أناقة يومية انسيابية مع راحة مطلقة وتفاصيل دقيقة تلائم إطلالاتك.',
+        subEn: 'Effortless elegance designed for day-to-evening style.'
+      },
+      'handbags': {
+        titleAr: 'حقائب يد',
+        titleEn: 'Handbags & Top Handles',
+        subAr: 'تصاميم مقوسة وهندسية كلاسيكية بلمسات عصرية فريدة.',
+        subEn: 'Sculpted silhouettes and timeless craftsmanship.'
+      },
+      'crossbody': {
+        titleAr: 'حقائب كروس',
+        titleEn: 'Crossbody Bags',
+        subAr: 'حرية الحركة والأناقة العصرية لخروجاتك السريعة ومناسباتك الخاصة.',
+        subEn: 'Hands-free convenience with uncompromised sophistication.'
+      },
+      'tote': {
+        titleAr: 'حقائب توت',
+        titleEn: 'Tote Bags',
+        subAr: 'حقائب رحبة ومنظمة تتسع ليومك بالكامل بجلد طبيعي يدوم طويلاً.',
+        subEn: 'Spacious volume and enduring full-grain leather for everyday carry.'
+      },
+      'evening': {
+        titleAr: 'حقائب سهرة ومناسبات',
+        titleEn: 'Evening Bags',
+        subAr: 'قطع آسرة تتلألأ بإكسسوارات ذهبية وفضية لتكمل سحر مناسباتك.',
+        subEn: 'Glamorous statements crafted for unforgettable evenings.'
+      },
+      'wallets': {
+        titleAr: 'محافظ جلدية فاخرة',
+        titleEn: 'Luxury Leather Wallets',
+        subAr: 'محافظ مدمجة وبطاقات صُممت من أجود أنواع الجلود الطبيعية لترافقك أينما كنت.',
+        subEn: 'Refined bifold, zip-around and cardholders in exquisite leather.'
+      },
+      'belts': {
+        titleAr: 'أحزمة كلاسيكية فاخرة',
+        titleEn: 'Luxury Classic Belts',
+        subAr: 'أحزمة من الجلد الطبيعي بإبزيم مصقول تضفي لمسة نهائية متقنة على إطلالتك.',
+        subEn: 'Full-grain leather belts with polished hardware that add a refined final touch.'
+      },
+      'bestsellers': {
+        titleAr: 'الأكثر مبيعاً',
+        titleEn: 'Best Sellers',
+        subAr: 'القطع الأكثر طلباً ومحبة من عميلات وعملاء زيما حول العالم.',
+        subEn: 'The most coveted and celebrated designs cherished by our clients.'
+      },
+      'sales': {
+        titleAr: 'العروض والتخفيضات الحصرية',
+        titleEn: 'Exclusive Offers & Privileges',
+        subAr: 'قطع مختارة بإصدار محدود وأسعار استثنائية لفترة محدودة.',
+        subEn: 'Selected limited-edition designs at exceptional seasonal privileges.'
+      }
+    };
+
+    function openCategoryPage(catKey, e) {
+      if (e && e.preventDefault) e.preventDefault();
+      currentCategoryKey = catKey || 'bags';
+      window.location.hash = 'category-' + currentCategoryKey;
+      document.body.classList.remove('is-pdp');
+
+      // Hide Home and PDP, Show Category View
+      document.getElementById('home-view').style.display = 'none';
+      document.getElementById('pdp-view').style.display = 'none';
+      const catView = document.getElementById('category-view');
+      if (catView) catView.style.display = 'block';
+
+      renderCategoryPage(currentCategoryKey);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchCategoryFromSidebar(catKey, e) {
+      if (e && e.preventDefault) e.preventDefault();
+      currentCategoryKey = catKey;
+      window.location.hash = 'category-' + currentCategoryKey;
+      renderCategoryPage(currentCategoryKey);
+    }
+
+    function renderCategoryPage(catKey) {
+      const isAr = currentLang === 'ar';
+      const info = CAT_INFO[catKey] || CAT_INFO['bags'];
+
+      // Update Banner Texts
+      const breadcrumbTitle = document.getElementById('cat-breadcrumb-title');
+      const mainTitle = document.getElementById('cat-main-title');
+      const subTitle = document.getElementById('cat-main-subtitle');
+      if (breadcrumbTitle) breadcrumbTitle.textContent = isAr ? (CAT_INFO[catKey] ? CAT_INFO[catKey].titleAr.split(' ')[0] : 'حقائب') : (CAT_INFO[catKey] ? CAT_INFO[catKey].titleEn.split(' ')[0] : 'Bags');
+      if (mainTitle) mainTitle.textContent = isAr ? info.titleAr : info.titleEn;
+      if (subTitle) subTitle.textContent = isAr ? info.subAr : info.subEn;
+
+      // Update Active Category in Sidebar
+      document.querySelectorAll('.cat-category-link').forEach(link => {
+        if (link.getAttribute('data-cat') === catKey) {
+          link.classList.add('is-active');
+        } else {
+          link.classList.remove('is-active');
+        }
+      });
+
+      // Update Sidebar Counts
+      updateSidebarCounts();
+
+      // Apply Filters & Render
+      applyCatFilters();
+    }
+
+    function updateSidebarCounts() {
+      const counts = {
+        bags: CATALOG.filter(p => p.category === 'bags').length,
+        shoulder: CATALOG.filter(p => p.subcategory === 'shoulder').length,
+        handbags: CATALOG.filter(p => p.subcategory === 'handbags').length,
+        crossbody: CATALOG.filter(p => p.subcategory === 'crossbody').length,
+        tote: CATALOG.filter(p => p.subcategory === 'tote').length,
+        wallets: CATALOG.filter(p => p.category === 'wallets').length,
+        belts: CATALOG.filter(p => p.category === 'belts').length,
+        bestsellers: CATALOG.filter(p => p.bestseller).length,
+        sales: CATALOG.filter(p => p.originalPrice != null).length
+      };
+
+      for (let k in counts) {
+        const el = document.getElementById('cat-count-' + k);
+        if (el) el.textContent = '(' + counts[k] + ')';
+      }
+
+      // Stock Counts within current category pool
+      const basePool = getProductsForCategory(currentCategoryKey);
+      const inStockCount = basePool.filter(p => p.inStock).length;
+      const outOfStockCount = basePool.filter(p => !p.inStock).length;
+      const featCount = basePool.filter(p => p.featured).length;
+
+      const inEl = document.getElementById('inStockCount');
+      if (inEl) inEl.textContent = inStockCount;
+      const outEl = document.getElementById('outOfStockCount');
+      if (outEl) outEl.textContent = outOfStockCount;
+      const featEl = document.getElementById('featuredCount');
+      if (featEl) featEl.textContent = featCount;
+    }
+
+    function getProductsForCategory(catKey) {
+      if (catKey === 'all') return CATALOG;
+      if (catKey === 'bags') return CATALOG.filter(p => p.category === 'bags');
+      if (catKey === 'wallets') return CATALOG.filter(p => p.category === 'wallets');
+      if (catKey === 'belts') return CATALOG.filter(p => p.category === 'belts');
+      if (catKey === 'bestsellers') return CATALOG.filter(p => p.bestseller);
+      if (catKey === 'sales') return CATALOG.filter(p => p.originalPrice != null);
+      if (['shoulder', 'handbags', 'crossbody', 'tote', 'evening'].includes(catKey)) {
+        return CATALOG.filter(p => p.subcategory === catKey);
+      }
+      return CATALOG;
+    }
+
+    function applyCatFilters() {
+      let pool = getProductsForCategory(currentCategoryKey);
+
+      // 1. Availability filter
+      const inStockChecked = document.getElementById('filterInStock') ? document.getElementById('filterInStock').checked : true;
+      const outOfStockChecked = document.getElementById('filterOutOfStock') ? document.getElementById('filterOutOfStock').checked : true;
+
+      pool = pool.filter(p => {
+        if (p.inStock && inStockChecked) return true;
+        if (!p.inStock && outOfStockChecked) return true;
+        return false;
+      });
+
+      // 2. Price filter
+      const minVal = parseFloat(document.getElementById('catPriceMinInput') ? document.getElementById('catPriceMinInput').value : 0) || 0;
+      const maxVal = parseFloat(document.getElementById('catPriceMaxInput') ? document.getElementById('catPriceMaxInput').value : 4000) || 4000;
+
+      pool = pool.filter(p => p.price >= minVal && p.price <= maxVal);
+
+      // 3. Featured filter
+      const featChecked = document.getElementById('filterFeaturedOnly') ? document.getElementById('filterFeaturedOnly').checked : false;
+      if (featChecked) {
+        pool = pool.filter(p => p.featured);
+      }
+
+      // 4. Sort
+      pool = sortProducts(pool, currentSortVal);
+      activeFilteredProducts = pool;
+
+      // 5. Render Grid
+      renderCategoryGrid(pool);
+
+      // 6. Update Total Results Count Text
+      const isAr = currentLang === 'ar';
+      const countEl = document.getElementById('catTotalCountNum');
+      if (countEl) countEl.textContent = pool.length;
+      const resTextEl = document.getElementById('catResultsCount');
+      if (resTextEl) {
+        resTextEl.innerHTML = isAr 
+          ? `إجمالي <span class="bold-count">${pool.length}</span> منتج متوفر`
+          : `There are <span class="bold-count">${pool.length}</span> results in total`;
+      }
+    }
+
+    function sortProducts(list, sortVal) {
+      const arr = [...list];
+      const isAr = currentLang === 'ar';
+
+      switch (sortVal) {
+        case 'featured':
+          return arr.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+        case 'bestselling':
+          return arr.sort((a, b) => (b.bestseller ? 1 : 0) - (a.bestseller ? 1 : 0));
+        case 'price-asc':
+          return arr.sort((a, b) => a.price - b.price);
+        case 'price-desc':
+          return arr.sort((a, b) => b.price - a.price);
+        case 'alpha-asc':
+          return arr.sort((a, b) => {
+            const nameA = isAr ? a.nameAr : a.nameEn;
+            const nameB = isAr ? b.nameAr : b.nameEn;
+            return nameA.localeCompare(nameB, isAr ? 'ar' : 'en');
+          });
+        case 'alpha-desc':
+          return arr.sort((a, b) => {
+            const nameA = isAr ? a.nameAr : a.nameEn;
+            const nameB = isAr ? b.nameAr : b.nameEn;
+            return nameB.localeCompare(nameA, isAr ? 'ar' : 'en');
+          });
+        case 'date-asc':
+          return arr.sort((a, b) => new Date(a.date || '2024-01-01') - new Date(b.date || '2024-01-01'));
+        case 'date-desc':
+          return arr.sort((a, b) => new Date(b.date || '2024-01-01') - new Date(a.date || '2024-01-01'));
+        case 'relevant':
+        default:
+          return arr;
+      }
+    }
+
+    function renderCategoryGrid(products) {
+      const grid = document.getElementById('catProductsGrid');
+      const emptyState = document.getElementById('catEmptyState');
+      if (!grid) return;
+
+      if (products.length === 0) {
+        grid.style.display = 'none';
+        if (emptyState) emptyState.style.display = 'block';
+        return;
+      }
+
+      grid.style.display = 'grid';
+      if (emptyState) emptyState.style.display = 'none';
+
+      const isAr = currentLang === 'ar';
+      grid.innerHTML = products.map(prod => {
+        const title = isAr ? prod.nameAr : prod.nameEn;
+        const cat = isAr ? prod.catAr : prod.catEn;
+        const saleBadge = prod.originalPrice 
+          ? `<span class="cat-sale-badge">${isAr ? 'تخفيض' : 'Sale'}</span>`
+          : '';
+        const oldPriceHtml = prod.originalPrice
+          ? `<span class="cat-card-price-old">${prod.originalPrice.toLocaleString('en-US')} ${isAr ? 'ج.م' : 'LE'}</span>`
+          : '';
+        const btnText = isAr ? 'عرض التفاصيل' : 'Select Options';
+
+        return `
+          <div class="cat-product-card" data-id="${prod.id}">
+            <div class="cat-card-img-wrap" onclick="openPDP('${prod.id}')">
+              ${saleBadge}
+              <img src="${prod.angles[0]}" alt="${title}" loading="lazy" />
+              
+              <!-- Quick Action Floating Buttons -->
+              <div class="cat-quick-actions" onclick="event.stopPropagation()">
+                <button class="cat-action-circle-btn" onclick="addToWishlist('${prod.id}', event)" title="${isAr ? 'المفضلة' : 'Wishlist'}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg>
+                </button>
+                <button class="cat-action-circle-btn" onclick="openPDP('${prod.id}')" title="${isAr ? 'عرض سريع' : 'Quick View'}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/></svg>
+                </button>
+              </div>
+
+              <!-- Bottom Floating Action on Hover -->
+              <div class="cat-card-bottom-action">
+                <button class="cat-select-options-btn" onclick="event.stopPropagation(); openPDP('${prod.id}')">${btnText}</button>
+              </div>
+            </div>
+
+            <div class="cat-card-info">
+              <span class="cat-card-category">${cat}</span>
+              <h3 class="cat-card-title" onclick="openPDP('${prod.id}')">${title}</h3>
+              <div class="cat-card-price-row">
+                <span class="cat-card-price-current">${prod.price.toLocaleString('en-US')} ${isAr ? 'ج.م' : 'LE'}</span>
+                ${oldPriceHtml}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function syncSliderToInputs(handle) {
+      const rangeMin = document.getElementById('catRangeMin');
+      const rangeMax = document.getElementById('catRangeMax');
+      let minVal = parseInt(rangeMin.value);
+      let maxVal = parseInt(rangeMax.value);
+
+      if (handle === 'min' && minVal > maxVal - 50) {
+        minVal = maxVal - 50;
+        rangeMin.value = minVal;
+      } else if (handle === 'max' && maxVal < minVal + 50) {
+        maxVal = minVal + 50;
+        rangeMax.value = maxVal;
+      }
+
+      document.getElementById('catPriceMinInput').value = minVal;
+      document.getElementById('catPriceMaxInput').value = maxVal;
+
+      updateSliderUI(minVal, maxVal);
+      applyCatFilters();
+    }
+
+    function syncPriceInputsToSlider() {
+      let minVal = parseInt(document.getElementById('catPriceMinInput').value) || 0;
+      let maxVal = parseInt(document.getElementById('catPriceMaxInput').value) || 4000;
+
+      if (minVal < 0) minVal = 0;
+      if (maxVal > 4000) maxVal = 4000;
+      if (minVal > maxVal) minVal = maxVal;
+
+      document.getElementById('catRangeMin').value = minVal;
+      document.getElementById('catRangeMax').value = maxVal;
+
+      updateSliderUI(minVal, maxVal);
+      applyCatFilters();
+    }
+
+    function updateSliderUI(minVal, maxVal) {
+      const highlight = document.getElementById('catSliderHighlight');
+      if (highlight) {
+        const leftPct = (minVal / 4000) * 100;
+        const widthPct = ((maxVal - minVal) / 4000) * 100;
+        highlight.style.left = leftPct + '%';
+        highlight.style.width = widthPct + '%';
+      }
+
+      const readout = document.getElementById('catPriceReadoutText');
+      if (readout) {
+        const isAr = currentLang === 'ar';
+        readout.textContent = `${isAr ? 'LE' : 'LE'} ${minVal.toLocaleString('en-US')}.00 — ${isAr ? 'LE' : 'LE'} ${maxVal.toLocaleString('en-US')}.00`;
+      }
+    }
+
+    function setCatCols(cols) {
+      currentCatCols = cols;
+      const grid = document.getElementById('catProductsGrid');
+      if (grid) {
+        grid.className = `cat-products-grid cols-${cols}`;
+      }
+      document.querySelectorAll('.cat-layout-switchers .layout-btn').forEach(btn => {
+        if (parseInt(btn.getAttribute('data-cols')) === cols) {
+          btn.classList.add('is-active');
+        } else {
+          btn.classList.remove('is-active');
+        }
+      });
+    }
+
+    function handleCatSortChange(sortVal) {
+      currentSortVal = sortVal;
+      applyCatFilters();
+    }
+
+    function resetCatFilters() {
+      if (document.getElementById('filterInStock')) document.getElementById('filterInStock').checked = true;
+      if (document.getElementById('filterOutOfStock')) document.getElementById('filterOutOfStock').checked = true;
+      if (document.getElementById('filterFeaturedOnly')) document.getElementById('filterFeaturedOnly').checked = false;
+
+      document.getElementById('catPriceMinInput').value = 0;
+      document.getElementById('catPriceMaxInput').value = 4000;
+      document.getElementById('catRangeMin').value = 0;
+      document.getElementById('catRangeMax').value = 4000;
+      updateSliderUI(0, 4000);
+
+      const sortSel = document.getElementById('catSortSelect');
+      if (sortSel) sortSel.value = 'alpha-asc';
+      currentSortVal = 'alpha-asc';
+
+      applyCatFilters();
+    }
+
+    function toggleFilterAccordion(btn) {
+      btn.classList.toggle('is-collapsed');
+    }
+
+    function toggleMobileCatFilter() {
+      const sidebar = document.getElementById('catSidebar');
+      if (sidebar) {
+        sidebar.classList.toggle('mobile-open');
+      }
+    }
+
     function showHomePage() {
       window.location.hash = '';
       document.body.classList.remove('is-pdp');
       document.getElementById('pdp-view').style.display = 'none';
+      const catView = document.getElementById('category-view');
+      if (catView) catView.style.display = 'none';
       document.getElementById('home-view').style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -4088,6 +5627,9 @@ template = '''<!DOCTYPE html>
       if (hash.startsWith('#product-')) {
         const id = hash.replace('#product-', '');
         openPDP(id);
+      } else if (hash.startsWith('#category-')) {
+        const cat = hash.replace('#category-', '');
+        openCategoryPage(cat);
       } else {
         showHomePage();
       }
@@ -4097,6 +5639,9 @@ template = '''<!DOCTYPE html>
     if (window.location.hash.startsWith('#product-')) {
       const id = window.location.hash.replace('#product-', '');
       openPDP(id);
+    } else if (window.location.hash.startsWith('#category-')) {
+      const cat = window.location.hash.replace('#category-', '');
+      openCategoryPage(cat);
     }
 
     // Newsletter Form Submission Handler
@@ -4146,6 +5691,10 @@ final_html = final_html.replace('__BAG_BURGUNDY_B64__', bag_burgundy_b64)
 final_html = final_html.replace('__BAG_CAMEL_B64__', bag_camel_b64)
 final_html = final_html.replace('__BAG_CROSSBODY_B64__', bag_crossbody_b64)
 final_html = final_html.replace('__BAG_QUILTED_B64__', bag_quilted_b64)
+final_html = final_html.replace('__WALLET_BIFOLD_B64__', wallet_bifold_b64)
+final_html = final_html.replace('__WALLET_CARDHOLDER_B64__', wallet_cardholder_b64)
+final_html = final_html.replace('__WALLET_CONTINENTAL_B64__', wallet_continental_b64)
+final_html = final_html.replace('__WALLET_ZIP_B64__', wallet_zip_b64)
 
 # 1. Write to E:\lovable\template.html (for Extension)
 with open(r'E:\lovable\template.html', 'w', encoding='utf-8') as f:
