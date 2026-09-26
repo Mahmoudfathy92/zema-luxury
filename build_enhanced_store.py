@@ -137,16 +137,17 @@ template = '''<!DOCTYPE html>
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6px 14px;
+    padding: 2px 10px;
     text-decoration: none;
   }
   .brand-logo-img {
-    height: 68px;
-    max-height: 74px;
-    width: auto;
+    width: 145px !important;
+    max-width: 155px !important;
+    height: auto !important;
+    max-height: 46px !important;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.06));
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.04));
     transition: transform 0.25s ease;
   }
   .brand-logo-img:hover {
@@ -154,8 +155,9 @@ template = '''<!DOCTYPE html>
   }
   @media (max-width: 768px) {
     .brand-logo-img {
-      height: 56px;
-      max-height: 60px;
+      width: 115px !important;
+      max-width: 125px !important;
+      max-height: 38px !important;
     }
   }
 
@@ -2105,27 +2107,27 @@ template = '''<!DOCTYPE html>
           <!-- Perks Box -->
           <div class="pdp-perks-box">
             <div class="pdp-perk-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-              <span>شحن مجاني فوق 2,500 ج.م</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <span id="pdp-perk-1">شحن مجاني فوق 2,500 ج.م</span>
             </div>
             <div class="pdp-perk-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-              <span>الدفع عند الاستلام متاح</span>
+              <span id="pdp-perk-2">الدفع عند الاستلام متاح</span>
             </div>
             <div class="pdp-perk-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>توصيل لكافة محافظات مصر</span>
+              <span id="pdp-perk-3">توصيل لكافة محافظات مصر</span>
             </div>
             <div class="pdp-perk-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
-              <span>استبدال واسترجاع خلال 14 يوماً</span>
+              <span id="pdp-perk-4">استبدال واسترجاع خلال 14 يوماً</span>
             </div>
           </div>
 
           <!-- Color Swatches -->
           <div>
             <label style="display:block; font-size:13px; font-weight:700; margin-bottom:8px;">
-              اللون المتاح: <span id="pdpSelectedColorName" style="color:#666;">هافان طبيعي</span>
+              <span id="pdp-lbl-color">اللون المتاح:</span> <span id="pdpSelectedColorName" style="color:#666;">هافان طبيعي</span>
             </label>
             <div style="display:flex; gap:10px;">
               <span style="background:#5C4033; width:26px; height:26px; border-radius:50%; display:inline-block; border:2px solid #000; cursor:pointer;"></span>
@@ -2153,7 +2155,7 @@ template = '''<!DOCTYPE html>
             <!-- Description -->
             <div class="pdp-acc-item">
               <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
-                <span>الوصف وتفاصيل التصميم</span>
+                <span id="pdp-acc-lbl-desc">الوصف وتفاصيل التصميم</span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="pdp-acc-content open" id="pdpDescContent">
@@ -2164,7 +2166,7 @@ template = '''<!DOCTYPE html>
             <!-- Materials -->
             <div class="pdp-acc-item">
               <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
-                <span>الخامات والصناعة الفاخرة</span>
+                <span id="pdp-acc-lbl-mat">الخامات والصناعة الفاخرة</span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="pdp-acc-content" id="pdpMaterialsContent">
@@ -2178,7 +2180,7 @@ template = '''<!DOCTYPE html>
             <!-- Dimensions -->
             <div class="pdp-acc-item">
               <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
-                <span>الأبعاد والمقاسات</span>
+                <span id="pdp-acc-lbl-dim">الأبعاد والمقاسات</span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="pdp-acc-content" id="pdpDimensionsContent">
@@ -2195,7 +2197,7 @@ template = '''<!DOCTYPE html>
           <!-- WhatsApp Direct Order -->
           <a id="pdpWaOrderBtn" href="#" target="_blank" class="btn-wa-checkout" style="padding:14px; font-size:14px; text-decoration:none;">
             <i data-lucide="message-circle"></i>
-            <span>طلب فوري لهذه الحقيبة عبر WhatsApp</span>
+            <span id="pdpWaOrderText">طلب فوري لهذه الحقيبة عبر WhatsApp</span>
           </a>
 
         </div>
@@ -2223,14 +2225,14 @@ template = '''<!DOCTYPE html>
   <!-- ========================================================== -->
   <!-- 📩 1. JOIN OUR CIRCLE (NEWSLETTER) -->
   <!-- ========================================================== -->
-  <section id="newsletter" class="zema-newsletter-section" dir="rtl">
+  <section id="newsletter" class="zema-newsletter-section">
     <div class="zema-newsletter-container">
-      <p class="zema-circle-eyebrow">JOIN OUR CIRCLE</p>
-      <h2 class="zema-newsletter-title">انضم إلى دائرتنا</h2>
-      <p class="zema-newsletter-desc">كُن أول من يكتشف العينات الجديدة، العروض الحصرية، والمجموعات الخاصة.</p>
+      <p class="zema-circle-eyebrow" id="nl-eyebrow">JOIN OUR CIRCLE</p>
+      <h2 class="zema-newsletter-title" id="nl-title">انضم إلى دائرتنا</h2>
+      <p class="zema-newsletter-desc" id="nl-desc">كُن أول من يكتشف العينات الجديدة، العروض الحصرية، والمجموعات الخاصة.</p>
       <form class="zema-newsletter-form" onsubmit="event.preventDefault(); handleNewsletterSubmit(this);">
-        <input type="email" placeholder="بريدك الإلكتروني" aria-label="بريدك الإلكتروني" class="zema-newsletter-input" required />
-        <button type="submit" class="zema-newsletter-btn">اشترك</button>
+        <input type="email" id="nl-input" placeholder="بريدك الإلكتروني" aria-label="بريدك الإلكتروني" class="zema-newsletter-input" required />
+        <button type="submit" id="nl-btn" class="zema-newsletter-btn">اشترك</button>
       </form>
       <div id="newsletterSuccess" style="display:none; margin-top:16px; color:#1B7D3F; font-size:14px; font-weight:700;">✓ شكراً لاشتراكك في دائرة زِيما! ستصلك أحدث المجموعات والعروض الحصرية أولاً بأول.</div>
     </div>
@@ -2239,46 +2241,46 @@ template = '''<!DOCTYPE html>
   <!-- ========================================================== -->
   <!-- ❓ 2. FAQ (الأسئلة الشائعة) -->
   <!-- ========================================================== -->
-  <section id="faq" class="zema-faq-section" dir="rtl">
+  <section id="faq" class="zema-faq-section">
     <div class="zema-faq-container">
       <div style="text-align:center; margin-bottom: 40px;">
-        <p class="zema-faq-eyebrow">FAQ</p>
-        <h2 class="zema-faq-title">الأسئلة الشائعة</h2>
+        <p class="zema-faq-eyebrow" id="faq-eyebrow">FAQ</p>
+        <h2 class="zema-faq-title" id="faq-main-title">الأسئلة الشائعة</h2>
       </div>
       <div class="zema-faq-accordion">
         <details class="zema-faq-item">
           <summary class="zema-faq-summary">
-            <span>هل الدفع عند الاستلام متاح؟</span>
+            <span id="faq-q-1">هل الدفع عند الاستلام متاح؟</span>
             <span class="zema-faq-icon">+</span>
           </summary>
-          <div class="zema-faq-body">
+          <div class="zema-faq-body" id="faq-a-1">
             نعم، الدفع عند الاستلام متاح لجميع المحافظات داخل مصر.
           </div>
         </details>
         <details class="zema-faq-item">
           <summary class="zema-faq-summary">
-            <span>كم تستغرق مدة الشحن؟</span>
+            <span id="faq-q-2">كم تستغرق مدة الشحن؟</span>
             <span class="zema-faq-icon">+</span>
           </summary>
-          <div class="zema-faq-body">
+          <div class="zema-faq-body" id="faq-a-2">
             من 2 إلى 5 أيام عمل حسب المحافظة. القاهرة والجيزة عادةً خلال 48 ساعة.
           </div>
         </details>
         <details class="zema-faq-item">
           <summary class="zema-faq-summary">
-            <span>هل يمكنني فتح الشحنة قبل الدفع؟</span>
+            <span id="faq-q-3">هل يمكنني فتح الشحنة قبل الدفع؟</span>
             <span class="zema-faq-icon">+</span>
           </summary>
-          <div class="zema-faq-body">
+          <div class="zema-faq-body" id="faq-a-3">
             لحماية المنتجات الفاخرة لا يُسمح بفتح الشحنة قبل الدفع، ولكن لديك حق الاستبدال خلال 14 يوماً.
           </div>
         </details>
         <details class="zema-faq-item">
           <summary class="zema-faq-summary">
-            <span>هل المنتجات أصلية ومضمونة؟</span>
+            <span id="faq-q-4">هل المنتجات أصلية ومضمونة؟</span>
             <span class="zema-faq-icon">+</span>
           </summary>
-          <div class="zema-faq-body">
+          <div class="zema-faq-body" id="faq-a-4">
             جميع منتجات ZEMA مختارة بعناية ومضمونة الجودة، مع إمكانية الاستبدال أو الاسترجاع.
           </div>
         </details>
@@ -2289,35 +2291,35 @@ template = '''<!DOCTYPE html>
   <!-- ========================================================== -->
   <!-- 🏛️ 3. FOOTER (المشروع القديم مع الأقسام: حقائب، محافظ، أحزمة) -->
   <!-- ========================================================== -->
-  <footer class="zema-footer" dir="rtl">
+  <footer class="zema-footer" id="zemaFooter">
     <div class="zema-footer-grid">
       <!-- Right Column: Logo & Arabic Bio -->
       <div class="zema-footer-col">
         <a href="#top" onclick="showHomePage()" style="display:inline-block; margin-bottom:16px;">
-          <img src="__LOGO_B64__" alt="ZEMA" style="height:auto; width:110px; max-width:110px; display:block;" />
+          <img src="__LOGO_B64__" alt="ZEMA" style="height:auto; width:135px; max-width:145px; display:block;" />
         </a>
-        <p style="font-size:13.5px; color:#67625d; line-height:1.75; max-width:320px; margin:0;">
+        <p id="footer-bio" style="font-size:13.5px; color:#67625d; line-height:1.75; max-width:320px; margin:0;">
           زِيما — مجموعة مختارة من الحقائب الجلدية الفاخرة والمحافظ والإكسسوارات، صُنعت لمن يدرك تفاصيل الأناقة.
         </p>
       </div>
 
       <!-- Center Column: روابط (Links) with requested categories -->
       <div class="zema-footer-col">
-        <p class="zema-footer-eyebrow">روابط</p>
+        <p class="zema-footer-eyebrow" id="footer-links-title">روابط</p>
         <ul class="zema-footer-list">
-          <li><a href="#bags-section" onclick="showHomePage()">المتجر</a></li>
-          <li><a href="#bags-section" onclick="showHomePage()">حقائب</a></li>
-          <li><a href="#bags-section" onclick="showHomePage()">محافظ</a></li>
-          <li><a href="#bags-section" onclick="showHomePage()">أحزمة</a></li>
-          <li><a href="#bags-section" onclick="showHomePage()">العروض</a></li>
-          <li><a href="#faq">الأسئلة الشائعة</a></li>
-          <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)">تتبع شحنتك</a></li>
+          <li><a href="#bags-section" id="f-link-store" onclick="showHomePage()">المتجر</a></li>
+          <li><a href="#bags-section" id="f-link-bags" onclick="showHomePage()">حقائب</a></li>
+          <li><a href="#bags-section" id="f-link-wallets" onclick="showHomePage()">محافظ</a></li>
+          <li><a href="#bags-section" id="f-link-belts" onclick="showHomePage()">أحزمة</a></li>
+          <li><a href="#bags-section" id="f-link-sales" onclick="showHomePage()">العروض</a></li>
+          <li><a href="#faq" id="f-link-faq">الأسئلة الشائعة</a></li>
+          <li><a href="javascript:void(0)" id="f-link-track" onclick="toggleAccountModal(true)">تتبع شحنتك</a></li>
         </ul>
       </div>
 
       <!-- Left Column: تواصل معنا & حقوق النشر -->
       <div class="zema-footer-col">
-        <p class="zema-footer-eyebrow">تواصل معنا</p>
+        <p class="zema-footer-eyebrow" id="footer-contact-title">تواصل معنا</p>
         <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px;">
           <a href="https://www.facebook.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="zema-footer-social-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.7v3.1h2.7V22h3.1z"></path></svg>
@@ -2326,7 +2328,7 @@ template = '''<!DOCTYPE html>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
           </a>
         </div>
-        <p style="font-size:12px; color:#67625d; margin:0; line-height:1.6;">
+        <p id="footer-copyright" style="font-size:12px; color:#67625d; margin:0; line-height:1.6;">
           © 2026 ZEMA Maison — أناقة خالدة، فخامة عصرية
         </p>
       </div>
@@ -2656,7 +2658,7 @@ template = '''<!DOCTYPE html>
   <!-- ========================================================== -->
   <!-- 🔍 SEARCH OVERLAY (نمط المشروع القديم مع الرجوع للمتجر) -->
   <!-- ========================================================== -->
-  <div id="searchModalOverlay" class="zema-search-overlay" dir="rtl">
+  <div id="searchModalOverlay" class="zema-search-overlay">
     <div class="zema-search-container">
       <!-- Search Bar Row -->
       <div class="zema-search-bar-row">
@@ -2674,7 +2676,7 @@ template = '''<!DOCTYPE html>
       <div class="zema-search-footer">
         <button onclick="toggleSearchModal(false); showHomePage();" class="zema-search-back-btn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          <span>الرجوع للمتجر</span>
+          <span id="searchBackBtnText">الرجوع للمتجر</span>
         </button>
       </div>
     </div>
@@ -2684,20 +2686,20 @@ template = '''<!DOCTYPE html>
   <div class="modal-overlay" id="accountOverlay" onclick="toggleAccountModal(false)"></div>
   <div class="checkout-modal" id="accountModal" style="max-width:480px;">
     <div class="checkout-header">
-      <h3>👤 حسابي ومتابعة الطلب</h3>
+      <h3 id="accModalTitle">👤 حسابي ومتابعة الطلب</h3>
       <button class="drawer-close-btn" onclick="toggleAccountModal(false)"><i data-lucide="x"></i></button>
     </div>
     <div class="checkout-body">
       <div style="margin-bottom:14px;">
-        <label style="font-size:13px; font-weight:700; display:block; margin-bottom:6px;">تتبع مسار شحنتك:</label>
+        <label id="accTrackLabel" style="font-size:13px; font-weight:700; display:block; margin-bottom:6px;">تتبع مسار شحنتك:</label>
         <div style="display:flex; gap:8px;">
           <input type="text" id="accTrackInput" class="form-control" placeholder="رقم الهاتف أو كود الطلب ZM-..." />
-          <button class="card-quick-add-btn" style="width:auto; padding:10px 18px;" onclick="trackCustomerOrder()">تتبع</button>
+          <button id="accTrackBtn" class="card-quick-add-btn" style="width:auto; padding:10px 18px;" onclick="trackCustomerOrder()">تتبع</button>
         </div>
       </div>
       <div id="accTrackResult" style="display:none; background:#f4f9f4; border:1px solid #86efac; border-radius:8px; padding:14px; font-size:13px;">
-        <strong style="color:#16a34a; display:block; margin-bottom:4px;">✓ الشحنة مع مندوب التوصيل الآن</strong>
-        <span>التسليم المتوقع خلال 24 ساعة إلى عنوانك.</span>
+        <strong id="accTrackStatusTitle" style="color:#16a34a; display:block; margin-bottom:4px;">✓ الشحنة مع مندوب التوصيل الآن</strong>
+        <span id="accTrackStatusDesc">التسليم المتوقع خلال 24 ساعة إلى عنوانك.</span>
       </div>
     </div>
   </div>
@@ -3077,7 +3079,8 @@ template = '''<!DOCTYPE html>
         if (btnCo) btnCo.disabled = false;
         let html = '';
         cart.forEach(item => {
-          const title = isAr ? item.nameAr : item.nameEn;
+          const prod = CATALOG.find(p => p.id === item.id);
+          const title = isAr ? item.nameAr : ((prod && prod.nameEn) || item.nameEn || item.nameAr);
           const lineTotal = item.price * item.qty;
           html += `
             <div class="cart-item-row">
@@ -3130,7 +3133,8 @@ template = '''<!DOCTYPE html>
       if (summaryList) {
         let itemsHtml = '';
         cart.forEach(item => {
-          const title = isAr ? item.nameAr : item.nameEn;
+          const prod = CATALOG.find(p => p.id === item.id);
+          const title = isAr ? item.nameAr : ((prod && prod.nameEn) || item.nameEn || item.nameAr);
           const lineTotal = item.price * item.qty;
           itemsHtml += `
             <li class="co-prod-item-line">
@@ -3670,7 +3674,7 @@ template = '''<!DOCTYPE html>
       const navBagsLabel = document.getElementById('nav-bags-label');
       if (navBagsLabel) navBagsLabel.textContent = isAr ? 'حقائب' : 'Bags';
 
-      // Bags Submenu (matching user screenshot)
+      // Bags Submenu
       const subHandbags = document.getElementById('nav-sub-handbags');
       if (subHandbags) subHandbags.textContent = isAr ? 'حقائب يد' : 'Handbags';
       const subShoulder = document.getElementById('nav-sub-shoulder');
@@ -3695,9 +3699,21 @@ template = '''<!DOCTYPE html>
       const navSale = document.getElementById('nav-sale');
       if (navSale) navSale.textContent = isAr ? 'تخفيضات' : 'Sales';
 
+      // Header Action Buttons Titles
+      const sBtn = document.querySelector('.utility-left button[aria-label="Search"]');
+      if (sBtn) sBtn.title = isAr ? 'بحث' : 'Search';
+      const accBtn = document.querySelector('.desktop-account');
+      if (accBtn) accBtn.title = isAr ? 'تسجيل الدخول / حسابي' : 'Account';
+      const wBtn = document.querySelector('.desktop-wishlist');
+      if (wBtn) wBtn.title = isAr ? 'المفضلة' : 'Wishlist';
+      const cBtn = document.getElementById('openCartBtn');
+      if (cBtn) cBtn.title = isAr ? 'سلة التسوق' : 'Shopping Bag';
+
       // Hero Section
       const eye1 = document.getElementById('hero-eye-1');
       if (eye1) eye1.textContent = isAr ? 'صُممت لتناسب يومك' : 'MADE FOR YOUR EVERYDAY';
+      const hTitle1 = document.getElementById('hero-title-1');
+      if (hTitle1) hTitle1.textContent = isAr ? 'صُممت لأسلوب حياتك اليومي' : 'Made for Your Everyday';
       const sub1 = document.getElementById('hero-sub-1');
       if (sub1) sub1.textContent = isAr ? 'تصاميم مدروسة لترافقك بكل سلاسة وأناقة من أيام العمل إلى عطلات نهاية الأسبوع.' : 'Thoughtfully designed pieces that transition seamlessly from workdays to weekends.';
       const cta1 = document.getElementById('hero-cta-1');
@@ -3705,6 +3721,8 @@ template = '''<!DOCTYPE html>
 
       const eye2 = document.getElementById('hero-eye-2');
       if (eye2) eye2.textContent = isAr ? 'مجموعة الشتاء والعمل' : 'WINTER & WORK COLLECTION';
+      const hTitle2 = document.getElementById('hero-title-2');
+      if (hTitle2) hTitle2.textContent = isAr ? 'تألقي بأسلوب يعبر عنك' : 'Carry Your Signature Style';
       const sub2 = document.getElementById('hero-sub-2');
       if (sub2) sub2.textContent = isAr ? 'جلد طبيعي فاخر بدرجات البورغندي والزيتي والهافان، بأيدي أمهر الحرفيين.' : 'Supple genuine leather in rich burgundy, olive & tan tones, crafted by master artisans.';
       const cta2 = document.getElementById('hero-cta-2');
@@ -3712,6 +3730,8 @@ template = '''<!DOCTYPE html>
 
       const eye3 = document.getElementById('hero-eye-3');
       if (eye3) eye3.textContent = isAr ? 'الحقيبة التوت الأيقونية' : 'THE ICONIC TOTE';
+      const hTitle3 = document.getElementById('hero-title-3');
+      if (hTitle3) hTitle3.textContent = isAr ? 'قطع خالدة، لأناقة معاصرة' : 'Timeless Pieces. Modern You.';
       const sub3 = document.getElementById('hero-sub-3');
       if (sub3) sub3.textContent = isAr ? 'مساحة رحبة تتسع لكل أساسياتك مع تصميم هندسي يعكس الرقي والهدوء.' : 'Spacious enough for all your essentials with a structured silhouette reflecting quiet luxury.';
       const cta3 = document.getElementById('hero-cta-3');
@@ -3720,12 +3740,16 @@ template = '''<!DOCTYPE html>
       // Editorial Banner
       const editEye = document.getElementById('edit-eye');
       if (editEye) editEye.textContent = isAr ? 'حقائب لكل الأوقات' : 'BAGS FOR EVERY MOMENT';
+      const editTitle = document.getElementById('edit-title');
+      if (editTitle) editTitle.textContent = isAr ? 'صُممت لترافقك في كافة تفاصيل يومك.' : 'Designed for every chapter of your day.';
       const editCta = document.getElementById('edit-cta');
       if (editCta) editCta.textContent = isAr ? 'اكتشفي الحقائب' : 'Discover Bags';
 
       // Story Section
       const storyEye = document.getElementById('story-eye');
       if (storyEye) storyEye.textContent = isAr ? 'قصة زيما' : 'THE ZEMA STORY';
+      const storyTitle = document.getElementById('story-title');
+      if (storyTitle) storyTitle.textContent = isAr ? 'صُنعت لتلائم أسلوب حياتك.' : 'Designed for the way you live.';
       const storyP = document.getElementById('story-p');
       if (storyP) storyP.textContent = isAr ? 'في زيما (ZEMA)، نؤمن بأن القطع التي ترافقك يجب أن تعكس تفرد أسلوبك ونمط حياتك. مجموعاتنا توازن بين التصاميم الراقية والعملية الفائقة لتمنحك أناقة دائمة تليق بك في كل خطوة.' : 'At ZEMA, we believe every piece that accompanies you should reflect quiet confidence and elevated individuality. Our collections balance effortless refinement and supreme functionality.';
       const storyCta = document.getElementById('story-cta');
@@ -3747,6 +3771,12 @@ template = '''<!DOCTYPE html>
           if (t) t.textContent = isAr ? p.nameAr : p.nameEn;
           const c = card.querySelector('.product-category');
           if (c) c.textContent = isAr ? p.catAr : p.catEn;
+          const pStrong = card.querySelector('.price strong');
+          if (pStrong) pStrong.textContent = p.price.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+          const pDel = card.querySelector('.price del');
+          if (pDel && p.originalPrice) pDel.textContent = p.originalPrice.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+          const sBadge = card.querySelector('.sale-badge');
+          if (sBadge) sBadge.textContent = isAr ? 'تخفيض' : 'SALE';
         }
       });
 
@@ -3758,13 +3788,258 @@ template = '''<!DOCTYPE html>
       // Search Modal
       const searchInput = document.getElementById('liveSearchInput');
       if (searchInput) searchInput.placeholder = isAr ? 'ابحث عن منتج...' : 'Search for products...';
-      const searchBackBtn = document.querySelector('.zema-search-back-btn span');
+      const searchBackBtn = document.getElementById('searchBackBtnText');
       if (searchBackBtn) searchBackBtn.textContent = isAr ? 'الرجوع للمتجر' : 'Back to Store';
+
+      // Account Modal
+      const accModalTitle = document.getElementById('accModalTitle');
+      if (accModalTitle) accModalTitle.textContent = isAr ? '👤 حسابي ومتابعة الطلب' : '👤 My Account & Order Tracking';
+      const accTrackLabel = document.getElementById('accTrackLabel');
+      if (accTrackLabel) accTrackLabel.textContent = isAr ? 'تتبع مسار شحنتك:' : 'Track your shipment:';
+      const accTrackInput = document.getElementById('accTrackInput');
+      if (accTrackInput) accTrackInput.placeholder = isAr ? 'رقم الهاتف أو كود الطلب ZM-...' : 'Phone number or order code ZM-...';
+      const accTrackBtn = document.getElementById('accTrackBtn');
+      if (accTrackBtn) accTrackBtn.textContent = isAr ? 'تتبع' : 'Track';
+      const accTrackStatusTitle = document.getElementById('accTrackStatusTitle');
+      if (accTrackStatusTitle) accTrackStatusTitle.textContent = isAr ? '✓ الشحنة مع مندوب التوصيل الآن' : '✓ Shipment is out for delivery with the courier';
+      const accTrackStatusDesc = document.getElementById('accTrackStatusDesc');
+      if (accTrackStatusDesc) accTrackStatusDesc.textContent = isAr ? 'التسليم المتوقع خلال 24 ساعة إلى عنوانك.' : 'Expected delivery within 24 hours to your address.';
+
+      // Newsletter Section
+      const nlEyebrow = document.getElementById('nl-eyebrow');
+      if (nlEyebrow) nlEyebrow.textContent = isAr ? 'انضمي إلى دائرة زيما' : 'JOIN OUR CIRCLE';
+      const nlTitle = document.getElementById('nl-title');
+      if (nlTitle) nlTitle.textContent = isAr ? 'انضم إلى دائرتنا' : 'Join Our Circle';
+      const nlDesc = document.getElementById('nl-desc');
+      if (nlDesc) nlDesc.textContent = isAr ? 'كُن أول من يكتشف العينات الجديدة، العروض الحصرية، والمجموعات الخاصة.' : 'Be the first to discover new arrivals, exclusive offers, and private collections.';
+      const nlInput = document.getElementById('nl-input');
+      if (nlInput) nlInput.placeholder = isAr ? 'بريدك الإلكتروني' : 'Your email address';
+      const nlBtn = document.getElementById('nl-btn');
+      if (nlBtn) nlBtn.textContent = isAr ? 'اشترك' : 'Subscribe';
+
+      // FAQ Section
+      const faqMainTitle = document.getElementById('faq-main-title');
+      if (faqMainTitle) faqMainTitle.textContent = isAr ? 'الأسئلة الشائعة' : 'Frequently Asked Questions';
+      const fq1 = document.getElementById('faq-q-1');
+      if (fq1) fq1.textContent = isAr ? 'هل الدفع عند الاستلام متاح؟' : 'Is Cash on Delivery available?';
+      const fa1 = document.getElementById('faq-a-1');
+      if (fa1) fa1.textContent = isAr ? 'نعم، الدفع عند الاستلام متاح لجميع المحافظات داخل مصر.' : 'Yes, Cash on Delivery is available across all governorates in Egypt.';
+      const fq2 = document.getElementById('faq-q-2');
+      if (fq2) fq2.textContent = isAr ? 'كم تستغرق مدة الشحن؟' : 'How long does shipping take?';
+      const fa2 = document.getElementById('faq-a-2');
+      if (fa2) fa2.textContent = isAr ? 'من 2 إلى 5 أيام عمل حسب المحافظة. القاهرة والجيزة عادةً خلال 48 ساعة.' : '2 to 5 business days depending on governorate. Cairo & Giza usually within 48 hours.';
+      const fq3 = document.getElementById('faq-q-3');
+      if (fq3) fq3.textContent = isAr ? 'هل يمكنني فتح الشحنة قبل الدفع؟' : 'Can I inspect the shipment before payment?';
+      const fa3 = document.getElementById('faq-a-3');
+      if (fa3) fa3.textContent = isAr ? 'لحماية المنتجات الفاخرة لا يُسمح بفتح الشحنة قبل الدفع، ولكن لديك حق الاستبدال خلال 14 يوماً.' : 'To protect luxury leather goods, opening before payment is not permitted, but your right to exchange within 14 days is guaranteed.';
+      const fq4 = document.getElementById('faq-q-4');
+      if (fq4) fq4.textContent = isAr ? 'هل المنتجات أصلية ومضمونة؟' : 'Are products authentic and guaranteed?';
+      const fa4 = document.getElementById('faq-a-4');
+      if (fa4) fa4.textContent = isAr ? 'جميع منتجات ZEMA مختارة بعناية ومضمونة الجودة، مع إمكانية الاستبدال أو الاسترجاع.' : 'All ZEMA products are crafted with premium materials and guaranteed quality, with 14-day return and exchange.';
+
+      // Footer
+      const footerBio = document.getElementById('footer-bio');
+      if (footerBio) footerBio.textContent = isAr ? 'زِيما — مجموعة مختارة من الحقائب الجلدية الفاخرة والمحافظ والإكسسوارات، صُنعت لمن يدرك تفاصيل الأناقة.' : 'ZEMA — A curated collection of luxury leather handbags, wallets, and accessories, crafted for those who appreciate quiet refinement.';
+      const fLinksTitle = document.getElementById('footer-links-title');
+      if (fLinksTitle) fLinksTitle.textContent = isAr ? 'روابط' : 'Quick Links';
+      const fContactTitle = document.getElementById('footer-contact-title');
+      if (fContactTitle) fContactTitle.textContent = isAr ? 'تواصل معنا' : 'Connect With Us';
+      const fCopyright = document.getElementById('footer-copyright');
+      if (fCopyright) fCopyright.textContent = isAr ? '© 2026 ZEMA Maison — أناقة خالدة، فخامة عصرية' : '© 2026 ZEMA Maison — Timeless Elegance, Modern Luxury';
+      const flStore = document.getElementById('f-link-store');
+      if (flStore) flStore.textContent = isAr ? 'المتجر' : 'Store';
+      const flBags = document.getElementById('f-link-bags');
+      if (flBags) flBags.textContent = isAr ? 'حقائب' : 'Bags';
+      const flWallets = document.getElementById('f-link-wallets');
+      if (flWallets) flWallets.textContent = isAr ? 'محافظ' : 'Wallets';
+      const flBelts = document.getElementById('f-link-belts');
+      if (flBelts) flBelts.textContent = isAr ? 'أحزمة' : 'Belts';
+      const flSales = document.getElementById('f-link-sales');
+      if (flSales) flSales.textContent = isAr ? 'العروض' : 'Sales';
+      const flFaq = document.getElementById('f-link-faq');
+      if (flFaq) flFaq.textContent = isAr ? 'الأسئلة الشائعة' : 'FAQ';
+      const flTrack = document.getElementById('f-link-track');
+      if (flTrack) flTrack.textContent = isAr ? 'تتبع شحنتك' : 'Track Order';
+
+      // Cart Drawer Static Texts
+      const cEyebrow = document.getElementById('cart-drawer-eyebrow');
+      if (cEyebrow) cEyebrow.textContent = isAr ? 'سلة التسوق' : 'YOUR CART';
+      const cTitle = document.getElementById('cart-drawer-title');
+      if (cTitle) {
+        const countSpan = document.getElementById('cartTotalItems');
+        const count = countSpan ? countSpan.textContent : '0';
+        cTitle.innerHTML = (isAr ? 'حقيبة التسوق' : 'Shopping Bag') + ` (<span id="cartTotalItems">${count}</span>)`;
+      }
+      const cTimer = document.getElementById('cartTimerText');
+      if (cTimer) cTimer.textContent = isAr ? '⏱ القطع محجوزة في سلتك لمدة 15:00 دقيقة' : '⏱ Items reserved in your bag for 15:00 min';
+      const cSubLbl = document.getElementById('lbl-cart-subtotal');
+      if (cSubLbl) cSubLbl.textContent = isAr ? 'المجموع الفرعي:' : 'Subtotal:';
+      const cTotLbl = document.getElementById('lbl-cart-total');
+      if (cTotLbl) cTotLbl.textContent = isAr ? 'الإجمالي:' : 'Total:';
+      const cProcBtn = document.getElementById('btn-proceed-co-text');
+      if (cProcBtn) cProcBtn.textContent = isAr ? 'متابعة إتمام الطلب' : 'Proceed to Checkout';
+      const cGuar = document.getElementById('cart-guarantee-note');
+      if (cGuar) cGuar.textContent = isAr ? '🛡️ الدفع عند الاستلام متاح — حقك في الاستبدال أو الاسترجاع مكفول خلال ١٤ يوماً.' : '🛡️ Cash on delivery available — 14-day exchange and return guaranteed.';
+
+      // Checkout Drawer View Static Texts
+      const coBack = document.getElementById('co-back-text');
+      if (coBack) coBack.textContent = isAr ? 'العودة للسلة' : 'Back to Cart';
+      const coEyebrow = document.getElementById('co-header-eyebrow');
+      if (coEyebrow) coEyebrow.textContent = isAr ? 'إتمام الطلب' : 'CHECKOUT';
+      const coTitle = document.getElementById('co-header-title');
+      if (coTitle) coTitle.textContent = isAr ? 'إتمام الطلب' : 'Checkout';
+      const coSumTitle = document.getElementById('lbl-co-summary-title');
+      if (coSumTitle) coSumTitle.textContent = isAr ? 'ملخص المنتجات:' : 'Order Summary:';
+      const coSubLbl = document.getElementById('co-sum-subtotal-lbl');
+      if (coSubLbl) coSubLbl.textContent = isAr ? 'المجموع الفرعي:' : 'Subtotal:';
+      const coShipLbl = document.getElementById('co-sum-shipping-lbl');
+      if (coShipLbl) coShipLbl.textContent = isAr ? 'الشحن:' : 'Shipping:';
+      const coTotLbl = document.getElementById('co-sum-total-lbl');
+      if (coTotLbl) coTotLbl.textContent = isAr ? 'الإجمالي:' : 'Total:';
+      const coCouponIn = document.getElementById('coDrawerCouponInput');
+      if (coCouponIn) coCouponIn.placeholder = isAr ? 'كود الخصم (مثال: ZEMA10)' : 'Promo code (e.g. ZEMA10)';
+      const coCouponBtn = document.querySelector('.coupon-btn');
+      if (coCouponBtn) coCouponBtn.textContent = isAr ? 'تطبيق' : 'Apply';
+      const coFieldEye = document.getElementById('co-fields-eyebrow');
+      if (coFieldEye) coFieldEye.textContent = isAr ? 'بيانات التوصيل' : 'Delivery Details';
+      const coFieldTitle = document.getElementById('co-fields-title');
+      if (coFieldTitle) coFieldTitle.textContent = isAr ? 'اطلب الآن — الدفع عند الاستلام' : 'Order Now — Cash on Delivery';
+      const lblName = document.getElementById('lbl-name');
+      if (lblName) lblName.textContent = isAr ? 'الاسم بالكامل *' : 'Full Name *';
+      const custName = document.getElementById('custName');
+      if (custName) custName.placeholder = isAr ? 'مثال: ياسمين أحمد' : 'e.g. Yasmine Ahmed';
+      const lblPhone = document.getElementById('lbl-phone');
+      if (lblPhone) lblPhone.textContent = isAr ? 'رقم الهاتف (مثال: 01012345678) *' : 'Phone Number (e.g. 01012345678) *';
+      const phoneErr = document.getElementById('phoneErrorMsg');
+      if (phoneErr) phoneErr.textContent = isAr ? 'رقم غير صحيح. يبدأ بـ 01 و11 رقم.' : 'Invalid number. Must start with 01 and be 11 digits.';
+      const lblGov = document.getElementById('lbl-gov');
+      if (lblGov) lblGov.textContent = isAr ? 'المحافظة *' : 'Governorate *';
+      const govEl = document.getElementById('custGov');
+      if (govEl) {
+        const govTranslations = {
+          'القاهرة': isAr ? 'القاهرة' : 'Cairo',
+          'الجيزة': isAr ? 'الجيزة' : 'Giza',
+          'الإسكندرية': isAr ? 'الإسكندرية' : 'Alexandria',
+          'القليوبية': isAr ? 'القليوبية' : 'Qalyubia',
+          'الدقهلية': isAr ? 'الدقهلية' : 'Dakahlia',
+          'الشرقية': isAr ? 'الشرقية' : 'Sharqia',
+          'الغربية': isAr ? 'الغربية' : 'Gharbia',
+          'المنوفية': isAr ? 'المنوفية' : 'Monufia',
+          'البحيرة': isAr ? 'البحيرة' : 'Beheira',
+          'دمياط': isAr ? 'دمياط' : 'Damietta',
+          'كفر الشيخ': isAr ? 'كفر الشيخ' : 'Kafr El Sheikh',
+          'بورسعيد': isAr ? 'بورسعيد' : 'Port Said',
+          'الإسماعيلية': isAr ? 'الإسماعيلية' : 'Ismailia',
+          'السويس': isAr ? 'السويس' : 'Suez',
+          'الفيوم': isAr ? 'الفيوم' : 'Fayoum',
+          'بني سويف': isAr ? 'بني سويف' : 'Beni Suef',
+          'المنيا': isAr ? 'المنيا' : 'Minya',
+          'أسيوط': isAr ? 'أسيوط' : 'Asyut',
+          'سوهاج': isAr ? 'سوهاج' : 'Sohag',
+          'قنا': isAr ? 'قنا' : 'Qena',
+          'الأقصر': isAr ? 'الأقصر' : 'Luxor',
+          'أسوان': isAr ? 'أسوان' : 'Aswan',
+          'البحر الأحمر': isAr ? 'البحر الأحمر' : 'Red Sea',
+          'الوادي الجديد': isAr ? 'الوادي الجديد' : 'New Valley',
+          'مطروح': isAr ? 'مرسى مطروح' : 'Matrouh',
+          'شمال سيناء': isAr ? 'شمال سيناء' : 'North Sinai',
+          'جنوب سيناء': isAr ? 'جنوب سيناء' : 'South Sinai'
+        };
+        for (let i = 0; i < govEl.options.length; i++) {
+          const opt = govEl.options[i];
+          if (opt.value === '') {
+            opt.text = isAr ? 'اختر محافظتك' : 'Select your governorate';
+          } else if (govTranslations[opt.value]) {
+            opt.text = govTranslations[opt.value];
+          }
+        }
+      }
+      const lblCity = document.getElementById('lbl-city');
+      if (lblCity) lblCity.textContent = isAr ? 'المدينة / المنطقة (اختياري)' : 'City / Area (Optional)';
+      const custCity = document.getElementById('custCity');
+      if (custCity) custCity.placeholder = isAr ? 'مثال: مدينة نصر / التجمع / سموحة' : 'e.g. New Cairo / Maadi';
+      const lblAddr = document.getElementById('lbl-address');
+      if (lblAddr) lblAddr.textContent = isAr ? 'العنوان بالتفصيل *' : 'Detailed Address *';
+      const custAddr = document.getElementById('custAddress');
+      if (custAddr) custAddr.placeholder = isAr ? 'المنطقة، الشارع، رقم العقار، الشقة أو علامة مميزة' : 'Area, street, building number, apartment or landmark';
+      const lblEmail = document.getElementById('lbl-email');
+      if (lblEmail) lblEmail.textContent = isAr ? 'البريد الإلكتروني (اختياري)' : 'Email (Optional)';
+      const lblAcc = document.getElementById('lbl-create-acc');
+      if (lblAcc) lblAcc.textContent = isAr ? 'أنشئ حساباً لحفظ طلبي (اختياري)' : 'Create an account to save my order (Optional)';
+      const dPass = document.getElementById('drawerPassword');
+      if (dPass) dPass.placeholder = isAr ? 'كلمة المرور (٦ أحرف على الأقل)' : 'Password (at least 6 characters)';
+      const lblGuest = document.getElementById('lbl-guest-note');
+      if (lblGuest) lblGuest.textContent = isAr ? 'يمكنك إتمام الطلب كضيف بدون تسجيل.' : 'You can complete order as guest without registering.';
+      const lblPay = document.getElementById('lbl-pay-title');
+      if (lblPay) lblPay.textContent = isAr ? 'طريقة الدفع' : 'Payment Method';
+      const submitText = document.getElementById('btnSubmitDrawerOrderText');
+      if (submitText) submitText.textContent = isAr ? 'تأكيد الطلب الآن' : 'Confirm Order Now';
+
+      // Thank You View Static Texts
+      const tyEye = document.getElementById('ty-drawer-eyebrow');
+      if (tyEye) tyEye.textContent = isAr ? 'تم تأكيد الطلب' : 'ORDER CONFIRMED';
+      const tyTitle = document.getElementById('ty-drawer-title');
+      if (tyTitle) tyTitle.textContent = isAr ? 'تم تأكيد طلبك بنجاح!' : 'Order Confirmed Successfully!';
+      const tyMain = document.getElementById('ty-main-title');
+      if (tyMain) tyMain.textContent = isAr ? 'شكراً لثقتك في زِيما' : 'Thank You for Choosing ZEMA';
+      const tyBody = document.getElementById('ty-body-msg');
+      if (tyBody) tyBody.textContent = isAr ? 'تم تسجيل طلبك بنجاح! سيقوم فريق خدمة العملاء بالتواصل معك عبر الهاتف خلال ٢٤ ساعة لتأكيد تفاصيل الشحن والتسليم.' : 'Your order has been recorded successfully! Our customer support team will contact you within 24 hours to confirm shipping & delivery.';
+      const tyN = document.getElementById('ty-lbl-name');
+      if (tyN) tyN.textContent = isAr ? 'الاسم:' : 'Name:';
+      const tyP = document.getElementById('ty-lbl-phone');
+      if (tyP) tyP.textContent = isAr ? 'الهاتف:' : 'Phone:';
+      const tyA = document.getElementById('ty-lbl-addr');
+      if (tyA) tyA.textContent = isAr ? 'العنوان:' : 'Address:';
+      const tyPay = document.getElementById('ty-lbl-pay');
+      if (tyPay) tyPay.textContent = isAr ? 'طريقة الدفع:' : 'Payment:';
+      const tyTot = document.getElementById('ty-lbl-total');
+      if (tyTot) tyTot.textContent = isAr ? 'الإجمالي المطلوب:' : 'Total Due:';
+      const tyTime = document.getElementById('ty-lbl-time');
+      if (tyTime) tyTime.textContent = isAr ? 'موعد التوصيل:' : 'Estimated Delivery:';
+      const tyTrack = document.getElementById('ty-btn-track');
+      if (tyTrack) tyTrack.textContent = isAr ? 'تتبع شحنتك' : 'Track Your Shipment';
+      const tyBack = document.getElementById('ty-btn-back');
+      if (tyBack) tyBack.textContent = isAr ? 'متابعة التسوق' : 'Continue Shopping';
+
+      // Wishlist Drawer Static Texts
+      const wTitle = document.getElementById('wishlist-drawer-title');
+      if (wTitle) {
+        const wCount = document.getElementById('wishlistTotalItems');
+        const count = wCount ? wCount.textContent : '0';
+        wTitle.innerHTML = (isAr ? 'قائمة المفضلة' : 'My Wishlist') + ` (<span id="wishlistTotalItems">${count}</span>)`;
+      }
+      const wAddAll = document.querySelector('#btnWishlistAddAll span');
+      if (wAddAll) wAddAll.textContent = isAr ? 'إضافة كل المفضلة إلى السلة' : 'Add All Wishlist to Bag';
+
+      // PDP Perks & Controls
+      const perk1 = document.getElementById('pdp-perk-1');
+      if (perk1) perk1.textContent = isAr ? 'شحن مجاني فوق 2,500 ج.م' : 'Complimentary shipping above 2,500 EGP';
+      const perk2 = document.getElementById('pdp-perk-2');
+      if (perk2) perk2.textContent = isAr ? 'الدفع عند الاستلام متاح' : 'Cash on delivery available';
+      const perk3 = document.getElementById('pdp-perk-3');
+      if (perk3) perk3.textContent = isAr ? 'توصيل لكافة محافظات مصر' : 'Nationwide delivery across Egypt';
+      const perk4 = document.getElementById('pdp-perk-4');
+      if (perk4) perk4.textContent = isAr ? 'استبدال واسترجاع خلال 14 يوماً' : '14-day exchange & return';
+      const pdpColor = document.getElementById('pdp-lbl-color');
+      if (pdpColor) pdpColor.textContent = isAr ? 'اللون المتاح:' : 'Available Color:';
+      const pdpAddCart = document.getElementById('pdpAddToCartBtnText');
+      if (pdpAddCart) pdpAddCart.textContent = isAr ? 'إضافة إلى سلة المشتريات' : 'Add to Shopping Bag';
+      const pdpAccDesc = document.getElementById('pdp-acc-lbl-desc');
+      if (pdpAccDesc) pdpAccDesc.textContent = isAr ? 'الوصف وتفاصيل التصميم' : 'Description & Design Details';
+      const pdpAccMat = document.getElementById('pdp-acc-lbl-mat');
+      if (pdpAccMat) pdpAccMat.textContent = isAr ? 'الخامات والصناعة الفاخرة' : 'Materials & Craftsmanship';
+      const pdpAccDim = document.getElementById('pdp-acc-lbl-dim');
+      if (pdpAccDim) pdpAccDim.textContent = isAr ? 'الأبعاد والمقاسات' : 'Dimensions & Sizing';
+      const pdpWaText = document.getElementById('pdpWaOrderText');
+      if (pdpWaText) pdpWaText.textContent = isAr ? 'طلب فوري لهذه الحقيبة عبر WhatsApp' : 'Order via WhatsApp Directly';
+      const stickBtn = document.getElementById('stickyBarBtnText');
+      if (stickBtn) stickBtn.textContent = isAr ? 'أضف للسلة' : 'Add to Bag';
 
       // Wishlist & Cart drawer badges / UI
       updateCartBadge();
       renderWishlistUI();
-      if (document.body.classList.contains('is-pdp')) {
+      renderDrawerCart();
+      if (document.body.classList.contains('is-pdp') && activePdpProduct) {
         openPDP(activePdpProduct.id);
       }
       lucide.createIcons();
