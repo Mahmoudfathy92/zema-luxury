@@ -290,7 +290,7 @@ template = '''<!DOCTYPE html>
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 36px !important;
+    gap: clamp(18px, 2.5vw, 32px) !important;
     height: 48px !important;
     text-transform: none !important;
   }
@@ -309,6 +309,10 @@ template = '''<!DOCTYPE html>
   }
   .desktop-nav > a:hover {
     color: #C53030 !important;
+  }
+  .desktop-nav > a.nav-sale {
+    color: #C53030 !important;
+    font-weight: 600 !important;
   }
   .bags-nav-wrapper {
     position: relative;
@@ -1837,6 +1841,8 @@ template = '''<!DOCTYPE html>
 
       <a href="#wallets" id="nav-wallets" onclick="showHomePage()">محافظ</a>
       <a href="#belts" id="nav-belts" onclick="showHomePage()">أحزمة</a>
+      <a href="#bags-section" id="nav-bestsellers" onclick="filterBags('all', event)">الأكثر مبيعاً</a>
+      <a href="#bags-section" class="nav-sale" id="nav-sale" onclick="filterBags('all', event)">تخفيضات</a>
     </nav>
   </header>
 
@@ -3687,7 +3693,7 @@ template = '''<!DOCTYPE html>
       const navBest = document.getElementById('nav-bestsellers');
       if (navBest) navBest.textContent = isAr ? 'الأكثر مبيعاً' : 'Best Sellers';
       const navSale = document.getElementById('nav-sale');
-      if (navSale) navSale.textContent = isAr ? 'تخفيضات' : 'Sale';
+      if (navSale) navSale.textContent = isAr ? 'تخفيضات' : 'Sales';
 
       // Hero Section
       const eye1 = document.getElementById('hero-eye-1');
