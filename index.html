@@ -204,6 +204,182 @@
   }
 
   /* ========================================================== */
+  /* 🌐 LANGUAGE DROPDOWN */
+  /* ========================================================== */
+  .lang-switcher-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  .lang-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    inset-inline-end: 0;
+    min-width: 145px;
+    background: #ffffff;
+    border: 1px solid rgba(26, 25, 24, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 6px 0;
+    z-index: 1000;
+  }
+  .lang-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 13.5px;
+    font-family: inherit;
+    border: none;
+    background: transparent;
+    color: var(--zema-espresso);
+    cursor: pointer;
+    text-align: start;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .lang-menu-item:hover {
+    background: rgba(26, 25, 24, 0.05);
+  }
+  .lang-menu-item.is-active {
+    font-weight: 700;
+    color: #000000;
+  }
+  .lang-menu-item .check-icon {
+    width: 16px;
+    height: 16px;
+    stroke: var(--zema-espresso);
+    display: none;
+  }
+  .lang-menu-item.is-active .check-icon {
+    display: inline-block;
+  }
+
+  /* ========================================================== */
+  /* 👜 NAVIGATION & BAGS DROPDOWN (مطابق للصورة تماماً) */
+  /* ========================================================== */
+  .desktop-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 36px !important;
+    height: 48px !important;
+    text-transform: none !important;
+  }
+  .desktop-nav > a {
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    color: #1a1918 !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    padding: 8px 4px !important;
+    height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    transition: color 0.15s ease !important;
+  }
+  .desktop-nav > a:hover {
+    color: #C53030 !important;
+  }
+  .bags-nav-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+  }
+  .bags-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    color: #1a1918;
+    cursor: pointer;
+    padding: 8px 4px;
+    position: relative;
+    transition: color 0.15s ease;
+  }
+  .bags-nav-btn:hover,
+  .bags-nav-wrapper:hover .bags-nav-btn,
+  .bags-nav-wrapper.is-open .bags-nav-btn,
+  .bags-nav-wrapper.is-active .bags-nav-btn {
+    color: #C53030 !important; /* Red/accent color exactly as in user screenshot */
+  }
+  .bags-nav-wrapper.is-active .bags-nav-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 2px;
+    right: 2px;
+    height: 2px;
+    background: #C53030;
+    border-radius: 1px;
+  }
+  .bags-nav-btn .chevron-icon {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    transition: transform 0.2s ease;
+  }
+  .bags-nav-wrapper:hover .chevron-icon,
+  .bags-nav-wrapper.is-open .chevron-icon {
+    transform: rotate(180deg);
+  }
+  .bags-nav-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    inset-inline-start: 0;
+    min-width: 200px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.09);
+    padding: 12px 0;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+  .bags-nav-wrapper:hover .bags-nav-dropdown,
+  .bags-nav-wrapper.is-open .bags-nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .bags-dropdown-item {
+    display: block;
+    padding: 9px 24px;
+    font-size: 14px;
+    font-weight: 450;
+    color: #4b5563;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: normal;
+    transition: all 0.15s ease;
+    text-align: start;
+  }
+  .bags-dropdown-item:hover {
+    color: #111827;
+    background: rgba(0, 0, 0, 0.035);
+    padding-inline-start: 26px;
+  }
+  .bags-dropdown-all {
+    margin-top: 5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 11px;
+    font-weight: 550;
+    color: #111827;
+  }
+
+  /* ========================================================== */
   /* 🛍️ HOMEPAGE PRODUCT CARDS */
   /* ========================================================== */
   .product-card {
@@ -1585,9 +1761,21 @@
 
       <!-- Utility Right -->
       <div class="utility-side utility-right">
-        <button class="icon-btn" onclick="toggleLanguage()" id="langSwitcherBtn" aria-label="Language" title="Language / تغيير اللغة">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
-        </button>
+        <div class="lang-switcher-wrapper">
+          <button class="icon-btn" onclick="toggleLangDropdown(event)" id="langSwitcherBtn" aria-label="Language" title="Language / تغيير اللغة">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+          </button>
+          <div id="langDropdown" class="lang-dropdown-menu" style="display:none;">
+            <button class="lang-menu-item is-active" id="lang-opt-ar" onclick="selectLanguage('ar', event)">
+              <span class="lang-text">العربية</span>
+              <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <button class="lang-menu-item" id="lang-opt-en" onclick="selectLanguage('en', event)">
+              <span class="lang-text">English</span>
+              <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+          </div>
+        </div>
         <button class="icon-btn" aria-label="Wishlist" onclick="toggleWishlistDrawer(true)" title="المفضلة">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg>
           <span class="counter" id="wishlistCountBadge" style="display:none;">0</span>
@@ -1602,12 +1790,25 @@
     <!-- Navigation Bar -->
     <nav class="desktop-nav" aria-label="Main navigation">
       <a href="#top" id="nav-home" onclick="showHomePage()">الرئيسية</a>
-      <a href="#bags-section" id="nav-bags" onclick="showHomePage()">حقائب</a>
+
+      <!-- Bags Submenu with Dropdown (matching screenshot) -->
+      <div class="bags-nav-wrapper is-active" id="bagsNavWrapper">
+        <button class="bags-nav-btn" id="nav-bags-btn" onclick="toggleBagsDropdown(event)" aria-haspopup="true" aria-expanded="false">
+          <span id="nav-bags-label">حقائب</span>
+          <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="bags-nav-dropdown" id="bagsNavDropdown">
+          <a href="#bags-section" onclick="filterBags('handbags', event)" class="bags-dropdown-item" id="nav-sub-handbags">حقائب يد</a>
+          <a href="#bags-section" onclick="filterBags('shoulder', event)" class="bags-dropdown-item" id="nav-sub-shoulder">حقائب كتف</a>
+          <a href="#bags-section" onclick="filterBags('crossbody', event)" class="bags-dropdown-item" id="nav-sub-crossbody">حقائب كروس</a>
+          <a href="#bags-section" onclick="filterBags('tote', event)" class="bags-dropdown-item" id="nav-sub-tote">حقائب توت</a>
+          <a href="#bags-section" onclick="filterBags('evening', event)" class="bags-dropdown-item" id="nav-sub-evening">حقائب سهرة</a>
+          <a href="#bags-section" onclick="filterBags('all', event)" class="bags-dropdown-item bags-dropdown-all" id="nav-sub-all">عرض كل الحقائب</a>
+        </div>
+      </div>
+
       <a href="#wallets" id="nav-wallets" onclick="showHomePage()">محافظ</a>
       <a href="#belts" id="nav-belts" onclick="showHomePage()">أحزمة</a>
-      <a href="#accessories" id="nav-accessories" onclick="showHomePage()">إكسسوارات</a>
-      <a href="#bags-section" id="nav-bestsellers" onclick="showHomePage()">الأكثر مبيعاً</a>
-      <a href="#bags-section" class="nav-sale" id="nav-sale" onclick="showHomePage()">تخفيضات</a>
     </nav>
   </header>
 
@@ -3341,32 +3542,114 @@
     }
 
     // ==========================================
-    // 🌐 6. MULTILINGUAL SWITCHER
+    // 🌐 6. MULTILINGUAL ENGINE (ARABIC & ENGLISH)
     // ==========================================
-    function toggleLanguage() {
-      currentLang = currentLang === 'ar' ? 'en' : 'ar';
-      const isAr = currentLang === 'ar';
+    function toggleLangDropdown(e) {
+      if (e) e.stopPropagation();
+      const dd = document.getElementById('langDropdown');
+      if (!dd) return;
+      const isOpen = dd.style.display === 'block';
+      dd.style.display = isOpen ? 'none' : 'block';
+    }
+
+    function selectLanguage(lang, e) {
+      if (e) e.stopPropagation();
+      currentLang = lang;
+      try {
+        localStorage.setItem('zema-lang-v1', lang);
+      } catch (err) {}
       
-      document.documentElement.setAttribute('dir', isAr ? 'rtl' : 'ltr');
-      document.documentElement.setAttribute('lang', currentLang);
+      const dd = document.getElementById('langDropdown');
+      if (dd) dd.style.display = 'none';
 
-      const langLabel = document.getElementById('currentLangLabel');
-      if (langLabel) langLabel.textContent = isAr ? 'English' : 'العربية';
+      applyLanguage(lang);
+    }
 
-      const langBtn = document.getElementById('langSwitcherBtn');
-      if (langBtn) langBtn.setAttribute('title', isAr ? 'Switch to English' : 'التحويل للعربية');
+    function toggleBagsDropdown(e) {
+      if (e) e.stopPropagation();
+      const wrapper = document.getElementById('bagsNavWrapper');
+      if (wrapper) wrapper.classList.toggle('is-open');
+    }
 
-      const tickerMsg = document.getElementById('ticker-msg-1');
-      if (tickerMsg) {
-        tickerMsg.textContent = isAr ? 'شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م' : 'FREE SHIPPING OVER EGP 2,500 ACROSS EGYPT';
+    function filterBags(type, e) {
+      if (e) e.preventDefault();
+      const wrapper = document.getElementById('bagsNavWrapper');
+      if (wrapper) wrapper.classList.remove('is-open');
+      showHomePage();
+
+      const grid = document.getElementById('bags-grid') || document.querySelector('.products-grid') || document.querySelector('.product-rail');
+      if (grid) {
+        const cards = grid.querySelectorAll('article');
+        let matchCount = 0;
+        cards.forEach(card => {
+          const text = (card.textContent || '').toLowerCase();
+          let match = true;
+          if (type === 'handbags') match = text.includes('يد') || text.includes('handbag');
+          else if (type === 'shoulder') match = text.includes('كتف') || text.includes('shoulder');
+          else if (type === 'crossbody') match = text.includes('كروس') || text.includes('crossbody');
+          else if (type === 'tote') match = text.includes('توت') || text.includes('tote');
+          else if (type === 'evening') match = text.includes('سهرة') || text.includes('evening');
+          else if (type === 'all') match = true;
+          
+          if (match) {
+            card.style.display = '';
+            matchCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        if (matchCount === 0) {
+          cards.forEach(card => card.style.display = '');
+        }
       }
 
-      const navStory = document.getElementById('nav-our-story');
-      if (navStory) navStory.textContent = isAr ? 'قصتنا' : 'Our Story';
+      const sec = document.getElementById('bags-section');
+      if (sec) {
+        sec.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const isAr = lang === 'ar';
+      document.documentElement.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', lang);
+
+      // Active state in language dropdown
+      const optAr = document.getElementById('lang-opt-ar');
+      const optEn = document.getElementById('lang-opt-en');
+      if (optAr) optAr.classList.toggle('is-active', isAr);
+      if (optEn) optEn.classList.toggle('is-active', !isAr);
+
+      // Top Announcement Ticker
+      const tickerMsg = document.getElementById('ticker-msg-1');
+      if (tickerMsg) {
+        tickerMsg.textContent = isAr 
+          ? 'شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م' 
+          : 'COMPLIMENTARY NATIONWIDE SHIPPING ON ORDERS ABOVE 2,500 EGP';
+      }
+
+      // Header Navigation
       const navHome = document.getElementById('nav-home');
       if (navHome) navHome.textContent = isAr ? 'الرئيسية' : 'Home';
-      const navBags = document.getElementById('nav-bags');
-      if (navBags) navBags.textContent = isAr ? 'حقائب' : 'Bags';
+      
+      const navBagsLabel = document.getElementById('nav-bags-label');
+      if (navBagsLabel) navBagsLabel.textContent = isAr ? 'حقائب' : 'Bags';
+
+      // Bags Submenu (matching user screenshot)
+      const subHandbags = document.getElementById('nav-sub-handbags');
+      if (subHandbags) subHandbags.textContent = isAr ? 'حقائب يد' : 'Handbags';
+      const subShoulder = document.getElementById('nav-sub-shoulder');
+      if (subShoulder) subShoulder.textContent = isAr ? 'حقائب كتف' : 'Shoulder Bags';
+      const subCrossbody = document.getElementById('nav-sub-crossbody');
+      if (subCrossbody) subCrossbody.textContent = isAr ? 'حقائب كروس' : 'Crossbody Bags';
+      const subTote = document.getElementById('nav-sub-tote');
+      if (subTote) subTote.textContent = isAr ? 'حقائب توت' : 'Tote Bags';
+      const subEvening = document.getElementById('nav-sub-evening');
+      if (subEvening) subEvening.textContent = isAr ? 'حقائب سهرة' : 'Evening Bags';
+      const subAll = document.getElementById('nav-sub-all');
+      if (subAll) subAll.textContent = isAr ? 'عرض كل الحقائب' : 'Shop All';
+
       const navWallets = document.getElementById('nav-wallets');
       if (navWallets) navWallets.textContent = isAr ? 'محافظ' : 'Wallets';
       const navBelts = document.getElementById('nav-belts');
@@ -3378,14 +3661,111 @@
       const navSale = document.getElementById('nav-sale');
       if (navSale) navSale.textContent = isAr ? 'تخفيضات' : 'Sale';
 
-      document.querySelectorAll('.btn-text-qa').forEach(el => el.textContent = isAr ? 'إضافة سريعة للسلة' : 'Quick Add');
-      
+      // Hero Section
+      const eye1 = document.getElementById('hero-eye-1');
+      if (eye1) eye1.textContent = isAr ? 'صُممت لتناسب يومك' : 'MADE FOR YOUR EVERYDAY';
+      const sub1 = document.getElementById('hero-sub-1');
+      if (sub1) sub1.textContent = isAr ? 'تصاميم مدروسة لترافقك بكل سلاسة وأناقة من أيام العمل إلى عطلات نهاية الأسبوع.' : 'Thoughtfully designed pieces that transition seamlessly from workdays to weekends.';
+      const cta1 = document.getElementById('hero-cta-1');
+      if (cta1) cta1.textContent = isAr ? 'تسوقي الحقائب' : 'Shop Bags';
+
+      const eye2 = document.getElementById('hero-eye-2');
+      if (eye2) eye2.textContent = isAr ? 'مجموعة الشتاء والعمل' : 'WINTER & WORK COLLECTION';
+      const sub2 = document.getElementById('hero-sub-2');
+      if (sub2) sub2.textContent = isAr ? 'جلد طبيعي فاخر بدرجات البورغندي والزيتي والهافان، بأيدي أمهر الحرفيين.' : 'Supple genuine leather in rich burgundy, olive & tan tones, crafted by master artisans.';
+      const cta2 = document.getElementById('hero-cta-2');
+      if (cta2) cta2.textContent = isAr ? 'اكتشفي حقائب اليد' : 'Discover Handbags';
+
+      const eye3 = document.getElementById('hero-eye-3');
+      if (eye3) eye3.textContent = isAr ? 'الحقيبة التوت الأيقونية' : 'THE ICONIC TOTE';
+      const sub3 = document.getElementById('hero-sub-3');
+      if (sub3) sub3.textContent = isAr ? 'مساحة رحبة تتسع لكل أساسياتك مع تصميم هندسي يعكس الرقي والهدوء.' : 'Spacious enough for all your essentials with a structured silhouette reflecting quiet luxury.';
+      const cta3 = document.getElementById('hero-cta-3');
+      if (cta3) cta3.textContent = isAr ? 'تسوقي التوت' : 'Shop Tote';
+
+      // Editorial Banner
+      const editEye = document.getElementById('edit-eye');
+      if (editEye) editEye.textContent = isAr ? 'حقائب لكل الأوقات' : 'BAGS FOR EVERY MOMENT';
+      const editCta = document.getElementById('edit-cta');
+      if (editCta) editCta.textContent = isAr ? 'اكتشفي الحقائب' : 'Discover Bags';
+
+      // Story Section
+      const storyEye = document.getElementById('story-eye');
+      if (storyEye) storyEye.textContent = isAr ? 'قصة زيما' : 'THE ZEMA STORY';
+      const storyP = document.getElementById('story-p');
+      if (storyP) storyP.textContent = isAr ? 'في زيما (ZEMA)، نؤمن بأن القطع التي ترافقك يجب أن تعكس تفرد أسلوبك ونمط حياتك. مجموعاتنا توازن بين التصاميم الراقية والعملية الفائقة لتمنحك أناقة دائمة تليق بك في كل خطوة.' : 'At ZEMA, we believe every piece that accompanies you should reflect quiet confidence and elevated individuality. Our collections balance effortless refinement and supreme functionality.';
+      const storyCta = document.getElementById('story-cta');
+      if (storyCta) storyCta.textContent = isAr ? 'تعرفي أكثر على قصتنا' : 'Learn more about our story';
+
+      // Bags Section
+      const prodHeading = document.getElementById('prod-heading');
+      if (prodHeading) prodHeading.textContent = isAr ? 'مجموعة حقائب زيما' : 'Designed for Your Everyday';
+      const prodDesc = document.getElementById('prod-desc');
+      if (prodDesc) prodDesc.textContent = isAr ? 'اضغطي على أي حقيبة لرؤية التفاصيل الكاملة، الزوايا المتعددة والخامات.' : 'Click on any handbag to explore all angles, materials, and complete specifications.';
+      const viewAllBags = document.getElementById('view-all-bags');
+      if (viewAllBags) viewAllBags.innerHTML = isAr ? 'عرض كل الحقائب &larr;' : 'View all bags &rarr;';
+
+      // Product Cards
+      CATALOG.forEach(p => {
+        const card = document.querySelector(`article[onclick*="'${p.id}'"]`);
+        if (card) {
+          const t = card.querySelector('.prod-title');
+          if (t) t.textContent = isAr ? p.nameAr : p.nameEn;
+          const c = card.querySelector('.product-category');
+          if (c) c.textContent = isAr ? p.catAr : p.catEn;
+        }
+      });
+
+      // Quick Add buttons
+      document.querySelectorAll('.btn-text-qa').forEach(el => {
+        el.textContent = isAr ? 'إضافة سريعة للسلة' : 'Quick Add';
+      });
+
+      // Search Modal
+      const searchInput = document.getElementById('liveSearchInput');
+      if (searchInput) searchInput.placeholder = isAr ? 'ابحث عن منتج...' : 'Search for products...';
+      const searchBackBtn = document.querySelector('.zema-search-back-btn span');
+      if (searchBackBtn) searchBackBtn.textContent = isAr ? 'الرجوع للمتجر' : 'Back to Store';
+
+      // Wishlist & Cart drawer badges / UI
       updateCartBadge();
       renderWishlistUI();
       if (document.body.classList.contains('is-pdp')) {
         openPDP(activePdpProduct.id);
       }
       lucide.createIcons();
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      const langDropdown = document.getElementById('langDropdown');
+      const langBtn = document.getElementById('langSwitcherBtn');
+      if (langDropdown && langDropdown.style.display === 'block') {
+        if (!langDropdown.contains(e.target) && !langBtn.contains(e.target)) {
+          langDropdown.style.display = 'none';
+        }
+      }
+      const bagsWrapper = document.getElementById('bagsNavWrapper');
+      if (bagsWrapper && bagsWrapper.classList.contains('is-open')) {
+        if (!bagsWrapper.contains(e.target)) {
+          bagsWrapper.classList.remove('is-open');
+        }
+      }
+    });
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const nav = document.querySelector('.desktop-nav');
+      if (nav) {
+        if (nav.style.display === 'flex') {
+          nav.style.display = '';
+        } else {
+          nav.style.display = 'flex';
+          nav.style.flexDirection = 'column';
+          nav.style.height = 'auto';
+          nav.style.padding = '16px 0';
+        }
+      }
     }
 
     // Hashchange listener (Support Browser Back/Forward buttons)
@@ -3420,6 +3800,13 @@
     }
 
     // Init
+    try {
+      const savedLang = localStorage.getItem('zema-lang-v1');
+      if (savedLang === 'en' || savedLang === 'ar') {
+        currentLang = savedLang;
+      }
+    } catch (e) {}
+    applyLanguage(currentLang);
     sanitizeWishlist();
     updateCartBadge();
     updateWishlistBadge();
