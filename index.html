@@ -421,40 +421,45 @@
   .sale-badge {
     position: absolute;
     top: 12px;
-    right: 12px;
-    background: #991b1b;
+    left: 12px;
+    right: auto;
+    background: #000000;
     color: #ffffff;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 700;
-    padding: 4px 8px;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
+    line-height: 1;
+    padding: 5px 8px;
+    border-radius: 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     z-index: 2;
+    pointer-events: none;
   }
   [dir="rtl"] .sale-badge {
-    right: auto;
     left: 12px;
+    right: auto;
   }
   .favorite-button {
     position: absolute;
     top: 12px;
-    left: 12px;
-    width: 36px;
-    height: 36px;
+    right: 12px;
+    left: auto;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     z-index: 2;
-    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
   }
   [dir="rtl"] .favorite-button {
-    left: auto;
     right: 12px;
+    left: auto;
   }
   .favorite-button:hover { transform: scale(1.1); }
   .favorite-button.active { color: #e11d48; }
@@ -3748,7 +3753,7 @@
           const pDel = card.querySelector('.price del');
           if (pDel && p.originalPrice) pDel.textContent = p.originalPrice.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
           const sBadge = card.querySelector('.sale-badge');
-          if (sBadge) sBadge.textContent = isAr ? 'تخفيض' : 'SALE';
+          if (sBadge) sBadge.textContent = 'SALE';
         }
       });
 
