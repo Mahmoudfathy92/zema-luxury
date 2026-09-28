@@ -1432,9 +1432,70 @@
     background: #faf9f7;
     padding: 85px 24px 105px 24px;
   }
+  .zema-faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1918;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color 0.2s;
+  }
   .zema-faq-summary span:first-child {
-    text-align: start;
+    flex: 1;
     unicode-bidi: isolate;
+  }
+  /* Explicit LTR Rules for English */
+  [dir="ltr"] .zema-faq-section,
+  [dir="ltr"] .zema-faq-container,
+  [dir="ltr"] .zema-faq-accordion,
+  [dir="ltr"] .zema-faq-item,
+  [dir="ltr"] .zema-faq-summary,
+  [dir="ltr"] .zema-faq-body {
+    direction: ltr !important;
+    text-align: left !important;
+  }
+  [dir="ltr"] .zema-faq-summary {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+  [dir="ltr"] .zema-faq-summary span:first-child {
+    text-align: left !important;
+    direction: ltr !important;
+    unicode-bidi: isolate !important;
+  }
+  [dir="ltr"] .zema-faq-icon {
+    margin-left: 16px !important;
+    margin-right: 0 !important;
+    order: 2 !important;
+  }
+  /* Explicit RTL Rules for Arabic */
+  [dir="rtl"] .zema-faq-section,
+  [dir="rtl"] .zema-faq-container,
+  [dir="rtl"] .zema-faq-accordion,
+  [dir="rtl"] .zema-faq-item,
+  [dir="rtl"] .zema-faq-summary,
+  [dir="rtl"] .zema-faq-body {
+    direction: rtl !important;
+    text-align: right !important;
+  }
+  [dir="rtl"] .zema-faq-summary {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+  [dir="rtl"] .zema-faq-summary span:first-child {
+    text-align: right !important;
+    direction: rtl !important;
+    unicode-bidi: isolate !important;
+  }
+  [dir="rtl"] .zema-faq-icon {
+    margin-right: 16px !important;
+    margin-left: 0 !important;
+    order: 2 !important;
   }
   .zema-faq-container {
     max-width: 720px;
@@ -5923,20 +5984,56 @@
       const faqMainTitle = document.getElementById('faq-main-title');
       if (faqMainTitle) faqMainTitle.textContent = isAr ? 'الأسئلة الشائعة' : 'Frequently Asked Questions';
       const fq1 = document.getElementById('faq-q-1');
-      if (fq1) fq1.textContent = isAr ? 'هل الدفع عند الاستلام متاح؟' : 'Is Cash on Delivery available?';
+      if (fq1) {
+        fq1.innerHTML = isAr ? 'هل الدفع عند الاستلام متاح؟&rlm;' : '<bdi dir="ltr">Is Cash on Delivery available?&lrm;</bdi>';
+        fq1.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      }
       const fa1 = document.getElementById('faq-a-1');
-      if (fa1) fa1.textContent = isAr ? 'نعم، الدفع عند الاستلام متاح لجميع المحافظات داخل مصر.' : 'Yes, Cash on Delivery is available across all governorates in Egypt.';
+      if (fa1) {
+        fa1.innerHTML = isAr ? 'نعم، الدفع عند الاستلام متاح لجميع المحافظات داخل مصر.' : '<bdi dir="ltr">Yes, Cash on Delivery is available across all governorates in Egypt.</bdi>';
+        fa1.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      }
       const fq2 = document.getElementById('faq-q-2');
-      if (fq2) fq2.textContent = isAr ? 'كم تستغرق مدة الشحن؟' : 'How long does shipping take?';
+      if (fq2) {
+        fq2.innerHTML = isAr ? 'كم تستغرق مدة الشحن؟&rlm;' : '<bdi dir="ltr">How long does shipping take?&lrm;</bdi>';
+        fq2.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      }
       const fa2 = document.getElementById('faq-a-2');
-      if (fa2) fa2.textContent = isAr ? 'من 2 إلى 5 أيام عمل حسب المحافظة. القاهرة والجيزة عادةً خلال 48 ساعة.' : '2 to 5 business days depending on governorate. Cairo & Giza usually within 48 hours.';
+      if (fa2) {
+        fa2.innerHTML = isAr ? 'من 2 إلى 5 أيام عمل حسب المحافظة. القاهرة والجيزة عادةً خلال 48 ساعة.' : '<bdi dir="ltr">2 to 5 business days depending on governorate. Cairo & Giza usually within 48 hours.</bdi>';
+        fa2.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      }
       const fq3 = document.getElementById('faq-q-3');
-      if (fq3) fq3.textContent = isAr ? 'هل يمكنني فتح الشحنة قبل الدفع؟' : 'Can I inspect the shipment before payment?';
+      if (fq3) {
+        fq3.innerHTML = isAr ? 'هل يمكنني فتح الشحنة قبل الدفع؟&rlm;' : '<bdi dir="ltr">Can I inspect the shipment before payment?&lrm;</bdi>';
+        fq3.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      }
       const fa3 = document.getElementById('faq-a-3');
-      if (fa3) fa3.textContent = isAr ? 'لحماية المنتجات الفاخرة لا يُسمح بفتح الشحنة قبل الدفع، ولكن لديك حق الاستبدال خلال 14 يوماً.' : 'To protect luxury leather goods, opening before payment is not permitted, but your right to exchange within 14 days is guaranteed.';
+      if (fa3) {
+        fa3.innerHTML = isAr ? 'لحماية المنتجات الفاخرة لا يُسمح بفتح الشحنة قبل الدفع، ولكن لديك حق الاستبدال خلال 14 يوماً.' : '<bdi dir="ltr">To protect luxury leather goods, opening before payment is not permitted, but your right to exchange within 14 days is guaranteed.</bdi>';
+        fa3.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      }
       const fq4 = document.getElementById('faq-q-4');
-      if (fq4) fq4.textContent = isAr ? 'هل المنتجات أصلية ومضمونة؟' : 'Are products authentic and guaranteed?';
+      if (fq4) {
+        fq4.innerHTML = isAr ? 'هل المنتجات أصلية ومضمونة؟&rlm;' : '<bdi dir="ltr">Are products authentic and guaranteed?&lrm;</bdi>';
+        fq4.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      }
       const fa4 = document.getElementById('faq-a-4');
+      if (fa4) {
+        fa4.innerHTML = isAr ? 'جميع منتجات ZEMA مختارة بعناية ومضمونة الجودة، مع إمكانية الاستبدال أو الاسترجاع.' : '<bdi dir="ltr">All ZEMA creations are meticulously crafted and fully guaranteed, with easy returns and exchanges.</bdi>';
+        fa4.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+      }
+
+      // Explicitly set dir attribute on FAQ elements
+      const faqSec = document.getElementById('faq');
+      if (faqSec) {
+        faqSec.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+        faqSec.style.direction = isAr ? 'rtl' : 'ltr';
+      }
+      document.querySelectorAll('.zema-faq-summary').forEach(s => {
+        s.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+        s.style.direction = isAr ? 'rtl' : 'ltr';
+      });
       if (fa4) fa4.textContent = isAr ? 'جميع منتجات ZEMA مختارة بعناية ومضمونة الجودة، مع إمكانية الاستبدال أو الاسترجاع.' : 'All ZEMA products are crafted with premium materials and guaranteed quality, with 14-day return and exchange.';
 
       // Footer
