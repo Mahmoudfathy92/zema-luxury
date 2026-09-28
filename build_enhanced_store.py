@@ -1381,7 +1381,6 @@ template = '''<!DOCTYPE html>
     background: linear-gradient(180deg, rgba(238, 231, 219, 0.25) 0%, #faf9f7 100%);
     padding: 85px 24px 75px 24px;
     text-align: center;
-    direction: rtl;
   }
   .zema-newsletter-container {
     max-width: 680px;
@@ -1464,7 +1463,10 @@ template = '''<!DOCTYPE html>
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     background: #faf9f7;
     padding: 85px 24px 105px 24px;
-    direction: rtl;
+  }
+  .zema-faq-summary span:first-child {
+    text-align: start;
+    unicode-bidi: isolate;
   }
   .zema-faq-container {
     max-width: 720px;
@@ -1540,7 +1542,6 @@ template = '''<!DOCTYPE html>
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     background: rgba(238, 231, 219, 0.4);
     padding: 60px 24px 50px 24px;
-    direction: rtl;
   }
   .zema-footer-grid {
     max-width: 1200px;
@@ -1639,7 +1640,6 @@ template = '''<!DOCTYPE html>
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     overflow-y: auto;
-    direction: rtl;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.25s ease, visibility 0.25s ease;
