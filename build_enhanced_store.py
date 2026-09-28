@@ -3394,10 +3394,10 @@ template = '''<!DOCTYPE html>
       
       <!-- Breadcrumbs -->
       <nav class="pdp-breadcrumbs">
-        <a href="#top" onclick="showHomePage()">الرئيسية</a>
-        <span>&larr;</span>
-        <a href="#bags-section" onclick="showHomePage()" id="pdp-crumb-cat">حقائب اليد</a>
-        <span>&larr;</span>
+        <a href="#top" onclick="showHomePage()" id="pdp-crumb-home">الرئيسية</a>
+        <span class="pdp-crumb-sep">&larr;</span>
+        <a href="javascript:void(0)" onclick="openCategoryPage(activePdpProduct ? activePdpProduct.category : 'bags', event)" id="pdp-crumb-cat">حقائب اليد</a>
+        <span class="pdp-crumb-sep">&larr;</span>
         <span class="active" id="pdp-crumb-title">حقيبة ميلا هوبو</span>
       </nav>
 
@@ -3516,11 +3516,7 @@ template = '''<!DOCTYPE html>
 
           </div>
 
-          <!-- WhatsApp Direct Order -->
-          <a id="pdpWaOrderBtn" href="#" target="_blank" class="btn-wa-checkout" style="padding:14px; font-size:14px; text-decoration:none;">
-            <i data-lucide="message-circle"></i>
-            <span id="pdpWaOrderText">طلب فوري لهذه الحقيبة عبر WhatsApp</span>
-          </a>
+          
 
         </div>
 
@@ -4478,6 +4474,29 @@ template = '''<!DOCTYPE html>
       addToCart(productId, 1);
     }
 
+    
+    function getProductColor(prod, isAr) {
+      if (!prod) return isAr ? 'هافان طبيعي' : 'Natural Havana';
+      const colorMap = {
+        'p1': { ar: 'هافان ناعم', en: 'Soft Havana' },
+        'p2': { ar: 'عنابي ملكي', en: 'Royal Burgundy' },
+        'p3': { ar: 'زيتي دافئ', en: 'Warm Olive' },
+        'bg-01': { ar: 'أسود كلاسيكي', en: 'Classic Black' },
+        'bg-02': { ar: 'جملي دافئ', en: 'Warm Camel' },
+        'bg-03': { ar: 'رملي ناعم', en: 'Soft Sand' },
+        'bg-04': { ar: 'بورجوندي عميق', en: 'Deep Burgundy' },
+        'wl-01': { ar: 'نوار أسود', en: 'Noir Black' },
+        'wl-02': { ar: 'نوار أسود', en: 'Noir Black' },
+        'wl-03': { ar: 'وردي هادئ', en: 'Dusty Rose' },
+        'wl-04': { ar: 'كونياك دافئ', en: 'Warm Cognac' },
+        'bl-01': { ar: 'أسود / بني بوجهين', en: 'Reversible Black & Brown' },
+        'bl-02': { ar: 'أسود ملكي', en: 'Royal Black' }
+      };
+      const c = colorMap[prod.id];
+      if (c) return isAr ? c.ar : c.en;
+      return isAr ? 'هافان طبيعي' : 'Natural Havana';
+    }
+
     function openPDP(productId) {
       const prod = CATALOG.find(p => p.id === productId) || CATALOG[0];
       activePdpProduct = prod;
@@ -4495,20 +4514,55 @@ template = '''<!DOCTYPE html>
 
       // Update Texts
       const isAr = currentLang === 'ar';
+      const crumbHome = document.getElementById('pdp-crumb-home');
+      if (crumbHome) crumbHome.textContent = isAr ? 'الرئيسية' : 'Home';
+      document.querySelectorAll('.pdp-crumb-sep').forEach(s => {
+        s.innerHTML = isAr ? '&larr;' : '&rarr;';
+      });
+
+      const pdpEye = document.getElementById('pdpEyebrow');
+      if (pdpEye) pdpEye.textContent = isAr ? 'MAISON ZEMA · إصدار محدود' : 'MAISON ZEMA · LIMITED EDITION';
+
       document.getElementById('pdp-crumb-title').textContent = isAr ? prod.nameAr : prod.nameEn;
       document.getElementById('pdp-crumb-cat').textContent = isAr ? prod.catAr : prod.catEn;
       document.getElementById('pdpTitle').textContent = isAr ? prod.nameAr : prod.nameEn;
-      document.getElementById('pdpPrice').textContent = prod.price.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+      document.getElementById('pdpPrice').textContent = prod.price.toLocaleString('en-US') + (isAr ? ' ج.م' : ' EGP');
       
       if (prod.originalPrice) {
         document.getElementById('pdpOldPrice').style.display = 'inline';
-        document.getElementById('pdpOldPrice').textContent = prod.originalPrice.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+        document.getElementById('pdpOldPrice').textContent = prod.originalPrice.toLocaleString('en-US') + (isAr ? ' ج.م' : ' EGP');
         document.getElementById('pdpSavingBadge').style.display = 'inline';
         document.getElementById('pdpSavingBadge').textContent = (isAr ? 'توفير ' : 'Save ') + (prod.originalPrice - prod.price) + (isAr ? ' ج.م' : ' EGP');
       } else {
         document.getElementById('pdpOldPrice').style.display = 'none';
         document.getElementById('pdpSavingBadge').style.display = 'none';
       }
+
+      // Color Localization
+      const colorLbl = document.getElementById('pdp-lbl-color');
+      if (colorLbl) colorLbl.textContent = isAr ? 'اللون المتاح:' : 'Available Color:';
+      const colorName = document.getElementById('pdpSelectedColorName');
+      if (colorName) colorName.textContent = getProductColor(prod, isAr);
+
+      // Perks Localization
+      const perk1 = document.getElementById('pdp-perk-1');
+      if (perk1) perk1.textContent = isAr ? 'شحن مجاني فوق 2,500 ج.م' : 'Complimentary shipping above 2,500 EGP';
+      const perk2 = document.getElementById('pdp-perk-2');
+      if (perk2) perk2.textContent = isAr ? 'الدفع عند الاستلام متاح' : 'Cash on delivery available';
+      const perk3 = document.getElementById('pdp-perk-3');
+      if (perk3) perk3.textContent = isAr ? 'توصيل لكافة محافظات مصر' : 'Nationwide delivery across Egypt';
+      const perk4 = document.getElementById('pdp-perk-4');
+      if (perk4) perk4.textContent = isAr ? 'استبدال واسترجاع خلال 14 يوماً' : '14-day exchange & return';
+
+      // Button & Accordion Localization
+      const pdpAddCart = document.getElementById('pdpAddToCartBtnText');
+      if (pdpAddCart) pdpAddCart.textContent = isAr ? 'إضافة إلى سلة المشتريات' : 'Add to Shopping Bag';
+      const pdpAccDesc = document.getElementById('pdp-acc-lbl-desc');
+      if (pdpAccDesc) pdpAccDesc.textContent = isAr ? 'الوصف وتفاصيل التصميم' : 'Description & Design Details';
+      const pdpAccMat = document.getElementById('pdp-acc-lbl-mat');
+      if (pdpAccMat) pdpAccMat.textContent = isAr ? 'الخامات والصناعة الفاخرة' : 'Materials & Craftsmanship';
+      const pdpAccDim = document.getElementById('pdp-acc-lbl-dim');
+      if (pdpAccDim) pdpAccDim.textContent = isAr ? 'الأبعاد والمقاسات' : 'Dimensions & Sizing';
 
       document.getElementById('pdpDescContent').innerHTML = isAr ? prod.descAr : prod.descEn;
       document.getElementById('pdpMaterialsContent').innerHTML = isAr ? prod.materialsAr : prod.materialsEn;
@@ -4535,9 +4589,7 @@ template = '''<!DOCTYPE html>
       document.getElementById('stickyBarTitle').textContent = isAr ? prod.nameAr : prod.nameEn;
       document.getElementById('stickyBarPrice').textContent = prod.price.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
 
-      // Update Direct WhatsApp PDP Order Link
-      const waMsg = (isAr ? 'مرحباً ZEMA، أرغب في طلب: ' : 'Hello ZEMA, I want to order: ') + (isAr ? prod.nameAr : prod.nameEn) + ' (' + prod.price + ' EGP)';
-      document.getElementById('pdpWaOrderBtn').href = 'https://wa.me/201032117373?text=' + encodeURIComponent(waMsg);
+// WhatsApp PDP direct order button removed per user request
 
       // Render Complete Your Look (كمل اللوك بتاعك)
       if (typeof renderCompleteLookSection === 'function') {
@@ -6254,6 +6306,14 @@ template = '''<!DOCTYPE html>
       if (wAddAll) wAddAll.textContent = isAr ? 'إضافة كل المفضلة إلى السلة' : 'Add All Wishlist to Bag';
 
       // PDP Perks & Controls
+      const pdpCrumbHome = document.getElementById('pdp-crumb-home');
+      if (pdpCrumbHome) pdpCrumbHome.textContent = isAr ? 'الرئيسية' : 'Home';
+      document.querySelectorAll('.pdp-crumb-sep').forEach(s => {
+        s.innerHTML = isAr ? '&larr;' : '&rarr;';
+      });
+      const pdpEye = document.getElementById('pdpEyebrow');
+      if (pdpEye) pdpEye.textContent = isAr ? 'MAISON ZEMA · إصدار محدود' : 'MAISON ZEMA · LIMITED EDITION';
+
       const perk1 = document.getElementById('pdp-perk-1');
       if (perk1) perk1.textContent = isAr ? 'شحن مجاني فوق 2,500 ج.م' : 'Complimentary shipping above 2,500 EGP';
       const perk2 = document.getElementById('pdp-perk-2');
@@ -6262,8 +6322,14 @@ template = '''<!DOCTYPE html>
       if (perk3) perk3.textContent = isAr ? 'توصيل لكافة محافظات مصر' : 'Nationwide delivery across Egypt';
       const perk4 = document.getElementById('pdp-perk-4');
       if (perk4) perk4.textContent = isAr ? 'استبدال واسترجاع خلال 14 يوماً' : '14-day exchange & return';
+
       const pdpColor = document.getElementById('pdp-lbl-color');
       if (pdpColor) pdpColor.textContent = isAr ? 'اللون المتاح:' : 'Available Color:';
+      if (activePdpProduct) {
+        const pdpColorName = document.getElementById('pdpSelectedColorName');
+        if (pdpColorName) pdpColorName.textContent = getProductColor(activePdpProduct, isAr);
+      }
+
       const pdpAddCart = document.getElementById('pdpAddToCartBtnText');
       if (pdpAddCart) pdpAddCart.textContent = isAr ? 'إضافة إلى سلة المشتريات' : 'Add to Shopping Bag';
       const pdpAccDesc = document.getElementById('pdp-acc-lbl-desc');
@@ -6272,8 +6338,6 @@ template = '''<!DOCTYPE html>
       if (pdpAccMat) pdpAccMat.textContent = isAr ? 'الخامات والصناعة الفاخرة' : 'Materials & Craftsmanship';
       const pdpAccDim = document.getElementById('pdp-acc-lbl-dim');
       if (pdpAccDim) pdpAccDim.textContent = isAr ? 'الأبعاد والمقاسات' : 'Dimensions & Sizing';
-      const pdpWaText = document.getElementById('pdpWaOrderText');
-      if (pdpWaText) pdpWaText.textContent = isAr ? 'طلب فوري لهذه الحقيبة عبر WhatsApp' : 'Order via WhatsApp Directly';
       const stickBtn = document.getElementById('stickyBarBtnText');
       if (stickBtn) stickBtn.textContent = isAr ? 'أضف للسلة' : 'Add to Bag';
 
