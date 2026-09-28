@@ -2432,6 +2432,313 @@
     margin-bottom: 20px;
   }
 
+
+  /* ========================================================== */
+  /* 🌟 PDP "COMPLETE YOUR LOOK" (كمل اللوك بتاعك) */
+  /* ========================================================== */
+  .pdp-complete-look-section {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(26, 25, 24, 0.1);
+  }
+
+  .complete-look-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .complete-look-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #C5A059;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .complete-look-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1A1918;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .complete-look-sub {
+    font-size: 14px;
+    color: #67625d;
+    margin: 0 auto;
+    max-width: 580px;
+    line-height: 1.6;
+  }
+
+  .complete-look-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 860px) {
+    .complete-look-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .complete-look-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .complete-look-card {
+    background: #FFF;
+    border-radius: 12px;
+    border: 1px solid rgba(26, 25, 24, 0.08);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .complete-look-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.07);
+  }
+
+  .complete-look-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #F4F1EC;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .complete-look-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .complete-look-card:hover .complete-look-img-wrap img {
+    transform: scale(1.05);
+  }
+
+  .complete-look-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .complete-look-cat {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #8c8780;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .complete-look-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A1918;
+    margin: 0 0 10px 0;
+    cursor: pointer;
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+
+  .complete-look-card-title:hover {
+    color: #C5A059;
+  }
+
+  .complete-look-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid rgba(26, 25, 24, 0.05);
+    gap: 8px;
+  }
+
+  .complete-look-prices {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .complete-look-price {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #1A1918;
+  }
+
+  .complete-look-old-price {
+    font-size: 12px;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  .btn-complete-look-add {
+    padding: 8px 14px;
+    background: #1A1918;
+    color: #FAF9F6;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  .btn-complete-look-add:hover {
+    background: #000;
+    transform: translateY(-1px);
+  }
+
+  /* ========================================================== */
+  /* 🛒 CART DRAWER "YOU MAY ALSO LIKE" (قد يعجبك أيضاً) */
+  /* ========================================================== */
+  .drawer-recommendations-box {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(26, 25, 24, 0.025);
+    border-radius: 10px;
+    border: 1px dashed rgba(26, 25, 24, 0.12);
+  }
+
+  .drawer-rec-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .drawer-rec-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1A1918;
+  }
+
+  .drawer-rec-title-wrap svg {
+    color: #C5A059;
+  }
+
+  .drawer-rec-sub {
+    font-size: 11px;
+    color: #8c8780;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .drawer-rec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .drawer-rec-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFF;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(26, 25, 24, 0.06);
+    gap: 10px;
+    transition: border-color 0.2s;
+  }
+
+  .drawer-rec-item:hover {
+    border-color: rgba(26, 25, 24, 0.2);
+  }
+
+  .drawer-rec-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .drawer-rec-thumb {
+    width: 46px;
+    height: 46px;
+    border-radius: 6px;
+    object-fit: cover;
+    background: #F4F1EC;
+    flex-shrink: 0;
+  }
+
+  .drawer-rec-details {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .drawer-rec-name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #1A1918;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 0 2px 0;
+  }
+
+  .drawer-rec-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .drawer-rec-price-current {
+    font-weight: 700;
+    color: #1A1918;
+  }
+
+  .drawer-rec-price-old {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 10.5px;
+  }
+
+  .btn-drawer-quick-add {
+    padding: 6px 12px;
+    background: #1A1918;
+    color: #FAF9F6;
+    border: none;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .btn-drawer-quick-add:hover {
+    background: #C5A059;
+    color: #1A1918;
+  }
+
+  .btn-drawer-quick-add.is-added {
+    background: #1b7d3f !important;
+    color: #FFF !important;
+  }
+
 </style>
 </head>
 <body>
@@ -2909,6 +3216,17 @@
         </div>
 
       </div>
+      <!-- 🌟 Complete Your Look Section (كمل اللوك بتاعك) -->
+      <section class="pdp-complete-look-section" id="pdpCompleteLookSection">
+        <div class="complete-look-header">
+          <p class="complete-look-eyebrow" id="completeLookEyebrow">تنسيق متناغم</p>
+          <h2 class="complete-look-title" id="completeLookTitle">كمل اللوك بتاعك</h2>
+          <p class="complete-look-sub" id="completeLookSub">قطع مختارة بعناية تتناسق مثالياً مع هذه القطعة لتكتمل إطلالتك بأناقة لا مثيل لها.</p>
+        </div>
+        <div class="complete-look-grid" id="completeLookGrid">
+          <!-- Dynamically populated complementary items -->
+        </div>
+      </section>
 
     </div>
   </section>
@@ -3226,6 +3544,20 @@
         <div id="drawerCartItemsList">
           <!-- Rendered dynamically -->
         </div>
+        <!-- 🛍️ Quick Add-ons / Recommended For You (قد يعجبك أيضاً) -->
+        <div class="drawer-recommendations-box" id="drawerRecommendationsBox">
+          <div class="drawer-rec-header">
+            <div class="drawer-rec-title-wrap">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="drawer-rec-title" id="drawerRecTitle">قد يعجبك أيضاً</span>
+            </div>
+            <span class="drawer-rec-sub" id="drawerRecSub">إضافات سريعة</span>
+          </div>
+          <div class="drawer-rec-list" id="drawerRecList">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
       </div>
 
       <div class="drawer-footer">
@@ -3891,6 +4223,157 @@
     // ==========================================
     // 📄 2. PDP LOGIC & NAVIGATION
     // ==========================================
+    
+    // =========================================================
+    // 🌟 PDP "COMPLETE YOUR LOOK" (كمل اللوك بتاعك) LOGIC
+    // =========================================================
+    function renderCompleteLookSection(currentProduct) {
+      const container = document.getElementById('completeLookGrid');
+      if (!container || !currentProduct) return;
+
+      const isAr = currentLang === 'ar';
+      const currId = currentProduct.id;
+
+      // Smart Complementary Recommendation:
+      // If bag -> recommend matching wallets & belts
+      // If wallet -> recommend matching bags & belts
+      // If belt -> recommend matching wallets & bags
+      let complements = [];
+      if (currentProduct.category === 'bags') {
+        complements = CATALOG.filter(p => p.id !== currId && (p.category === 'wallets' || p.category === 'belts') && p.inStock);
+      } else if (currentProduct.category === 'wallets') {
+        complements = CATALOG.filter(p => p.id !== currId && (p.category === 'bags' || p.category === 'belts') && p.inStock);
+      } else {
+        complements = CATALOG.filter(p => p.id !== currId && (p.category === 'bags' || p.category === 'wallets') && p.inStock);
+      }
+
+      if (complements.length < 3) {
+        const extra = CATALOG.filter(p => p.id !== currId && !complements.some(c => c.id === p.id) && p.inStock);
+        complements = complements.concat(extra);
+      }
+
+      const items = complements.slice(0, 3);
+
+      // Localize Section Header
+      const eye = document.getElementById('completeLookEyebrow');
+      if (eye) eye.textContent = isAr ? 'تنسيق متناغم' : 'CURATED PAIRING';
+      const title = document.getElementById('completeLookTitle');
+      if (title) title.textContent = isAr ? 'كمل اللوك بتاعك' : 'Complete Your Look';
+      const sub = document.getElementById('completeLookSub');
+      if (sub) {
+        sub.textContent = isAr 
+          ? 'قطع مختارة بعناية تتناسق مثالياً مع هذه القطعة لتكتمل إطلالتك بأناقة لا مثيل لها.'
+          : 'Carefully curated pieces tailored to complement your selection with effortless elegance.';
+      }
+
+      const currUnit = isAr ? 'ج.م' : 'LE';
+      const addBtnText = isAr ? '+ إضافة للحقيبة' : '+ Quick Add';
+
+      container.innerHTML = items.map(p => {
+        const name = isAr ? p.nameAr : p.nameEn;
+        const cat = isAr ? p.catAr : p.catEn;
+        const oldPrice = p.originalPrice 
+          ? `<span class="complete-look-old-price">${p.originalPrice.toLocaleString('en-US')} ${currUnit}</span>`
+          : '';
+        const saleBadge = p.originalPrice 
+          ? `<span class="cat-sale-badge" style="top:10px; inset-inline-start:10px;">${isAr ? 'تخفيض' : 'SALE'}</span>`
+          : '';
+
+        return `
+          <div class="complete-look-card">
+            <div class="complete-look-img-wrap" onclick="openPDP('${p.id}')">
+              ${saleBadge}
+              <img src="${p.angles[0]}" alt="${name}" loading="lazy" />
+            </div>
+            <div class="complete-look-info">
+              <span class="complete-look-cat">${cat}</span>
+              <h4 class="complete-look-card-title" onclick="openPDP('${p.id}')">${name}</h4>
+              <div class="complete-look-bottom">
+                <div class="complete-look-prices">
+                  <span class="complete-look-price">${p.price.toLocaleString('en-US')} ${currUnit}</span>
+                  ${oldPrice}
+                </div>
+                <button class="btn-complete-look-add" onclick="addToCart('${p.id}', 1)" title="${name}">
+                  ${addBtnText}
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // =========================================================
+    // 🛒 CART DRAWER "YOU MAY ALSO LIKE" (قد يعجبك أيضاً) LOGIC
+    // =========================================================
+    function renderCartRecommendations() {
+      const box = document.getElementById('drawerRecommendationsBox');
+      const listEl = document.getElementById('drawerRecList');
+      if (!box || !listEl) return;
+
+      const isAr = currentLang === 'ar';
+
+      // Find items not currently in cart
+      const cartIds = cart.map(i => i.id);
+      let recs = CATALOG.filter(p => p.inStock && !cartIds.includes(p.id));
+
+      // Prioritize accessories (wallets, belts), then bestsellers
+      recs.sort((a, b) => {
+        const aScore = (a.category === 'wallets' || a.category === 'belts' ? 2 : 1) + (a.bestseller ? 1 : 0);
+        const bScore = (b.category === 'wallets' || b.category === 'belts' ? 2 : 1) + (b.bestseller ? 1 : 0);
+        return bScore - aScore;
+      });
+
+      const items = recs.slice(0, 3);
+      if (items.length === 0) {
+        box.style.display = 'none';
+        return;
+      }
+      box.style.display = 'block';
+
+      // Localize Header
+      const titleEl = document.getElementById('drawerRecTitle');
+      if (titleEl) titleEl.textContent = isAr ? 'قد يعجبك أيضاً' : 'You May Also Like';
+      const subEl = document.getElementById('drawerRecSub');
+      if (subEl) subEl.textContent = isAr ? 'إضافات سريعة' : 'Quick Add-ons';
+
+      const currUnit = isAr ? 'ج.م' : 'LE';
+      const addText = isAr ? '+ إضافة' : '+ Add';
+
+      listEl.innerHTML = items.map(p => {
+        const name = isAr ? p.nameAr : p.nameEn;
+        const oldPrice = p.originalPrice 
+          ? `<span class="drawer-rec-price-old">${p.originalPrice.toLocaleString('en-US')} ${currUnit}</span>`
+          : '';
+
+        return `
+          <div class="drawer-rec-item">
+            <div class="drawer-rec-left" onclick="closeUnifiedDrawer(); openPDP('${p.id}')" style="cursor:pointer;">
+              <img src="${p.angles[0]}" alt="${name}" class="drawer-rec-thumb" />
+              <div class="drawer-rec-details">
+                <p class="drawer-rec-name" title="${name}">${name}</p>
+                <div class="drawer-rec-price-row">
+                  <span class="drawer-rec-price-current">${p.price.toLocaleString('en-US')} ${currUnit}</span>
+                  ${oldPrice}
+                </div>
+              </div>
+            </div>
+            <button class="btn-drawer-quick-add" onclick="quickAddFromRec('${p.id}', this)" title="${addText}">
+              ${addText}
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function quickAddFromRec(productId, btn) {
+      if (btn) {
+        btn.textContent = currentLang === 'ar' ? 'تمت الإضافة ✓' : 'Added ✓';
+        btn.classList.add('is-added');
+      }
+      addToCart(productId, 1);
+    }
+
     function openPDP(productId) {
       const prod = CATALOG.find(p => p.id === productId) || CATALOG[0];
       activePdpProduct = prod;
@@ -3951,6 +4434,11 @@
       // Update Direct WhatsApp PDP Order Link
       const waMsg = (isAr ? 'مرحباً ZEMA، أرغب في طلب: ' : 'Hello ZEMA, I want to order: ') + (isAr ? prod.nameAr : prod.nameEn) + ' (' + prod.price + ' EGP)';
       document.getElementById('pdpWaOrderBtn').href = 'https://wa.me/201032117373?text=' + encodeURIComponent(waMsg);
+
+      // Render Complete Your Look (كمل اللوك بتاعك)
+      if (typeof renderCompleteLookSection === 'function') {
+        renderCompleteLookSection(prod);
+      }
 
       // Scroll smoothly to top of PDP
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -4559,6 +5047,8 @@
       if (stepTy) stepTy.style.display = 'none';
       window.location.hash = 'checkout';
       renderDrawerCheckout();
+      // Render You May Also Like quick add-ons (قد يعجبك أيضاً)
+      renderCartRecommendations();
     }
 
     function goToThankYouStep(orderData) {
@@ -5653,6 +6143,8 @@
       renderDrawerCart();
       if (document.body.classList.contains('is-pdp') && activePdpProduct) {
         openPDP(activePdpProduct.id);
+      } else if (typeof renderCompleteLookSection === 'function' && activePdpProduct) {
+        renderCompleteLookSection(activePdpProduct);
       }
       // Re-render and localize Category Collection View
       if (typeof renderCategoryPage === 'function') {
