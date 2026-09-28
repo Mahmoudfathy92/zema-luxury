@@ -1599,38 +1599,37 @@ template = '''<!DOCTYPE html>
   /* ========================================================== */
   /* 🏛️ FOOTER */
   /* ========================================================== */
-      .zema-footer {
+    .zema-footer {
     background: #0A0A0A;
     color: #FAF9F6;
     padding: 72px 24px 32px 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .zema-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(200, 169, 126, 0.35), transparent);
   }
 
   .zema-footer-container {
-    max-width: 1240px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
-  /* 3-Zone Symmetrical Grid: Shop | Center Logo & Brand | About us & Connect */
-  .zema-footer-main {
+  .zema-footer-grid {
     display: grid;
-    grid-template-columns: 1.15fr 1.25fr 1.15fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 48px;
-    align-items: start;
-    margin-bottom: 52px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 768px) {
+    .zema-footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .zema-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
   }
 
   .zema-footer-col {
@@ -1639,12 +1638,11 @@ template = '''<!DOCTYPE html>
   }
 
   .zema-footer-title {
-    font-size: 14.5px;
+    font-size: 19px;
     font-weight: 700;
     color: #FAF9F6;
     margin: 0 0 20px 0;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    letter-spacing: -0.01em;
   }
 
   .zema-footer-nav {
@@ -1653,20 +1651,19 @@ template = '''<!DOCTYPE html>
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    gap: 12px;
   }
 
   .zema-footer-nav a {
     color: #A09D98;
     text-decoration: none;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 12.5px;
+    font-weight: 600;
     letter-spacing: 0.07em;
     text-transform: uppercase;
-    transition: color 0.25s, transform 0.25s;
+    transition: color 0.2s, transform 0.2s;
     display: inline-block;
     cursor: pointer;
-    line-height: 1.5;
   }
 
   .zema-footer-nav a:hover {
@@ -1678,42 +1675,14 @@ template = '''<!DOCTYPE html>
     transform: translateX(-3px);
   }
 
-  /* Shop 2-Subcolumn Layout (3 items each, perfectly balanced) */
-  .zema-footer-shop-subgrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 24px;
-  }
-
-  /* Right Group: About Us (4 items) & Connect (3 items) side by side */
-  .zema-footer-col-right-group {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 28px;
-  }
-
-  /* Center Brand Hero */
-  .zema-footer-col-center {
+  /* Center Brand Emblem */
+  .zema-footer-emblem-wrap {
+    text-align: center;
+    padding: 24px 0 32px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 0 16px;
-  }
-
-  .zema-footer-center-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 340px;
-    margin: 0 auto;
-  }
-
-  .zema-footer-emblem-anchor {
-    display: inline-block;
-    margin-bottom: 12px;
-    text-decoration: none;
   }
 
   .zema-footer-emblem-img {
@@ -1721,7 +1690,7 @@ template = '''<!DOCTYPE html>
     height: auto;
     filter: brightness(0) invert(1);
     opacity: 0.95;
-    transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.25s, transform 0.25s;
     display: block;
     margin: 0 auto;
   }
@@ -1731,78 +1700,28 @@ template = '''<!DOCTYPE html>
     transform: scale(1.04);
   }
 
-  .zema-footer-brand-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 19px;
-    font-weight: 700;
-    color: #FAF9F6;
-    letter-spacing: 0.28em;
-    margin: 0 0 6px 0;
-    text-transform: uppercase;
-  }
-
-  .zema-footer-brand-tagline {
-    font-size: 12px;
-    color: #8C8881;
-    margin: 0 0 20px 0;
-    letter-spacing: 0.03em;
-    line-height: 1.6;
-  }
-
-  .zema-footer-socials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .zema-footer-social-link {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #A09D98;
-    text-decoration: none;
-    transition: all 0.25s ease;
-  }
-
-  .zema-footer-social-link:hover {
-    color: #FAF9F6;
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-2px);
-  }
-
   /* Bottom Sub-footer Bar */
   .zema-footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    font-size: 11.5px;
-    color: #6C6862;
+    font-size: 12px;
+    color: #76726c;
   }
 
   .zema-footer-bottom-left {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 18px;
     flex-wrap: wrap;
   }
 
-  .zema-footer-dot {
-    opacity: 0.35;
-  }
-
   .zema-footer-bottom-left a {
-    color: #7A7670;
+    color: #76726c;
     text-decoration: none;
     transition: color 0.2s;
   }
@@ -1811,46 +1730,24 @@ template = '''<!DOCTYPE html>
     color: #FAF9F6;
   }
 
-  .zema-footer-bottom-right {
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
-    color: #5A5650;
-    text-transform: uppercase;
+  .zema-footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
-  /* Responsive Rules */
-  @media (max-width: 992px) {
-    .zema-footer-main {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .zema-footer-col-center {
-      order: -1;
-      padding-bottom: 28px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .zema-footer-shop-subgrid {
-      grid-template-columns: 1fr 1fr;
-    }
+  .zema-footer-social-link {
+    color: #A09D98;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, transform 0.2s;
+    text-decoration: none;
   }
 
-  @media (max-width: 580px) {
-    .zema-footer {
-      padding: 56px 20px 28px 20px;
-    }
-    .zema-footer-shop-subgrid {
-      grid-template-columns: 1fr;
-    }
-    .zema-footer-col-right-group {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-    .zema-footer-bottom {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 12px;
-    }
+  .zema-footer-social-link:hover {
+    color: #FAF9F6;
+    transform: scale(1.15);
   }
 
   /* ========================================================== */
@@ -3751,85 +3648,72 @@ template = '''<!DOCTYPE html>
   <footer class="zema-footer" id="zemaFooter">
     <div class="zema-footer-container">
       
-      <!-- 3-Zone Symmetrical Grid: Shop | Center Brand Hero | About us & Connect -->
-      <div class="zema-footer-main">
+      <!-- 3 Columns Grid: Shop, About us, Connect -->
+      <div class="zema-footer-grid">
         
-        <!-- 1. Start Column: Shop (ZEMA Product Categories Only - No Bestsellers/Offers) -->
-        <div class="zema-footer-col zema-footer-col-shop">
+        <!-- Column 1: Shop (ZEMA Categories) -->
+        <div class="zema-footer-col">
           <h3 class="zema-footer-title" id="footer-col-shop-title">Shop</h3>
-          <div class="zema-footer-shop-subgrid">
-            <ul class="zema-footer-nav">
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('handbags', event)" id="f-link-handbags">HANDBAGS</a></li>
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('shoulder', event)" id="f-link-shoulder">SHOULDER BAGS</a></li>
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('crossbody', event)" id="f-link-crossbody">CROSSBODY</a></li>
-            </ul>
-            <ul class="zema-footer-nav">
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('tote', event)" id="f-link-tote">TOTE BAGS</a></li>
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('wallets', event)" id="f-link-wallets">WALLETS</a></li>
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('belts', event)" id="f-link-belts">BELTS</a></li>
-            </ul>
-          </div>
+          <ul class="zema-footer-nav">
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('handbags', event)" id="f-link-handbags">HANDBAGS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('shoulder', event)" id="f-link-shoulder">SHOULDER BAGS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('crossbody', event)" id="f-link-crossbody">CROSSBODY</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('tote', event)" id="f-link-tote">TOTE BAGS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('wallets', event)" id="f-link-wallets">WALLETS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('belts', event)" id="f-link-belts">BELTS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('bestsellers', event)" id="f-link-bestsellers">BEST SELLERS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('sales', event)" id="f-link-sales">SALES & OFFERS</a></li>
+          </ul>
         </div>
 
-        <!-- 2. Center Column: Brand Emblem & Hero Identity -->
-        <div class="zema-footer-col zema-footer-col-center">
-          <div class="zema-footer-center-content">
-            <a href="#top" onclick="showHomePage()" aria-label="ZEMA Home" class="zema-footer-emblem-anchor">
-              <img src="__LOGO_B64__" alt="ZEMA Luxury" class="zema-footer-emblem-img" />
-            </a>
-            <h2 class="zema-footer-brand-title">ZEMA</h2>
-            <p class="zema-footer-brand-tagline" id="footer-brand-tagline">أناقة خالدة، فخامة عصرية</p>
-            
-            <!-- Centered Social Media Circles -->
-            <div class="zema-footer-socials">
-              <a href="https://www.facebook.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="zema-footer-social-link" title="Facebook">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.7v3.1h2.7V22h3.1z"></path></svg>
-              </a>
-              <a href="https://www.instagram.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="zema-footer-social-link" title="Instagram">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg>
-              </a>
-              <a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="zema-footer-social-link" title="WhatsApp">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              </a>
-            </div>
-          </div>
+        <!-- Column 2: About us -->
+        <div class="zema-footer-col">
+          <h3 class="zema-footer-title" id="footer-col-about-title">About us</h3>
+          <ul class="zema-footer-nav">
+            <li><a href="#story" onclick="showHomePage()" id="f-link-story">STORY</a></li>
+            <li><a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" id="f-link-contact">CONTACT US</a></li>
+            <li><a href="#faq" onclick="showHomePage()" id="f-link-faq">FAQS</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-shipping">SHIPPING & RETURNS</a></li>
+          </ul>
         </div>
 
-        <!-- 3. End Group: About us & Connect -->
-        <div class="zema-footer-col-right-group">
-          <!-- About us -->
-          <div class="zema-footer-col">
-            <h3 class="zema-footer-title" id="footer-col-about-title">About us</h3>
-            <ul class="zema-footer-nav">
-              <li><a href="#story" onclick="showHomePage()" id="f-link-story">STORY</a></li>
-              <li><a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" id="f-link-contact">CONTACT US</a></li>
-              <li><a href="#faq" onclick="showHomePage()" id="f-link-faq">FAQS</a></li>
-              <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-shipping">SHIPPING & RETURNS</a></li>
-            </ul>
-          </div>
-
-          <!-- Connect -->
-          <div class="zema-footer-col">
-            <h3 class="zema-footer-title" id="footer-col-connect-title">Connect</h3>
-            <ul class="zema-footer-nav">
-              <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-track">ORDERS</a></li>
-              <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-profile">PROFILE</a></li>
-              <li><a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" id="f-link-wa">WHATSAPP</a></li>
-            </ul>
-          </div>
+        <!-- Column 3: Connect -->
+        <div class="zema-footer-col">
+          <h3 class="zema-footer-title" id="footer-col-connect-title">Connect</h3>
+          <ul class="zema-footer-nav">
+            <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-track">ORDERS</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-profile">PROFILE</a></li>
+            <li><a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" id="f-link-wa">WHATSAPP</a></li>
+          </ul>
         </div>
 
+      </div>
+
+      <!-- Center Brand Emblem -->
+      <div class="zema-footer-emblem-wrap">
+        <a href="#top" onclick="showHomePage()" aria-label="ZEMA Home">
+          <img src="__LOGO_B64__" alt="ZEMA Luxury" class="zema-footer-emblem-img" />
+        </a>
       </div>
 
       <!-- Bottom Sub-footer Bar -->
       <div class="zema-footer-bottom">
         <div class="zema-footer-bottom-left">
           <span id="footer-copyright">© 2026 ZEMA Luxury. All rights reserved.</span>
-          <span class="zema-footer-dot">&bull;</span>
           <a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="footer-terms-link">Terms and Policies</a>
         </div>
-        <div class="zema-footer-bottom-right">
-          <span id="footer-craftsmanship">HAUTE MAROQUINERIE &bull; HANDCRAFTED IN EGYPT</span>
+
+        <!-- Social Media Icons (Right Side) -->
+        <div class="zema-footer-socials">
+          <a href="https://www.facebook.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="zema-footer-social-link" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.7v3.1h2.7V22h3.1z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="zema-footer-social-link" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="zema-footer-social-link" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </a>
         </div>
       </div>
 
@@ -6318,7 +6202,7 @@ template = '''<!DOCTYPE html>
       if (fContactTitle) fContactTitle.textContent = isAr ? 'تواصل معنا' : 'Connect With Us';
       const fCopyright = document.getElementById('footer-copyright');
       if (fCopyright) fCopyright.textContent = isAr ? '© 2026 ZEMA Maison — أناقة خالدة، فخامة عصرية' : '© 2026 ZEMA Maison — Timeless Elegance, Modern Luxury';
-      // Footer Translations (Symmetrical Luxury Layout)
+      // Footer Translations (Matching Reference Layout)
       const colShop = document.getElementById('footer-col-shop-title');
       if (colShop) colShop.textContent = isAr ? 'المتجر' : 'Shop';
       const colAbout = document.getElementById('footer-col-about-title');
@@ -6326,7 +6210,7 @@ template = '''<!DOCTYPE html>
       const colConnect = document.getElementById('footer-col-connect-title');
       if (colConnect) colConnect.textContent = isAr ? 'تواصل وحسابي' : 'Connect';
 
-      // Shop Links (Categories only)
+      // Shop Links
       const flHandbags = document.getElementById('f-link-handbags');
       if (flHandbags) flHandbags.textContent = isAr ? 'حقائب يد' : 'HANDBAGS';
       const flShoulder = document.getElementById('f-link-shoulder');
@@ -6339,10 +6223,10 @@ template = '''<!DOCTYPE html>
       if (flWallets) flWallets.textContent = isAr ? 'محافظ' : 'WALLETS';
       const flBelts = document.getElementById('f-link-belts');
       if (flBelts) flBelts.textContent = isAr ? 'أحزمة' : 'BELTS';
-
-      // Center Brand Tagline
-      const fTagline = document.getElementById('footer-brand-tagline');
-      if (fTagline) fTagline.textContent = isAr ? 'أناقة خالدة، فخامة عصرية' : 'Timeless Elegance, Modern Luxury';
+      const flBestsellers = document.getElementById('f-link-bestsellers');
+      if (flBestsellers) flBestsellers.textContent = isAr ? 'الأكثر مبيعاً' : 'BEST SELLERS';
+      const flSales = document.getElementById('f-link-sales');
+      if (flSales) flSales.textContent = isAr ? 'تخفيضات' : 'SALES & OFFERS';
 
       // About Links
       const flStory = document.getElementById('f-link-story');
@@ -6367,8 +6251,6 @@ template = '''<!DOCTYPE html>
       if (fCopy) fCopy.textContent = isAr ? '© 2026 دار زِيما (ZEMA). جميع الحقوق محفوظة.' : '© 2026 ZEMA Luxury. All rights reserved.';
       const fTerms = document.getElementById('footer-terms-link');
       if (fTerms) fTerms.textContent = isAr ? 'الشروط والسياسات' : 'Terms and Policies';
-      const fCraft = document.getElementById('footer-craftsmanship');
-      if (fCraft) fCraft.textContent = isAr ? 'صناعة يدوية فاخرة &bull; القاهرة، مصر' : 'HAUTE MAROQUINERIE &bull; HANDCRAFTED IN EGYPT';
 
       const cEyebrow = document.getElementById('cart-drawer-eyebrow');
       if (cEyebrow) cEyebrow.textContent = isAr ? 'سلة التسوق' : 'YOUR CART';

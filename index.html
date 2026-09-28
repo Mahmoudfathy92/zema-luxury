@@ -1567,38 +1567,37 @@
   /* ========================================================== */
   /* 🏛️ FOOTER */
   /* ========================================================== */
-      .zema-footer {
+    .zema-footer {
     background: #0A0A0A;
     color: #FAF9F6;
     padding: 72px 24px 32px 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .zema-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(200, 169, 126, 0.35), transparent);
   }
 
   .zema-footer-container {
-    max-width: 1240px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
-  /* 3-Zone Symmetrical Grid: Shop | Center Logo & Brand | About us & Connect */
-  .zema-footer-main {
+  .zema-footer-grid {
     display: grid;
-    grid-template-columns: 1.15fr 1.25fr 1.15fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 48px;
-    align-items: start;
-    margin-bottom: 52px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 768px) {
+    .zema-footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .zema-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
   }
 
   .zema-footer-col {
@@ -1607,12 +1606,11 @@
   }
 
   .zema-footer-title {
-    font-size: 14.5px;
+    font-size: 19px;
     font-weight: 700;
     color: #FAF9F6;
     margin: 0 0 20px 0;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    letter-spacing: -0.01em;
   }
 
   .zema-footer-nav {
@@ -1621,20 +1619,19 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    gap: 12px;
   }
 
   .zema-footer-nav a {
     color: #A09D98;
     text-decoration: none;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 12.5px;
+    font-weight: 600;
     letter-spacing: 0.07em;
     text-transform: uppercase;
-    transition: color 0.25s, transform 0.25s;
+    transition: color 0.2s, transform 0.2s;
     display: inline-block;
     cursor: pointer;
-    line-height: 1.5;
   }
 
   .zema-footer-nav a:hover {
@@ -1646,42 +1643,14 @@
     transform: translateX(-3px);
   }
 
-  /* Shop 2-Subcolumn Layout (3 items each, perfectly balanced) */
-  .zema-footer-shop-subgrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 24px;
-  }
-
-  /* Right Group: About Us (4 items) & Connect (3 items) side by side */
-  .zema-footer-col-right-group {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 28px;
-  }
-
-  /* Center Brand Hero */
-  .zema-footer-col-center {
+  /* Center Brand Emblem */
+  .zema-footer-emblem-wrap {
+    text-align: center;
+    padding: 24px 0 32px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 0 16px;
-  }
-
-  .zema-footer-center-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 340px;
-    margin: 0 auto;
-  }
-
-  .zema-footer-emblem-anchor {
-    display: inline-block;
-    margin-bottom: 12px;
-    text-decoration: none;
   }
 
   .zema-footer-emblem-img {
@@ -1689,7 +1658,7 @@
     height: auto;
     filter: brightness(0) invert(1);
     opacity: 0.95;
-    transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.25s, transform 0.25s;
     display: block;
     margin: 0 auto;
   }
@@ -1699,78 +1668,28 @@
     transform: scale(1.04);
   }
 
-  .zema-footer-brand-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 19px;
-    font-weight: 700;
-    color: #FAF9F6;
-    letter-spacing: 0.28em;
-    margin: 0 0 6px 0;
-    text-transform: uppercase;
-  }
-
-  .zema-footer-brand-tagline {
-    font-size: 12px;
-    color: #8C8881;
-    margin: 0 0 20px 0;
-    letter-spacing: 0.03em;
-    line-height: 1.6;
-  }
-
-  .zema-footer-socials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .zema-footer-social-link {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #A09D98;
-    text-decoration: none;
-    transition: all 0.25s ease;
-  }
-
-  .zema-footer-social-link:hover {
-    color: #FAF9F6;
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-2px);
-  }
-
   /* Bottom Sub-footer Bar */
   .zema-footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    font-size: 11.5px;
-    color: #6C6862;
+    font-size: 12px;
+    color: #76726c;
   }
 
   .zema-footer-bottom-left {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 18px;
     flex-wrap: wrap;
   }
 
-  .zema-footer-dot {
-    opacity: 0.35;
-  }
-
   .zema-footer-bottom-left a {
-    color: #7A7670;
+    color: #76726c;
     text-decoration: none;
     transition: color 0.2s;
   }
@@ -1779,46 +1698,24 @@
     color: #FAF9F6;
   }
 
-  .zema-footer-bottom-right {
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
-    color: #5A5650;
-    text-transform: uppercase;
+  .zema-footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
-  /* Responsive Rules */
-  @media (max-width: 992px) {
-    .zema-footer-main {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .zema-footer-col-center {
-      order: -1;
-      padding-bottom: 28px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .zema-footer-shop-subgrid {
-      grid-template-columns: 1fr 1fr;
-    }
+  .zema-footer-social-link {
+    color: #A09D98;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, transform 0.2s;
+    text-decoration: none;
   }
 
-  @media (max-width: 580px) {
-    .zema-footer {
-      padding: 56px 20px 28px 20px;
-    }
-    .zema-footer-shop-subgrid {
-      grid-template-columns: 1fr;
-    }
-    .zema-footer-col-right-group {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-    .zema-footer-bottom {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 12px;
-    }
+  .zema-footer-social-link:hover {
+    color: #FAF9F6;
+    transform: scale(1.15);
   }
 
   /* ========================================================== */
@@ -3719,85 +3616,72 @@
   <footer class="zema-footer" id="zemaFooter">
     <div class="zema-footer-container">
       
-      <!-- 3-Zone Symmetrical Grid: Shop | Center Brand Hero | About us & Connect -->
-      <div class="zema-footer-main">
+      <!-- 3 Columns Grid: Shop, About us, Connect -->
+      <div class="zema-footer-grid">
         
-        <!-- 1. Start Column: Shop (ZEMA Product Categories Only - No Bestsellers/Offers) -->
-        <div class="zema-footer-col zema-footer-col-shop">
+        <!-- Column 1: Shop (ZEMA Categories) -->
+        <div class="zema-footer-col">
           <h3 class="zema-footer-title" id="footer-col-shop-title">Shop</h3>
-          <div class="zema-footer-shop-subgrid">
-            <ul class="zema-footer-nav">
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('handbags', event)" id="f-link-handbags">HANDBAGS</a></li>
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('shoulder', event)" id="f-link-shoulder">SHOULDER BAGS</a></li>
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('crossbody', event)" id="f-link-crossbody">CROSSBODY</a></li>
-            </ul>
-            <ul class="zema-footer-nav">
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('tote', event)" id="f-link-tote">TOTE BAGS</a></li>
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('wallets', event)" id="f-link-wallets">WALLETS</a></li>
-              <li><a href="javascript:void(0)" onclick="openCategoryPage('belts', event)" id="f-link-belts">BELTS</a></li>
-            </ul>
-          </div>
+          <ul class="zema-footer-nav">
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('handbags', event)" id="f-link-handbags">HANDBAGS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('shoulder', event)" id="f-link-shoulder">SHOULDER BAGS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('crossbody', event)" id="f-link-crossbody">CROSSBODY</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('tote', event)" id="f-link-tote">TOTE BAGS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('wallets', event)" id="f-link-wallets">WALLETS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('belts', event)" id="f-link-belts">BELTS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('bestsellers', event)" id="f-link-bestsellers">BEST SELLERS</a></li>
+            <li><a href="javascript:void(0)" onclick="openCategoryPage('sales', event)" id="f-link-sales">SALES & OFFERS</a></li>
+          </ul>
         </div>
 
-        <!-- 2. Center Column: Brand Emblem & Hero Identity -->
-        <div class="zema-footer-col zema-footer-col-center">
-          <div class="zema-footer-center-content">
-            <a href="#top" onclick="showHomePage()" aria-label="ZEMA Home" class="zema-footer-emblem-anchor">
-              <img src="data:image/png;base64,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" alt="ZEMA Luxury" class="zema-footer-emblem-img" />
-            </a>
-            <h2 class="zema-footer-brand-title">ZEMA</h2>
-            <p class="zema-footer-brand-tagline" id="footer-brand-tagline">أناقة خالدة، فخامة عصرية</p>
-            
-            <!-- Centered Social Media Circles -->
-            <div class="zema-footer-socials">
-              <a href="https://www.facebook.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="zema-footer-social-link" title="Facebook">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.7v3.1h2.7V22h3.1z"></path></svg>
-              </a>
-              <a href="https://www.instagram.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="zema-footer-social-link" title="Instagram">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg>
-              </a>
-              <a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="zema-footer-social-link" title="WhatsApp">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              </a>
-            </div>
-          </div>
+        <!-- Column 2: About us -->
+        <div class="zema-footer-col">
+          <h3 class="zema-footer-title" id="footer-col-about-title">About us</h3>
+          <ul class="zema-footer-nav">
+            <li><a href="#story" onclick="showHomePage()" id="f-link-story">STORY</a></li>
+            <li><a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" id="f-link-contact">CONTACT US</a></li>
+            <li><a href="#faq" onclick="showHomePage()" id="f-link-faq">FAQS</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-shipping">SHIPPING & RETURNS</a></li>
+          </ul>
         </div>
 
-        <!-- 3. End Group: About us & Connect -->
-        <div class="zema-footer-col-right-group">
-          <!-- About us -->
-          <div class="zema-footer-col">
-            <h3 class="zema-footer-title" id="footer-col-about-title">About us</h3>
-            <ul class="zema-footer-nav">
-              <li><a href="#story" onclick="showHomePage()" id="f-link-story">STORY</a></li>
-              <li><a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" id="f-link-contact">CONTACT US</a></li>
-              <li><a href="#faq" onclick="showHomePage()" id="f-link-faq">FAQS</a></li>
-              <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-shipping">SHIPPING & RETURNS</a></li>
-            </ul>
-          </div>
-
-          <!-- Connect -->
-          <div class="zema-footer-col">
-            <h3 class="zema-footer-title" id="footer-col-connect-title">Connect</h3>
-            <ul class="zema-footer-nav">
-              <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-track">ORDERS</a></li>
-              <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-profile">PROFILE</a></li>
-              <li><a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" id="f-link-wa">WHATSAPP</a></li>
-            </ul>
-          </div>
+        <!-- Column 3: Connect -->
+        <div class="zema-footer-col">
+          <h3 class="zema-footer-title" id="footer-col-connect-title">Connect</h3>
+          <ul class="zema-footer-nav">
+            <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-track">ORDERS</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="f-link-profile">PROFILE</a></li>
+            <li><a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" id="f-link-wa">WHATSAPP</a></li>
+          </ul>
         </div>
 
+      </div>
+
+      <!-- Center Brand Emblem -->
+      <div class="zema-footer-emblem-wrap">
+        <a href="#top" onclick="showHomePage()" aria-label="ZEMA Home">
+          <img src="data:image/png;base64,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" alt="ZEMA Luxury" class="zema-footer-emblem-img" />
+        </a>
       </div>
 
       <!-- Bottom Sub-footer Bar -->
       <div class="zema-footer-bottom">
         <div class="zema-footer-bottom-left">
           <span id="footer-copyright">© 2026 ZEMA Luxury. All rights reserved.</span>
-          <span class="zema-footer-dot">&bull;</span>
           <a href="javascript:void(0)" onclick="toggleAccountModal(true)" id="footer-terms-link">Terms and Policies</a>
         </div>
-        <div class="zema-footer-bottom-right">
-          <span id="footer-craftsmanship">HAUTE MAROQUINERIE &bull; HANDCRAFTED IN EGYPT</span>
+
+        <!-- Social Media Icons (Right Side) -->
+        <div class="zema-footer-socials">
+          <a href="https://www.facebook.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="zema-footer-social-link" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.7v3.1h2.7V22h3.1z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/zema.luxury/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="zema-footer-social-link" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="https://wa.me/201032117373?text=مرحباً%20ZEMA" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="zema-footer-social-link" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </a>
         </div>
       </div>
 
@@ -6286,7 +6170,7 @@
       if (fContactTitle) fContactTitle.textContent = isAr ? 'تواصل معنا' : 'Connect With Us';
       const fCopyright = document.getElementById('footer-copyright');
       if (fCopyright) fCopyright.textContent = isAr ? '© 2026 ZEMA Maison — أناقة خالدة، فخامة عصرية' : '© 2026 ZEMA Maison — Timeless Elegance, Modern Luxury';
-      // Footer Translations (Symmetrical Luxury Layout)
+      // Footer Translations (Matching Reference Layout)
       const colShop = document.getElementById('footer-col-shop-title');
       if (colShop) colShop.textContent = isAr ? 'المتجر' : 'Shop';
       const colAbout = document.getElementById('footer-col-about-title');
@@ -6294,7 +6178,7 @@
       const colConnect = document.getElementById('footer-col-connect-title');
       if (colConnect) colConnect.textContent = isAr ? 'تواصل وحسابي' : 'Connect';
 
-      // Shop Links (Categories only)
+      // Shop Links
       const flHandbags = document.getElementById('f-link-handbags');
       if (flHandbags) flHandbags.textContent = isAr ? 'حقائب يد' : 'HANDBAGS';
       const flShoulder = document.getElementById('f-link-shoulder');
@@ -6307,10 +6191,10 @@
       if (flWallets) flWallets.textContent = isAr ? 'محافظ' : 'WALLETS';
       const flBelts = document.getElementById('f-link-belts');
       if (flBelts) flBelts.textContent = isAr ? 'أحزمة' : 'BELTS';
-
-      // Center Brand Tagline
-      const fTagline = document.getElementById('footer-brand-tagline');
-      if (fTagline) fTagline.textContent = isAr ? 'أناقة خالدة، فخامة عصرية' : 'Timeless Elegance, Modern Luxury';
+      const flBestsellers = document.getElementById('f-link-bestsellers');
+      if (flBestsellers) flBestsellers.textContent = isAr ? 'الأكثر مبيعاً' : 'BEST SELLERS';
+      const flSales = document.getElementById('f-link-sales');
+      if (flSales) flSales.textContent = isAr ? 'تخفيضات' : 'SALES & OFFERS';
 
       // About Links
       const flStory = document.getElementById('f-link-story');
@@ -6335,8 +6219,6 @@
       if (fCopy) fCopy.textContent = isAr ? '© 2026 دار زِيما (ZEMA). جميع الحقوق محفوظة.' : '© 2026 ZEMA Luxury. All rights reserved.';
       const fTerms = document.getElementById('footer-terms-link');
       if (fTerms) fTerms.textContent = isAr ? 'الشروط والسياسات' : 'Terms and Policies';
-      const fCraft = document.getElementById('footer-craftsmanship');
-      if (fCraft) fCraft.textContent = isAr ? 'صناعة يدوية فاخرة &bull; القاهرة، مصر' : 'HAUTE MAROQUINERIE &bull; HANDCRAFTED IN EGYPT';
 
       const cEyebrow = document.getElementById('cart-drawer-eyebrow');
       if (cEyebrow) cEyebrow.textContent = isAr ? 'سلة التسوق' : 'YOUR CART';
