@@ -2832,6 +2832,12 @@ template = '''<!DOCTYPE html>
     color: #FFF !important;
   }
 
+
+  /* Guard: Never show newsletter or FAQ on PDP */
+  body.is-pdp #newsletter,
+  body.is-pdp #faq {
+    display: none !important;
+  }
 </style>
 </head>
 <body>
@@ -3133,6 +3139,72 @@ template = '''<!DOCTYPE html>
       </div>
     </section>
 
+  
+<!-- 📩 1. JOIN OUR CIRCLE (NEWSLETTER) -->
+  <!-- ========================================================== -->
+  <section id="newsletter" class="zema-newsletter-section">
+    <div class="zema-newsletter-container">
+      <p class="zema-circle-eyebrow" id="nl-eyebrow">JOIN OUR CIRCLE</p>
+      <h2 class="zema-newsletter-title" id="nl-title">انضم إلى دائرتنا</h2>
+      <p class="zema-newsletter-desc" id="nl-desc">كُن أول من يكتشف العينات الجديدة، العروض الحصرية، والمجموعات الخاصة.</p>
+      <form class="zema-newsletter-form" onsubmit="event.preventDefault(); handleNewsletterSubmit(this);">
+        <input type="email" id="nl-input" placeholder="بريدك الإلكتروني" aria-label="بريدك الإلكتروني" class="zema-newsletter-input" required />
+        <button type="submit" id="nl-btn" class="zema-newsletter-btn">اشترك</button>
+      </form>
+      <div id="newsletterSuccess" style="display:none; margin-top:16px; color:#1B7D3F; font-size:14px; font-weight:700;">✓ شكراً لاشتراكك في دائرة زِيما! ستصلك أحدث المجموعات والعروض الحصرية أولاً بأول.</div>
+    </div>
+  </section>
+
+  <!-- ========================================================== -->
+  <!-- ❓ 2. FAQ (الأسئلة الشائعة) -->
+  <!-- ========================================================== -->
+  <section id="faq" class="zema-faq-section">
+    <div class="zema-faq-container">
+      <div style="text-align:center; margin-bottom: 40px;">
+        <p class="zema-faq-eyebrow" id="faq-eyebrow">FAQ</p>
+        <h2 class="zema-faq-title" id="faq-main-title">الأسئلة الشائعة</h2>
+      </div>
+      <div class="zema-faq-accordion">
+        <details class="zema-faq-item">
+          <summary class="zema-faq-summary">
+            <span id="faq-q-1">هل الدفع عند الاستلام متاح؟</span>
+            <span class="zema-faq-icon">+</span>
+          </summary>
+          <div class="zema-faq-body" id="faq-a-1">
+            نعم، الدفع عند الاستلام متاح لجميع المحافظات داخل مصر.
+          </div>
+        </details>
+        <details class="zema-faq-item">
+          <summary class="zema-faq-summary">
+            <span id="faq-q-2">كم تستغرق مدة الشحن؟</span>
+            <span class="zema-faq-icon">+</span>
+          </summary>
+          <div class="zema-faq-body" id="faq-a-2">
+            من 2 إلى 5 أيام عمل حسب المحافظة. القاهرة والجيزة عادةً خلال 48 ساعة.
+          </div>
+        </details>
+        <details class="zema-faq-item">
+          <summary class="zema-faq-summary">
+            <span id="faq-q-3">هل يمكنني فتح الشحنة قبل الدفع؟</span>
+            <span class="zema-faq-icon">+</span>
+          </summary>
+          <div class="zema-faq-body" id="faq-a-3">
+            لحماية المنتجات الفاخرة لا يُسمح بفتح الشحنة قبل الدفع، ولكن لديك حق الاستبدال خلال 14 يوماً.
+          </div>
+        </details>
+        <details class="zema-faq-item">
+          <summary class="zema-faq-summary">
+            <span id="faq-q-4">هل المنتجات أصلية ومضمونة؟</span>
+            <span class="zema-faq-icon">+</span>
+          </summary>
+          <div class="zema-faq-body" id="faq-a-4">
+            جميع منتجات ZEMA مختارة بعناية ومضمونة الجودة، مع إمكانية الاستبدال أو الاسترجاع.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   </main>
 
   <!-- ========================================================== -->
@@ -3309,17 +3381,7 @@ template = '''<!DOCTYPE html>
         </div>
 
       </div>
-      <!-- 🌟 Complete Your Look Section (كمل اللوك بتاعك) -->
-      <section class="pdp-complete-look-section" id="pdpCompleteLookSection">
-        <div class="complete-look-header">
-          <p class="complete-look-eyebrow" id="completeLookEyebrow">تنسيق متناغم</p>
-          <h2 class="complete-look-title" id="completeLookTitle">كمل اللوك بتاعك</h2>
-          <p class="complete-look-sub" id="completeLookSub">قطع مختارة بعناية تتناسق مثالياً مع هذه القطعة لتكتمل إطلالتك بأناقة لا مثيل لها.</p>
-        </div>
-        <div class="complete-look-grid" id="completeLookGrid">
-          <!-- Dynamically populated complementary items -->
-        </div>
-      </section>
+      
 
     </div>
   </section>
@@ -3464,6 +3526,18 @@ template = '''<!DOCTYPE html>
 
       </div>
 
+      <!-- 🌟 Complete Your Look Section (كمل اللوك بتاعك) -->
+      <section class="pdp-complete-look-section" id="pdpCompleteLookSection">
+        <div class="complete-look-header">
+          <p class="complete-look-eyebrow" id="completeLookEyebrow">تنسيق متناغم</p>
+          <h2 class="complete-look-title" id="completeLookTitle">كمل اللوك بتاعك</h2>
+          <p class="complete-look-sub" id="completeLookSub">قطع مختارة بعناية تتناسق مثالياً مع هذه القطعة لتكتمل إطلالتك بأناقة لا مثيل لها.</p>
+        </div>
+        <div class="complete-look-grid" id="completeLookGrid">
+          <!-- Dynamically populated complementary items -->
+        </div>
+      </section>
+
     </div>
   </section>
 
@@ -3483,70 +3557,7 @@ template = '''<!DOCTYPE html>
   </aside>
 
   <!-- ========================================================== -->
-  <!-- 📩 1. JOIN OUR CIRCLE (NEWSLETTER) -->
-  <!-- ========================================================== -->
-  <section id="newsletter" class="zema-newsletter-section">
-    <div class="zema-newsletter-container">
-      <p class="zema-circle-eyebrow" id="nl-eyebrow">JOIN OUR CIRCLE</p>
-      <h2 class="zema-newsletter-title" id="nl-title">انضم إلى دائرتنا</h2>
-      <p class="zema-newsletter-desc" id="nl-desc">كُن أول من يكتشف العينات الجديدة، العروض الحصرية، والمجموعات الخاصة.</p>
-      <form class="zema-newsletter-form" onsubmit="event.preventDefault(); handleNewsletterSubmit(this);">
-        <input type="email" id="nl-input" placeholder="بريدك الإلكتروني" aria-label="بريدك الإلكتروني" class="zema-newsletter-input" required />
-        <button type="submit" id="nl-btn" class="zema-newsletter-btn">اشترك</button>
-      </form>
-      <div id="newsletterSuccess" style="display:none; margin-top:16px; color:#1B7D3F; font-size:14px; font-weight:700;">✓ شكراً لاشتراكك في دائرة زِيما! ستصلك أحدث المجموعات والعروض الحصرية أولاً بأول.</div>
-    </div>
-  </section>
-
-  <!-- ========================================================== -->
-  <!-- ❓ 2. FAQ (الأسئلة الشائعة) -->
-  <!-- ========================================================== -->
-  <section id="faq" class="zema-faq-section">
-    <div class="zema-faq-container">
-      <div style="text-align:center; margin-bottom: 40px;">
-        <p class="zema-faq-eyebrow" id="faq-eyebrow">FAQ</p>
-        <h2 class="zema-faq-title" id="faq-main-title">الأسئلة الشائعة</h2>
-      </div>
-      <div class="zema-faq-accordion">
-        <details class="zema-faq-item">
-          <summary class="zema-faq-summary">
-            <span id="faq-q-1">هل الدفع عند الاستلام متاح؟</span>
-            <span class="zema-faq-icon">+</span>
-          </summary>
-          <div class="zema-faq-body" id="faq-a-1">
-            نعم، الدفع عند الاستلام متاح لجميع المحافظات داخل مصر.
-          </div>
-        </details>
-        <details class="zema-faq-item">
-          <summary class="zema-faq-summary">
-            <span id="faq-q-2">كم تستغرق مدة الشحن؟</span>
-            <span class="zema-faq-icon">+</span>
-          </summary>
-          <div class="zema-faq-body" id="faq-a-2">
-            من 2 إلى 5 أيام عمل حسب المحافظة. القاهرة والجيزة عادةً خلال 48 ساعة.
-          </div>
-        </details>
-        <details class="zema-faq-item">
-          <summary class="zema-faq-summary">
-            <span id="faq-q-3">هل يمكنني فتح الشحنة قبل الدفع؟</span>
-            <span class="zema-faq-icon">+</span>
-          </summary>
-          <div class="zema-faq-body" id="faq-a-3">
-            لحماية المنتجات الفاخرة لا يُسمح بفتح الشحنة قبل الدفع، ولكن لديك حق الاستبدال خلال 14 يوماً.
-          </div>
-        </details>
-        <details class="zema-faq-item">
-          <summary class="zema-faq-summary">
-            <span id="faq-q-4">هل المنتجات أصلية ومضمونة؟</span>
-            <span class="zema-faq-icon">+</span>
-          </summary>
-          <div class="zema-faq-body" id="faq-a-4">
-            جميع منتجات ZEMA مختارة بعناية ومضمونة الجودة، مع إمكانية الاستبدال أو الاسترجاع.
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ========================================================== -->
   <!-- 🏛️ 3. FOOTER (المشروع القديم مع الأقسام: حقائب، محافظ، أحزمة) -->
