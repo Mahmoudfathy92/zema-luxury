@@ -4435,38 +4435,6 @@
       </div>
 
       <div class="drawer-body">
-        <!-- Ordered Items Summary at Top -->
-        <div class="co-summary-box">
-          <div style="font-size:12px; font-weight:800; color:#888; text-transform:uppercase; margin-bottom:8px;" id="lbl-co-summary-title">ملخص المنتجات:</div>
-          <ul class="co-products-summary-list" id="coDrawerProductsSummary">
-            <!-- Dynamically populated: Name × Qty ... Line Price -->
-          </ul>
-
-          <div class="co-summary-line">
-            <span id="co-sum-subtotal-lbl">المجموع الفرعي:</span>
-            <span id="coDrawerSubtotal">0 ج.م</span>
-          </div>
-          <div class="co-summary-line highlight" id="coDrawerDiscountRow" style="display:none;">
-            <span id="coDrawerDiscountLabel">خصم (ZEMA10):</span>
-            <span id="coDrawerDiscountAmount">-0 ج.م</span>
-          </div>
-          <div class="co-summary-line">
-            <span id="co-sum-shipping-lbl">الشحن:</span>
-            <span id="coDrawerShipping">اختر المحافظة لحساب الشحن</span>
-          </div>
-          <div class="co-summary-total">
-            <span id="co-sum-total-lbl">الإجمالي:</span>
-            <span id="coDrawerTotal">0 ج.م</span>
-          </div>
-
-          <!-- Promo Code Input -->
-          <div class="coupon-row">
-            <input type="text" id="coDrawerCouponInput" class="coupon-input" placeholder="كود الخصم (مثال: ZEMA10)" />
-            <button type="button" class="coupon-btn" onclick="applyDrawerCoupon()">تطبيق</button>
-          </div>
-          <div id="coDrawerCouponFeedback" class="coupon-feedback" style="display:none;"></div>
-        </div>
-
         <!-- Form Fields -->
         <form id="drawerCheckoutForm" onsubmit="handleDrawerCheckoutSubmit(event)">
           <div style="margin-bottom:14px;">
@@ -6362,8 +6330,10 @@
       if (discRow) {
         if (discountAmount > 0) {
           discRow.style.display = 'flex';
-          document.getElementById('coDrawerDiscountLabel').textContent = (isAr ? 'خصم ' : 'Discount ') + `(${activePromo.code}):`;
-          document.getElementById('coDrawerDiscountAmount').textContent = '- ' + discountAmount.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
+          const discLbl = document.getElementById('coDrawerDiscountLabel');
+          if (discLbl) discLbl.textContent = (isAr ? 'خصم ' : 'Discount ') + `(${activePromo.code}):`;
+          const discAmt = document.getElementById('coDrawerDiscountAmount');
+          if (discAmt) discAmt.textContent = '- ' + discountAmount.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
         } else {
           discRow.style.display = 'none';
         }
