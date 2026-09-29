@@ -552,14 +552,14 @@ template = '''<!DOCTYPE html>
     transform: translateY(-1px);
   }
 
-  /* ========================================================== */
-  /* 📄 2. PRODUCT DETAIL PAGE (PDP) */
+    /* ========================================================== */
+  /* 📄 2. PRODUCT DETAIL PAGE (PDP) - OOYAA LUXURY REPLICATION */
   /* ========================================================== */
   #pdp-view {
     display: none;
-    min-height: 80vh;
-    padding-bottom: 90px;
-    background: var(--zema-cream);
+    min-height: 85vh;
+    padding-bottom: 100px;
+    background: #ffffff;
   }
   .pdp-breadcrumbs {
     display: flex;
@@ -573,98 +573,145 @@ template = '''<!DOCTYPE html>
   .pdp-breadcrumbs a {
     color: #777;
     text-decoration: none;
+    transition: color 0.2s;
   }
   .pdp-breadcrumbs a:hover {
-    color: var(--zema-espresso);
+    color: #111;
   }
   .pdp-breadcrumbs span.active {
-    color: var(--zema-espresso);
+    color: #111;
     font-weight: 700;
   }
 
   .pdp-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.15fr 0.85fr;
     gap: 48px;
     max-width: 1240px;
     margin: 0 auto;
     align-items: start;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 991px) {
     .pdp-layout {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 36px;
     }
   }
 
-  /* Gallery */
+  /* Gallery matching OOYAA 3:4 aspect ratio with vertical thumbnails */
   .pdp-gallery {
     position: sticky;
     top: 90px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .pdp-thumbs-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 74px;
+    flex-shrink: 0;
+  }
+  .pdp-thumb-item {
+    aspect-ratio: 3/4;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    background: #f7f6f3;
+    padding: 0;
+    transition: all 0.2s ease;
+  }
+  .pdp-thumb-item:hover {
+    border-color: #999;
+  }
+  .pdp-thumb-item.active {
+    border-color: #111111;
+    box-shadow: 0 0 0 1px #111111;
+  }
+  .pdp-thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .pdp-main-image-wrap {
-    width: 100%;
-    aspect-ratio: 4/5;
-    background: #f0eee9;
-    border-radius: 14px;
+    flex: 1;
+    aspect-ratio: 3/4;
+    background: #f7f6f3;
+    border-radius: 8px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    cursor: zoom-in;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
   }
   .pdp-main-image-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.35s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   }
   .pdp-main-image-wrap:hover img {
     transform: scale(1.04);
   }
-  .pdp-thumbnails-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-top: 14px;
+  .pdp-main-badge {
+    position: absolute;
+    top: 14px;
+    inset-inline-start: 14px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 2;
+    text-transform: uppercase;
   }
-  .pdp-thumb-btn {
-    aspect-ratio: 1;
-    background: #f0eee9;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 2px solid transparent;
-    cursor: pointer;
-    padding: 0;
-    transition: all 0.2s;
-  }
-  .pdp-thumb-btn img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .pdp-thumb-btn.active {
-    border-color: var(--zema-espresso);
-    box-shadow: 0 0 0 1px var(--zema-espresso);
+
+  @media (max-width: 768px) {
+    .pdp-gallery {
+      flex-direction: column-reverse;
+      gap: 12px;
+      position: static;
+    }
+    .pdp-thumbs-vertical {
+      flex-direction: row;
+      width: 100%;
+      overflow-x: auto;
+      gap: 8px;
+      scrollbar-width: none;
+    }
+    .pdp-thumbs-vertical::-webkit-scrollbar {
+      display: none;
+    }
+    .pdp-thumb-item {
+      width: 62px;
+      flex-shrink: 0;
+    }
   }
 
   /* PDP Content Details */
   .pdp-details {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
   }
-  .pdp-eyebrow {
-    font-size: 13px;
+  .pdp-brand-tag {
+    font-size: 12px;
     font-weight: 700;
-    color: var(--zema-gold);
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
+    color: #888888;
     margin: 0;
   }
   .pdp-title {
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 1.2;
-    margin: 4px 0 12px 0;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0;
+    color: #111111;
+    letter-spacing: -0.02em;
   }
   .pdp-price-row {
     display: flex;
@@ -673,30 +720,144 @@ template = '''<!DOCTYPE html>
   }
   .pdp-price-current {
     font-size: 26px;
-    font-weight: 900;
-    color: var(--zema-espresso);
+    font-weight: 800;
+    color: #111111;
   }
   .pdp-price-old {
-    font-size: 18px;
-    color: #999;
+    font-size: 17px;
+    color: #999999;
     text-decoration: line-through;
   }
   .pdp-saving-badge {
-    background: #fef2f2;
-    color: #991b1b;
+    background: #fdf2f2;
+    color: #b91c1c;
     border: 1px solid #fecaca;
-    padding: 4px 8px;
+    padding: 3px 8px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
   }
+  .pdp-meta-row {
+    font-size: 13px;
+    color: #666666;
+    margin: 0;
+  }
+  .pdp-meta-label {
+    font-weight: 700;
+    color: #111111;
+  }
 
-  /* Guarantees Box */
+  /* Color Swatches matching OOYAA */
+  .pdp-color-section {
+    margin-top: 4px;
+  }
+  .pdp-color-header {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #444444;
+  }
+  .pdp-color-header strong {
+    color: #111111;
+    font-weight: 700;
+  }
+  .pdp-swatches-grid {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .pdp-swatch-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    outline: 1px solid #d5d5d5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    position: relative;
+  }
+  .pdp-swatch-circle:hover {
+    outline-color: #999999;
+  }
+  .pdp-swatch-circle.active {
+    outline: 2px solid #111111;
+    outline-offset: 2px;
+  }
+
+  /* Quantity & Buy Buttons matching OOYAA */
+  .pdp-buy-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 10px 0 6px 0;
+  }
+  .pdp-qty-wrapper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #e2e2e2;
+    border-radius: 25px;
+    height: 48px;
+    background: #f8f8f8;
+    padding: 0 4px;
+  }
+  .pdp-qty-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111111;
+    transition: background 0.15s;
+  }
+  .pdp-qty-btn:hover {
+    background: #ebebeb;
+  }
+  .pdp-qty-input {
+    width: 38px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 700;
+    color: #111111;
+    outline: none;
+  }
+  .pdp-main-add-btn {
+    flex: 1;
+    height: 48px;
+    border-radius: 25px;
+    background: #111111;
+    color: #ffffff;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    transition: background 0.2s, transform 0.15s;
+  }
+  .pdp-main-add-btn:hover {
+    background: #2b2b2b;
+    transform: translateY(-1px);
+  }
+
+  /* Guarantees Perks Box */
   .pdp-perks-box {
-    background: #ffffff;
-    border: 1px solid var(--zema-border);
-    border-radius: 10px;
-    padding: 16px;
+    background: #fbfbfa;
+    border: 1px solid #ecebe8;
+    border-radius: 8px;
+    padding: 14px 16px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
@@ -705,107 +866,79 @@ template = '''<!DOCTYPE html>
   .pdp-perk-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
+    color: #333333;
   }
-  .pdp-perk-item i {
-    color: var(--zema-green);
-    width: 18px;
-    height: 18px;
+  .pdp-perk-item svg {
+    color: #111111;
+    width: 17px;
+    height: 17px;
     flex-shrink: 0;
   }
 
-  /* Actions */
-  .pdp-qty-action-row {
-    display: flex;
-    gap: 12px;
-    align-items: stretch;
-    margin-top: 10px;
-  }
-  .pdp-qty-selector {
-    display: flex;
-    align-items: center;
-    border: 1px solid #dcd7ce;
-    border-radius: 8px;
-    background: #ffffff;
-  }
-  .pdp-qty-btn {
-    width: 44px;
-    height: 100%;
-    background: none;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .pdp-qty-num {
-    padding: 0 12px;
-    font-size: 16px;
-    font-weight: 800;
-  }
-  .pdp-add-cart-btn {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 16px 28px;
-    background: var(--zema-espresso);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-    transition: background 0.2s, transform 0.15s;
-  }
-  .pdp-add-cart-btn:hover {
-    background: #33312e;
-    transform: translateY(-1px);
-  }
-
-  /* Accordions */
+  /* Accordions - 7 Collapsibles matching OOYAA */
   .pdp-accordion-box {
-    margin-top: 20px;
-    border: 1px solid var(--zema-border);
-    border-radius: 10px;
-    background: #ffffff;
-    overflow: hidden;
+    margin-top: 14px;
+    border-top: 1px solid #ebebeb;
   }
   .pdp-acc-item {
-    border-bottom: 1px solid var(--zema-border);
-  }
-  .pdp-acc-item:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid #ebebeb;
   }
   .pdp-acc-header {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 16px 0;
     background: none;
     border: none;
     font-size: 15px;
-    font-weight: 800;
-    color: var(--zema-espresso);
+    font-weight: 700;
+    color: #111111;
     cursor: pointer;
     text-align: inherit;
+    transition: color 0.2s;
+  }
+  .pdp-acc-header:hover {
+    color: #555555;
+  }
+  .pdp-acc-header svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.25s ease;
+    color: #111111;
+    flex-shrink: 0;
+  }
+  .pdp-acc-item.is-open .pdp-acc-header svg {
+    transform: rotate(180deg);
   }
   .pdp-acc-content {
     display: none;
-    padding: 0 20px 18px 20px;
-    font-size: 14px;
-    color: #555;
+    padding: 0 0 16px 0;
+    font-size: 13.5px;
     line-height: 1.7;
+    color: #555555;
   }
-  .pdp-acc-content.open {
+  .pdp-acc-item.is-open .pdp-acc-content {
     display: block;
   }
+  .pdp-pill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .pdp-pill-tag {
+    background: #f3f3f3;
+    color: #222222;
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 600;
+  }
 
-  /* ========================================================== */
   /* 📱 STICKY BOTTOM BAR ON MOBILE FOR PDP */
   /* ========================================================== */
   .mobile-sticky-bar {
@@ -3407,6 +3540,8 @@ template = '''<!DOCTYPE html>
 
   <!-- ========================================================== -->
   <!-- 📄 3. DEDICATED PRODUCT DETAIL PAGE (PDP VIEW) -->
+    <!-- ========================================================== -->
+  <!-- 📄 2. PRODUCT DETAIL PAGE (PDP - OOYAA REPLICATION) -->
   <!-- ========================================================== -->
   <section id="pdp-view">
     <div style="max-width: 1240px; margin: 0 auto; padding: 0 16px;">
@@ -3422,20 +3557,21 @@ template = '''<!DOCTYPE html>
 
       <div class="pdp-layout">
         
-        <!-- Left: Image Gallery with Multiple Angles -->
+        <!-- Left: Image Gallery (OOYAA 3:4 Aspect Ratio + Vertical Thumbnails) -->
         <div class="pdp-gallery">
-          <div class="pdp-main-image-wrap">
-            <img id="pdpMainImage" src="__HOBO_B64__" alt="Product Angle" />
+          <div class="pdp-thumbs-vertical" id="pdpThumbnailsContainer">
+            <!-- Thumbnails rendered dynamically -->
           </div>
-          <div class="pdp-thumbnails-row" id="pdpThumbnailsContainer">
-            <!-- 4 angles thumbnails rendered dynamically -->
+          <div class="pdp-main-image-wrap">
+            <span class="pdp-main-badge" id="pdpMainBadge" style="display:none;"></span>
+            <img id="pdpMainImage" src="__HOBO_B64__" alt="Product" />
           </div>
         </div>
 
-        <!-- Right: Information, Materials, Dimensions, Sticky Mobile Cart -->
+        <!-- Right: Information, Swatches, Accordion Tabs -->
         <div class="pdp-details">
           <div>
-            <p class="pdp-eyebrow" id="pdpEyebrow">MAISON ZEMA · إصدار محدود</p>
+            <p class="pdp-brand-tag" id="pdpBrandTag">ZÈMA ATELIER</p>
             <h1 class="pdp-title" id="pdpTitle">حقيبة ميلا هوبو ناعمة</h1>
             
             <div class="pdp-price-row">
@@ -3443,105 +3579,143 @@ template = '''<!DOCTYPE html>
               <span class="pdp-price-old" id="pdpOldPrice">1,699.00 ج.م</span>
               <span class="pdp-saving-badge" id="pdpSavingBadge">توفير 400 ج.م</span>
             </div>
+            
+            <p class="pdp-meta-row">
+              <span class="pdp-meta-label" id="pdpMetaLabel">النوع:</span> 
+              <span id="pdpMetaType">حقيبة كتف</span>
+            </p>
+          </div>
+
+          <!-- Color Swatches (OOYAA Style) -->
+          <div class="pdp-color-section">
+            <div class="pdp-color-header">
+              <span id="pdp-lbl-color">اللون:</span> <strong id="pdpSelectedColorName">موكا فاخر</strong>
+            </div>
+            <div class="pdp-swatches-grid" id="pdpSwatchesGrid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Quantity & Add to Cart (OOYAA Style) -->
+          <div class="pdp-buy-row">
+            <div class="pdp-qty-wrapper">
+              <button class="pdp-qty-btn" onclick="changePdpQty(-1)" aria-label="Decrease quantity">−</button>
+              <input type="text" class="pdp-qty-input" id="pdpQtyNumber" value="1" readonly aria-label="Quantity" />
+              <button class="pdp-qty-btn" onclick="changePdpQty(1)" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="pdp-main-add-btn" onclick="addCurrentPdpToCart()">
+              <i data-lucide="shopping-bag" style="width:18px;height:18px;"></i>
+              <span id="pdpAddToCartBtnText">إضافة إلى سلة المشتريات</span>
+            </button>
           </div>
 
           <!-- Perks Box -->
           <div class="pdp-perks-box">
             <div class="pdp-perk-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <i data-lucide="truck"></i>
               <span id="pdp-perk-1">شحن مجاني فوق 2,500 ج.م</span>
             </div>
             <div class="pdp-perk-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+              <i data-lucide="banknote"></i>
               <span id="pdp-perk-2">الدفع عند الاستلام متاح</span>
             </div>
             <div class="pdp-perk-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <i data-lucide="clock"></i>
               <span id="pdp-perk-3">توصيل لكافة محافظات مصر</span>
             </div>
             <div class="pdp-perk-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--zema-green); flex-shrink:0;"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+              <i data-lucide="refresh-cw"></i>
               <span id="pdp-perk-4">استبدال واسترجاع خلال 14 يوماً</span>
             </div>
           </div>
 
-          <!-- Color Swatches -->
-          <div>
-            <label style="display:block; font-size:13px; font-weight:700; margin-bottom:8px;">
-              <span id="pdp-lbl-color">اللون المتاح:</span> <span id="pdpSelectedColorName" style="color:#666;">هافان طبيعي</span>
-            </label>
-            <div style="display:flex; gap:10px;">
-              <span style="background:#5C4033; width:26px; height:26px; border-radius:50%; display:inline-block; border:2px solid #000; cursor:pointer;"></span>
-              <span style="background:#111111; width:26px; height:26px; border-radius:50%; display:inline-block; border:1px solid #ddd; cursor:pointer;"></span>
-              <span style="background:#F5F2EB; width:26px; height:26px; border-radius:50%; display:inline-block; border:1px solid #ddd; cursor:pointer;"></span>
-            </div>
-          </div>
-
-          <!-- Quantity & Add to Cart -->
-          <div class="pdp-qty-action-row">
-            <div class="pdp-qty-selector">
-              <button class="pdp-qty-btn" onclick="changePdpQty(-1)">-</button>
-              <span class="pdp-qty-num" id="pdpQtyNumber">1</span>
-              <button class="pdp-qty-btn" onclick="changePdpQty(1)">+</button>
-            </div>
-            <button class="pdp-add-cart-btn" onclick="addCurrentPdpToCart()">
-              <i data-lucide="shopping-bag"></i>
-              <span id="pdpAddToCartBtnText">إضافة إلى سلة المشتريات</span>
-            </button>
-          </div>
-
-          <!-- Accordion Specs -->
+          <!-- 🌟 The 7 Collapsible Accordion Tabs (Exact OOYAA Structure) -->
           <div class="pdp-accordion-box">
             
-            <!-- Description -->
-            <div class="pdp-acc-item">
+            <!-- 1. Description -->
+            <div class="pdp-acc-item is-open" id="pdpAccItemDesc">
               <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
-                <span id="pdp-acc-lbl-desc">الوصف وتفاصيل التصميم</span>
+                <span id="pdp-acc-lbl-desc">الوصف</span>
                 <i data-lucide="chevron-down"></i>
               </button>
-              <div class="pdp-acc-content open" id="pdpDescContent">
-                حقيبة كتف عصرية تجمع بين الفخامة الهادئة والعملية اليومية. مصممة بانسيابية تمنحك إطلالة راقية في العمل، اللقاءات الرسمية وعطلات نهاية الأسبوع، مع مقصورة واسعة تسع كافة مقتنياتك الأساسية.
+              <div class="pdp-acc-content" id="pdpDescContent">
+                <!-- Set dynamically -->
               </div>
             </div>
 
-            <!-- Materials -->
-            <div class="pdp-acc-item">
+            <!-- 2. Materials -->
+            <div class="pdp-acc-item" id="pdpAccItemMat">
               <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
-                <span id="pdp-acc-lbl-mat">الخامات والصناعة الفاخرة</span>
+                <span id="pdp-acc-lbl-mat">الخامات والصناعة</span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="pdp-acc-content" id="pdpMaterialsContent">
-                • <strong>جلد طبيعي فاخر 100%</strong> (Full-Grain Genuine Leather) بملمس ناعم ومقاوم للخدش.<br>
-                • بطانة داخلية مخملية مقاومة للرطوبة وسهلة التنظيف.<br>
-                • إكسسوارات معدنية ومفصلات مطلية بالذهب عيار 18 مقاومة لتغير اللون والصدأ.<br>
-                • سحابات يابانية YKK عالية المتانة لنعومة تامة في الفتح والإغلاق.
+                <!-- Set dynamically -->
               </div>
             </div>
 
-            <!-- Dimensions -->
-            <div class="pdp-acc-item">
+            <!-- 3. Dimensions -->
+            <div class="pdp-acc-item" id="pdpAccItemDim">
               <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
                 <span id="pdp-acc-lbl-dim">الأبعاد والمقاسات</span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="pdp-acc-content" id="pdpDimensionsContent">
-                • <strong>العرض:</strong> 34 سم<br>
-                • <strong>الارتفاع:</strong> 26 سم<br>
-                • <strong>العمق:</strong> 12 سم<br>
-                • <strong>طول حزام الكتف:</strong> 48 إلى 58 سم (قابل للتعديل)<br>
-                • <strong>الوزن الإجمالي:</strong> 620 جرام خفيف ومريح للاستخدام طوال اليوم.
+                <!-- Set dynamically -->
+              </div>
+            </div>
+
+            <!-- 4. Care Instructions -->
+            <div class="pdp-acc-item" id="pdpAccItemCare">
+              <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
+                <span id="pdp-acc-lbl-care">تعليمات العناية</span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="pdp-acc-content" id="pdpCareContent">
+                <!-- Set dynamically -->
+              </div>
+            </div>
+
+            <!-- 5. Perfect Fit For -->
+            <div class="pdp-acc-item" id="pdpAccItemFit">
+              <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
+                <span id="pdp-acc-lbl-fit">مثالية لـ</span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="pdp-acc-content" id="pdpFitContent">
+                <!-- Set dynamically -->
+              </div>
+            </div>
+
+            <!-- 6. Shipping & Delivery -->
+            <div class="pdp-acc-item" id="pdpAccItemShip">
+              <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
+                <span id="pdp-acc-lbl-ship">الشحن والتوصيل</span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="pdp-acc-content" id="pdpShipContent">
+                <!-- Set dynamically -->
+              </div>
+            </div>
+
+            <!-- 7. Returns & Exchanges -->
+            <div class="pdp-acc-item" id="pdpAccItemReturn">
+              <button class="pdp-acc-header" onclick="togglePdpAccordion(this)">
+                <span id="pdp-acc-lbl-return">الاستبدال والاسترجاع</span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="pdp-acc-content" id="pdpReturnContent">
+                <!-- Set dynamically -->
               </div>
             </div>
 
           </div>
 
-          
-
         </div>
 
       </div>
 
-      <!-- 🌟 Complete Your Look Section (كمل اللوك بتاعك) -->
+      <!-- 🌟 Complete Your Look Section (Pairs Well With / كمل اللوك بتاعك) -->
       <section class="pdp-complete-look-section" id="pdpCompleteLookSection">
         <div class="complete-look-header">
           <p class="complete-look-eyebrow" id="completeLookEyebrow">تنسيق متناغم</p>
@@ -4539,29 +4713,80 @@ template = '''<!DOCTYPE html>
         s.innerHTML = isAr ? '&larr;' : '&rarr;';
       });
 
-      const pdpEye = document.getElementById('pdpEyebrow');
-      if (pdpEye) pdpEye.textContent = isAr ? 'MAISON ZEMA · إصدار محدود' : 'MAISON ZEMA · LIMITED EDITION';
+      const pdpBrand = document.getElementById('pdpBrandTag');
+      if (pdpBrand) pdpBrand.textContent = 'ZÈMA ATELIER';
 
       document.getElementById('pdp-crumb-title').textContent = isAr ? prod.nameAr : prod.nameEn;
       document.getElementById('pdp-crumb-cat').textContent = isAr ? prod.catAr : prod.catEn;
       document.getElementById('pdpTitle').textContent = isAr ? prod.nameAr : prod.nameEn;
       document.getElementById('pdpPrice').textContent = prod.price.toLocaleString('en-US') + (isAr ? ' ج.م' : ' EGP');
       
+      const badge = document.getElementById('pdpMainBadge');
       if (prod.originalPrice) {
         document.getElementById('pdpOldPrice').style.display = 'inline';
         document.getElementById('pdpOldPrice').textContent = prod.originalPrice.toLocaleString('en-US') + (isAr ? ' ج.م' : ' EGP');
         document.getElementById('pdpSavingBadge').style.display = 'inline';
-        document.getElementById('pdpSavingBadge').textContent = (isAr ? 'توفير ' : 'Save ') + (prod.originalPrice - prod.price) + (isAr ? ' ج.م' : ' EGP');
+        const saveAmt = prod.originalPrice - prod.price;
+        document.getElementById('pdpSavingBadge').textContent = (isAr ? 'توفير ' : 'Save ') + saveAmt.toLocaleString('en-US') + (isAr ? ' ج.م' : ' EGP');
+        if (badge) {
+          badge.style.display = 'inline-block';
+          badge.textContent = isAr ? 'تخفيض' : 'SALE';
+        }
       } else {
         document.getElementById('pdpOldPrice').style.display = 'none';
         document.getElementById('pdpSavingBadge').style.display = 'none';
+        if (badge) {
+          badge.style.display = 'inline-block';
+          badge.textContent = isAr ? 'إصدار محدود' : 'LIMITED EDITION';
+        }
       }
 
-      // Color Localization
+      // Meta Type
+      const metaLbl = document.getElementById('pdpMetaLabel');
+      if (metaLbl) metaLbl.textContent = isAr ? 'النوع:' : 'Type:';
+      const metaType = document.getElementById('pdpMetaType');
+      if (metaType) {
+        metaType.textContent = isAr ? prod.catAr : prod.catEn;
+      }
+
+      // Quantity reset
+      const qtyNum = document.getElementById('pdpQtyNumber');
+      if (qtyNum) qtyNum.value = '1';
+
+      // Color Swatches matching OOYAA
       const colorLbl = document.getElementById('pdp-lbl-color');
-      if (colorLbl) colorLbl.textContent = isAr ? 'اللون المتاح:' : 'Available Color:';
+      if (colorLbl) colorLbl.textContent = isAr ? 'اللون:' : 'Color:';
+      
+      const colorPalettes = [
+        { key: 'mocha', nameAr: 'موكا فاخر', nameEn: 'Mocha', hex: '#6b4f3b' },
+        { key: 'black', nameAr: 'أسود كلاسيك', nameEn: 'Noir Black', hex: '#111111' },
+        { key: 'havana', nameAr: 'هافان طبيعي', nameEn: 'Havana Tan', hex: '#8b5a2b' },
+        { key: 'cream', nameAr: 'كريمي عاجي', nameEn: 'Cream White', hex: '#ede6dd' },
+        { key: 'skyblue', nameAr: 'أزرق سماوي', nameEn: 'Sky Blue', hex: '#7ea7c7' }
+      ];
+
+      const swatchesContainer = document.getElementById('pdpSwatchesGrid');
+      if (swatchesContainer) {
+        swatchesContainer.innerHTML = '';
+        colorPalettes.forEach((c, idx) => {
+          const swatch = document.createElement('button');
+          swatch.type = 'button';
+          swatch.className = 'pdp-swatch-circle' + (idx === 0 ? ' active' : '');
+          swatch.style.background = c.hex;
+          swatch.title = isAr ? c.nameAr : c.nameEn;
+          swatch.onclick = () => {
+            document.querySelectorAll('.pdp-swatch-circle').forEach(s => s.classList.remove('active'));
+            swatch.classList.add('active');
+            const colorNameEl = document.getElementById('pdpSelectedColorName');
+            if (colorNameEl) colorNameEl.textContent = isAr ? c.nameAr : c.nameEn;
+          };
+          swatchesContainer.appendChild(swatch);
+        });
+      }
+
+      const activeColor = colorPalettes[0];
       const colorName = document.getElementById('pdpSelectedColorName');
-      if (colorName) colorName.textContent = getProductColor(prod, isAr);
+      if (colorName) colorName.textContent = isAr ? activeColor.nameAr : activeColor.nameEn;
 
       // Perks Localization
       const perk1 = document.getElementById('pdp-perk-1');
@@ -4573,30 +4798,94 @@ template = '''<!DOCTYPE html>
       const perk4 = document.getElementById('pdp-perk-4');
       if (perk4) perk4.textContent = isAr ? 'استبدال واسترجاع خلال 14 يوماً' : '14-day exchange & return';
 
-      // Button & Accordion Localization
+      // Button Localization
       const pdpAddCart = document.getElementById('pdpAddToCartBtnText');
-      if (pdpAddCart) pdpAddCart.textContent = isAr ? 'إضافة إلى سلة المشتريات' : 'Add to Shopping Bag';
-      const pdpAccDesc = document.getElementById('pdp-acc-lbl-desc');
-      if (pdpAccDesc) pdpAccDesc.textContent = isAr ? 'الوصف وتفاصيل التصميم' : 'Description & Design Details';
-      const pdpAccMat = document.getElementById('pdp-acc-lbl-mat');
-      if (pdpAccMat) pdpAccMat.textContent = isAr ? 'الخامات والصناعة الفاخرة' : 'Materials & Craftsmanship';
-      const pdpAccDim = document.getElementById('pdp-acc-lbl-dim');
-      if (pdpAccDim) pdpAccDim.textContent = isAr ? 'الأبعاد والمقاسات' : 'Dimensions & Sizing';
+      if (pdpAddCart) pdpAddCart.textContent = isAr ? 'إضافة إلى سلة المشتريات' : 'Add to Cart';
 
-      document.getElementById('pdpDescContent').innerHTML = isAr ? prod.descAr : prod.descEn;
-      document.getElementById('pdpMaterialsContent').innerHTML = isAr ? prod.materialsAr : prod.materialsEn;
-      document.getElementById('pdpDimensionsContent').innerHTML = isAr ? prod.dimAr : prod.dimEn;
+      // 🌟 The 7 Accordions Content & Headers (Exact OOYAA Replica)
+      // 1. Description
+      const accDesc = document.getElementById('pdp-acc-lbl-desc');
+      if (accDesc) accDesc.textContent = isAr ? 'الوصف' : 'Description';
+      const descContent = document.getElementById('pdpDescContent');
+      if (descContent) {
+        descContent.innerHTML = isAr 
+          ? (prod.descAr || 'مصممة للأيام المزدحمة والمشاوير الراقية، تجمع حقيبة ZÈMA بين المقصورة الرحبة والانسيابية العصرية الفاخرة. مريحة في الحمل على الكتف مع تصميم يدوم طويلاً، مما يجعلها الخيار العملي والأنيق للعمل، الجامعة، والمشاوير اليومية.')
+          : (prod.descEn || 'Designed for busy days, the ZÈMA bag combines a roomy interior with a clean, streamlined silhouette. Its comfortable shoulder carry and durable construction make it a practical and elegant choice for work, university and everyday errands.');
+      }
 
-      // Update Gallery
-      document.getElementById('pdpMainImage').src = prod.angles[0];
+      // 2. Materials
+      const accMat = document.getElementById('pdp-acc-lbl-mat');
+      if (accMat) accMat.textContent = isAr ? 'الخامات والصناعة' : 'Materials & Craftsmanship';
+      const matContent = document.getElementById('pdpMaterialsContent');
+      if (matContent) {
+        matContent.innerHTML = isAr
+          ? 'جلد طبيعي فاخر 100% (Full-Grain) بملمس ناعم ومقاوم للخدش، مع بطانة داخلية مخملية مقاومة للرطوبة وسهلة التنظيف، وإكسسوارات وسحابات معدنية مستوردة مقاومة لتغير اللون والصدأ.'
+          : 'Two complementary premium 100% full-grain leather finishes with imported anti-tarnish hardware and ultra-smooth Japanese YKK zippers.';
+      }
+
+      // 3. Dimensions
+      const accDim = document.getElementById('pdp-acc-lbl-dim');
+      if (accDim) accDim.textContent = isAr ? 'الأبعاد والمقاسات' : 'Dimensions & Sizing';
+      const dimContent = document.getElementById('pdpDimensionsContent');
+      if (dimContent) {
+        dimContent.innerHTML = isAr
+          ? 'الارتفاع: 20 سم • العرض: 40 سم • العمق: 12 سم<br>طول حزام الكتف: 48 إلى 58 سم (قابل للتعديل)<br>الوزن: 620 جرام خفيف ومريح للاستخدام طوال اليوم.'
+          : '20 cm high × 40 cm wide × 12 cm deep<br>Adjustable shoulder strap: 48–58 cm<br>Lightweight build (~620g) for effortless all-day wear.';
+      }
+
+      // 4. Care Instructions
+      const accCare = document.getElementById('pdp-acc-lbl-care');
+      if (accCare) accCare.textContent = isAr ? 'تعليمات العناية' : 'Care Instructions';
+      const careContent = document.getElementById('pdpCareContent');
+      if (careContent) {
+        careContent.innerHTML = isAr
+          ? 'امسحي الحقيبة برفق بقطعة قماش ناعمة ورطبة قليلاً للحفاظ على رونق الجلد ولمعان الإكسسوارات المعدنية. تجنبي المذيبات الكيميائية والتعرض المباشر للحرارة العالية.'
+          : 'Wipe gently with a soft, slightly damp cloth to help preserve the natural leather grain and metal hardware. Avoid harsh solvents and direct extreme heat.';
+      }
+
+      // 5. Perfect Fit For
+      const accFit = document.getElementById('pdp-acc-lbl-fit');
+      if (accFit) accFit.textContent = isAr ? 'مثالية لـ' : 'Perfect Fit For';
+      const fitContent = document.getElementById('pdpFitContent');
+      if (fitContent) {
+        fitContent.innerHTML = isAr
+          ? '<div class="pdp-pill-tags"><span class="pdp-pill-tag">العمل</span><span class="pdp-pill-tag">الجامعة</span><span class="pdp-pill-tag">المشاوير اليومية</span><span class="pdp-pill-tag">السفر والويك إند</span></div>'
+          : '<div class="pdp-pill-tags"><span class="pdp-pill-tag">Work</span><span class="pdp-pill-tag">University</span><span class="pdp-pill-tag">Daily Errands</span><span class="pdp-pill-tag">Travel & Weekends</span></div>';
+      }
+
+      // 6. Shipping & Delivery
+      const accShip = document.getElementById('pdp-acc-lbl-ship');
+      if (accShip) accShip.textContent = isAr ? 'الشحن والتوصيل' : 'Shipping & Delivery';
+      const shipContent = document.getElementById('pdpShipContent');
+      if (shipContent) {
+        shipContent.innerHTML = isAr
+          ? 'شحن مجاني لكافة طلبات 2,500 ج.م أو أكثر. التوصيل خلال 1–2 يوم عمل في القاهرة والجيزة؛ وخلال 2–4 أيام عمل لبقية المحافظات.'
+          : 'Free shipping on orders of 2,500 EGP or more. Cairo & Giza delivery takes 1–2 business days; other Egyptian governorates take 2–4 business days.';
+      }
+
+      // 7. Returns & Exchanges
+      const accReturn = document.getElementById('pdp-acc-lbl-return');
+      if (accReturn) accReturn.textContent = isAr ? 'الاستبدال والاسترجاع' : 'Returns & Exchanges';
+      const returnContent = document.getElementById('pdpReturnContent');
+      if (returnContent) {
+        returnContent.innerHTML = isAr
+          ? 'استبدال واسترجاع مضمون خلال 14 يوماً من الاستلام. يشترط أن تكون الحقيبة بحالتها الأصلية غير مستخدمة بكامل ملحقاتها وغلافها.'
+          : 'Eligible returns and exchanges are accepted within 14 days. Items must be unused and in their original packaging with all protective tags intact.';
+      }
+
+      // Render Multiple Angles in 3:4 Vertical Gallery
+      const mainImg = document.getElementById('pdpMainImage');
+      mainImg.src = prod.angles[0];
+
       const thumbsContainer = document.getElementById('pdpThumbnailsContainer');
       thumbsContainer.innerHTML = '';
       prod.angles.forEach((imgSrc, idx) => {
         const btn = document.createElement('button');
-        btn.className = 'pdp-thumb-btn' + (idx === 0 ? ' active' : '');
+        btn.type = 'button';
+        btn.className = 'pdp-thumb-item' + (idx === 0 ? ' active' : '');
         btn.innerHTML = `<img src="${imgSrc}" alt="Angle ${idx+1}" />`;
         btn.onclick = () => {
-          document.querySelectorAll('.pdp-thumb-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.pdp-thumb-item').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           document.getElementById('pdpMainImage').src = imgSrc;
         };
@@ -4606,9 +4895,7 @@ template = '''<!DOCTYPE html>
       // Update Mobile Sticky Bar
       document.getElementById('stickyBarImg').src = prod.angles[0];
       document.getElementById('stickyBarTitle').textContent = isAr ? prod.nameAr : prod.nameEn;
-      document.getElementById('stickyBarPrice').textContent = prod.price.toLocaleString() + (isAr ? ' ج.م' : ' EGP');
-
-// WhatsApp PDP direct order button removed per user request
+      document.getElementById('stickyBarPrice').textContent = prod.price.toLocaleString('en-US') + (isAr ? ' ج.م' : ' EGP');
 
       // Render Complete Your Look (كمل اللوك بتاعك)
       if (typeof renderCompleteLookSection === 'function') {
@@ -5146,8 +5433,13 @@ template = '''<!DOCTYPE html>
     }
 
     function changePdpQty(delta) {
-      pdpSelectedQty = Math.max(1, pdpSelectedQty + delta);
-      document.getElementById('pdpQtyNumber').textContent = pdpSelectedQty;
+      const el = document.getElementById('pdpQtyNumber');
+      if (!el) return;
+      let val = parseInt(el.value || el.textContent || '1', 10);
+      val = Math.max(1, Math.min(10, val + delta));
+      el.value = val;
+      el.textContent = val;
+      pdpSelectedQty = val;
     }
 
     function addCurrentPdpToCart() {
@@ -5155,12 +5447,9 @@ template = '''<!DOCTYPE html>
     }
 
     function togglePdpAccordion(btn) {
-      const content = btn.nextElementSibling;
-      const isOpen = content.classList.contains('open');
-      content.classList.toggle('open', !isOpen);
-      const icon = btn.querySelector('svg');
-      if (icon) {
-        icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+      const item = btn.closest('.pdp-acc-item');
+      if (item) {
+        item.classList.toggle('is-open');
       }
     }
 
