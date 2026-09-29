@@ -4126,19 +4126,19 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
           <div class="fbt-products-row">
             
             <div class="fbt-prod-card" id="fbtCard1">
-              <img id="fbtImg1" src="" alt="Bag" />
+              <img id="fbtImg1" src="${CROP_BAG_B64}" alt="Bag" />
             </div>
             
             <span class="fbt-plus">+</span>
             
             <div class="fbt-prod-card" id="fbtCard2">
-              <img id="fbtImg2" src="" alt="Wallet" />
+              <img id="fbtImg2" src="${CROP_WALLET_B64}" alt="Wallet" />
             </div>
             
             <span class="fbt-plus">+</span>
             
             <div class="fbt-prod-card" id="fbtCard3">
-              <img id="fbtImg3" src="" alt="Belt" />
+              <img id="fbtImg3" src="${CROP_BELT_B64}" alt="Belt" />
             </div>
             
             <div class="fbt-summary-box">
@@ -4205,7 +4205,7 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
           <div class="rv-card" onclick="openPDP('p3')">
             <div class="rv-img-wrap">
               <span class="rv-sale-badge">Sale</span>
-              <img id="rvImg1" src="" alt="Soraya Curved Tote Bag" />
+              <img id="rvImg1" src="${RV_IMG1_B64}" alt="Soraya Curved Tote Bag" />
             </div>
             <div class="rv-card-title" id="rvTitle1">ZÈMA Soraya Curved Tote Bag</div>
             <div class="rv-card-prices">
@@ -4224,7 +4224,7 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
           <div class="rv-card" onclick="openPDP('p2')">
             <div class="rv-img-wrap">
               <span class="rv-sale-badge">Sale</span>
-              <img id="rvImg2" src="" alt="Alina Classic Tote Bag" />
+              <img id="rvImg2" src="${RV_IMG2_B64}" alt="Alina Classic Tote Bag" />
             </div>
             <div class="rv-card-title" id="rvTitle2">ZÈMA Alina Classic Tote Bag</div>
             <div class="rv-card-prices">
@@ -4243,7 +4243,7 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
           <div class="rv-card" onclick="openPDP('wl-01')">
             <div class="rv-img-wrap">
               <span class="rv-sale-badge">Sale</span>
-              <img id="rvImg3" src="" alt="Dulcie Dessert Wallet" />
+              <img id="rvImg3" src="${RV_IMG3_B64}" alt="Dulcie Dessert Wallet" />
             </div>
             <div class="rv-card-title" id="rvTitle3">ZÈMA Dulcie Dessert Wallet</div>
             <div class="rv-card-prices">
@@ -4262,7 +4262,7 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
           <div class="rv-card" onclick="openPDP('p1')">
             <div class="rv-img-wrap">
               <span class="rv-sale-badge">Sale</span>
-              <img id="rvImg4" src="" alt="Rose Large Shoulder Bag" />
+              <img id="rvImg4" src="${RV_IMG4_B64}" alt="Rose Large Shoulder Bag" />
             </div>
             <div class="rv-card-title" id="rvTitle4">ZÈMA Rose Large Shoulder Bag</div>
             <div class="rv-card-prices">
@@ -4295,7 +4295,7 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
     </div>
     <button class="card-quick-add-btn" style="width:auto; padding:10px 18px;" onclick="addCurrentPdpToCart()">
       <i data-lucide="shopping-bag" style="width:16px;height:16px;"></i>
-      <span>أضف للسلة</span>
+      <span id="stickyBarBtnText">أضف للسلة</span>
     </button>
   </aside>
 
@@ -7323,6 +7323,45 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
       if (fbtBtn) fbtBtn.textContent = isAr ? 'أضف الكل إلى السلة' : 'Add All To Cart';
       const rvHead = document.getElementById('rvHeading');
       if (rvHead) rvHead.textContent = isAr ? 'شوهد مؤخراً' : 'Recently Viewed';
+      
+      // PDP & OOYAA Elements Localization
+      const pdpColor = document.getElementById('pdpColorLabel') || document.getElementById('pdp-lbl-color');
+      if (pdpColor) pdpColor.textContent = isAr ? 'اللون:' : 'Color:';
+
+      const metaLbl = document.getElementById('pdpMetaTypeLabel');
+      if (metaLbl) metaLbl.textContent = isAr ? 'النوع:' : 'Type:';
+
+      const pdpAddCart = document.getElementById('pdpAddToCartBtnText');
+      if (pdpAddCart) pdpAddCart.textContent = isAr ? 'أضف إلى السلة' : 'Add to Cart';
+
+      const stickBtn = document.getElementById('stickyBarBtnText');
+      if (stickBtn) stickBtn.textContent = isAr ? 'أضف للسلة' : 'Add to Bag';
+
+      const salePill = document.getElementById('pdpSalePill');
+      if (salePill && activePdpProduct && activePdpProduct.originalPrice) {
+        salePill.textContent = isAr ? 'تخفيض' : 'SALE';
+      }
+
+      // RV Prices Localization
+      const currPre = isAr ? '' : 'LE ';
+      const currSuf = isAr ? ' ج.م' : '';
+      const rv1P = document.getElementById('rvPrice1'); if (rv1P) rv1P.textContent = currPre + '2,199.00' + currSuf;
+      const rv1S = document.getElementById('rvStrike1'); if (rv1S) rv1S.textContent = currPre + '2,799.00' + currSuf;
+      const rv2P = document.getElementById('rvPrice2'); if (rv2P) rv2P.textContent = currPre + '2,199.00' + currSuf;
+      const rv2S = document.getElementById('rvStrike2'); if (rv2S) rv2S.textContent = currPre + '2,799.00' + currSuf;
+      const rv3P = document.getElementById('rvPrice3'); if (rv3P) rv3P.textContent = currPre + '249.00' + currSuf;
+      const rv3S = document.getElementById('rvStrike3'); if (rv3S) rv3S.textContent = currPre + '399.00' + currSuf;
+      const rv4P = document.getElementById('rvPrice4'); if (rv4P) rv4P.textContent = currPre + '950.00' + currSuf;
+      const rv4S = document.getElementById('rvStrike4'); if (rv4S) rv4S.textContent = currPre + '1,499.00' + currSuf;
+
+      // FBT Item Prices Localization
+      const fbt1R = document.getElementById('fbtPriceRed1'); if (fbt1R) fbt1R.textContent = currPre + '950.00' + currSuf;
+      const fbt1S = document.getElementById('fbtPriceStrike1'); if (fbt1S) fbt1S.textContent = currPre + '1,499.00' + currSuf;
+      const fbt2R = document.getElementById('fbtPriceRed2'); if (fbt2R) fbt2R.textContent = currPre + '249.00' + currSuf;
+      const fbt2S = document.getElementById('fbtPriceStrike2'); if (fbt2S) fbt2S.textContent = currPre + '429.00' + currSuf;
+      const fbt3R = document.getElementById('fbtPriceRed3'); if (fbt3R) fbt3R.textContent = currPre + '349.00' + currSuf;
+      const fbt3S = document.getElementById('fbtPriceStrike3'); if (fbt3S) fbt3S.textContent = currPre + '499.00' + currSuf;
+
       if (typeof updateFbtTotals === 'function') updateFbtTotals();
 
       openPDP(activePdpProduct.id);
