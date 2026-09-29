@@ -63,9 +63,13 @@
   }
   .ticker-track {
     display: inline-flex;
+    align-items: center;
     white-space: nowrap;
     will-change: transform;
-    animation: marquee-scroll 24s linear infinite;
+    animation: marquee-scroll-ltr 28s linear infinite;
+  }
+  [dir="rtl"] .ticker-track {
+    animation-name: marquee-scroll-rtl;
   }
   .ticker-wrap:hover .ticker-track {
     animation-play-state: paused;
@@ -74,30 +78,23 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 0 34px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.6px;
-  }
-  .ticker-item i {
-    color: var(--zema-gold);
-    width: 14px;
-    height: 14px;
+    padding: 0 28px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
   .ticker-dot {
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--zema-gold);
+    color: var(--zema-gold);
+    opacity: 0.6;
+    font-size: 11px;
     margin: 0 4px;
   }
-
-  @keyframes marquee-scroll {
+  @keyframes marquee-scroll-ltr {
     0% { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(-50%, 0, 0); }
   }
-  [dir="rtl"] @keyframes marquee-scroll {
+  @keyframes marquee-scroll-rtl {
     0% { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(50%, 0, 0); }
   }
@@ -2813,9 +2810,31 @@
   <!-- ========================================================== -->
   <!-- 🚚 1. TOP ANNOUNCEMENT BAR (EGP 2,500 THRESHOLD) -->
   <!-- ========================================================== -->
-  <div class="ticker-wrap" aria-label="Announcements" style="text-align:center; padding:9px 16px; font-size:12px; font-weight:600; letter-spacing:0.04em; background:var(--zema-espresso); color:#FAF9F6; display:flex; align-items:center; justify-content:center; gap:8px;">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-    <span id="ticker-msg-1">شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م</span>
+  <div class="ticker-wrap" aria-label="Announcements">
+    <div class="ticker-track">
+      <!-- Item 1 -->
+      <div class="ticker-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        <span class="ticker-msg" id="ticker-msg-1">شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م</span>
+      </div>
+      <span class="ticker-dot">✦</span>
+      <div class="ticker-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+        <span class="ticker-msg-2">الدفع عند الاستلام متاح لجميع المحافظات</span>
+      </div>
+      <span class="ticker-dot">✦</span>
+      <!-- Item 2 (Duplicate for seamless infinite marquee loop) -->
+      <div class="ticker-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        <span class="ticker-msg">شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م</span>
+      </div>
+      <span class="ticker-dot">✦</span>
+      <div class="ticker-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+        <span class="ticker-msg-2">الدفع عند الاستلام متاح لجميع المحافظات</span>
+      </div>
+      <span class="ticker-dot">✦</span>
+    </div>
   </div>
 
   <!-- Header -->
@@ -4385,29 +4404,19 @@
       const cartIds = cart.map(i => i.id);
       let recs = CATALOG.filter(p => p.inStock && !cartIds.includes(p.id));
 
-      if (recs.length === 0) {
-        box.style.display = 'none';
-        return;
-      }
-      box.style.display = 'block';
-
-      // Check if cart has bags -> prioritize wallets and belts
-      const hasBags = cart.some(i => {
-        const p = CATALOG.find(c => c.id === i.id);
-        return p && p.category === 'bags';
-      });
-
+      // Prioritize accessories (wallets, belts), then bestsellers
       recs.sort((a, b) => {
-        let aScore = a.bestseller ? 2 : 1;
-        let bScore = b.bestseller ? 2 : 1;
-        if (hasBags) {
-          if (a.category === 'wallets' || a.category === 'belts') aScore += 4;
-          if (b.category === 'wallets' || b.category === 'belts') bScore += 4;
-        }
+        const aScore = (a.category === 'wallets' || a.category === 'belts' ? 2 : 1) + (a.bestseller ? 1 : 0);
+        const bScore = (b.category === 'wallets' || b.category === 'belts' ? 2 : 1) + (b.bestseller ? 1 : 0);
         return bScore - aScore;
       });
 
       const items = recs.slice(0, 3);
+      if (items.length === 0) {
+        box.style.display = 'none';
+        return;
+      }
+      box.style.display = 'block';
 
       // Localize Header
       const titleEl = document.getElementById('drawerRecTitle');
@@ -4415,7 +4424,7 @@
       const subEl = document.getElementById('drawerRecSub');
       if (subEl) subEl.textContent = isAr ? 'إضافات سريعة' : 'Quick Add-ons';
 
-      const currUnit = isAr ? 'ج.م' : 'EGP';
+      const currUnit = isAr ? 'ج.م' : 'LE';
       const addText = isAr ? '+ إضافة' : '+ Add';
 
       listEl.innerHTML = items.map(p => {
@@ -4426,10 +4435,10 @@
 
         return `
           <div class="drawer-rec-item">
-            <div class="drawer-rec-left" onclick="closeUnifiedDrawer(); openPDP('${p.id}')" style="cursor:pointer;" title="${name}">
+            <div class="drawer-rec-left" onclick="closeUnifiedDrawer(); openPDP('${p.id}')" style="cursor:pointer;">
               <img src="${p.angles[0]}" alt="${name}" class="drawer-rec-thumb" />
               <div class="drawer-rec-details">
-                <p class="drawer-rec-name">${name}</p>
+                <p class="drawer-rec-name" title="${name}">${name}</p>
                 <div class="drawer-rec-price-row">
                   <span class="drawer-rec-price-current">${p.price.toLocaleString('en-US')} ${currUnit}</span>
                   ${oldPrice}
@@ -4449,11 +4458,10 @@
         btn.textContent = currentLang === 'ar' ? 'تمت الإضافة ✓' : 'Added ✓';
         btn.classList.add('is-added');
       }
-      setTimeout(() => {
-        addToCart(productId, 1);
-      }, 200);
+      addToCart(productId, 1);
     }
 
+    
     function getProductColor(prod, isAr) {
       if (!prod) return isAr ? 'هافان طبيعي' : 'Natural Havana';
       const colorMap = {
@@ -5346,10 +5354,6 @@
         listContainer.innerHTML = html;
       }
       lucide.createIcons();
-      // 🛍️ Render "You May Also Like" (قد يعجبك أيضاً) in Cart Drawer
-      if (typeof renderCartRecommendations === 'function') {
-        renderCartRecommendations();
-      }
     }
 
     // ==========================================
@@ -5901,12 +5905,38 @@
       if (optEn) optEn.classList.toggle('is-active', !isAr);
 
       // Top Announcement Ticker
-      const tickerMsg = document.getElementById('ticker-msg-1');
-      if (tickerMsg) {
-        tickerMsg.textContent = isAr 
-          ? 'شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م' 
+      // Ticker Announcements Localization
+      document.querySelectorAll('.ticker-msg').forEach(el => {
+        el.textContent = isAr 
+          ? 'شحن مجاني لكافة محافظات مصر للطلبات فوق 2,500 ج.م'
           : 'COMPLIMENTARY NATIONWIDE SHIPPING ON ORDERS ABOVE 2,500 EGP';
-      }
+      });
+      document.querySelectorAll('.ticker-msg-2').forEach(el => {
+        el.textContent = isAr 
+          ? 'الدفع عند الاستلام متاح لجميع المحافظات'
+          : 'CASH ON DELIVERY AVAILABLE ACROSS EGYPT';
+      });
+
+      // Benefit Grid Trust Badges Localization (Media Screenshot Fix)
+      const benT1 = document.getElementById('ben-t1');
+      if (benT1) benT1.textContent = isAr ? 'شحن مجاني' : 'Free Shipping';
+      const benD1 = document.getElementById('ben-d1');
+      if (benD1) benD1.textContent = isAr ? 'للطلبات فوق 2,500 ج.م' : 'Orders above 2,500 EGP';
+
+      const benT2 = document.getElementById('ben-t2');
+      if (benT2) benT2.textContent = isAr ? 'توصيل سريع' : 'Fast Delivery';
+      const benD2 = document.getElementById('ben-d2');
+      if (benD2) benD2.textContent = isAr ? 'لجميع محافظات مصر' : 'Across all Egypt';
+
+      const benT3 = document.getElementById('ben-t3');
+      if (benT3) benT3.textContent = isAr ? 'دفع مرن' : 'Flexible Payment';
+      const benD3 = document.getElementById('ben-d3');
+      if (benD3) benD3.textContent = isAr ? 'دفع عند الاستلام متاح' : 'Cash on delivery available';
+
+      const benT4 = document.getElementById('ben-t4');
+      if (benT4) benT4.textContent = isAr ? 'استبدال سهل' : 'Easy Exchange';
+      const benD4 = document.getElementById('ben-d4');
+      if (benD4) benD4.textContent = isAr ? 'خلال 14 يوماً بكل سهولة' : '14-day seamless exchange & return';
 
       // Header Navigation
       const navHome = document.getElementById('nav-home');
