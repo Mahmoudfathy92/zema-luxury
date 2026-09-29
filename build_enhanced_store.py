@@ -570,14 +570,16 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
   /* 1. ZÈMA Product Info (Screenshot 3) */
   .zema-pdp-sale-pill {
     display: inline-block;
-    background: #333333;
+    background: #111111;
     color: #ffffff;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 3px 12px;
-    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
     margin-bottom: 12px;
-    letter-spacing: 0.3px;
+    width: fit-content;
   }
   .zema-pdp-brand {
     font-size: 14px;
@@ -3999,7 +4001,7 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
             <!-- Thumbnails rendered dynamically -->
           </div>
           <div class="pdp-main-image-wrap">
-            <span class="pdp-main-badge" id="pdpMainBadge">Sale</span>
+            <span class="pdp-main-badge" id="pdpMainBadge" style="display:none !important;"></span>
             <img id="pdpMainImage" src="__HOBO_B64__" alt="Product" />
           </div>
         </div>
@@ -5310,21 +5312,18 @@ RV_IMG4_B64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAAEECAIAAAAXmWc
       document.getElementById('pdpPriceRed').textContent = currPrefix + prod.price.toLocaleString('en-US') + '.00' + currSuffix;
       
       const badge = document.getElementById('pdpMainBadge');
+      if (badge) badge.style.display = 'none';
+
       const salePill = document.getElementById('pdpSalePill');
       if (prod.originalPrice) {
         document.getElementById('pdpPriceStrike').style.display = 'inline';
         document.getElementById('pdpPriceStrike').textContent = currPrefix + prod.originalPrice.toLocaleString('en-US') + '.00' + currSuffix;
-        if (badge) {
-          badge.style.display = 'inline-block';
-          badge.textContent = isAr ? 'تخفيض' : 'Sale';
-        }
         if (salePill) {
           salePill.style.display = 'inline-block';
-          salePill.textContent = isAr ? 'تخفيض' : 'Sale';
+          salePill.textContent = isAr ? 'تخفيض' : 'SALE';
         }
       } else {
         document.getElementById('pdpPriceStrike').style.display = 'none';
-        if (badge) badge.style.display = 'none';
         if (salePill) salePill.style.display = 'none';
       }
 
