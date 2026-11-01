@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEMA Maison — Ultra-Luxury Preview</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+    
+    :root {
+      --ivory: #F3EFE7;
+      --ivory-light: #FBF9F5;
+      --espresso: #302923;
+      --espresso-dark: #1E1A16;
+      --warm-tan: #D9C3B0;
+      --sand: #E8DCCF;
+      --muted-brown: #7A6D63;
+    }
+
+    body {
+      background-color: var(--ivory);
+      color: var(--espresso);
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* Smooth transitions */
+    * {
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease;
+    }
+
+    /* Product Hover Effect (Polène Style: Transition to detail shot) */
+    .product-card .img-primary {
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card .img-secondary {
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover .img-primary {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    .product-card:hover .img-secondary {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* 3D 360 Viewer Canvas simulation */
+    .viewer-stage {
+      cursor: grab;
+      user-select: none;
+    }
+    .viewer-stage:active {
+      cursor: grabbing;
+    }
+    
+    @keyframes pulseRing {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.3; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .pulse-ring {
+      animation: pulseRing 2.4s infinite ease-in-out;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--ivory);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--warm-tan);
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#302923] selection:text-[#F3EFE7]">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#1E1A16] text-[#E8DCCF] text-xs py-2 px-4 tracking-wider uppercase flex justify-between items-center text-center">
+    <div class="hidden md:flex gap-6 mx-auto items-center">
+      <span class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+        <span data-i18n="announcementShipping">Complimentary Express Shipping over 2,500 EGP</span>
+      </span>
+      <span class="text-[#7A6D63]">·</span>
+      <span data-i18n="announcementReturns">14-Day Complimentary Returns</span>
+      <span class="text-[#7A6D63]">·</span>
+      <span data-i18n="announcementCod">Cash on Delivery Available Across Egypt</span>
+    </div>
+    <div class="md:hidden mx-auto font-medium" data-i18n="announcementMobile">
+      Free Express Shipping over 2,500 EGP · Cash on Delivery
+    </div>
+  </div>
+
+  <!-- Sticky Navigation Bar (Charles & Keith Minimalist Style) -->
+  <header class="sticky top-0 z-50 bg-[#F3EFE7]/95 backdrop-blur-md border-b border-[#E0D5C7]">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Left: Navigation Links & Language Toggle -->
+      <div class="flex items-center gap-8">
+        <button id="mobileMenuBtn" class="lg:hidden p-2 text-[#302923]" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+
+        <nav class="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-widest text-[#302923]">
+          <a href="#collection" class="hover:opacity-60 transition" data-i18n="navBags">Bags</a>
+          <a href="#collection" class="hover:opacity-60 transition" data-i18n="navWallets">Wallets</a>
+          <a href="#collection" class="hover:opacity-60 transition" data-i18n="navAccessories">Accessories</a>
+          <a href="#3d-viewer" class="text-[#8C6D53] hover:text-[#302923] flex items-center gap-1.5 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#8C6D53] animate-pulse"></span>
+            <span data-i18n="nav3d">3D Experience</span>
+          </a>
+        </nav>
+
+        <!-- Bilingual Switcher Pill -->
+        <button id="langToggleBtn" class="border border-[#302923]/25 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider hover:bg-[#302923] hover:text-[#F3EFE7] transition flex items-center gap-1.5">
+          <span class="opacity-60">🌐</span>
+          <span id="langBtnText">العربية</span>
+        </button>
+      </div>
+
+      <!-- Center: Refined ZEMA Logo -->
+      <a href="#" class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+        <img src="zema-logo.png" alt="ZEMA Maison" class="h-10 md:h-12 w-auto object-contain">
+      </a>
+
+      <!-- Right: Minimalist Icons -->
+      <div class="flex items-center gap-5 text-[#302923]">
+        <button id="searchBtn" class="p-2 hover:opacity-60 transition" aria-label="Search">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="1.7"/><path stroke-linecap="round" stroke-width="1.7" d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <button class="hidden sm:block p-2 hover:opacity-60 transition" aria-label="Wishlist" onclick="alert(currentLang === 'ar' ? 'تمت إضافة العنصر لقائمة الرغبات' : 'Wishlist updated')">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M20.8 4.7a5.6 5.6 0 0 0-7.9 0L12 5.6l-.9-.9a5.6 5.6 0 0 0-7.9 7.9L12 21l8.8-8.4a5.6 5.6 0 0 0 0-7.9Z"/></svg>
+        </button>
+        <button id="cartBtn" class="relative p-2 hover:opacity-60 transition flex items-center" aria-label="Cart">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M5 8h14l1 13H4L5 8Z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M9 9V6a3 3 0 1 1 6 0v3"/></svg>
+          <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-[#302923] text-[#F3EFE7] text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">1</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Immersive Hero Section (Coach / Furla Style) -->
+  <section class="relative min-h-[85vh] flex items-center overflow-hidden bg-[#E7DACD]">
+    <!-- Background Image / Video Simulation -->
+    <div id="heroBg" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 scale-100" style="background-image: url('media/hero-01-ivory.webp');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#F3EFE7]/90 via-[#F3EFE7]/60 to-transparent md:w-3/5"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 py-20 w-full">
+      <div class="max-w-xl space-y-6">
+        <span class="inline-block text-[11px] font-bold tracking-[0.25em] text-[#8C6D53] uppercase" data-i18n="heroBadge">
+          AUTUMN / WINTER 2026 EDIT
+        </span>
+        <h1 class="font-serif text-5xl md:text-7xl leading-[1.05] tracking-tight text-[#302923]" data-i18n="heroTitle">
+          Modern<br><em class="font-normal italic">Quiet Luxury</em>
+        </h1>
+        <p class="text-sm md:text-base text-[#615449] leading-relaxed max-w-md font-normal" data-i18n="heroSubtitle">
+          Thoughtfully sculpted silhouettes crafted from supple leathers. Designed for the rhythms of modern everyday elegance.
+        </p>
+
+        <div class="pt-4 flex flex-wrap gap-4 items-center">
+          <a href="#collection" class="inline-flex items-center justify-center gap-3 bg-[#302923] text-[#F3EFE7] hover:bg-[#1E1A16] px-8 py-4 rounded-sm text-xs font-semibold tracking-widest uppercase shadow-lg shadow-[#302923]/10 transition">
+            <span data-i18n="heroCta">Discover the Collection</span>
+            <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="#3d-viewer" class="inline-flex items-center justify-center gap-2 border border-[#302923]/30 text-[#302923] hover:bg-white/60 px-6 py-4 rounded-sm text-xs font-semibold tracking-widest uppercase transition">
+            <span>360° Studio View</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Slide Indicators -->
+    <div class="absolute bottom-8 left-6 md:left-12 flex gap-3 z-10">
+      <button onclick="switchHero(0)" id="heroDot0" class="w-8 h-1 bg-[#302923] transition-all rounded-full" aria-label="Slide 1"></button>
+      <button onclick="switchHero(1)" id="heroDot1" class="w-2.5 h-1 bg-[#302923]/30 hover:bg-[#302923]/60 transition-all rounded-full" aria-label="Slide 2"></button>
+    </div>
+  </section>
+
+  <!-- Interactive 3D Product Stage (Pacdora 3D Model Placeholder) -->
+  <section id="3d-viewer" class="py-24 px-6 bg-[#EBD7C7]/40 border-y border-[#DFCFBE]">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <span class="text-[10px] tracking-[0.25em] font-bold text-[#8C6D53] uppercase" data-i18n="threedBadge">
+          INTERACTIVE 3D EXPERIENCE · PACDORA READY
+        </span>
+        <h2 class="font-serif text-3xl md:text-5xl text-[#302923]" data-i18n="threedTitle">
+          Explore in Full 360°
+        </h2>
+        <p class="text-xs md:text-sm text-[#7A6D63]" data-i18n="threedSubtitle">
+          Drag horizontally to inspect every hand-finished stitch, structure, and gold-tone curve.
+        </p>
+      </div>
+
+      <!-- 3D Wrapper Card -->
+      <div class="bg-[#FBF9F5] border border-[#DFCFBE] rounded-xl shadow-xl overflow-hidden grid lg:grid-cols-12 items-center">
+        
+        <!-- Interactive 360 Viewer Canvas Stage -->
+        <div class="lg:col-span-8 relative viewer-stage p-8 md:p-14 flex items-center justify-center min-h-[460px] bg-gradient-to-b from-[#F7F2EC] to-[#EFE5D9]">
+          
+          <!-- 360 Drag Badge Overlay -->
+          <div class="absolute top-6 left-6 flex items-center gap-2 bg-[#302923]/80 text-[#F3EFE7] backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider pointer-events-none">
+            <svg class="w-4 h-4 pulse-ring" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            <span data-i18n="threedIndicator">Drag to rotate 360°</span>
+          </div>
+
+          <!-- Zoom pill -->
+          <div class="absolute top-6 right-6 text-xs text-[#7A6D63] font-medium bg-white/70 px-3 py-1 rounded-full border border-[#E0D5C7]">
+            Model: <span class="font-semibold text-[#302923]">Classic Taupe Silhouette</span>
+          </div>
+
+          <!-- Simulated 3D Rotating Product Asset -->
+          <div id="product3d" class="relative w-full max-w-md aspect-square flex items-center justify-center transition-transform duration-75">
+            <img id="rotImage" src="media/studio-classic-shoulder.webp" alt="ZEMA 3D Model" class="max-h-[380px] w-auto object-contain drop-shadow-2xl">
+          </div>
+
+          <!-- Bottom Rotation Slider Indicator -->
+          <div class="absolute bottom-6 inset-x-8 flex flex-col items-center gap-2">
+            <div class="flex items-center gap-4 text-xs text-[#8C6D53]">
+              <span>0°</span>
+              <div class="w-48 h-1 bg-[#D9C3B0] rounded-full overflow-hidden">
+                <div id="rotationProgress" class="h-full bg-[#302923] w-1/4 transition-all"></div>
+              </div>
+              <span>360°</span>
+            </div>
+            <span class="text-[10px] text-[#A39487] tracking-wider uppercase font-semibold">Touch / Click & Drag left or right</span>
+          </div>
+        </div>
+
+        <!-- 3D Product Details Sidebar -->
+        <div class="lg:col-span-4 p-8 md:p-12 border-t lg:border-t-0 lg:border-l rtl:lg:border-r rtl:lg:border-l-0 border-[#DFCFBE] space-y-6">
+          <span class="text-[10px] tracking-widest uppercase font-bold text-[#8C6D53]">FLAGSHIP EDITION</span>
+          <h3 class="font-serif text-3xl text-[#302923]" data-i18n="threedProdName">Classic Shoulder Bag</h3>
+          <div class="text-2xl font-serif text-[#302923]" id="threedPrice">1,850 EGP</div>
+          <p class="text-xs text-[#6B5E52] leading-relaxed" data-i18n="threedProdDesc">
+            Crafted from buttery smooth premium grain leather with bespoke brass hardware and an ergonomic shoulder drop.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <div class="text-xs font-semibold text-[#302923]" data-i18n="threedColor">Color: <span class="font-normal text-[#7A6D63]">Warm Taupe</span></div>
+            <div class="flex gap-2">
+              <button class="w-6 h-6 rounded-full bg-[#9d816d] ring-2 ring-offset-2 ring-[#302923]"></button>
+              <button class="w-6 h-6 rounded-full bg-[#4b3027] opacity-60 hover:opacity-100"></button>
+              <button class="w-6 h-6 rounded-full bg-[#ddc5a7] opacity-60 hover:opacity-100"></button>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-[#E8DCCF] space-y-3">
+            <button onclick="addToCart('classic-shoulder', 'Classic Shoulder Bag', 1850, 'studio-classic-shoulder.webp')" class="w-full bg-[#302923] text-[#F3EFE7] hover:bg-[#1E1A16] py-3.5 rounded-sm text-xs font-bold uppercase tracking-widest shadow-md transition flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 8h14l1 13H4L5 8Z"/></svg>
+              <span data-i18n="threedAddBtn">Add 3D Featured Bag</span>
+            </button>
+            <div class="flex items-center justify-center gap-2 text-[11px] text-[#8C6D53]">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 13l4 4L19 7"/></svg>
+              <span data-i18n="threedInStock">In stock for immediate delivery in Egypt</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Collection Grid (Polène Minimalist Style with Hover Transitions) -->
+  <section id="collection" class="py-24 px-6 max-w-7xl mx-auto">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-[#E0D5C7] pb-6 gap-4">
+      <div>
+        <span class="text-[10px] tracking-[0.25em] font-bold text-[#8C6D53] uppercase" data-i18n="colBadge">CURATED SELECTION</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-[#302923] mt-2" data-i18n="colTitle">The Signature Edit</h2>
+      </div>
+      <div class="flex gap-6 text-xs uppercase tracking-widest font-semibold text-[#7A6D63]">
+        <button class="text-[#302923] border-b border-[#302923] pb-1">All Pieces</button>
+        <button class="hover:text-[#302923] transition">Bags</button>
+        <button class="hover:text-[#302923] transition">Wallets</button>
+      </div>
+    </div>
+
+    <!-- Product Grid: High Negative Space & Smooth Image Swap on Hover -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+      
+      <!-- Card 1 -->
+      <article class="product-card group cursor-pointer" onclick="openPairItModal('classic-shoulder')">
+        <div class="relative aspect-[4/5] bg-[#EBD7C7] rounded-sm overflow-hidden p-6 flex items-center justify-center mb-5">
+          <!-- Standalone Studio Shot -->
+          <img src="media/studio-classic-shoulder.webp" alt="Classic Shoulder Bag" class="img-primary absolute inset-0 w-full h-full object-contain p-4">
+          <!-- Close-up / Lifestyle Shot on Hover -->
+          <img src="media/detail-classic-shoulder.webp" alt="Detail Shot" class="img-secondary absolute inset-0 w-full h-full object-contain p-2">
+          
+          <button onclick="event.stopPropagation(); addToCart('classic-shoulder', 'Classic Shoulder Bag', 1850, 'studio-classic-shoulder.webp')" class="absolute bottom-4 right-4 bg-[#302923] text-[#F3EFE7] p-2.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity" title="Quick Add">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          </button>
+        </div>
+        <div class="space-y-1">
+          <div class="flex justify-between items-baseline">
+            <h3 class="font-serif text-base text-[#302923] group-hover:text-[#8C6D53] transition">Classic Shoulder Bag</h3>
+            <span class="text-xs font-semibold text-[#302923]">1,850 EGP</span>
+          </div>
+          <p class="text-xs text-[#7A6D63]">Warm Taupe · Soft Italian Finish</p>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="product-card group cursor-pointer" onclick="openPairItModal('top-handle')">
+        <div class="relative aspect-[4/5] bg-[#EBD7C7] rounded-sm overflow-hidden p-6 flex items-center justify-center mb-5">
+          <img src="media/studio-top-handle.webp" alt="Structured Top Handle" class="img-primary absolute inset-0 w-full h-full object-contain p-4">
+          <img src="media/detail-top-handle.webp" alt="Detail Shot" class="img-secondary absolute inset-0 w-full h-full object-contain p-2">
+          
+          <button onclick="event.stopPropagation(); addToCart('top-handle', 'Structured Top Handle', 2290, 'studio-top-handle.webp')" class="absolute bottom-4 right-4 bg-[#302923] text-[#F3EFE7] p-2.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity" title="Quick Add">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          </button>
+        </div>
+        <div class="space-y-1">
+          <div class="flex justify-between items-baseline">
+            <h3 class="font-serif text-base text-[#302923] group-hover:text-[#8C6D53] transition">Structured Top Handle</h3>
+            <span class="text-xs font-semibold text-[#302923]">2,290 EGP</span>
+          </div>
+          <p class="text-xs text-[#7A6D63]">Camel · Reinforced Gold Accents</p>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="product-card group cursor-pointer" onclick="openPairItModal('chocolate-shoulder')">
+        <div class="relative aspect-[4/5] bg-[#EBD7C7] rounded-sm overflow-hidden p-6 flex items-center justify-center mb-5">
+          <img src="media/studio-chocolate-shoulder.webp" alt="Soft Hobo Bag" class="img-primary absolute inset-0 w-full h-full object-contain p-4">
+          <img src="media/detail-chocolate-shoulder.webp" alt="Detail Shot" class="img-secondary absolute inset-0 w-full h-full object-contain p-2">
+          
+          <button onclick="event.stopPropagation(); addToCart('chocolate-shoulder', 'Soft Hobo Bag', 1990, 'studio-chocolate-shoulder.webp')" class="absolute bottom-4 right-4 bg-[#302923] text-[#F3EFE7] p-2.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity" title="Quick Add">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          </button>
+        </div>
+        <div class="space-y-1">
+          <div class="flex justify-between items-baseline">
+            <h3 class="font-serif text-base text-[#302923] group-hover:text-[#8C6D53] transition">Soft Hobo Bag</h3>
+            <span class="text-xs font-semibold text-[#302923]">1,990 EGP</span>
+          </div>
+          <p class="text-xs text-[#7A6D63]">Deep Chocolate · Ergonomic Carry</p>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="product-card group cursor-pointer" onclick="openPairItModal('zip-wallet')">
+        <div class="relative aspect-[4/5] bg-[#EBD7C7] rounded-sm overflow-hidden p-6 flex items-center justify-center mb-5">
+          <img src="media/studio-zip-wallet.webp" alt="Zip Around Wallet" class="img-primary absolute inset-0 w-full h-full object-contain p-6">
+          <img src="media/detail-zip-wallet.webp" alt="Detail Shot" class="img-secondary absolute inset-0 w-full h-full object-contain p-2">
+          
+          <button onclick="event.stopPropagation(); addToCart('zip-wallet', 'Zip Around Wallet', 790, 'studio-zip-wallet.webp')" class="absolute bottom-4 right-4 bg-[#302923] text-[#F3EFE7] p-2.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity" title="Quick Add">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          </button>
+        </div>
+        <div class="space-y-1">
+          <div class="flex justify-between items-baseline">
+            <h3 class="font-serif text-base text-[#302923] group-hover:text-[#8C6D53] transition">Zip Around Wallet</h3>
+            <span class="text-xs font-semibold text-[#302923]">790 EGP</span>
+          </div>
+          <p class="text-xs text-[#7A6D63]">Dark Brown · 8 Card Compartments</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- "Pair It With" Curated Bundle Experience -->
+  <section class="py-20 px-6 bg-[#FAF7F2] border-t border-[#E8DCCF]">
+    <div class="max-w-5xl mx-auto">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-[#E0D5C7]">
+        <div>
+          <span class="text-[10px] tracking-[0.25em] font-bold text-[#8C6D53] uppercase" data-i18n="pairBadge">THE ZEMA EDIT</span>
+          <h2 class="font-serif text-3xl md:text-4xl text-[#302923] mt-1" data-i18n="pairTitle">Pair It With</h2>
+        </div>
+        <p class="text-xs text-[#7A6D63] max-w-sm" data-i18n="pairDesc">
+          Complete your handbag with our artisanal wallet and pearl charm. Curated to harmonize seamlessly.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-8 items-center bg-[#F3EFE7] p-6 md:p-10 rounded-xl border border-[#DFCFBE]">
+        
+        <!-- Left: Handbag + Addons -->
+        <div class="md:col-span-8 flex flex-col sm:flex-row items-center gap-6">
+          <div class="w-36 h-40 bg-[#EBD7C7] p-3 rounded-md flex items-center justify-center shrink-0">
+            <img src="media/studio-classic-shoulder.webp" class="h-full w-auto object-contain" alt="">
+          </div>
+
+          <div class="text-2xl text-[#8C6D53] font-serif shrink-0">+</div>
+
+          <div class="flex gap-4">
+            <!-- Addon 1 -->
+            <label class="flex items-center gap-3 p-3 bg-white/70 rounded-lg border border-[#DFCFBE] cursor-pointer hover:border-[#302923] transition">
+              <input type="checkbox" id="addonWallet" checked onchange="updatePairTotal()" class="rounded text-[#302923] focus:ring-0">
+              <img src="media/studio-zip-wallet.webp" class="w-12 h-12 object-contain bg-[#EBD7C7] rounded" alt="">
+              <div class="text-xs">
+                <div class="font-semibold text-[#302923]">Zip Wallet</div>
+                <div class="text-[#7A6D63]">+790 EGP</div>
+              </div>
+            </label>
+
+            <!-- Addon 2 -->
+            <label class="flex items-center gap-3 p-3 bg-white/70 rounded-lg border border-[#DFCFBE] cursor-pointer hover:border-[#302923] transition">
+              <input type="checkbox" id="addonCharm" checked onchange="updatePairTotal()" class="rounded text-[#302923] focus:ring-0">
+              <img src="media/studio-bag-charm.webp" class="w-12 h-12 object-contain bg-[#EBD7C7] rounded" alt="">
+              <div class="text-xs">
+                <div class="font-semibold text-[#302923]">Pearl Charm</div>
+                <div class="text-[#7A6D63]">+399 EGP</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Right: Bundle Summary & Add Button -->
+        <div class="md:col-span-4 border-t md:border-t-0 md:border-l rtl:md:border-r rtl:md:border-l-0 border-[#DFCFBE] pt-6 md:pt-0 md:pl-8 rtl:md:pr-8 space-y-4">
+          <div class="flex justify-between items-baseline">
+            <span class="text-xs uppercase tracking-wider text-[#7A6D63]">Bundle Total</span>
+            <span id="pairTotalDisplay" class="font-serif text-2xl text-[#302923]">3,039 EGP</span>
+          </div>
+          <div class="text-[11px] text-[#2F6E3C] font-semibold flex items-center gap-1.5">
+            <span>✓ Qualified for Free Express Shipping</span>
+          </div>
+          <button onclick="addBundleToCart()" class="w-full bg-[#302923] text-[#F3EFE7] hover:bg-[#1E1A16] py-3.5 rounded-sm text-xs font-bold uppercase tracking-widest transition">
+            Add Complete Set to Bag
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-over Shopping Bag & Checkout Drawer -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="toggleCart(false)"></div>
+    
+    <div class="absolute top-0 right-0 rtl:right-auto rtl:left-0 bottom-0 w-full max-w-md bg-[#FBF9F5] shadow-2xl flex flex-col pointer-events-auto transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-out" id="cartContent">
+      
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-[#E8DCCF] flex items-center justify-between">
+        <h3 class="font-serif text-2xl text-[#302923]" data-i18n="cartTitle">Shopping Bag</h3>
+        <button onclick="toggleCart(false)" class="p-2 text-[#7A6D63] hover:text-[#302923]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Drawer Body Items -->
+      <div class="p-6 flex-1 overflow-y-auto space-y-4" id="cartItemsList">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Drawer Footer & Checkout Trigger -->
+      <div class="p-6 border-t border-[#E8DCCF] bg-[#F7F2EB] space-y-4">
+        <div class="space-y-2">
+          <div class="flex justify-between text-xs text-[#7A6D63]">
+            <span>Subtotal</span>
+            <span id="cartSubtotalText">1,850 EGP</span>
+          </div>
+          <div class="flex justify-between text-xs text-[#7A6D63]">
+            <span>Shipping</span>
+            <span class="text-[#2F6E3C] font-semibold">Free Express Shipping</span>
+          </div>
+          <div class="flex justify-between font-serif text-xl text-[#302923] pt-2 border-t border-[#E8DCCF]">
+            <span>Total</span>
+            <span id="cartTotalText">1,850 EGP</span>
+          </div>
+        </div>
+
+        <div class="p-3 bg-[#EFE7DE] rounded text-[11px] text-[#6B5E52] flex items-center gap-2">
+          <span>💵</span>
+          <span>Cash on Delivery (الدفع عند الاستلام) available for all governorates.</span>
+        </div>
+
+        <button onclick="openWhatsAppCheckout()" class="w-full bg-[#1B8344] hover:bg-[#146936] text-white py-3.5 rounded-sm text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.585 1.961.947 2.801.947 3.179 0 5.766-2.587 5.767-5.766.001-3.18-2.585-5.766-5.772-5.766zm8.17 5.766c-.002 4.508-3.668 8.174-8.173 8.174-1.397 0-2.753-.36-3.953-1.042l-4.408 1.157 1.176-4.298c-.76-1.267-1.168-2.721-1.169-4.218.002-4.508 3.668-8.174 8.174-8.174 4.506 0 8.173 3.666 8.173 8.174z"/></svg>
+          <span data-i18n="cartCheckoutBtn">Order via WhatsApp / تأكيد بالواتساب</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Minimalist Luxury Footer -->
+  <footer class="bg-[#1E1A16] text-[#E8DCCF] pt-20 pb-12 px-6 border-t border-[#302923]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 pb-16 border-b border-[#302923]">
+      <div class="space-y-4">
+        <img src="zema-logo.png" alt="ZEMA" class="h-9 w-auto brightness-0 invert opacity-90">
+        <p class="text-xs text-[#A39487] leading-relaxed">
+          Timeless Style, Modern Luxury. Thoughtfully curated leather bags and accessories for the modern woman.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-serif text-sm uppercase tracking-wider text-[#F3EFE7] mb-4">Maison</h4>
+        <ul class="space-y-2 text-xs text-[#A39487]">
+          <li><a href="#" class="hover:text-white transition">Our Story</a></li>
+          <li><a href="#" class="hover:text-white transition">Materials & Craftsmanship</a></li>
+          <li><a href="#" class="hover:text-white transition">Sustainability</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-serif text-sm uppercase tracking-wider text-[#F3EFE7] mb-4">Customer Care</h4>
+        <ul class="space-y-2 text-xs text-[#A39487]">
+          <li><a href="#" class="hover:text-white transition">Shipping Across Egypt</a></li>
+          <li><a href="#" class="hover:text-white transition">Returns & Exchanges</a></li>
+          <li><a href="#" class="hover:text-white transition">Cash on Delivery Policy</a></li>
+        </ul>
+      </div>
+      <div class="space-y-3">
+        <h4 class="font-serif text-sm uppercase tracking-wider text-[#F3EFE7] mb-2">Private Circle</h4>
+        <p class="text-xs text-[#A39487]">Be the first to access limited edits and seasonal launches.</p>
+        <div class="flex">
+          <input type="email" placeholder="Your email address" class="bg-[#2A241F] border border-[#3E342D] px-3 py-2 text-xs text-white placeholder-[#7A6D63] w-full focus:outline-none">
+          <button class="bg-[#E8DCCF] text-[#1E1A16] px-4 text-xs font-bold uppercase tracking-wider">Join</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-[#7A6D63] gap-4">
+      <div>© 2026 ZEMA Maison — All Rights Reserved.</div>
+      <div class="flex gap-6">
+        <span>Cairo · Giza · Alexandria</span>
+        <span>EGP</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // Dictionary Translations
+    const TRANSLATIONS = {
+      en: {
+        announcementShipping: "Complimentary Express Shipping over 2,500 EGP",
+        announcementReturns: "14-Day Complimentary Returns",
+        announcementCod: "Cash on Delivery Available Across Egypt",
+        announcementMobile: "Free Express Shipping over 2,500 EGP · Cash on Delivery",
+        navBags: "Bags",
+        navWallets: "Wallets",
+        navAccessories: "Accessories",
+        nav3d: "3D Experience",
+        heroBadge: "AUTUMN / WINTER 2026 EDIT",
+        heroTitle: "Modern<br><em class=\"font-normal italic\">Quiet Luxury</em>",
+        heroSubtitle: "Thoughtfully sculpted silhouettes crafted from supple leathers. Designed for the rhythms of modern everyday elegance.",
+        heroCta: "Discover the Collection",
+        threedBadge: "INTERACTIVE 3D EXPERIENCE · PACDORA READY",
+        threedTitle: "Explore in Full 360°",
+        threedSubtitle: "Drag horizontally to inspect every hand-finished stitch, structure, and gold-tone curve.",
+        threedIndicator: "Drag to rotate 360°",
+        threedProdName: "Classic Shoulder Bag",
+        threedProdDesc: "Crafted from buttery smooth premium grain leather with bespoke brass hardware and an ergonomic shoulder drop.",
+        threedColor: "Color: Warm Taupe",
+        threedAddBtn: "Add 3D Featured Bag",
+        threedInStock: "In stock for immediate delivery in Egypt",
+        colBadge: "CURATED SELECTION",
+        colTitle: "The Signature Edit",
+        pairBadge: "THE ZEMA EDIT",
+        pairTitle: "Pair It With",
+        pairDesc: "Complete your handbag with our artisanal wallet and pearl charm. Curated to harmonize seamlessly.",
+        cartTitle: "Shopping Bag",
+        cartCheckoutBtn: "Order via WhatsApp / تأكيد بالواتساب"
+      },
+      ar: {
+        announcementShipping: "شحن سريع مجاني لجميع الطلبات فوق 2,500 ج.م",
+        announcementReturns: "إمكانية الاسترجاع والاستبدال خلال 14 يوماً",
+        announcementCod: "الدفع عند الاستلام متاح لجميع محافظات مصر",
+        announcementMobile: "شحن مجاني فوق 2,500 ج.م · الدفع عند الاستلام",
+        navBags: "الحقائب",
+        navWallets: "المحافظ",
+        navAccessories: "الإكسسوارات",
+        nav3d: "تجربة الـ 3D",
+        heroBadge: "تشكيلة خريف وشتاء 2026",
+        heroTitle: "فخامة عصرية<br><em class=\"font-normal italic\">بأناقة هادئة</em>",
+        heroSubtitle: "حقائب جلدية مصممة بعناية فائقة لتمنحك إطلالة راقية في كل لحظات يومك ومناسباتك.",
+        heroCta: "اكتشفي المجموعة",
+        threedBadge: "تجربة ثلاثية الأبعاد تفاعلية 360°",
+        threedTitle: "استكشفي الحقيبة بزاوية 360°",
+        threedSubtitle: "اسحبي أفقياً يميناً أو يساراً لمعاينة التفاصيل الدقيقة، متانة الخامات، والأقفال الذهبية.",
+        threedIndicator: "اسحبي للمعاينة بزاوية 360°",
+        threedProdName: "حقيبة كتف كلاسيكية",
+        threedProdDesc: "مصنوعة من جلد ناعم فاخر بلمسات معدنية ذهبية ومساحة داخلية مريحة لحملها طوال اليوم.",
+        threedColor: "اللون: توب دافئ (Taupe)",
+        threedAddBtn: "أضف الحقيبة المعروضة للسلة",
+        threedInStock: "متوفرة في المخزون للشحن الفوري لجميع المحافظات",
+        colBadge: "تشكيلة مختارة بعناية",
+        colTitle: "المجموعة الحصرية",
+        pairBadge: "تنسيقات زيما",
+        pairTitle: "نسّقي معها (Pair It With)",
+        pairDesc: "أكملي أناقة حقيبتك بالمحفظة الجلدية وتعليقة اللؤلؤ بتناغم انسيابي وخصم مجمع.",
+        cartTitle: "سلة المشتريات",
+        cartCheckoutBtn: "تأكيد الطلب عبر واتساب (الدفع عند الاستلام)"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('langBtnText').textContent = lang === 'ar' ? 'English' : 'العربية';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (TRANSLATIONS[lang][key]) {
+          el.innerHTML = TRANSLATIONS[lang][key];
+        }
+      });
+    }
+
+    document.getElementById('langToggleBtn').addEventListener('click', () => {
+      setLanguage(currentLang === 'en' ? 'ar' : 'en');
+    });
+
+    // Hero Slides Switcher
+    const heroSlides = [
+      { img: 'media/hero-01-ivory.webp', titleEn: 'Modern<br><em class="font-normal italic">Quiet Luxury</em>', titleAr: 'فخامة عصرية<br><em class="font-normal italic">بأناقة هادئة</em>' },
+      { img: 'media/hero-02-chocolate.webp', titleEn: 'The Everyday<br><em class="font-normal italic">Chocolate Edit</em>', titleAr: 'مجموعة الشوكولاتة<br><em class="font-normal italic">لإطلالة كل يوم</em>' }
+    ];
+
+    function switchHero(idx) {
+      document.getElementById('heroBg').style.backgroundImage = `url('${heroSlides[idx].img}')`;
+      document.getElementById('heroDot0').className = idx === 0 ? 'w-8 h-1 bg-[#302923] transition-all rounded-full' : 'w-2.5 h-1 bg-[#302923]/30 hover:bg-[#302923]/60 transition-all rounded-full';
+      document.getElementById('heroDot1').className = idx === 1 ? 'w-8 h-1 bg-[#302923] transition-all rounded-full' : 'w-2.5 h-1 bg-[#302923]/30 hover:bg-[#302923]/60 transition-all rounded-full';
+    }
+
+    // 3D 360 Viewer Simulation (Drag to rotate frames)
+    const viewerStage = document.querySelector('.viewer-stage');
+    const rotImage = document.getElementById('rotImage');
+    const rotProgress = document.getElementById('rotationProgress');
+    let isDragging = false;
+    let startX = 0;
+    let currentDegree = 0;
+
+    const angleFrames = [
+      'media/studio-classic-shoulder.webp',
+      'media/detail-classic-shoulder.webp',
+      'media/studio-top-handle.webp',
+      'media/detail-top-handle.webp'
+    ];
+
+    function updateRotation(dx) {
+      currentDegree = (currentDegree + dx * 0.4) % 360;
+      if (currentDegree < 0) currentDegree += 360;
+      
+      const frameIdx = Math.floor((currentDegree / 360) * angleFrames.length) % angleFrames.length;
+      rotImage.src = angleFrames[frameIdx];
+      rotProgress.style.width = Math.min(100, Math.max(10, (currentDegree / 360) * 100)) + '%';
+    }
+
+    viewerStage.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.clientX;
+    });
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      const dx = e.clientX - startX;
+      startX = e.clientX;
+      updateRotation(dx);
+    });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Touch support for 3D
+    viewerStage.addEventListener('touchstart', e => {
+      if (e.touches.length > 0) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+      }
+    });
+    window.addEventListener('touchmove', e => {
+      if (!isDragging || !e.touches.length) return;
+      const dx = e.touches[0].clientX - startX;
+      startX = e.touches[0].clientX;
+      updateRotation(dx);
+    });
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    // Pair It With Total Calculator
+    function updatePairTotal() {
+      let total = 1850;
+      if (document.getElementById('addonWallet').checked) total += 790;
+      if (document.getElementById('addonCharm').checked) total += 399;
+      document.getElementById('pairTotalDisplay').textContent = total.toLocaleString() + ' EGP';
+    }
+
+    // Cart Management
+    let cart = [
+      { id: 'classic-shoulder', name: 'Classic Shoulder Bag', price: 1850, image: 'media/studio-classic-shoulder.webp', qty: 1 }
+    ];
+
+    function renderCart() {
+      const container = document.getElementById('cartItemsList');
+      const countBadge = document.getElementById('cartCountBadge');
+      const totalCount = cart.reduce((acc, it) => acc + it.qty, 0);
+      countBadge.textContent = totalCount;
+
+      if (!cart.length) {
+        container.innerHTML = '<div class="text-center py-16 text-[#7A6D63] text-sm">Your shopping bag is empty.</div>';
+        document.getElementById('cartSubtotalText').textContent = '0 EGP';
+        document.getElementById('cartTotalText').textContent = '0 EGP';
+        return;
+      }
+
+      const subtotal = cart.reduce((acc, it) => acc + (it.price * it.qty), 0);
+      document.getElementById('cartSubtotalText').textContent = subtotal.toLocaleString() + ' EGP';
+      document.getElementById('cartTotalText').textContent = subtotal.toLocaleString() + ' EGP';
+
+      container.innerHTML = cart.map((item, idx) => `
+        <div class="flex gap-4 p-3 bg-white rounded-lg border border-[#E8DCCF] items-center">
+          <img src="${item.image}" class="w-16 h-16 object-contain bg-[#EBD7C7] rounded" alt="">
+          <div class="flex-1 text-xs space-y-1">
+            <h4 class="font-semibold text-[#302923]">${item.name}</h4>
+            <div class="text-[#7A6D63]">${item.price.toLocaleString()} EGP</div>
+            <div class="flex items-center gap-2 pt-1">
+              <span class="text-[#7A6D63]">Qty: ${item.qty}</span>
+            </div>
+          </div>
+          <button onclick="removeFromCart(${idx})" class="p-2 text-[#7A6D63] hover:text-[#AC3430]">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(id, name, price, image) {
+      const existing = cart.find(x => x.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ id, name, price, image, qty: 1 });
+      }
+      renderCart();
+      toggleCart(true);
+    }
+
+    function addBundleToCart() {
+      addToCart('classic-shoulder', 'Classic Shoulder Bag', 1850, 'media/studio-classic-shoulder.webp');
+      if (document.getElementById('addonWallet').checked) {
+        addToCart('zip-wallet', 'Zip Around Wallet', 790, 'media/studio-zip-wallet.webp');
+      }
+      if (document.getElementById('addonCharm').checked) {
+        addToCart('bag-charm', 'Pearl Bag Charm', 399, 'media/studio-bag-charm.webp');
+      }
+    }
+
+    function removeFromCart(idx) {
+      cart.splice(idx, 1);
+      renderCart();
+    }
+
+    function toggleCart(show) {
+      const drawer = document.getElementById('cartDrawer');
+      const content = document.getElementById('cartContent');
+      if (show) {
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        content.classList.remove('translate-x-full', 'rtl:-translate-x-full');
+      } else {
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        content.classList.add('translate-x-full', 'rtl:-translate-x-full');
+      }
+    }
+
+    document.getElementById('cartBtn').addEventListener('click', () => toggleCart(true));
+
+    function openWhatsAppCheckout() {
+      const itemsList = cart.map(it => `• ${it.name} (Qty ${it.qty}) = ${(it.price * it.qty).toLocaleString()} EGP`).join('\n');
+      const total = cart.reduce((acc, it) => acc + (it.price * it.qty), 0);
+      const msg = currentLang === 'ar'
+        ? `مرحباً ZEMA Maison ✨\nأود تأكيد طلبي بالدفع عند الاستلام:\n\n${itemsList}\n\nالإجمالي: ${total.toLocaleString()} ج.م (الشحن مجاني)`
+        : `Hello ZEMA Maison ✨\nI would like to place an order (Cash on Delivery):\n\n${itemsList}\n\nTotal: ${total.toLocaleString()} EGP (Free Express Delivery)`;
+      
+      window.open(`https://wa.me/201000000000?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function openPairItModal(id) {
+      // Smooth scroll to Pair It section
+      document.querySelector('#pair-title, .bg-\\[\\#FAF7F2\\]').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Init
+    renderCart();
+  </script>
+</body>
+</html>

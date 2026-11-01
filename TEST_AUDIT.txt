@@ -1,0 +1,2 @@
+Staging-only build. Do not accept orders or payments until verified product catalog and checkout provider are connected.
+Pictures are representative previews; items, stock, size, material, prices and shipping promotion must be confirmed.

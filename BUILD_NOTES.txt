@@ -1,0 +1,16 @@
+ZEMA Premium — full consumer-facing FRONTEND demo | 2026-11-01
+
+Includes original ZEMA logo unchanged, local optimized image assets, responsive
+homepage, category filters, product gallery, variants, cart drawer, recently viewed,
+local wishlist, Complete the Look, collection sorting and Checkout Preview.
+
+IMPORTANT: not a payment / order production backend. GitHub Pages is a static host.
+No live payments, e-commerce order API, server database or email collection are
+configured. No customer details are transmitted. Catalog records in catalog.js are
+DEMO ONLY and are not verified merchandise. The supplied design board contains
+illustrative products and cannot establish stock, materials, pricing or ratings.
+Never advertise unverified free shipping, returns, discounts or craftsmanship.
+
+Deployment: extract archive contents into repository root (not zip file itself),
+prefer staging branch first, then GitHub Pages main root after review.
+Actual product photos and policies must be provided before a production launch.
