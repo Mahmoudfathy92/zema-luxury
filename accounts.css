@@ -1,0 +1,226 @@
+#zema-ui-proposal .za-auth{max-width:460px;margin:64px auto 80px;padding:0 24px;text-align:center;color:#28231e}#zema-ui-proposal .za-logo img{width:100px;margin:auto auto 28px}.za-eyebrow{font-size:10px;letter-spacing:.2em;margin:12px 0}.za-auth h1,.za-dashboard h1{font:normal 36px Georgia,serif;margin:12px 0}.za-intro{font-size:13px;line-height:1.9;margin:16px 0 32px;color:#6e645b}.za-auth form,.za-dashboard form{text-align:start}.za-auth label,.za-dashboard label{display:block;font-size:12px;margin:20px 0 8px}.za-auth input:not([type=checkbox]),.za-dashboard input{display:block;box-sizing:border-box;width:100%;min-height:48px;background:transparent;border:1px solid #cec4b8;padding:12px;margin-top:9px;font:inherit;border-radius:0}.za-primary{display:block!important;background:#28231e!important;color:#fff7ed!important;padding:15px!important;text-align:center!important;width:100%;border:0;box-sizing:border-box;cursor:pointer;font-size:12px;margin-top:20px}.za-primary:disabled{opacity:.55}.za-secondary{display:block;border:1px solid #28231e;padding:14px;text-align:center;margin:10px 0 20px}.za-auth .za-check{display:flex;gap:10px;align-items:start;line-height:1.7;margin:22px 0}.za-check input{margin-top:4px}.za-show,.za-forgot{display:inline-block;font-size:11px;margin:12px 0}.za-forgot{float:inline-end}.za-auth small{display:block;font-size:11px;color:#71675d}.za-switch,.za-guest{font-size:12px;line-height:1.8;margin:24px 0}.za-privacy{margin-top:22px}.za-feedback{font-size:12px;line-height:1.8;color:#793c30}.za-menu{position:absolute;inset-inline-end:18px;top:100%;width:280px;padding:24px;background:#f7f3ed;border:1px solid #ded5cb;box-shadow:0 12px 28px #28231e12;z-index:50;text-align:start}.za-menu[hidden]{display:none}.za-menu p{font:20px Georgia,serif}.za-menu small{display:block;font-size:10px;margin-top:16px;color:#71675d}.za-menu>a{font-size:12px}.za-dashboard{max-width:1000px;margin:60px auto;padding:0 24px}.za-tabs{display:flex;flex-wrap:wrap;gap:24px;border-bottom:1px solid #d4cabc;padding:24px 0;font-size:12px}.za-dashboard section{padding:36px 0;border-bottom:1px solid #d4cabc}.za-dashboard form{max-width:460px}.za-dashboard h2{font:normal 24px Georgia,serif;margin-bottom:22px}.za-order{display:flex;gap:24px;flex-wrap:wrap;padding:18px 0}.za-dashboard p{font-size:13px;line-height:1.9}#zema-ui-proposal .zm-hero-copy .zm-description{display:none}#zema-ui-proposal .zm-footer-logo{color:#f0e5d8!important;opacity:1!important}#zema-ui-proposal .zm-category-links{display:none}#zema-ui-proposal .zm-circle-strip{background:#f5f0e8;padding:35px 5%;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}#zema-ui-proposal .zm-circle-strip h2{font:normal 28px Georgia,serif;margin-bottom:10px}#zema-ui-proposal .zm-circle-strip p{font-size:12px;line-height:1.8;color:#71675d}#zema-ui-proposal .zm-circle-strip label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#zema-ui-proposal .zm-circle-strip input{color:#28231e;outline-offset:4px;box-shadow:none}#zema-ui-proposal .zm-circle-strip input::placeholder{color:#71675d}#zema-ui-proposal .zm-circle-strip button{color:#28231e;min-width:100px;font-size:12px;min-height:44px}#zema-ui-proposal .zm-compact-columns{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}#zema-ui-proposal .zm-footer .zm-social{justify-content:flex-start;margin-top:24px;gap:16px}#zema-ui-proposal .zm-footer .zm-social button{min-width:44px;min-height:44px}#zema-ui-proposal .zm-footer .zm-identity p{font-size:11px;line-height:1.9;margin-top:18px}#zema-ui-proposal .zm-footer .zm-compact-columns a{min-height:32px;display:block}#zema-ui-proposal .zm-footer-bottom{margin-top:26px;padding-top:20px}#zema-ui-proposal :is(button,a,input):focus-visible{outline:2px solid #9b7960;outline-offset:4px}#zema-ui-proposal.zm-ar :is(.za-auth h1,.za-dashboard h1,.za-dashboard h2,.zm-circle-strip h2){font-family:Tahoma,Arial,sans-serif;line-height:1.6}@media(max-width:650px){#zema-ui-proposal .zm-circle-strip{grid-template-columns:1fr;gap:20px;padding:30px 24px}#zema-ui-proposal .zm-compact-columns{grid-template-columns:1fr 1fr;gap:24px}#zema-ui-proposal .zm-identity{grid-column:1/-1}.za-auth{margin-top:40px!important}.za-auth h1{font-size:30px}.za-menu{max-width:calc(100vw - 36px)}}
+#zema-ui-proposal .header-inner{position:relative}#zema-ui-proposal .za-menu{z-index:100}#zema-ui-proposal .za-menu .za-primary{width:100%}
+#zema-ui-proposal .za-auth .za-check{flex-direction:row;align-items:flex-start}#zema-ui-proposal .za-check input{width:18px;height:18px;flex:0 0 18px}#zema-ui-proposal .zm-footer .zm-compact-columns :is(nav,a,h3){text-align:start}#zema-ui-proposal .za-auth .za-forgot{margin-inline-start:12px}#zema-ui-proposal .za-auth [type=password]{direction:ltr;text-align:start}
+.za-dashboard section{scroll-margin-top:110px}
+@media(max-width:650px){#zema-ui-proposal #checkoutForm :is(input,select,textarea){font-size:16px;min-height:46px}#zema-ui-proposal .policy h1{font-size:30px;line-height:1.5}#zema-ui-proposal .policy h2{font-size:21px;margin-top:28px}#zema-ui-proposal .policy p{font-size:14px;line-height:1.95}#zema-ui-proposal .checkout-layout{min-width:0}#zema-ui-proposal .summary-line{min-width:0;flex-wrap:wrap}}
+
+/* Mobile layout keeps campaign images complete and copy outside the photographs. */
+@media (max-width: 768px) {
+  #zema-ui-proposal .zm-store.zm-phone {
+    width: 100%;
+    max-width: none;
+  }
+  #zema-ui-proposal .zm-phone .header-inner.zm-header {
+    padding: 0 12px;
+    grid-template-columns: minmax(44px, 1fr) auto minmax(108px, 1fr);
+  }
+  #zema-ui-proposal .zm-phone .zm-header .zm-brand img {
+    width: clamp(96px, 29vw, 125px);
+    height: auto;
+  }
+  #zema-ui-proposal .zm-phone .zm-actions {
+    gap: 0;
+  }
+  #zema-ui-proposal .zm-phone .zm-actions .icon-btn {
+    min-width: 36px;
+    width: 36px;
+    min-height: 44px;
+  }
+  #zema-ui-proposal .zm-phone .zm-actions .icon-btn[aria-label="Search"] {
+    display: grid;
+  }
+  #zema-ui-proposal .zm-phone .zm-announcement {
+    padding: 9px 12px;
+    font-size: 11px;
+    letter-spacing: .05em;
+    line-height: 1.5;
+  }
+  #zema-ui-proposal #mobileMenu {
+    position: static;
+    max-height: 70svh;
+    overflow-y: auto;
+  }
+  #zema-ui-proposal #mobileMenu :is(a, summary) {
+    display: block;
+    min-height: 44px;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  #zema-ui-proposal #mobileMenu .zm-bag-options {
+    padding: 0 16px;
+  }
+  #zema-ui-proposal .zm-phone .zm-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    align-items: start;
+  }
+  #zema-ui-proposal .zm-phone .zm-hero :is(.zm-hero-image, .zm-hero-closeup) {
+    position: relative;
+    inset: auto;
+    grid-area: 1 / 1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    transform: none;
+  }
+  #zema-ui-proposal .zm-phone .zm-hero .zm-hero-wash {
+    display: none;
+  }
+  #zema-ui-proposal .zm-phone .zm-hero .zm-hero-copy {
+    grid-area: 2 / 1;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 24px 20px;
+    background: var(--zm-paper);
+    color: var(--zm-ink);
+  }
+  #zema-ui-proposal .zm-phone .zm-hero h1 {
+    font-size: clamp(28px, 7vw, 36px);
+    line-height: 1.25;
+    margin: 12px 0;
+  }
+  #zema-ui-proposal .zm-phone .zm-hero .zm-description {
+    display: block;
+    max-width: none;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  #zema-ui-proposal .zm-phone .zm-scene-controls {
+    top: 8px;
+    bottom: auto;
+    right: 8px;
+  }
+  #zema-ui-proposal .zm-phone .zm-category-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 4px 2px 8px;
+    margin: 0 0 22px;
+  }
+  #zema-ui-proposal .zm-phone .zm-category-tabs button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 13px;
+    min-height: 44px;
+  }
+  #zema-ui-proposal .zm-phone .zm-products {
+    padding: 28px 16px;
+  }
+  #zema-ui-proposal .zm-phone .zm-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 12px;
+  }
+  #zema-ui-proposal .zm-phone .zm-card-caption {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  #zema-ui-proposal .zm-phone .zm-card-color {
+    font-size: 11px;
+    flex-wrap: wrap;
+  }
+  #zema-ui-proposal .zm-phone .zm-section-title {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  #zema-ui-proposal .zm-phone .zm-editorial > img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+  }
+  #zema-ui-proposal .zm-phone .zm-pdp-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #zema-ui-proposal .zm-phone .zm-email-line input {
+    width: 0;
+    flex: 1;
+    font-size: 16px;
+  }
+  #zema-ui-proposal .zm-phone .zm-email-line button {
+    flex: 0 0 auto;
+  }
+  #zema-ui-proposal .za-auth,
+  #zema-ui-proposal .za-dashboard,
+  #zema-ui-proposal .policy,
+  #zema-ui-proposal .receipt {
+    overflow-wrap: anywhere;
+  }
+}
+@media (max-width: 768px) {
+  #zema-ui-proposal .zm-phone .header-inner.zm-header {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+  #zema-ui-proposal .zm-phone .zm-actions .icon-btn[aria-label="Search"] {
+    position: absolute;
+    inset-inline-start: 48px;
+    top: 15px;
+  }
+  #zema-ui-proposal .zm-phone .zm-category-tabs {
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    overflow-x: visible;
+  }
+}
+
+/* Visible mobile shopping shortcuts and a structured footer. */
+#zema-ui-proposal .zm-mobile-shortcuts { display: none; }
+#zema-ui-proposal .zm-footer-tools {
+ display: flex; align-items: center; justify-content: space-between;
+ gap: 20px; margin-top: 24px; padding-top: 20px;
+ border-top: 1px solid #51463c; font-size: 12px;
+}
+#zema-ui-proposal .zm-footer-tools .zm-language-pair { display: flex; align-items: center; gap: 12px; }
+#zema-ui-proposal .zm-footer .zm-footer-tools a { color: #f0e5d8; }
+#zema-ui-proposal .zm-footer .zm-compact-columns > nav a { font-size: 12px; line-height: 1.6; padding: 6px 0; }
+#zema-ui-proposal .zm-footer .zm-footer-bottom { font-size: 11px; line-height: 1.8; margin-top: 18px; }
+@media (max-width: 768px) {
+ #zema-ui-proposal .zm-mobile-shortcuts {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0 22px; padding: 6px 16px; background: var(--zm-paper);
+  border-bottom: 1px solid var(--zm-rule);
+ }
+ #zema-ui-proposal .zm-mobile-shortcuts a { display: grid; align-items: center; min-height: 40px; font-size: 13px; white-space: nowrap; }
+ #zema-ui-proposal .zm-circle-strip { text-align: start; padding: 30px 20px; gap: 18px; }
+ #zema-ui-proposal .zm-circle-strip h2 { font-size: 26px; line-height: 1.3; }
+ #zema-ui-proposal .zm-circle-strip p { font-size: 13px; line-height: 1.8; }
+ #zema-ui-proposal .zm-footer .zm-compact-columns { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 26px 20px; }
+ #zema-ui-proposal .zm-footer .zm-identity { grid-column: 1/-1; display: grid; grid-template-columns: 1fr auto; align-items: center; padding-bottom: 24px; border-bottom: 1px solid #51463c; }
+ #zema-ui-proposal .zm-footer .zm-identity .zm-footer-logo { margin: 0; width: 104px; }
+ #zema-ui-proposal .zm-footer .zm-identity > p { grid-column: 1/-1; grid-row: 2; margin-top: 12px; }
+ #zema-ui-proposal .zm-footer .zm-identity .zm-social { grid-column: 2; grid-row: 1; margin: 0; gap: 2px; }
+ #zema-ui-proposal .zm-footer .zm-compact-columns h3 { font-size: 17px; margin-bottom: 12px; }
+ #zema-ui-proposal .zm-footer .zm-compact-columns > nav a { min-height: 40px; font-size: 12px; overflow-wrap: anywhere; }
+ #zema-ui-proposal .zm-footer .zm-footer-bottom { padding-top: 0; border: 0; text-align: start; }
+}
+#zema-ui-proposal .zm-footer-tools .zm-language-pair button {
+ color: #f0e5d8;
+ min-width: 32px;
+ min-height: 40px;
+}
+
+#zema-ui-proposal .zm-footer .zm-identity > p {
+ color: #f0e5d8;
+ opacity: 1;
+}
+
+#zema-ui-proposal .zm-mobile-shortcuts .zm-bag-menu { position: relative; }
+#zema-ui-proposal .zm-mobile-shortcuts summary {
+ display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0; font-size: 13px;
+}
+#zema-ui-proposal .zm-mobile-shortcuts .zm-bag-options {
+ position: absolute; top: 100%; inset-inline-start: 0; width: 195px;
+ z-index: 70; background: var(--zm-paper); padding: 8px 16px;
+ border: 1px solid var(--zm-rule); text-align: start;
+}
+#zema-ui-proposal .zm-mobile-shortcuts .zm-bag-options a {
+ display: flex; align-items: center; min-height: 44px; padding: 8px 0;
+}
+
+#zema-ui-proposal .zm-footer .zm-identity > p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #f0e5d8;
+  opacity: 1;
+}
