@@ -162,14 +162,14 @@ function renderProductCard(p) {
   </article>`;
 }
 const HOME_SLIDES=[
-  {full:true,img:'media/home/hero-main.webp',alt:'Woman in a dark blazer carrying a tan leather shoulder bag beside a sunlit stone wall',eyebrow:'TIMELESS DETAILS',title:'Bags for<br><em>Every Story</em>',text:'Modern designs, everyday elegance.',cta:'Shop Now',cat:'bags'},
+  {full:true,img:'media/hero-main.webp',alt:'Woman in a dark blazer carrying a tan leather shoulder bag beside a sunlit stone wall',eyebrow:'TIMELESS DETAILS',title:'Bags for<br><em>Every Story</em>',text:'Modern designs, everyday elegance.',cta:'Shop Now',cat:'bags'},
   {img:'media/campaign-taupe-v2.webp',alt:'Warm taupe handbag worn with an ivory linen suit beside sunlit limestone architecture',eyebrow:'THE ZEMA CAMPAIGN',title:'A quiet statement.<br><em>Everywhere you go.</em>',text:'Distinctive pieces. Effortless style.',cta:'Discover the Collection',cat:'all'},
   {img:'media/campaign-chocolate-v2.webp',alt:'Chocolate shoulder bag carried by a seated model in a warm architectural interior',eyebrow:'THE EVERYDAY MUSE',title:'Elegance,<br><em>in your element.</em>',text:'Considered shapes. Distinctive details.',cta:'Shop the Collection',cat:'bags'}
 ];
 const HOME_TILES=[
-  {img:'media/home/cat-bags.webp',label:'Bags',sub:'Shop Collection',cat:'bags'},
-  {img:'media/home/cat-wallets.webp',label:'Wallets',sub:'Shop Collection',cat:'wallets'},
-  {img:'media/home/cat-charms.webp',label:'Charms',sub:'Shop Collection',cat:'accessories'}
+  {img:'media/cat-bags.webp',label:'Bags',sub:'Shop Collection',cat:'bags'},
+  {img:'media/cat-wallets.webp',label:'Wallets',sub:'Shop Collection',cat:'wallets'},
+  {img:'media/cat-charms.webp',label:'Charms',sub:'Shop Collection',cat:'accessories'}
 ];
 /* Home rows: product ids from the catalog (New Arrivals / Best Sellers). */
 const HOME_NEW=["noir-hobo", "sable-shoulder", "noir-bar-wallet", "bordeaux-top-handle", "sand-wallet"];
@@ -203,15 +203,15 @@ function renderHomeMarquee(){
     </div>
   </div>`;
 }
-function renderHomeView(){const free=config.freeShippingThreshold;const arrow='<span class="zh-arr" aria-hidden="true">→</span>';return `<div class="zh-home">
+function renderHomeView(){const free=config.freeShippingThreshold;const arrow='<span class="zh-arr" aria-hidden="true">→</span>';const imgFallback="onerror=\"this.onerror=null;if(this.src.indexOf('/media/home/')!==-1){this.src=this.src.replace('/media/home/','/media/');}else if(this.src.indexOf('/media/')!==-1){this.src=this.src.replace('/media/','/media/home/');}\"";return `<div class="zh-home">
   <section class="zh-hero" aria-roledescription="carousel" aria-label="Featured collections">
-    ${HOME_SLIDES.map((s,i)=>`<div class="zh-slide${s.full?' zh-slide-full':''}${i===0?' is-active':''}" role="group" aria-roledescription="slide" aria-label="${i+1} / ${HOME_SLIDES.length}"><img class="zh-slide-img" src="${s.img}" alt="${e(s.alt)}" ${i===0?'fetchpriority="high"':'loading="lazy"'}><div class="zh-slide-copy"><p class="zh-eyebrow">${s.eyebrow}</p><h1>${s.title}</h1><p class="zh-slide-text">${s.text}</p><a class="zh-btn" href="#shop/${s.cat}"><span>${s.cta}</span>${arrow}</a></div></div>`).join('')}
+    ${HOME_SLIDES.map((s,i)=>`<div class="zh-slide${s.full?' zh-slide-full':''}${i===0?' is-active':''}" role="group" aria-roledescription="slide" aria-label="${i+1} / ${HOME_SLIDES.length}"><img class="zh-slide-img" src="${s.img}" ${imgFallback} alt="${e(s.alt)}" ${i===0?'fetchpriority="high"':'loading="lazy"'}><div class="zh-slide-copy"><p class="zh-eyebrow">${s.eyebrow}</p><h1>${s.title}</h1><p class="zh-slide-text">${s.text}</p><a class="zh-btn" href="#shop/${s.cat}"><span>${s.cta}</span>${arrow}</a></div></div>`).join('')}
     <div class="zh-hero-ui"><div class="zh-indicators" role="group" aria-label="Choose slide">${HOME_SLIDES.map((s,i)=>`<button type="button" data-zh-go="${i}" class="${i===0?'is-active':''}" aria-label="Slide ${i+1}"><span>0${i+1}</span><i></i></button>`).join('')}</div><div class="zh-arrows"><button type="button" data-zh-prev aria-label="Previous slide">←</button><button type="button" data-zh-next aria-label="Next slide">→</button></div></div>
   </section>
-  <section class="zh-tiles" aria-label="Shop by category">${HOME_TILES.map(t=>`<a class="zh-tile" href="#shop/${t.cat}"><img src="${t.img}" alt="" loading="lazy"><span class="zh-tile-copy"><strong>${t.label}</strong><small><span>${t.sub}</span>${arrow}</small></span></a>`).join('')}</section>
+  <section class="zh-tiles" aria-label="Shop by category">${HOME_TILES.map(t=>`<a class="zh-tile" href="#shop/${t.cat}"><img src="${t.img}" ${imgFallback} alt="" loading="lazy"><span class="zh-tile-copy"><strong>${t.label}</strong><small><span>${t.sub}</span>${arrow}</small></span></a>`).join('')}</section>
   ${renderHomeMarquee()}
   <section class="zh-section" id="zh-new"><div class="zh-head"><div><p class="zh-eyebrow">DISCOVER</p><h2>New Arrivals</h2></div><a class="zh-viewall" href="#shop/new-arrivals"><span>View All</span>${arrow}</a></div><div class="zh-grid">${HOME_NEW.map(id=>homeCard(id,'new')).join('')}</div></section>
-  <section class="zh-banner" aria-label="A touch of everyday luxury"><img src="media/home/banner.webp" alt="Black leather handbag with a silk scarf and sunglasses on a marble café table" loading="lazy"><div class="zh-banner-copy"><p class="zh-eyebrow">MORE THAN A BAG</p><h2>A Touch<br><em>of Everyday Luxury</em></h2><p>Thoughtful details for a more beautiful you.</p><a class="zh-btn zh-btn-ghost" href="#shop/accessories"><span>Explore Now</span>${arrow}</a></div></section>
+  <section class="zh-banner" aria-label="A touch of everyday luxury"><img src="media/banner.webp" ${imgFallback} alt="Black leather handbag with a silk scarf and sunglasses on a marble café table" loading="lazy"><div class="zh-banner-copy"><p class="zh-eyebrow">MORE THAN A BAG</p><h2>A Touch<br><em>of Everyday Luxury</em></h2><p>Thoughtful details for a more beautiful you.</p><a class="zh-btn zh-btn-ghost" href="#shop/accessories"><span>Explore Now</span>${arrow}</a></div></section>
   <section class="zh-section" id="zh-best"><div class="zh-head"><div><p class="zh-eyebrow">CUSTOMER FAVORITES</p><h2>Best Sellers</h2></div><a class="zh-viewall" href="#shop/best-sellers"><span>View All</span>${arrow}</a></div><div class="zh-grid">${HOME_BEST.map(id=>homeCard(id,'best')).join('')}</div></section>
   <section class="zh-perks" aria-label="Store benefits">
     <div><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 8h17v14H3zM20 12h6l3 4v6h-9"/><circle cx="9" cy="23" r="2.4"/><circle cx="24" cy="23" r="2.4"/></svg><p><strong>Free Shipping</strong><span>${free!==null?`On orders over ${money(free)}`:'Delivery across Egypt'}</span></p></div>
